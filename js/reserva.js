@@ -23,6 +23,16 @@ var CONFIG = {
     var hoy = new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
     f.min = hoy;
   }
+  // Si llega desde otra página con ?svc= (ej. el asistente en precios.html), preseleccionar el servicio
+  try{
+    var svcParam = new URLSearchParams(location.search).get('svc');
+    var sel = document.getElementById('servicio');
+    if(svcParam && sel){
+      var mapa = { 'Tratamientos Corporales': 'Body Porcelana' };
+      sel.value = mapa[svcParam] || svcParam;
+      if(!sel.value) sel.value = 'Otro / no estoy segura';
+    }
+  }catch(e){}
 })();
 
 // Envío de la reserva → tabla web_reservas (Supabase)

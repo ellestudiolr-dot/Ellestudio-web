@@ -157,7 +157,12 @@
     setTimeout(function(){
       cerrar();
       var r = document.getElementById('reserva');
-      if(r) r.scrollIntoView({ behavior: 'smooth' });
+      if(r){ r.scrollIntoView({ behavior: 'smooth' }); }
+      else {
+        // Desde otra página (ej. precios.html) → ir al formulario de la principal con el servicio elegido
+        var svc = tratamientoActual ? ('?svc=' + encodeURIComponent(tratamientoActual)) : '';
+        window.location.href = 'index.html' + svc + '#reserva';
+      }
     }, 700);
   }
 
