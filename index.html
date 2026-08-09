@@ -128,9 +128,9 @@
         .vista:not(.activa) { display: none !important; }
         .nav-activa { color: #D8BC7E !important; }
         /* Reel real de Instagram mostrando SOLO el video (sin Me gusta ni comentarios) */
-        .reel-marco { position: relative; width: 330px; max-width: 100%; aspect-ratio: 9/16; overflow: hidden; border-radius: 1rem; border: 1px solid #d9dbd2; background: #000; }
+        .reel-marco { position: relative; width: 400px; max-width: 100%; aspect-ratio: 9/16; overflow: hidden; border-radius: 1rem; border: 1px solid #d9dbd2; background: #000; }
         .reel-marco iframe {
-            position: absolute; top: -77px; left: 50%; width: 330px; height: 1100px; border: 0; background: #000;
+            position: absolute; top: -77px; left: 50%; width: 100%; height: 1300px; border: 0; background: #000;
             transform: translateX(-50%) scale(1.423); transform-origin: top center;
         }
         .chip-svc { border: 1.2px solid #B99043; color: #7b580e; background: transparent; border-radius: 999px; padding: 8px 14px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
@@ -138,6 +138,12 @@
         .red-circulo { width: 44px; height: 44px; border-radius: 50%; border: 1.4px solid #B99043; color: #D8BC7E; display: inline-flex; align-items: center; justify-content: center; transition: background .15s; }
         .red-circulo:hover { background: rgba(216,188,126,.12); }
         .red-circulo svg { width: 20px; height: 20px; }
+        /* Historias estilo Instagram (anillo dorado) */
+        .historia { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; }
+        .anillo { width: 92px; height: 92px; border-radius: 50%; padding: 3.5px; background: linear-gradient(135deg,#B99043,#f0dfa0,#d4af37); display: inline-flex; transition: transform .15s; }
+        .historia:hover .anillo { transform: scale(1.06); }
+        .anillo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #f8faf1; }
+        .hist-nombre { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .05em; color: #49473f; text-transform: uppercase; }
         @media (max-width: 640px){
           .hero-elle { letter-spacing: -2px; }
           nav a[data-nav="inicio"] { font-size: 1.15rem !important; letter-spacing: 2px !important; }
@@ -393,6 +399,27 @@
       <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t3_frase">"Atención de primera. Desde que entras se siente el cuidado y la dedicación en cada detalle."</p>
       <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t3_nombre">— Luciana F.</p>
     </div>
+    <div class="text-center flex flex-col items-center">
+      <div class="flex text-gold-400 mb-6 gap-1">
+        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
+      </div>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t4_frase">"Las sesiones de láser son rapidísimas y sin dolor. En pocas sesiones ya vi el cambio."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t4_nombre">— Andrea R.</p>
+    </div>
+    <div class="text-center flex flex-col items-center">
+      <div class="flex text-gold-400 mb-6 gap-1">
+        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
+      </div>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t5_frase">"Reservé por la página y me confirmaron al toque por WhatsApp. Todo facilísimo y puntual."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t5_nombre">— Fiorella T.</p>
+    </div>
+    <div class="text-center flex flex-col items-center">
+      <div class="flex text-gold-400 mb-6 gap-1">
+        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
+      </div>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t6_frase">"Los tratamientos corporales me encantaron. Se nota la calidad en cada detalle del estudio."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t6_nombre">— Daniela V.</p>
+    </div>
   </div>
 </section>
 
@@ -403,6 +430,13 @@
       <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Resultados reales</span>
       <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3 mb-3">Síguenos en Instagram</h2>
       <a class="inline-flex items-center gap-2 font-headline-sm text-headline-sm italic text-gold-gradient" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
+    </div>
+    <div class="flex flex-wrap justify-center gap-6 md:gap-9 mb-14" id="historias">
+      <a class="historia" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener"><span class="anillo"><img src="img/facial.jpg" alt="Historias: Faciales"/></span><span class="hist-nombre">Faciales</span></a>
+      <a class="historia" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener"><span class="anillo"><img src="img/gluteos.jpg" alt="Historias: Glúteos"/></span><span class="hist-nombre">Glúteos</span></a>
+      <a class="historia" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener"><span class="anillo"><img src="img/laser-piernas.jpg" alt="Historias: Láser"/></span><span class="hist-nombre">Láser</span></a>
+      <a class="historia" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener"><span class="anillo"><img src="img/corporal.jpg" alt="Historias: Corporales"/></span><span class="hist-nombre">Corporales</span></a>
+      <a class="historia" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener"><span class="anillo"><img src="img/spa-ambiente.jpg" alt="Historias: El estudio"/></span><span class="hist-nombre">El estudio</span></a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
       <div class="reel-marco"><iframe src="https://www.instagram.com/reel/Dbt0MqyolVG/embed/" loading="lazy" allowfullscreen scrolling="no" title="Reel de elle studio"></iframe></div>
