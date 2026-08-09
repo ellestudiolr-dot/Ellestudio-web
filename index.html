@@ -125,8 +125,7 @@
         .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
         [hidden] { display: none !important; }
         /* Navegacion por vistas (cada pestana muestra su seccion) */
-        .vista { display: none; }
-        .vista.activa { display: block; }
+        .vista:not(.activa) { display: none !important; }
         .nav-activa { color: #D8BC7E !important; }
     </style>
 </head>
