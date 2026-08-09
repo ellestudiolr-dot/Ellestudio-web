@@ -1,28 +1,24 @@
-// elle studio · página pública
+// elle studio · página pública (diseño v3)
 // Conexión a Supabase (llave pública anon — protegida por RLS: el público SOLO puede crear reservas)
 var CONFIG = {
   SUPABASE_URL: 'https://bwgiktpsmrvfaoyoftwy.supabase.co',
   SUPABASE_ANON: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3Z2lrdHBzbXJ2ZmFveW9mdHd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzY2NjUsImV4cCI6MjA4NzU1MjY2NX0.-3YsxigCNWDeZnW8uLSro6UXsHhRNLmcJHEap0fnHz0',
-  WHATSAPP: '',   // número del estudio con código de país, ej: '51987654321' — al ponerlo aparecen los botones
-  INSTAGRAM: ''   // usuario de Instagram sin @, ej: 'ellestudio.pe' — al ponerlo aparece el botón
+  WHATSAPP: '',                 // número del estudio con código de país, ej: '51987654321' — al ponerlo aparecen los botones de WhatsApp
+  INSTAGRAM: '_elleestudio'     // usuario de Instagram sin @
 };
 
-// Mostrar botones de WhatsApp / Instagram solo si están configurados
+// Botones de WhatsApp: aparecen solo si hay número configurado
 (function(){
   if(CONFIG.WHATSAPP){
     var msg = encodeURIComponent('Hola, quiero información sobre sus servicios');
     var url = 'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + msg;
-    ['btnWhatsHero','btnWhatsPie'].forEach(function(id){
+    ['waHero','waUbicacion','waFooter'].forEach(function(id){
       var el = document.getElementById(id);
       if(el){ el.href = url; el.hidden = false; }
     });
   }
-  if(CONFIG.INSTAGRAM){
-    var el = document.getElementById('btnInstaPie');
-    if(el){ el.href = 'https://instagram.com/' + CONFIG.INSTAGRAM; el.hidden = false; }
-  }
   // La fecha del formulario no puede ser pasada
-  var f = document.getElementById('rFecha');
+  var f = document.getElementById('fecha');
   if(f){
     var hoy = new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
     f.min = hoy;
@@ -39,22 +35,24 @@ var CONFIG = {
     ev.preventDefault();
     if(enviando) return;
 
-    var estado = document.getElementById('rEstado');
-    var boton  = document.getElementById('rEnviar');
-    var nombre = document.getElementById('rNombre').value.trim();
-    var tel    = document.getElementById('rTelefono').value.replace(/\D/g,'');
+    var estado = document.getElementById('estadoReserva');
+    var boton  = document.getElementById('btnEnviar');
+    var nombre = document.getElementById('nombre').value.trim();
+    var tel    = document.getElementById('celular').value.replace(/\D/g,'');
+    var svc    = document.getElementById('servicio').value;
 
-    estado.className = 'form-estado';
-    if(nombre.length < 2){ estado.textContent = 'Escribe tu nombre.'; estado.classList.add('error'); return; }
-    if(tel.length < 9){ estado.textContent = 'Escribe un celular válido (9 dígitos).'; estado.classList.add('error'); return; }
+    estado.style.color = '#b0503c';
+    if(nombre.length < 2){ estado.textContent = 'Escribe tu nombre.'; return; }
+    if(tel.length < 9){ estado.textContent = 'Escribe un celular válido (9 dígitos).'; return; }
+    if(!svc){ estado.textContent = 'Selecciona un servicio.'; return; }
 
     var datos = {
       nombre: nombre,
       telefono: tel,
-      servicio: document.getElementById('rServicio').value,
-      fecha_preferida: document.getElementById('rFecha').value || null,
-      hora_preferida: document.getElementById('rHora').value || null,
-      mensaje: document.getElementById('rMensaje').value.trim() || null
+      servicio: svc,
+      fecha_preferida: document.getElementById('fecha').value || null,
+      hora_preferida: document.getElementById('horario').value || null,
+      mensaje: document.getElementById('mensaje').value.trim() || null
     };
 
     enviando = true;
@@ -75,12 +73,11 @@ var CONFIG = {
       });
       if(!r.ok) throw new Error('HTTP ' + r.status);
       form.reset();
+      estado.style.color = '#4d6b3c';
       estado.textContent = 'Listo, recibimos tu reserva. Te confirmamos por WhatsApp.';
-      estado.classList.add('ok');
       boton.textContent = 'Reserva enviada';
     }catch(e){
-      estado.textContent = 'No se pudo enviar. Intenta de nuevo o escríbenos por WhatsApp.';
-      estado.classList.add('error');
+      estado.textContent = 'No se pudo enviar. Intenta de nuevo en un momento.';
       boton.disabled = false;
       boton.textContent = 'Enviar reserva';
       enviando = false;

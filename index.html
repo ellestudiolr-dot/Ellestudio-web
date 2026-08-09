@@ -1,153 +1,438 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="scroll-smooth" lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>elle studio · Estudio de belleza en San Isidro, Lima</title>
-<meta name="description" content="Depilación láser, glúteos de porcelana, faciales y tratamientos corporales en San Isidro, Lima. Reserva tu cita en línea.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231c1f18'/><text x='50' y='68' text-anchor='middle' font-family='Georgia,serif' font-size='52' fill='%23e8e0cc'>e</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilos.css?v=2">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Depilación Láser y Estética en San Isidro, Lima | elle studio</title>
+<meta name="description" content="Estudio de belleza en San Isidro, Lima: depilación láser desde S/25, Glúteos de Porcelana, limpieza facial y tratamientos corporales. Reserva tu cita en línea y te confirmamos por WhatsApp."/>
+<link rel="canonical" href="https://ellestudiolr-dot.github.io/Ellestudio-web/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="elle studio · Depilación Láser y Estética en San Isidro, Lima"/>
+<meta property="og:description" content="La piel que deseas, el cuidado que mereces. Depilación láser, Body Porcelana, faciales y reductores. Reserva en línea."/>
+<meta property="og:url" content="https://ellestudiolr-dot.github.io/Ellestudio-web/"/>
+<meta property="og:locale" content="es_PE"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231c1f18'/><text x='50' y='68' text-anchor='middle' font-family='Georgia,serif' font-size='52' fill='%23e8e0cc'>e</text></svg>"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "elle studio",
+  "description": "Estudio de belleza y depilación láser en San Isidro, Lima. Depilación láser, Glúteos de Porcelana, limpieza facial y tratamientos corporales.",
+  "url": "https://ellestudiolr-dot.github.io/Ellestudio-web/",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Paz Soldán 235",
+    "addressLocality": "San Isidro",
+    "addressRegion": "Lima",
+    "addressCountry": "PE"
+  },
+  "priceRange": "S/25 - S/900",
+  "sameAs": ["https://www.instagram.com/_elleestudio/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "¿La depilación láser duele?", "acceptedAnswer": {"@type": "Answer", "text": "La molestia es mínima. Usamos tecnología láser moderna y preparamos la piel en cada sesión para que la experiencia sea rápida y cómoda."}},
+    {"@type": "Question", "name": "¿Cuántas sesiones necesito?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de la zona y del tipo de vello. Trabajamos con sesiones individuales y paquetes de 3 y 6 sesiones que hacen el tratamiento más efectivo y económico."}},
+    {"@type": "Question", "name": "¿Atienden a hombres?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Tenemos precios y protocolos de depilación láser tanto para mujeres como para hombres, en todas las zonas."}},
+    {"@type": "Question", "name": "¿Cómo confirmo mi cita?", "acceptedAnswer": {"@type": "Answer", "text": "Dejas tu reserva en la página con tus datos y el servicio que te interesa, y te escribimos por WhatsApp para confirmar el horario exacto."}}
+  ]
+}
+</script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#f8faf1",
+                        "on-background": "#191c17",
+                        "on-surface": "#191c17",
+                        "on-surface-variant": "#49473f",
+                        "outline": "#7a776e",
+                        "outline-variant": "#cac6bc",
+                        "surface": "#f8faf1",
+                        "surface-bright": "#f8faf1",
+                        "surface-variant": "#e1e3db",
+                        "surface-dim": "#d9dbd2",
+                        "surface-container": "#edefe6",
+                        "surface-container-low": "#f3f4ec",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e7e9e0",
+                        "surface-container-highest": "#e1e3db",
+                        "primary": "#615e57",
+                        "primary-container": "#f6f1e7",
+                        "secondary": "#5d5f57",
+                        "tertiary": "#7b580e",
+                        "tertiary-fixed": "#ffdea8",
+                        "gold": { "400": "#D8BC7E", "600": "#B99043" }
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                    spacing: {
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "section-padding": "120px"
+                    },
+                    fontFamily: {
+                        "body-lg": ["DM Sans"], "body-md": ["DM Sans"], "label-upper": ["DM Sans"],
+                        "display-lg": ["EB Garamond"], "headline-lg": ["EB Garamond"], "headline-md": ["EB Garamond"], "headline-sm": ["EB Garamond"]
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-upper": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "400" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .gold-gradient-bg { background: linear-gradient(135deg, #B99043 0%, #D8BC7E 100%); }
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #B99043 0%, #D8BC7E 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .input-underline {
+            border: none; border-bottom: 1px solid #191c17; background: transparent;
+            border-radius: 0; padding-left: 0; padding-right: 0; transition: border-color 0.3s ease;
+        }
+        .input-underline:focus { outline: none; box-shadow: none; border-color: #B99043; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+        [hidden] { display: none !important; }
+        .ig-embed { min-height: 480px; background: #edefe6; border-radius: 1rem; overflow: hidden; }
+        .ig-embed iframe { margin: 0 auto !important; }
+    </style>
 </head>
-<body>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">
 
-<!-- BARRA SUPERIOR -->
-<header class="nav">
-  <a class="nav-logo" href="#inicio">elle <span>studio</span></a>
-  <nav class="nav-links">
-    <a href="#servicios">Servicios</a>
-    <a href="#como">Cómo funciona</a>
-    <a href="#ubicacion">Ubicación</a>
-  </nav>
-  <a class="btn btn-oro" href="#reservar">Reservar cita</a>
+<!-- NAV -->
+<nav class="bg-on-background sticky top-0 z-50 border-b border-outline/20 w-full">
+  <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-4">
+    <div class="font-headline-md text-headline-md italic text-surface-bright tracking-widest flex-shrink-0">elle studio</div>
+    <div class="hidden md:flex items-center gap-8">
+      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#servicios">Servicios</a>
+      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#como-funciona">Cómo funciona</a>
+      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#instagram">Instagram</a>
+      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#ubicacion">Ubicación</a>
+    </div>
+    <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full hover:brightness-110 transition-all shadow-[0_4px_20px_rgba(185,144,67,0.2)] uppercase whitespace-nowrap" href="#reserva">Reservar cita</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="relative min-h-[86vh] flex flex-col items-center justify-center text-center px-gutter py-24 overflow-hidden">
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+    <div class="w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(216,188,126,1)_0%,rgba(248,250,241,0)_70%)] blur-3xl"></div>
+  </div>
+  <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6">
+    <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase">— EST · 2024 —</span>
+    <div class="flex flex-col items-center -space-y-4 md:-space-y-8">
+      <h1 class="font-display-lg text-[110px] md:text-[170px] leading-none italic text-gold-gradient font-light">elle</h1>
+      <span class="font-label-upper text-[15px] md:text-[22px] tracking-[0.4em] text-on-background uppercase ml-3">S·T·U·D·I·O</span>
+    </div>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mt-6">La piel que deseas, el cuidado que mereces. Depilación láser y estética premium en San Isidro, Lima.</p>
+    <div class="flex flex-col sm:flex-row gap-4 mt-6">
+      <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2" href="#reserva">
+        Reservar cita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </a>
+      <a id="waHero" hidden class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined text-[18px]">chat</span> Escríbenos por WhatsApp
+      </a>
+    </div>
+    <div class="flex flex-wrap justify-center gap-x-10 gap-y-3 mt-10 text-on-surface-variant">
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-gold-600 text-[20px]">favorite</span><span class="font-body-md text-body-md">+250 clientas atendidas</span></div>
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-gold-600 text-[20px]">auto_awesome</span><span class="font-body-md text-body-md">+1,000 sesiones realizadas</span></div>
+      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-gold-600 text-[20px]">verified</span><span class="font-body-md text-body-md">Atención personalizada</span></div>
+    </div>
+  </div>
 </header>
 
-<!-- PORTADA -->
-<section class="hero" id="inicio">
-  <div class="hero-est">— EST · 2024 —</div>
-  <h1 class="hero-logo">elle</h1>
-  <div class="hero-studio">S · T · U · D · I · O</div>
-  <p class="hero-sub">Estudio de belleza y depilación láser en San Isidro, Lima</p>
-  <div class="hero-ctas">
-    <a class="btn btn-oro btn-grande" href="#reservar">Reservar cita</a>
-    <a class="btn btn-borde btn-grande" id="btnWhatsHero" href="#" target="_blank" rel="noopener" hidden>Escríbenos por WhatsApp</a>
-  </div>
-</section>
+<div class="w-full max-w-container-max mx-auto px-gutter py-6 flex justify-center"><div class="w-24 h-[1px] bg-gold-600/50"></div></div>
 
 <!-- SERVICIOS -->
-<section class="bloque" id="servicios">
-  <h2 class="titulo">Nuestros servicios</h2>
-  <p class="subtitulo">Tratamientos con tecnología y productos profesionales</p>
-  <div class="cards">
-    <div class="card">
-      <div class="card-nombre">Depilación Láser</div>
-      <p>Todas las zonas, para ella y para él. Sesiones rápidas y seguras.</p>
-      <div class="card-precio">desde S/ 25 por zona</div>
+<section class="py-24 px-gutter max-w-container-max mx-auto relative z-10" id="servicios">
+  <div class="text-center mb-16">
+    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-4">Nuestros Servicios</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">La precisión de la estética moderna, a tu disposición.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
+      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">bolt</span></div>
+      <h3 class="font-headline-sm text-headline-sm mb-3">Depilación Láser</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Todas las zonas, para ella y para él. Sesiones rápidas y seguras.</p>
+      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
+        <span class="font-label-upper text-label-upper text-tertiary uppercase">Desde</span>
+        <span class="font-headline-sm text-headline-sm">S/ 25 <span class="font-body-md text-body-md text-on-surface-variant">por zona</span></span>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-nombre">Glúteos De Porcelana</div>
-      <p>Levantamiento, perfilado y mejora de la textura de la piel.</p>
-      <div class="card-precio">desde S/ 89.90</div>
+    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
+      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">spa</span></div>
+      <h3 class="font-headline-sm text-headline-sm mb-3">Glúteos De Porcelana</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Levantamiento, perfilado y mejora de la textura de la piel.</p>
+      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
+        <span class="font-label-upper text-label-upper text-tertiary uppercase">Desde</span>
+        <span class="font-headline-sm text-headline-sm">S/ 89.90</span>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-nombre">Limpieza Facial</div>
-      <p>Limpieza profunda, hidratación y cuidado del rostro.</p>
-      <div class="card-precio">desde S/ 80</div>
+    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
+      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">face</span></div>
+      <h3 class="font-headline-sm text-headline-sm mb-3">Limpieza Facial</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Limpieza profunda, hidratación y cuidado del rostro.</p>
+      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
+        <span class="font-label-upper text-label-upper text-tertiary uppercase">Desde</span>
+        <span class="font-headline-sm text-headline-sm">S/ 80</span>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-nombre">Tratamientos Corporales</div>
-      <p>Body Porcelana, Sculptbody y Slimbody para moldear y reafirmar.</p>
-      <div class="card-precio">desde S/ 50</div>
+    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
+      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">self_improvement</span></div>
+      <h3 class="font-headline-sm text-headline-sm mb-3">Tratamientos Corporales</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Body Porcelana, Sculptbody y Slimbody para moldear y reafirmar.</p>
+      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
+        <span class="font-label-upper text-label-upper text-tertiary uppercase">Desde</span>
+        <span class="font-headline-sm text-headline-sm">S/ 50</span>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-nombre">Back Therapy</div>
-      <p>Tratamiento especializado para la piel de la espalda.</p>
-      <div class="card-precio">consultar</div>
+    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
+      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">healing</span></div>
+      <h3 class="font-headline-sm text-headline-sm mb-3">Back Therapy</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Tratamiento especializado para la piel de la espalda.</p>
+      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
+        <span class="font-label-upper text-label-upper text-tertiary uppercase">Precio</span>
+        <span class="font-headline-sm text-headline-sm">Consultar</span>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-nombre">Peptonas y más</div>
-      <p>Peptonas, postoperatorio y cuidados complementarios.</p>
-      <div class="card-precio">consultar</div>
+    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
+      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">medical_services</span></div>
+      <h3 class="font-headline-sm text-headline-sm mb-3">Peptonas y más</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Peptonas, postoperatorio y cuidados complementarios.</p>
+      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
+        <span class="font-label-upper text-label-upper text-tertiary uppercase">Precio</span>
+        <span class="font-headline-sm text-headline-sm">Consultar</span>
+      </div>
     </div>
   </div>
-  <p class="nota">Los precios varían según zona y paquete. Pide tu cotización exacta al reservar.</p>
+  <p class="text-center font-body-md text-body-md text-outline mt-12 italic">* Los precios varían según zona y paquete. Pide tu cotización exacta al reservar.</p>
 </section>
 
 <!-- COMO FUNCIONA -->
-<section class="bloque bloque-oscuro" id="como">
-  <h2 class="titulo">Cómo funciona</h2>
-  <div class="pasos">
-    <div class="paso"><div class="paso-num">1</div><div class="paso-txt"><b>Reserva en línea</b><br>Elige tu servicio y el día que prefieres.</div></div>
-    <div class="paso"><div class="paso-num">2</div><div class="paso-txt"><b>Te confirmamos</b><br>Te escribimos por WhatsApp para confirmar tu horario.</div></div>
-    <div class="paso"><div class="paso-num">3</div><div class="paso-txt"><b>Ven a tu cita</b><br>Te esperamos en nuestro estudio en San Isidro.</div></div>
-  </div>
-</section>
-
-<!-- UBICACION -->
-<section class="bloque" id="ubicacion">
-  <h2 class="titulo">Dónde estamos</h2>
-  <p class="subtitulo">Av. Paz Soldán 235, San Isidro, Lima</p>
-  <a class="btn btn-borde" href="https://www.google.com/maps/search/?api=1&query=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru" target="_blank" rel="noopener">Ver en Google Maps</a>
-</section>
-
-<!-- RESERVA -->
-<section class="bloque bloque-crema" id="reservar">
-  <h2 class="titulo">Reserva tu cita</h2>
-  <p class="subtitulo">Déjanos tus datos y te confirmamos por WhatsApp</p>
-  <form id="formReserva" class="form" novalidate>
-    <label>Nombre y apellido
-      <input type="text" id="rNombre" maxlength="120" placeholder="Ej. María Fernández" required>
-    </label>
-    <label>Celular (WhatsApp)
-      <input type="tel" id="rTelefono" maxlength="15" inputmode="numeric" placeholder="987654321" required>
-    </label>
-    <label>Servicio
-      <select id="rServicio">
-        <option>Depilación Láser</option>
-        <option>Glúteos De Porcelana</option>
-        <option>Limpieza Facial</option>
-        <option>Body Porcelana</option>
-        <option>Sculptbody</option>
-        <option>Slimbody</option>
-        <option>Back Therapy</option>
-        <option>Peptonas</option>
-        <option>Otro / no estoy segura</option>
-      </select>
-    </label>
-    <div class="form-fila">
-      <label>Fecha preferida
-        <input type="date" id="rFecha">
-      </label>
-      <label>Horario preferido
-        <select id="rHora">
-          <option value="">Cualquiera</option>
-          <option>Mañana (10am - 1pm)</option>
-          <option>Tarde (1pm - 5pm)</option>
-          <option>Última hora (5pm - 7pm)</option>
-        </select>
-      </label>
+<section class="bg-on-background py-24 px-gutter" id="como-funciona">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-20">
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-surface-bright mb-4">Cómo funciona</h2>
+      <div class="w-12 h-[1px] bg-gold-600/50 mx-auto mt-6"></div>
     </div>
-    <label>Mensaje (opcional)
-      <textarea id="rMensaje" maxlength="500" rows="3" placeholder="Cuéntanos qué zona te interesa o cualquier duda"></textarea>
-    </label>
-    <button type="submit" class="btn btn-oro btn-grande" id="rEnviar">Enviar reserva</button>
-    <div id="rEstado" class="form-estado" role="status"></div>
-  </form>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative">
+      <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[1px] bg-outline/20"></div>
+      <div class="relative z-10 flex flex-col items-center">
+        <div class="w-24 h-24 rounded-full border border-gold-600 bg-on-background flex items-center justify-center mb-8 text-gold-400 font-headline-lg text-headline-lg">1</div>
+        <h3 class="font-headline-sm text-headline-sm text-surface-bright mb-3">Reserva en línea</h3>
+        <p class="font-body-md text-body-md text-surface-variant">Elige tu tratamiento y el día que prefieres, aquí mismo.</p>
+      </div>
+      <div class="relative z-10 flex flex-col items-center">
+        <div class="w-24 h-24 rounded-full border border-gold-600 bg-on-background flex items-center justify-center mb-8 text-gold-400 font-headline-lg text-headline-lg">2</div>
+        <h3 class="font-headline-sm text-headline-sm text-surface-bright mb-3">Te confirmamos</h3>
+        <p class="font-body-md text-body-md text-surface-variant">Te escribimos por WhatsApp para confirmar tu horario.</p>
+      </div>
+      <div class="relative z-10 flex flex-col items-center">
+        <div class="w-24 h-24 rounded-full border border-gold-600 bg-on-background flex items-center justify-center mb-8 text-gold-400 font-headline-lg text-headline-lg">3</div>
+        <h3 class="font-headline-sm text-headline-sm text-surface-bright mb-3">Ven a tu cita</h3>
+        <p class="font-body-md text-body-md text-surface-variant">Disfruta tu tratamiento en nuestro estudio en San Isidro.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PIE -->
-<footer class="pie">
-  <div class="pie-logo">elle studio</div>
-  <div class="pie-dir">Av. Paz Soldán 235, San Isidro, Lima, Perú</div>
-  <div class="pie-social">
-    <a id="btnWhatsPie" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a>
-    <a id="btnInstaPie" href="#" target="_blank" rel="noopener" hidden>Instagram</a>
+<!-- TESTIMONIOS -->
+<section class="py-24 px-gutter bg-surface-container-lowest border-y border-surface-dim" id="testimonios">
+  <div class="text-center mb-14">
+    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background">Lo que dicen nuestras clientas</h2>
   </div>
-  <div class="pie-copy">© 2026 elle studio · Todos los derechos reservados</div>
+  <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div class="text-center flex flex-col items-center">
+      <div class="flex text-gold-400 mb-6 gap-1">
+        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
+      </div>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"El mejor servicio de depilación láser en San Isidro. El trato es súper exclusivo y profesional."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase">— Valeria M.</p>
+    </div>
+    <div class="text-center flex flex-col items-center">
+      <div class="flex text-gold-400 mb-6 gap-1">
+        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
+      </div>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"Los resultados de los Glúteos de Porcelana son increíbles. El estudio es hermoso y relajante."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase">— Camila S.</p>
+    </div>
+    <div class="text-center flex flex-col items-center">
+      <div class="flex text-gold-400 mb-6 gap-1">
+        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
+      </div>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"Atención de primera. Desde que entras se siente el cuidado y la dedicación en cada detalle."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase">— Luciana F.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="py-24 px-gutter" id="instagram">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-14">
+      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Resultados reales</span>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3 mb-4">Síguenos en Instagram</h2>
+      <a class="inline-flex items-center gap-2 font-headline-sm text-headline-sm italic text-gold-gradient" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+      <div class="ig-embed">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbt0MqyolVG/" data-instgrm-version="14" style="margin:0 auto; width:100%;"></blockquote>
+      </div>
+      <div class="ig-embed">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbeKMQwoJaa/" data-instgrm-version="14" style="margin:0 auto; width:100%;"></blockquote>
+      </div>
+      <div class="ig-embed">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Da1Pk6ZI2mb/" data-instgrm-version="14" style="margin:0 auto; width:100%;"></blockquote>
+      </div>
+    </div>
+    <div class="text-center mt-12">
+      <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase inline-flex items-center gap-2" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined text-[18px]">photo_camera</span> Ver más en Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVA + UBICACION -->
+<section class="py-24 px-gutter bg-primary-container relative" id="reserva">
+  <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+    <div class="lg:col-span-4 flex flex-col items-start" id="ubicacion">
+      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase mb-4">Dónde estamos</span>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-8">Nuestra<br/>Ubicación</h2>
+      <div class="flex items-start gap-4 mb-8">
+        <span class="material-symbols-outlined text-tertiary mt-1">location_on</span>
+        <div>
+          <p class="font-body-lg text-body-lg text-on-background">Av. Paz Soldán 235</p>
+          <p class="font-body-md text-body-md text-on-surface-variant">San Isidro, Lima, Perú</p>
+        </div>
+      </div>
+      <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-3 rounded-full hover:bg-tertiary/5 transition-all uppercase w-full text-center" href="https://www.google.com/maps/search/?api=1&query=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru" target="_blank" rel="noopener">Ver en Google Maps</a>
+      <div class="mt-10 w-full border-t border-gold-600/30 pt-8">
+        <p class="font-body-md text-body-md text-on-surface-variant">¿Prefieres escribirnos directo?</p>
+        <a id="waUbicacion" hidden class="mt-4 gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-3 rounded-full hover:brightness-110 transition-all uppercase w-full text-center inline-block" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="hidden lg:block lg:col-span-1"></div>
+    <div class="lg:col-span-7 bg-surface-container-lowest p-8 md:p-12 border border-surface-dim shadow-sm rounded-2xl">
+      <div class="mb-10">
+        <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-3">Reserva tu cita</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">Déjanos tus datos y te confirmamos por WhatsApp.</p>
+      </div>
+      <form class="space-y-8" id="formReserva" novalidate>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div><input class="w-full input-underline font-body-md text-body-md text-on-background placeholder:text-outline/60" id="nombre" maxlength="120" placeholder="Nombre y apellido" required type="text"/></div>
+          <div><input class="w-full input-underline font-body-md text-body-md text-on-background placeholder:text-outline/60" id="celular" maxlength="15" inputmode="numeric" placeholder="Celular (WhatsApp)" required type="tel"/></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="relative">
+            <select class="w-full input-underline font-body-md text-body-md text-on-background appearance-none cursor-pointer" id="servicio">
+              <option disabled selected value="">Selecciona un servicio</option>
+              <option>Depilación Láser</option>
+              <option>Glúteos De Porcelana</option>
+              <option>Limpieza Facial</option>
+              <option>Body Porcelana</option>
+              <option>Sculptbody</option>
+              <option>Slimbody</option>
+              <option>Back Therapy</option>
+              <option>Peptonas</option>
+              <option>Otro / no estoy segura</option>
+            </select>
+            <span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+          </div>
+          <div><input class="w-full input-underline font-body-md text-body-md text-on-background" id="fecha" type="date" aria-label="Fecha preferida"/></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="relative">
+            <select class="w-full input-underline font-body-md text-body-md text-on-background appearance-none cursor-pointer" id="horario" aria-label="Horario preferido">
+              <option value="">Horario: cualquiera</option>
+              <option>Mañana (10am - 1pm)</option>
+              <option>Tarde (1pm - 5pm)</option>
+              <option>Última hora (5pm - 7pm)</option>
+            </select>
+            <span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+          </div>
+          <div></div>
+        </div>
+        <div><textarea class="w-full input-underline font-body-md text-body-md text-on-background placeholder:text-outline/60 resize-none" id="mensaje" maxlength="500" placeholder="Mensaje o zona que te interesa (opcional)" rows="3"></textarea></div>
+        <div class="pt-4">
+          <button class="w-full gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-5 rounded-full hover:brightness-110 transition-all uppercase tracking-widest flex items-center justify-center gap-3" id="btnEnviar" type="submit">
+            Enviar reserva <span class="material-symbols-outlined text-[18px]">send</span>
+          </button>
+          <div id="estadoReserva" class="text-center font-body-md text-body-md mt-4 min-h-[24px]" role="status"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-24 px-gutter max-w-3xl mx-auto" id="faq">
+  <div class="text-center mb-14">
+    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background">Preguntas frecuentes</h2>
+  </div>
+  <div class="space-y-4">
+    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
+      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿La depilación láser duele? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4">La molestia es mínima. Usamos tecnología láser moderna y preparamos la piel en cada sesión para que la experiencia sea rápida y cómoda.</p>
+    </details>
+    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
+      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Cuántas sesiones necesito? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Depende de la zona y del tipo de vello. Trabajamos con sesiones individuales y paquetes de 3 y 6 sesiones que hacen el tratamiento más efectivo y económico.</p>
+    </details>
+    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
+      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Atienden a hombres? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Sí. Tenemos precios y protocolos de depilación láser tanto para mujeres como para hombres, en todas las zonas.</p>
+    </details>
+    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
+      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Cómo confirmo mi cita? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Dejas tu reserva en esta página con tus datos y el servicio que te interesa, y te escribimos por WhatsApp para confirmar el horario exacto.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-on-background border-t border-tertiary/30 w-full">
+  <div class="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto px-gutter py-20">
+    <div class="flex flex-col gap-6 mb-12 md:mb-0">
+      <div class="font-headline-sm text-headline-sm italic text-surface-bright">elle studio</div>
+      <p class="text-surface-container-highest max-w-xs font-body-md text-body-md">El balance perfecto entre tecnología láser y cuidado estético en Lima.</p>
+      <p class="text-surface-variant font-label-upper text-[10px] mt-8 uppercase">© 2026 elle studio. Todos los derechos reservados.</p>
+    </div>
+    <div class="flex flex-col gap-4">
+      <span class="font-label-upper text-label-upper text-gold-400 uppercase mb-2">Contacto</span>
+      <a id="waFooter" hidden class="text-surface-container-highest hover:text-gold-400 transition-colors font-body-md text-body-md" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="text-surface-container-highest hover:text-gold-400 transition-colors font-body-md text-body-md" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">Instagram · @_elleestudio</a>
+      <p class="text-surface-container-highest mt-2 flex items-start gap-2 max-w-[220px] font-body-md text-body-md">
+        <span class="material-symbols-outlined text-[18px] mt-1">location_on</span> Av. Paz Soldán 235, San Isidro, Lima
+      </p>
+    </div>
+  </div>
 </footer>
 
-<script src="js/reserva.js?v=2"></script>
+<!-- BOTON FLOTANTE -->
+<a aria-label="Reservar Cita" class="fixed bottom-8 right-8 z-50 gold-gradient-bg text-on-background p-4 rounded-full shadow-[0_4px_20px_rgba(185,144,67,0.3)] hover:scale-105 transition-transform flex items-center justify-center group" href="#reserva">
+  <span class="material-symbols-outlined fill">calendar_month</span>
+  <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out font-label-upper text-label-upper uppercase whitespace-nowrap group-hover:ml-3 group-hover:mr-1 opacity-0 group-hover:opacity-100">Reservar</span>
+</a>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+<script src="js/reserva.js?v=3"></script>
 </body>
 </html>
