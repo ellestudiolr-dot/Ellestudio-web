@@ -103,6 +103,20 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        /* Logo "elle" dorado degradé con brillo (mismo del CRM) — texto transparente que deja ver el oro */
+        @keyframes elleShimmer { 0%{background-position:200% 0;} 100%{background-position:-200% 0;} }
+        .hero-elle {
+            font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+            font-style: italic; font-weight: 300; line-height: .9; letter-spacing: -4px;
+            background: linear-gradient(110deg,#8c7c5a 0%,#c8b882 18%,#f5e6a8 32%,#ffffff 44%,#f5e6a8 50%,#d4af37 58%,#c8b882 70%,#8c7c5a 84%,#c8b882 100%);
+            background-size: 250% 100%;
+            -webkit-background-clip: text; background-clip: text;
+            color: transparent;
+            animation: elleShimmer 4.5s linear infinite;
+            filter: drop-shadow(0 1px 0 rgba(140,124,90,0.25));
+            user-select: none;
+        }
+        .hero-underline { width: 240px; height: 1px; background: linear-gradient(90deg, transparent, #8c7c5a, transparent); margin: 14px auto 0; }
         .input-underline {
             border: none; border-bottom: 1px solid #191c17; background: transparent;
             border-radius: 0; padding-left: 0; padding-right: 0; transition: border-color 0.3s ease;
@@ -110,8 +124,20 @@
         .input-underline:focus { outline: none; box-shadow: none; border-color: #B99043; }
         .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
         [hidden] { display: none !important; }
-        .ig-embed { min-height: 480px; background: #edefe6; border-radius: 1rem; overflow: hidden; }
-        .ig-embed iframe { margin: 0 auto !important; }
+        /* Galería Instagram limpia: se recorta el embed oficial para mostrar SOLO el video (sin likes ni comentarios) */
+        .ig-tile { position: relative; aspect-ratio: 9/14; overflow: hidden; border-radius: 1rem; background: #edefe6; border: 1px solid #d9dbd2; }
+        .ig-tile .instagram-media, .ig-tile iframe.instagram-media {
+            position: absolute !important; top: -54px; left: 50%; transform: translateX(-50%);
+            width: 100% !important; min-width: 0 !important; max-width: none !important;
+            margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+        }
+        .ig-cover { position: absolute; inset: 0; z-index: 5; display: flex; align-items: flex-end; justify-content: center; text-decoration: none; }
+        .ig-cover span {
+            margin-bottom: 14px; background: rgba(25,28,23,0.82); color: #f8faf1;
+            font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+            padding: 8px 16px; border-radius: 999px; text-transform: uppercase; opacity: 0; transition: opacity .2s;
+        }
+        .ig-tile:hover .ig-cover span { opacity: 1; }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">
@@ -137,9 +163,10 @@
   </div>
   <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6">
     <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase">— EST · 2024 —</span>
-    <div class="flex flex-col items-center -space-y-4 md:-space-y-8">
-      <h1 class="font-display-lg text-[110px] md:text-[170px] leading-none italic text-gold-gradient font-light">elle</h1>
-      <span class="font-label-upper text-[15px] md:text-[22px] tracking-[0.4em] text-on-background uppercase ml-3">S·T·U·D·I·O</span>
+    <div class="flex flex-col items-center">
+      <h1 class="hero-elle text-[110px] md:text-[170px]">elle</h1>
+      <div class="hero-underline"></div>
+      <span class="font-label-upper text-[15px] md:text-[22px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
     </div>
     <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mt-6">La piel que deseas, el cuidado que mereces. Depilación láser y estética premium en San Isidro, Lima.</p>
     <div class="flex flex-col sm:flex-row gap-4 mt-6">
@@ -292,14 +319,17 @@
       <a class="inline-flex items-center gap-2 font-headline-sm text-headline-sm italic text-gold-gradient" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-      <div class="ig-embed">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbt0MqyolVG/" data-instgrm-version="14" style="margin:0 auto; width:100%;"></blockquote>
+      <div class="ig-tile">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbt0MqyolVG/" data-instgrm-version="14" style="margin:0; width:100%;"></blockquote>
+        <a class="ig-cover" href="https://www.instagram.com/reel/Dbt0MqyolVG/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram"><span>Ver en Instagram</span></a>
       </div>
-      <div class="ig-embed">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbeKMQwoJaa/" data-instgrm-version="14" style="margin:0 auto; width:100%;"></blockquote>
+      <div class="ig-tile">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbeKMQwoJaa/" data-instgrm-version="14" style="margin:0; width:100%;"></blockquote>
+        <a class="ig-cover" href="https://www.instagram.com/reel/DbeKMQwoJaa/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram"><span>Ver en Instagram</span></a>
       </div>
-      <div class="ig-embed">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Da1Pk6ZI2mb/" data-instgrm-version="14" style="margin:0 auto; width:100%;"></blockquote>
+      <div class="ig-tile">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Da1Pk6ZI2mb/" data-instgrm-version="14" style="margin:0; width:100%;"></blockquote>
+        <a class="ig-cover" href="https://www.instagram.com/reel/Da1Pk6ZI2mb/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram"><span>Ver en Instagram</span></a>
       </div>
     </div>
     <div class="text-center mt-12">
@@ -426,13 +456,8 @@
   </div>
 </footer>
 
-<!-- BOTON FLOTANTE -->
-<a aria-label="Reservar Cita" class="fixed bottom-8 right-8 z-50 gold-gradient-bg text-on-background p-4 rounded-full shadow-[0_4px_20px_rgba(185,144,67,0.3)] hover:scale-105 transition-transform flex items-center justify-center group" href="#reserva">
-  <span class="material-symbols-outlined fill">calendar_month</span>
-  <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out font-label-upper text-label-upper uppercase whitespace-nowrap group-hover:ml-3 group-hover:mr-1 opacity-0 group-hover:opacity-100">Reservar</span>
-</a>
-
 <script async src="https://www.instagram.com/embed.js"></script>
 <script src="js/reserva.js?v=3"></script>
+<script src="js/chatbot.js?v=1"></script>
 </body>
 </html>
