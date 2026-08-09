@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>elle studio · Estudio de belleza en San Isidro, Lima</title>
+<meta name="description" content="Depilación láser, glúteos de porcelana, faciales y tratamientos corporales en San Isidro, Lima. Reserva tu cita en línea.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231c1f18'/><text x='50' y='68' text-anchor='middle' font-family='Georgia,serif' font-size='52' fill='%23e8e0cc'>e</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- BARRA SUPERIOR -->
+<header class="nav">
+  <a class="nav-logo" href="#inicio">elle <span>studio</span></a>
+  <nav class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#como">Cómo funciona</a>
+    <a href="#ubicacion">Ubicación</a>
+  </nav>
+  <a class="btn btn-oro" href="#reservar">Reservar cita</a>
+</header>
+
+<!-- PORTADA -->
+<section class="hero" id="inicio">
+  <div class="hero-est">— EST · 2024 —</div>
+  <h1 class="hero-logo">elle</h1>
+  <div class="hero-studio">S · T · U · D · I · O</div>
+  <p class="hero-sub">Estudio de belleza y depilación láser en San Isidro, Lima</p>
+  <div class="hero-ctas">
+    <a class="btn btn-oro btn-grande" href="#reservar">Reservar cita</a>
+    <a class="btn btn-borde btn-grande" id="btnWhatsHero" href="#" target="_blank" rel="noopener" hidden>Escríbenos por WhatsApp</a>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="bloque" id="servicios">
+  <h2 class="titulo">Nuestros servicios</h2>
+  <p class="subtitulo">Tratamientos con tecnología y productos profesionales</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-nombre">Depilación Láser</div>
+      <p>Todas las zonas, para ella y para él. Sesiones rápidas y seguras.</p>
+      <div class="card-precio">desde S/ 25 por zona</div>
+    </div>
+    <div class="card">
+      <div class="card-nombre">Glúteos De Porcelana</div>
+      <p>Levantamiento, perfilado y mejora de la textura de la piel.</p>
+      <div class="card-precio">desde S/ 89.90</div>
+    </div>
+    <div class="card">
+      <div class="card-nombre">Limpieza Facial</div>
+      <p>Limpieza profunda, hidratación y cuidado del rostro.</p>
+      <div class="card-precio">desde S/ 80</div>
+    </div>
+    <div class="card">
+      <div class="card-nombre">Tratamientos Corporales</div>
+      <p>Body Porcelana, Sculptbody y Slimbody para moldear y reafirmar.</p>
+      <div class="card-precio">desde S/ 50</div>
+    </div>
+    <div class="card">
+      <div class="card-nombre">Back Therapy</div>
+      <p>Tratamiento especializado para la piel de la espalda.</p>
+      <div class="card-precio">consultar</div>
+    </div>
+    <div class="card">
+      <div class="card-nombre">Peptonas y más</div>
+      <p>Peptonas, postoperatorio y cuidados complementarios.</p>
+      <div class="card-precio">consultar</div>
+    </div>
+  </div>
+  <p class="nota">Los precios varían según zona y paquete. Pide tu cotización exacta al reservar.</p>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="bloque bloque-oscuro" id="como">
+  <h2 class="titulo">Cómo funciona</h2>
+  <div class="pasos">
+    <div class="paso"><div class="paso-num">1</div><div class="paso-txt"><b>Reserva en línea</b><br>Elige tu servicio y el día que prefieres.</div></div>
+    <div class="paso"><div class="paso-num">2</div><div class="paso-txt"><b>Te confirmamos</b><br>Te escribimos por WhatsApp para confirmar tu horario.</div></div>
+    <div class="paso"><div class="paso-num">3</div><div class="paso-txt"><b>Ven a tu cita</b><br>Te esperamos en nuestro estudio en San Isidro.</div></div>
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section class="bloque" id="ubicacion">
+  <h2 class="titulo">Dónde estamos</h2>
+  <p class="subtitulo">Av. Paz Soldán 235, San Isidro, Lima</p>
+  <a class="btn btn-borde" href="https://www.google.com/maps/search/?api=1&query=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru" target="_blank" rel="noopener">Ver en Google Maps</a>
+</section>
+
+<!-- RESERVA -->
+<section class="bloque bloque-crema" id="reservar">
+  <h2 class="titulo">Reserva tu cita</h2>
+  <p class="subtitulo">Déjanos tus datos y te confirmamos por WhatsApp</p>
+  <form id="formReserva" class="form" novalidate>
+    <label>Nombre y apellido
+      <input type="text" id="rNombre" maxlength="120" placeholder="Ej. María Fernández" required>
+    </label>
+    <label>Celular (WhatsApp)
+      <input type="tel" id="rTelefono" maxlength="15" inputmode="numeric" placeholder="987654321" required>
+    </label>
+    <label>Servicio
+      <select id="rServicio">
+        <option>Depilación Láser</option>
+        <option>Glúteos De Porcelana</option>
+        <option>Limpieza Facial</option>
+        <option>Body Porcelana</option>
+        <option>Sculptbody</option>
+        <option>Slimbody</option>
+        <option>Back Therapy</option>
+        <option>Peptonas</option>
+        <option>Otro / no estoy segura</option>
+      </select>
+    </label>
+    <div class="form-fila">
+      <label>Fecha preferida
+        <input type="date" id="rFecha">
+      </label>
+      <label>Horario preferido
+        <select id="rHora">
+          <option value="">Cualquiera</option>
+          <option>Mañana (10am - 1pm)</option>
+          <option>Tarde (1pm - 5pm)</option>
+          <option>Última hora (5pm - 7pm)</option>
+        </select>
+      </label>
+    </div>
+    <label>Mensaje (opcional)
+      <textarea id="rMensaje" maxlength="500" rows="3" placeholder="Cuéntanos qué zona te interesa o cualquier duda"></textarea>
+    </label>
+    <button type="submit" class="btn btn-oro btn-grande" id="rEnviar">Enviar reserva</button>
+    <div id="rEstado" class="form-estado" role="status"></div>
+  </form>
+</section>
+
+<!-- PIE -->
+<footer class="pie">
+  <div class="pie-logo">elle studio</div>
+  <div class="pie-dir">Av. Paz Soldán 235, San Isidro, Lima, Perú</div>
+  <div class="pie-social">
+    <a id="btnWhatsPie" href="#" target="_blank" rel="noopener" hidden>WhatsApp</a>
+    <a id="btnInstaPie" href="#" target="_blank" rel="noopener" hidden>Instagram</a>
+  </div>
+  <div class="pie-copy">© 2026 elle studio · Todos los derechos reservados</div>
+</footer>
+
+<script src="js/reserva.js"></script>
+</body>
+</html>
