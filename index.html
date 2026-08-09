@@ -128,8 +128,11 @@
         .vista:not(.activa) { display: none !important; }
         .nav-activa { color: #D8BC7E !important; }
         /* Reel real de Instagram mostrando SOLO el video (sin Me gusta ni comentarios) */
-        .reel-marco { position: relative; width: 100%; max-width: 340px; aspect-ratio: 4/5; overflow: hidden; border-radius: 1rem; border: 1px solid #d9dbd2; background: #000; }
-        .reel-marco iframe { position: absolute; top: -54px; left: 0; width: 100%; height: calc(100% + 360px); border: 0; background: #000; }
+        .reel-marco { position: relative; width: 330px; max-width: 100%; aspect-ratio: 9/16; overflow: hidden; border-radius: 1rem; border: 1px solid #d9dbd2; background: #000; }
+        .reel-marco iframe {
+            position: absolute; top: -77px; left: 50%; width: 330px; height: 1100px; border: 0; background: #000;
+            transform: translateX(-50%) scale(1.423); transform-origin: top center;
+        }
         .chip-svc { border: 1.2px solid #B99043; color: #7b580e; background: transparent; border-radius: 999px; padding: 8px 14px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
         .chip-svc.activo { background: linear-gradient(135deg,#B99043,#D8BC7E); color: #191c17; border-color: transparent; }
         .red-circulo { width: 44px; height: 44px; border-radius: 50%; border: 1.4px solid #B99043; color: #D8BC7E; display: inline-flex; align-items: center; justify-content: center; transition: background .15s; }
@@ -195,15 +198,19 @@
   </div>
 </nav>
 
-<!-- HERO con foto completa -->
-<header class="vista activa relative overflow-hidden" data-vista="inicio">
-  <div class="w-full px-gutter max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-center py-14 md:py-16">
-    <div class="flex flex-col items-start justify-center order-2 md:order-1 md:col-span-5">
+<!-- HERO con foto grande -->
+<header class="vista activa relative min-h-[88vh] flex items-center overflow-hidden" data-vista="inicio">
+  <div class="absolute right-0 top-0 w-full md:w-[55%] h-full">
+    <img class="object-cover w-full h-full object-center opacity-30 md:opacity-100" src="img/hero-modelo.jpg" alt="Piel luminosa — elle studio, estética y depilación láser en San Isidro, Lima" data-edit-img="hero_foto"/>
+    <div class="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent"></div>
+  </div>
+  <div class="w-full px-gutter max-w-container-max mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 py-20">
+    <div class="md:col-span-7 lg:col-span-6 flex flex-col items-start justify-center">
       <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase mb-5">— EST · 2024 —</span>
       <div class="flex flex-col items-start">
-        <h1 class="hero-elle text-[110px] md:text-[150px]">elle</h1>
-        <div class="hero-underline" style="margin-left:0;width:260px;"></div>
-        <span class="font-label-upper text-[16px] md:text-[22px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
+        <h1 class="hero-elle text-[100px] md:text-[170px]">elle</h1>
+        <div class="hero-underline" style="margin-left:0;width:240px;"></div>
+        <span class="font-label-upper text-[14px] md:text-[20px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
       </div>
       <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-lg" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces</h2>
       <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md" data-edit="hero_sub">Depilación láser y estética premium en San Isidro, Lima.</p>
@@ -213,10 +220,6 @@
         </button>
         <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="precios.html">Ver precios</a>
       </div>
-    </div>
-    <div class="relative order-1 md:order-2 md:col-span-7">
-      <div class="absolute -inset-8 rounded-full pointer-events-none" style="background:radial-gradient(closest-side,rgba(216,188,126,.25),transparent);"></div>
-      <img class="relative w-full h-auto rounded-2xl" src="img/hero-modelo.jpg" alt="Piel luminosa — elle studio, estética y depilación láser en San Isidro, Lima" data-edit-img="hero_foto"/>
     </div>
   </div>
 </header>
