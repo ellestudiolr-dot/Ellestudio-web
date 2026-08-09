@@ -157,102 +157,146 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<header class="relative min-h-[86vh] flex flex-col items-center justify-center text-center px-gutter py-24 overflow-hidden">
-  <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
-    <div class="w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(216,188,126,1)_0%,rgba(248,250,241,0)_70%)] blur-3xl"></div>
+<!-- HERO con foto -->
+<header class="relative min-h-[88vh] flex items-center overflow-hidden">
+  <div class="absolute right-0 top-0 w-full md:w-[55%] h-full">
+    <img class="object-cover w-full h-full object-center opacity-30 md:opacity-100" src="img/hero-modelo.jpg" alt="Piel luminosa — elle studio, estética y depilación láser en San Isidro, Lima"/>
+    <div class="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent"></div>
   </div>
-  <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6">
-    <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase">— EST · 2024 —</span>
-    <div class="flex flex-col items-center">
-      <h1 class="hero-elle text-[110px] md:text-[170px]">elle</h1>
-      <div class="hero-underline"></div>
-      <span class="font-label-upper text-[15px] md:text-[22px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
-    </div>
-    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mt-6">La piel que deseas, el cuidado que mereces. Depilación láser y estética premium en San Isidro, Lima.</p>
-    <div class="flex flex-col sm:flex-row gap-4 mt-6">
-      <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2" href="#reserva">
-        Reservar cita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-      </a>
-      <a id="waHero" hidden class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#" target="_blank" rel="noopener">
-        <span class="material-symbols-outlined text-[18px]">chat</span> Escríbenos por WhatsApp
-      </a>
-    </div>
-    <div class="flex flex-wrap justify-center gap-x-10 gap-y-3 mt-10 text-on-surface-variant">
-      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-gold-600 text-[20px]">favorite</span><span class="font-body-md text-body-md">+250 clientas atendidas</span></div>
-      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-gold-600 text-[20px]">auto_awesome</span><span class="font-body-md text-body-md">+1,000 sesiones realizadas</span></div>
-      <div class="flex items-center gap-2"><span class="material-symbols-outlined text-gold-600 text-[20px]">verified</span><span class="font-body-md text-body-md">Atención personalizada</span></div>
+  <div class="w-full px-gutter max-w-container-max mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 py-20">
+    <div class="md:col-span-7 lg:col-span-6 flex flex-col items-start justify-center">
+      <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase mb-5">— EST · 2024 —</span>
+      <div class="flex flex-col items-start">
+        <h1 class="hero-elle text-[96px] md:text-[130px]">elle</h1>
+        <div class="hero-underline" style="margin-left:0;width:200px;"></div>
+        <span class="font-label-upper text-[14px] md:text-[18px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
+      </div>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-lg">La piel que deseas, el cuidado que mereces</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md">Depilación láser y estética premium en San Isidro, Lima.</p>
+      <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
+        <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2" href="#reserva">
+          Reservar cita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </a>
+        <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="precios.html">Ver precios</a>
+        <a id="waHero" hidden class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+        </a>
+      </div>
     </div>
   </div>
 </header>
 
-<div class="w-full max-w-container-max mx-auto px-gutter py-6 flex justify-center"><div class="w-24 h-[1px] bg-gold-600/50"></div></div>
+<!-- BARRA DE CONFIANZA -->
+<section class="bg-on-background py-6">
+  <div class="max-w-container-max mx-auto px-gutter">
+    <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-2 text-center">
+      <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">+250 clientas atendidas</span>
+      <span class="hidden md:inline" style="color:rgba(216,188,126,.4);">·</span>
+      <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">+1,000 sesiones realizadas</span>
+      <span class="hidden md:inline" style="color:rgba(216,188,126,.4);">·</span>
+      <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">Tecnología láser moderna</span>
+      <span class="hidden md:inline" style="color:rgba(216,188,126,.4);">·</span>
+      <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">Atención personalizada</span>
+    </div>
+  </div>
+</section>
 
-<!-- SERVICIOS -->
+<!-- TRATAMIENTOS (tarjetas con foto) -->
 <section class="py-24 px-gutter max-w-container-max mx-auto relative z-10" id="servicios">
   <div class="text-center mb-16">
-    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-4">Nuestros Servicios</h2>
-    <p class="font-body-md text-body-md text-on-surface-variant">La precisión de la estética moderna, a tu disposición.</p>
+    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-4">Nuestros Tratamientos</h2>
+    <div class="w-12 h-[1px] bg-gold-600/50 mx-auto"></div>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
-      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">bolt</span></div>
-      <h3 class="font-headline-sm text-headline-sm mb-3">Depilación Láser</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Todas las zonas, para ella y para él. Sesiones rápidas y seguras.</p>
-      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
-        <span class="font-label-upper text-label-upper text-tertiary uppercase">Desde</span>
-        <span class="font-headline-sm text-headline-sm">S/ 25 <span class="font-body-md text-body-md text-on-surface-variant">por zona</span></span>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+    <a class="group block" href="precios.html">
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/laser-piernas.jpg" alt="Depilación láser — piernas suaves" loading="lazy"/>
       </div>
-    </div>
-    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
-      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">spa</span></div>
-      <h3 class="font-headline-sm text-headline-sm mb-3">Glúteos De Porcelana</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Levantamiento, perfilado y mejora de la textura de la piel.</p>
-      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
-        <span class="font-label-upper text-label-upper text-tertiary uppercase">Desde</span>
-        <span class="font-headline-sm text-headline-sm">S/ 89.90</span>
+      <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
+        <div>
+          <h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Depilación Láser</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Suavidad duradera, para ella y para él.</p>
+        </div>
+        <div class="text-right flex-shrink-0 pl-4">
+          <span class="font-label-upper text-label-upper text-outline block mb-1 uppercase">desde</span>
+          <span class="font-headline-sm text-headline-sm text-gold-gradient">S/ 25</span>
+        </div>
       </div>
-    </div>
-    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
-      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">face</span></div>
-      <h3 class="font-headline-sm text-headline-sm mb-3">Limpieza Facial</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Limpieza profunda, hidratación y cuidado del rostro.</p>
-      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
-        <span class="font-label-upper text-label-upper text-tertiary uppercase">Desde</span>
-        <span class="font-headline-sm text-headline-sm">S/ 80</span>
+      <div class="pt-4 flex items-center justify-between text-tertiary">
+        <span class="font-label-upper text-label-upper uppercase">Ver precios por zona</span>
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
       </div>
-    </div>
-    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
-      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">self_improvement</span></div>
-      <h3 class="font-headline-sm text-headline-sm mb-3">Tratamientos Corporales</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Body Porcelana, Sculptbody y Slimbody para moldear y reafirmar.</p>
-      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
-        <span class="font-label-upper text-label-upper text-tertiary uppercase">Desde</span>
-        <span class="font-headline-sm text-headline-sm">S/ 50</span>
+    </a>
+    <a class="group block md:mt-12" href="precios.html">
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/gluteos.jpg" alt="Glúteos de Porcelana — firmeza y textura" loading="lazy"/>
       </div>
-    </div>
-    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
-      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">healing</span></div>
-      <h3 class="font-headline-sm text-headline-sm mb-3">Back Therapy</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Tratamiento especializado para la piel de la espalda.</p>
-      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
-        <span class="font-label-upper text-label-upper text-tertiary uppercase">Precio</span>
-        <span class="font-headline-sm text-headline-sm">Consultar</span>
+      <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
+        <div>
+          <h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Glúteos De Porcelana</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Levantamiento, firmeza y textura renovada.</p>
+        </div>
+        <div class="text-right flex-shrink-0 pl-4">
+          <span class="font-label-upper text-label-upper text-outline block mb-1 uppercase">desde</span>
+          <span class="font-headline-sm text-headline-sm text-gold-gradient">S/ 89.90</span>
+        </div>
       </div>
-    </div>
-    <div class="bg-surface-container-lowest p-8 border border-surface-dim hover:border-gold-400/50 transition-colors group rounded-2xl">
-      <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform"><span class="material-symbols-outlined">medical_services</span></div>
-      <h3 class="font-headline-sm text-headline-sm mb-3">Peptonas y más</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant mb-6 min-h-[48px]">Peptonas, postoperatorio y cuidados complementarios.</p>
-      <div class="flex justify-between items-end border-t border-surface-dim pt-4">
-        <span class="font-label-upper text-label-upper text-tertiary uppercase">Precio</span>
-        <span class="font-headline-sm text-headline-sm">Consultar</span>
+      <div class="pt-4 flex items-center justify-between text-tertiary">
+        <span class="font-label-upper text-label-upper uppercase">Ver más</span>
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
       </div>
-    </div>
+    </a>
+    <a class="group block" href="precios.html">
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/facial.jpg" alt="Limpieza facial profesional" loading="lazy"/>
+      </div>
+      <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
+        <div>
+          <h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Limpieza Facial</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Piel luminosa, limpia e hidratada.</p>
+        </div>
+        <div class="text-right flex-shrink-0 pl-4">
+          <span class="font-label-upper text-label-upper text-outline block mb-1 uppercase">desde</span>
+          <span class="font-headline-sm text-headline-sm text-gold-gradient">S/ 80</span>
+        </div>
+      </div>
+      <div class="pt-4 flex items-center justify-between text-tertiary">
+        <span class="font-label-upper text-label-upper uppercase">Ver más</span>
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </div>
+    </a>
+    <a class="group block md:mt-12" href="precios.html">
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/corporal.jpg" alt="Tratamientos corporales — moldear y reafirmar" loading="lazy"/>
+      </div>
+      <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
+        <div>
+          <h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Tratamientos Corporales</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Body Porcelana, Sculptbody, Slimbody y más.</p>
+        </div>
+        <div class="text-right flex-shrink-0 pl-4">
+          <span class="font-label-upper text-label-upper text-outline block mb-1 uppercase">desde</span>
+          <span class="font-headline-sm text-headline-sm text-gold-gradient">S/ 50</span>
+        </div>
+      </div>
+      <div class="pt-4 flex items-center justify-between text-tertiary">
+        <span class="font-label-upper text-label-upper uppercase">Ver más</span>
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </div>
+    </a>
   </div>
-  <p class="text-center font-body-md text-body-md text-outline mt-12 italic">* Los precios varían según zona y paquete.</p>
-  <div class="text-center mt-6">
-    <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase inline-block" href="precios.html">Ver lista completa de precios</a>
+</section>
+
+<!-- BANNER PAQUETES (foto spa) -->
+<section class="px-gutter pb-24">
+  <div class="max-w-container-max mx-auto relative rounded-2xl overflow-hidden">
+    <img class="absolute inset-0 w-full h-full object-cover" src="img/spa-ambiente.jpg" alt="Ambiente del estudio" loading="lazy"/>
+    <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(25,28,23,.82),rgba(25,28,23,.45));"></div>
+    <div class="relative z-10 px-8 md:px-16 py-16 md:py-20 flex flex-col items-start gap-5 max-w-2xl">
+      <span class="font-label-upper text-label-upper uppercase tracking-widest" style="color:#d8bc7e;">Paquetes ×3 y ×6</span>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg leading-tight" style="color:#f6f1e7;">Hasta 40% de ahorro con paquetes de 3 y 6 sesiones</h2>
+      <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase inline-block" href="precios.html">Ver todos los precios</a>
+    </div>
   </div>
 </section>
 
@@ -291,21 +335,21 @@
   </div>
   <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
     <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
+      <img src="img/testimonio-1.jpg" alt="Clienta de elle studio" loading="lazy" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #d8bc7e;margin-bottom:14px;"/><div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
       <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"El mejor servicio de depilación láser en San Isidro. El trato es súper exclusivo y profesional."</p>
       <p class="font-label-upper text-label-upper text-on-surface uppercase">— Valeria M.</p>
     </div>
     <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
+      <img src="img/testimonio-2.jpg" alt="Clienta de elle studio" loading="lazy" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #d8bc7e;margin-bottom:14px;"/><div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
       <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"Los resultados de los Glúteos de Porcelana son increíbles. El estudio es hermoso y relajante."</p>
       <p class="font-label-upper text-label-upper text-on-surface uppercase">— Camila S.</p>
     </div>
     <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
+      <img src="img/testimonio-3.jpg" alt="Clienta de elle studio" loading="lazy" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #d8bc7e;margin-bottom:14px;"/><div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
       <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"Atención de primera. Desde que entras se siente el cuidado y la dedicación en cada detalle."</p>
