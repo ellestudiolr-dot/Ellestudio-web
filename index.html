@@ -127,6 +127,14 @@
         /* Navegacion por vistas (cada pestana muestra su seccion) */
         .vista:not(.activa) { display: none !important; }
         .nav-activa { color: #D8BC7E !important; }
+        /* Reel real de Instagram mostrando SOLO el video (sin Me gusta ni comentarios) */
+        .reel-marco { position: relative; width: 100%; max-width: 330px; aspect-ratio: 9/16; overflow: hidden; border-radius: 1rem; border: 1px solid #d9dbd2; background: #edefe6; }
+        .reel-marco iframe { position: absolute; top: -54px; left: 0; width: 100%; height: calc(100% + 300px); border: 0; }
+        .chip-svc { border: 1.2px solid #B99043; color: #7b580e; background: transparent; border-radius: 999px; padding: 8px 14px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+        .chip-svc.activo { background: linear-gradient(135deg,#B99043,#D8BC7E); color: #191c17; border-color: transparent; }
+        .red-circulo { width: 44px; height: 44px; border-radius: 50%; border: 1.4px solid #B99043; color: #D8BC7E; display: inline-flex; align-items: center; justify-content: center; transition: background .15s; }
+        .red-circulo:hover { background: rgba(216,188,126,.12); }
+        .red-circulo svg { width: 20px; height: 20px; }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">
@@ -134,43 +142,50 @@
 <!-- NAV -->
 <nav class="bg-on-background sticky top-0 z-50 border-b border-outline/20 w-full">
   <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-4">
-    <a href="#inicio" data-nav="inicio" class="font-headline-md text-headline-md italic text-surface-bright tracking-widest flex-shrink-0" style="text-decoration:none;">elle studio</a>
+    <a href="#inicio" data-nav="inicio" onclick="return _nav('inicio')" class="font-headline-md text-headline-md italic text-surface-bright tracking-widest flex-shrink-0" style="text-decoration:none;">elle studio</a>
     <div class="hidden md:flex items-center gap-8">
-      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#servicios">Servicios</a>
+      <div class="relative group">
+        <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#servicios" data-nav="servicios" onclick="return _nav('servicios')">Servicios ▾</a>
+        <div class="absolute left-0 top-full pt-3 hidden group-hover:block" style="min-width:250px;z-index:60;">
+          <div class="rounded-2xl overflow-hidden" style="background:#23261f;border:1px solid rgba(216,188,126,.25);box-shadow:0 16px 40px rgba(0,0,0,.35);">
+            <a onclick="return _navSvc('svc-laser')" href="#servicios" class="block px-5 py-3.5 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Depilación Láser</a>
+            <a onclick="return _navSvc('svc-gluteos')" href="#servicios" class="block px-5 py-3.5 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;border-top:1px solid rgba(216,188,126,.12);">Glúteos De Porcelana</a>
+            <a onclick="return _navSvc('svc-facial')" href="#servicios" class="block px-5 py-3.5 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;border-top:1px solid rgba(216,188,126,.12);">Limpieza Facial</a>
+            <a onclick="return _navSvc('svc-corporal')" href="#servicios" class="block px-5 py-3.5 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;border-top:1px solid rgba(216,188,126,.12);">Tratamientos Corporales</a>
+            <a href="precios.html" class="block px-5 py-3.5 font-label-upper text-label-upper uppercase" style="color:#D8BC7E;border-top:1px solid rgba(216,188,126,.25);">Ver todos los precios</a>
+          </div>
+        </div>
+      </div>
       <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="precios.html">Precios</a>
-      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#como-funciona">Cómo funciona</a>
-      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#instagram">Instagram</a>
-      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#ubicacion">Ubicación</a>
+      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#como" data-nav="como" onclick="return _nav('como')">Cómo funciona</a>
+      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#ubicacion" data-nav="ubicacion" onclick="return _nav('ubicacion')">Ubicación</a>
     </div>
     <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full hover:brightness-110 transition-all shadow-[0_4px_20px_rgba(185,144,67,0.2)] uppercase whitespace-nowrap" href="#reserva">Reservar cita</a>
   </div>
 </nav>
 
-<!-- HERO con foto -->
-<header class="vista activa relative min-h-[88vh] flex items-center overflow-hidden" data-vista="inicio">
-  <div class="absolute right-0 top-0 w-full md:w-[55%] h-full">
-    <img class="object-cover w-full h-full object-center opacity-30 md:opacity-100" src="img/hero-modelo.jpg" alt="Piel luminosa — elle studio, estética y depilación láser en San Isidro, Lima"/>
-    <div class="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent"></div>
-  </div>
-  <div class="w-full px-gutter max-w-container-max mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 py-20">
-    <div class="md:col-span-7 lg:col-span-6 flex flex-col items-start justify-center">
+<!-- HERO con foto completa -->
+<header class="vista activa relative overflow-hidden" data-vista="inicio">
+  <div class="w-full px-gutter max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-16 md:py-20">
+    <div class="flex flex-col items-start justify-center order-2 md:order-1">
       <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase mb-5">— EST · 2024 —</span>
       <div class="flex flex-col items-start">
-        <h1 class="hero-elle text-[96px] md:text-[130px]">elle</h1>
-        <div class="hero-underline" style="margin-left:0;width:200px;"></div>
-        <span class="font-label-upper text-[14px] md:text-[18px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
+        <h1 class="hero-elle text-[120px] md:text-[185px]">elle</h1>
+        <div class="hero-underline" style="margin-left:0;width:260px;"></div>
+        <span class="font-label-upper text-[16px] md:text-[22px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
       </div>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-lg">La piel que deseas, el cuidado que mereces</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md">Depilación láser y estética premium en San Isidro, Lima.</p>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-lg" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md" data-edit="hero_sub">Depilación láser y estética premium en San Isidro, Lima.</p>
       <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
         <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2" style="border:none;cursor:pointer;">
           Reservar cita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
         </button>
         <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="precios.html">Ver precios</a>
-        <a id="waHero" hidden class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#" target="_blank" rel="noopener">
-          <span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
-        </a>
       </div>
+    </div>
+    <div class="relative order-1 md:order-2">
+      <div class="absolute -inset-8 rounded-full pointer-events-none" style="background:radial-gradient(closest-side,rgba(216,188,126,.25),transparent);"></div>
+      <img class="relative w-full h-auto rounded-2xl" src="img/hero-modelo.jpg" alt="Piel luminosa — elle studio, estética y depilación láser en San Isidro, Lima" data-edit-img="hero_foto"/>
     </div>
   </div>
 </header>
@@ -197,9 +212,9 @@
     <div class="w-12 h-[1px] bg-gold-600/50 mx-auto"></div>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
-    <a class="group block" href="precios.html">
+    <a class="group block" href="precios.html" id="svc-laser">
       <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/laser-piernas.jpg" alt="Depilación láser — piernas suaves" loading="lazy"/>
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/laser-piernas.jpg" data-edit-img="foto_laser" alt="Depilación láser — piernas suaves" loading="lazy"/>
       </div>
       <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
         <div>
@@ -216,9 +231,9 @@
         <span class="material-symbols-outlined text-sm">arrow_forward</span>
       </div>
     </a>
-    <a class="group block md:mt-12" href="precios.html">
+    <a class="group block md:mt-12" href="precios.html" id="svc-gluteos">
       <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/gluteos.jpg" alt="Glúteos de Porcelana — firmeza y textura" loading="lazy"/>
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/gluteos.jpg" data-edit-img="foto_gluteos" alt="Glúteos de Porcelana — firmeza y textura" loading="lazy"/>
       </div>
       <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
         <div>
@@ -235,9 +250,9 @@
         <span class="material-symbols-outlined text-sm">arrow_forward</span>
       </div>
     </a>
-    <a class="group block" href="precios.html">
+    <a class="group block" href="precios.html" id="svc-facial">
       <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/facial.jpg" alt="Limpieza facial profesional" loading="lazy"/>
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/facial.jpg" data-edit-img="foto_facial" alt="Limpieza facial profesional" loading="lazy"/>
       </div>
       <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
         <div>
@@ -254,9 +269,9 @@
         <span class="material-symbols-outlined text-sm">arrow_forward</span>
       </div>
     </a>
-    <a class="group block md:mt-12" href="precios.html">
+    <a class="group block md:mt-12" href="precios.html" id="svc-corporal">
       <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/corporal.jpg" alt="Tratamientos corporales — moldear y reafirmar" loading="lazy"/>
+        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/corporal.jpg" data-edit-img="foto_corporal" alt="Tratamientos corporales — moldear y reafirmar" loading="lazy"/>
       </div>
       <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
         <div>
@@ -279,11 +294,11 @@
 <!-- BANNER PAQUETES (foto spa) -->
 <section class="vista px-gutter pb-24" data-vista="servicios">
   <div class="max-w-container-max mx-auto relative rounded-2xl overflow-hidden">
-    <img class="absolute inset-0 w-full h-full object-cover" src="img/spa-ambiente.jpg" alt="Ambiente del estudio" loading="lazy"/>
+    <img class="absolute inset-0 w-full h-full object-cover" src="img/spa-ambiente.jpg" alt="Ambiente del estudio" loading="lazy" data-edit-img="foto_banner"/>
     <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(25,28,23,.82),rgba(25,28,23,.45));"></div>
     <div class="relative z-10 px-8 md:px-16 py-16 md:py-20 flex flex-col items-start gap-5 max-w-2xl">
       <span class="font-label-upper text-label-upper uppercase tracking-widest" style="color:#d8bc7e;">Paquetes ×3 y ×6</span>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg leading-tight" style="color:#f6f1e7;">Hasta 40% de ahorro con paquetes de 3 y 6 sesiones</h2>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg leading-tight" style="color:#f6f1e7;" data-edit="banner_titulo">Hasta 40% de ahorro con paquetes de 3 y 6 sesiones</h2>
       <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase inline-block" href="precios.html">Ver todos los precios</a>
     </div>
   </div>
@@ -327,76 +342,41 @@
       <div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"El mejor servicio de depilación láser en San Isidro. El trato es súper exclusivo y profesional."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase">— Valeria M.</p>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t1_frase">"El mejor servicio de depilación láser en San Isidro. El trato es súper exclusivo y profesional."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t1_nombre">— Valeria M.</p>
     </div>
     <div class="text-center flex flex-col items-center">
       <div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"Los resultados de los Glúteos de Porcelana son increíbles. El estudio es hermoso y relajante."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase">— Camila S.</p>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t2_frase">"Los resultados de los Glúteos de Porcelana son increíbles. El estudio es hermoso y relajante."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t2_nombre">— Camila S.</p>
     </div>
     <div class="text-center flex flex-col items-center">
       <div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"Atención de primera. Desde que entras se siente el cuidado y la dedicación en cada detalle."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase">— Luciana F.</p>
+      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t3_frase">"Atención de primera. Desde que entras se siente el cuidado y la dedicación en cada detalle."</p>
+      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t3_nombre">— Luciana F.</p>
     </div>
   </div>
 </section>
 
 <!-- INSTAGRAM -->
-<section class="vista py-24 px-gutter" id="instagram" data-vista="instagram">
+<section class="vista activa py-24 px-gutter" id="instagram" data-vista="inicio">
   <div class="max-w-container-max mx-auto">
-    <div class="text-center mb-14">
+    <div class="text-center mb-12">
       <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Resultados reales</span>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3 mb-4">Síguenos en Instagram</h2>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3 mb-3">Síguenos en Instagram</h2>
       <a class="inline-flex items-center gap-2 font-headline-sm text-headline-sm italic text-gold-gradient" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
-        <img src="img/laser-piernas.jpg" alt="Depilación láser" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
-          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
-        </span>
-      </a>
-      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
-        <img src="img/gluteos.jpg" alt="Glúteos de Porcelana" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
-          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
-        </span>
-      </a>
-      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
-        <img src="img/facial.jpg" alt="Limpieza facial" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
-          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
-        </span>
-      </a>
-      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
-        <img src="img/corporal.jpg" alt="Tratamiento corporal" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
-          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
-        </span>
-      </a>
-      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
-        <img src="img/spa-ambiente.jpg" alt="Nuestro estudio" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
-          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
-        </span>
-      </a>
-      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
-        <img src="img/hero-modelo.jpg" alt="Piel luminosa" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
-          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
-        </span>
-      </a>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+      <div class="reel-marco"><iframe src="https://www.instagram.com/reel/Dbt0MqyolVG/embed/" loading="lazy" allowfullscreen scrolling="no" title="Reel de elle studio"></iframe></div>
+      <div class="reel-marco"><iframe src="https://www.instagram.com/reel/DbeKMQwoJaa/embed/" loading="lazy" allowfullscreen scrolling="no" title="Reel de elle studio"></iframe></div>
+      <div class="reel-marco"><iframe src="https://www.instagram.com/reel/Da1Pk6ZI2mb/embed/" loading="lazy" allowfullscreen scrolling="no" title="Reel de elle studio"></iframe></div>
     </div>
     <div class="text-center mt-12">
-      <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase inline-flex items-center gap-2" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">
-        <span class="material-symbols-outlined text-[18px]">photo_camera</span> Ver más en Instagram
-      </a>
+      <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase inline-flex items-center gap-2" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">Ver más en Instagram</a>
     </div>
   </div>
 </section>
@@ -427,8 +407,8 @@
         <div class="flex items-start gap-4">
           <span class="material-symbols-outlined text-tertiary mt-1">location_on</span>
           <div>
-            <p class="font-body-lg text-body-lg text-on-background">Av. Paz Soldán 235</p>
-            <p class="font-body-md text-body-md text-on-surface-variant">San Isidro, Lima, Perú</p>
+            <p class="font-body-lg text-body-lg text-on-background" data-edit="direccion">Av. Paz Soldán 235, San Isidro, Lima</p>
+            <p class="font-body-md text-body-md text-on-surface-variant">Lima, Perú</p>
           </div>
         </div>
         <img src="img/spa-ambiente.jpg" alt="Ambiente de elle studio" loading="lazy" class="rounded-2xl w-full object-cover" style="max-height:180px;"/>
@@ -476,10 +456,19 @@
       <p class="text-surface-variant font-label-upper text-[10px] mt-8 uppercase">© 2026 elle studio. Todos los derechos reservados.</p>
     </div>
     <div class="flex flex-col gap-4">
-      <span class="font-label-upper text-label-upper text-gold-400 uppercase mb-2">Contacto</span>
-      <a id="waFooter" hidden class="text-surface-container-highest hover:text-gold-400 transition-colors font-body-md text-body-md" href="#" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="text-surface-container-highest hover:text-gold-400 transition-colors font-body-md text-body-md" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">Instagram · @_elleestudio</a>
-      <p class="text-surface-container-highest mt-2 flex items-start gap-2 max-w-[220px] font-body-md text-body-md">
+      <span class="font-label-upper text-label-upper text-gold-400 uppercase mb-2">Síguenos</span>
+      <div class="flex items-center gap-3">
+        <a class="red-circulo" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a id="waFooter" hidden class="red-circulo" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+        <a id="tkFooter" hidden class="red-circulo" href="#" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.32 7.28a4.79 4.79 0 0 1-3.55-1.6v6.9a5.62 5.62 0 1 1-5.62-5.62c.19 0 .38.01.56.03v2.84a2.78 2.78 0 1 0 2.22 2.72V2.5h2.84a4.79 4.79 0 0 0 3.55 4.78z"/></svg>
+        </a>
+      </div>
+      <p class="text-surface-container-highest mt-3 flex items-start gap-2 max-w-[220px] font-body-md text-body-md" data-edit="direccion">
         <span class="material-symbols-outlined text-[18px] mt-1">location_on</span> Av. Paz Soldán 235, San Isidro, Lima
       </p>
     </div>
@@ -494,6 +483,16 @@
       <div class="mb-10">
         <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-3">Reserva tu cita</h2>
         <p class="font-body-md text-body-md text-on-surface-variant">Déjanos tus datos y te confirmamos por WhatsApp.</p>
+      </div>
+      <div class="mb-6">
+        <p class="font-label-upper text-label-upper uppercase text-tertiary mb-3">¿Qué te interesa?</p>
+        <div class="flex flex-wrap gap-2" id="chipsReserva">
+          <button type="button" onclick="elegirSvc(this,'Depilación Láser')" class="chip-svc">Depilación Láser</button>
+          <button type="button" onclick="elegirSvc(this,'Glúteos De Porcelana')" class="chip-svc">Glúteos</button>
+          <button type="button" onclick="elegirSvc(this,'Limpieza Facial')" class="chip-svc">Facial</button>
+          <button type="button" onclick="elegirSvc(this,'Body Porcelana')" class="chip-svc">Corporal</button>
+          <button type="button" onclick="elegirSvc(this,'Otro / no estoy segura')" class="chip-svc">No estoy segura</button>
+        </div>
       </div>
       <form class="space-y-8" id="formReserva" novalidate>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -542,8 +541,9 @@
   </div>
 </div>
 
-<script src="js/vistas.js?v=1"></script>
-<script src="js/reserva.js?v=4"></script>
+<script src="js/vistas.js?v=2"></script>
+<script src="js/contenido.js?v=1"></script>
+<script src="js/reserva.js?v=5"></script>
 <script src="js/chatbot.js?v=3"></script>
 </body>
 </html>
