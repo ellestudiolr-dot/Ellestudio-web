@@ -153,15 +153,15 @@
       sel.value = mapa[tratamientoActual] || tratamientoActual;
       if(!sel.value) sel.value = 'Otro / no estoy segura';
     }
-    bot('Te llevo al formulario. Déjanos tus datos y te confirmamos por WhatsApp.');
+    bot('Te abro el formulario. Déjanos tus datos y te confirmamos por WhatsApp.');
     setTimeout(function(){
       cerrar();
-      var r = document.getElementById('reserva');
-      if(r){ r.scrollIntoView({ behavior: 'smooth' }); }
-      else {
-        // Desde otra página (ej. precios.html) → ir al formulario de la principal con el servicio elegido
+      if(typeof window.abrirReserva === 'function'){
+        window.abrirReserva();
+      } else {
+        // Desde otra página (ej. precios.html) → ir a la principal con el servicio elegido y abrir el popup
         var svc = tratamientoActual ? ('?svc=' + encodeURIComponent(tratamientoActual)) : '';
-        window.location.href = 'index.html' + svc + '#reserva';
+        window.location.href = 'index.html' + svc + '#reservar';
       }
     }, 700);
   }

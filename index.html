@@ -124,20 +124,18 @@
         .input-underline:focus { outline: none; box-shadow: none; border-color: #B99043; }
         .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
         [hidden] { display: none !important; }
-        /* Galería Instagram limpia: se recorta el embed oficial para mostrar SOLO el video (sin likes ni comentarios) */
-        .ig-tile { position: relative; aspect-ratio: 9/14; overflow: hidden; border-radius: 1rem; background: #edefe6; border: 1px solid #d9dbd2; }
-        .ig-tile .instagram-media, .ig-tile iframe.instagram-media {
             position: absolute !important; top: -54px; left: 50%; transform: translateX(-50%);
             width: 100% !important; min-width: 0 !important; max-width: none !important;
             margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
         }
-        .ig-cover { position: absolute; inset: 0; z-index: 5; display: flex; align-items: flex-end; justify-content: center; text-decoration: none; }
-        .ig-cover span {
             margin-bottom: 14px; background: rgba(25,28,23,0.82); color: #f8faf1;
             font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
             padding: 8px 16px; border-radius: 999px; text-transform: uppercase; opacity: 0; transition: opacity .2s;
         }
-        .ig-tile:hover .ig-cover span { opacity: 1; }
+        /* Navegacion por vistas (cada pestana muestra su seccion) */
+        .vista { display: none; }
+        .vista.activa { display: block; }
+        .nav-activa { color: #D8BC7E !important; }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">
@@ -145,7 +143,7 @@
 <!-- NAV -->
 <nav class="bg-on-background sticky top-0 z-50 border-b border-outline/20 w-full">
   <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-4">
-    <div class="font-headline-md text-headline-md italic text-surface-bright tracking-widest flex-shrink-0">elle studio</div>
+    <a href="#inicio" data-nav="inicio" class="font-headline-md text-headline-md italic text-surface-bright tracking-widest flex-shrink-0" style="text-decoration:none;">elle studio</a>
     <div class="hidden md:flex items-center gap-8">
       <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#servicios">Servicios</a>
       <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="precios.html">Precios</a>
@@ -158,7 +156,7 @@
 </nav>
 
 <!-- HERO con foto -->
-<header class="relative min-h-[88vh] flex items-center overflow-hidden">
+<header class="vista activa relative min-h-[88vh] flex items-center overflow-hidden" data-vista="inicio">
   <div class="absolute right-0 top-0 w-full md:w-[55%] h-full">
     <img class="object-cover w-full h-full object-center opacity-30 md:opacity-100" src="img/hero-modelo.jpg" alt="Piel luminosa — elle studio, estética y depilación láser en San Isidro, Lima"/>
     <div class="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent"></div>
@@ -174,9 +172,9 @@
       <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-lg">La piel que deseas, el cuidado que mereces</h2>
       <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md">Depilación láser y estética premium en San Isidro, Lima.</p>
       <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-        <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2" href="#reserva">
+        <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2" style="border:none;cursor:pointer;">
           Reservar cita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-        </a>
+        </button>
         <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="precios.html">Ver precios</a>
         <a id="waHero" hidden class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#" target="_blank" rel="noopener">
           <span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
@@ -187,7 +185,7 @@
 </header>
 
 <!-- BARRA DE CONFIANZA -->
-<section class="bg-on-background py-6">
+<section class="vista activa bg-on-background py-6" data-vista="inicio">
   <div class="max-w-container-max mx-auto px-gutter">
     <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-2 text-center">
       <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">+250 clientas atendidas</span>
@@ -202,7 +200,7 @@
 </section>
 
 <!-- TRATAMIENTOS (tarjetas con foto) -->
-<section class="py-24 px-gutter max-w-container-max mx-auto relative z-10" id="servicios">
+<section class="vista py-24 px-gutter max-w-container-max mx-auto relative z-10" id="servicios" data-vista="servicios">
   <div class="text-center mb-16">
     <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-4">Nuestros Tratamientos</h2>
     <div class="w-12 h-[1px] bg-gold-600/50 mx-auto"></div>
@@ -288,7 +286,7 @@
 </section>
 
 <!-- BANNER PAQUETES (foto spa) -->
-<section class="px-gutter pb-24">
+<section class="vista px-gutter pb-24" data-vista="servicios">
   <div class="max-w-container-max mx-auto relative rounded-2xl overflow-hidden">
     <img class="absolute inset-0 w-full h-full object-cover" src="img/spa-ambiente.jpg" alt="Ambiente del estudio" loading="lazy"/>
     <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(25,28,23,.82),rgba(25,28,23,.45));"></div>
@@ -301,7 +299,7 @@
 </section>
 
 <!-- COMO FUNCIONA -->
-<section class="bg-on-background py-24 px-gutter" id="como-funciona">
+<section class="vista bg-on-background py-24 px-gutter" id="como-funciona" data-vista="como">
   <div class="max-w-container-max mx-auto">
     <div class="text-center mb-20">
       <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-surface-bright mb-4">Cómo funciona</h2>
@@ -329,27 +327,27 @@
 </section>
 
 <!-- TESTIMONIOS -->
-<section class="py-24 px-gutter bg-surface-container-lowest border-y border-surface-dim" id="testimonios">
+<section class="vista activa py-24 px-gutter bg-surface-container-lowest border-y border-surface-dim" id="testimonios" data-vista="inicio">
   <div class="text-center mb-14">
     <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background">Lo que dicen nuestras clientas</h2>
   </div>
   <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
     <div class="text-center flex flex-col items-center">
-      <img src="img/testimonio-1.jpg" alt="Clienta de elle studio" loading="lazy" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #d8bc7e;margin-bottom:14px;"/><div class="flex text-gold-400 mb-6 gap-1">
+      <div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
       <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"El mejor servicio de depilación láser en San Isidro. El trato es súper exclusivo y profesional."</p>
       <p class="font-label-upper text-label-upper text-on-surface uppercase">— Valeria M.</p>
     </div>
     <div class="text-center flex flex-col items-center">
-      <img src="img/testimonio-2.jpg" alt="Clienta de elle studio" loading="lazy" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #d8bc7e;margin-bottom:14px;"/><div class="flex text-gold-400 mb-6 gap-1">
+      <div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
       <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"Los resultados de los Glúteos de Porcelana son increíbles. El estudio es hermoso y relajante."</p>
       <p class="font-label-upper text-label-upper text-on-surface uppercase">— Camila S.</p>
     </div>
     <div class="text-center flex flex-col items-center">
-      <img src="img/testimonio-3.jpg" alt="Clienta de elle studio" loading="lazy" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid #d8bc7e;margin-bottom:14px;"/><div class="flex text-gold-400 mb-6 gap-1">
+      <div class="flex text-gold-400 mb-6 gap-1">
         <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
       </div>
       <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6">"Atención de primera. Desde que entras se siente el cuidado y la dedicación en cada detalle."</p>
@@ -359,26 +357,50 @@
 </section>
 
 <!-- INSTAGRAM -->
-<section class="py-24 px-gutter" id="instagram">
+<section class="vista py-24 px-gutter" id="instagram" data-vista="instagram">
   <div class="max-w-container-max mx-auto">
     <div class="text-center mb-14">
       <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Resultados reales</span>
       <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3 mb-4">Síguenos en Instagram</h2>
       <a class="inline-flex items-center gap-2 font-headline-sm text-headline-sm italic text-gold-gradient" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-      <div class="ig-tile">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Dbt0MqyolVG/" data-instgrm-version="14" style="margin:0; width:100%;"></blockquote>
-        <a class="ig-cover" href="https://www.instagram.com/reel/Dbt0MqyolVG/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram"><span>Ver en Instagram</span></a>
-      </div>
-      <div class="ig-tile">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbeKMQwoJaa/" data-instgrm-version="14" style="margin:0; width:100%;"></blockquote>
-        <a class="ig-cover" href="https://www.instagram.com/reel/DbeKMQwoJaa/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram"><span>Ver en Instagram</span></a>
-      </div>
-      <div class="ig-tile">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/Da1Pk6ZI2mb/" data-instgrm-version="14" style="margin:0; width:100%;"></blockquote>
-        <a class="ig-cover" href="https://www.instagram.com/reel/Da1Pk6ZI2mb/" target="_blank" rel="noopener" aria-label="Ver reel en Instagram"><span>Ver en Instagram</span></a>
-      </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
+        <img src="img/laser-piernas.jpg" alt="Depilación láser" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
+          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
+        </span>
+      </a>
+      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
+        <img src="img/gluteos.jpg" alt="Glúteos de Porcelana" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
+          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
+        </span>
+      </a>
+      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
+        <img src="img/facial.jpg" alt="Limpieza facial" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
+          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
+        </span>
+      </a>
+      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
+        <img src="img/corporal.jpg" alt="Tratamiento corporal" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
+          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
+        </span>
+      </a>
+      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
+        <img src="img/spa-ambiente.jpg" alt="Nuestro estudio" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
+          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
+        </span>
+      </a>
+      <a class="group relative rounded-2xl overflow-hidden block" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" style="aspect-ratio:1;">
+        <img src="img/hero-modelo.jpg" alt="Piel luminosa" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+        <span class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity" style="background:rgba(25,28,23,.45);">
+          <span class="font-label-upper text-label-upper uppercase px-5 py-2 rounded-full" style="background:rgba(25,28,23,.85);color:#f6f1e7;">@_elleestudio</span>
+        </span>
+      </a>
     </div>
     <div class="text-center mt-12">
       <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase inline-flex items-center gap-2" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">
@@ -388,27 +410,96 @@
   </div>
 </section>
 
-<!-- RESERVA + UBICACION -->
-<section class="py-24 px-gutter bg-primary-container relative" id="reserva">
-  <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-    <div class="lg:col-span-4 flex flex-col items-start" id="ubicacion">
-      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase mb-4">Dónde estamos</span>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-8">Nuestra<br/>Ubicación</h2>
-      <div class="flex items-start gap-4 mb-8">
-        <span class="material-symbols-outlined text-tertiary mt-1">location_on</span>
-        <div>
-          <p class="font-body-lg text-body-lg text-on-background">Av. Paz Soldán 235</p>
-          <p class="font-body-md text-body-md text-on-surface-variant">San Isidro, Lima, Perú</p>
+<!-- CTA RESERVAR (visible en todas las vistas) -->
+<section class="px-gutter py-16" style="background:#1c1f18;">
+  <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div>
+      <h2 class="font-headline-lg text-headline-md" style="color:#e8e0cc;">¿Lista para empezar?</h2>
+      <p class="font-body-md text-body-md mt-1" style="color:#cfc9b8;">Reserva tu cita y te confirmamos por WhatsApp.</p>
+    </div>
+    <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-10 py-4 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Reservar cita</button>
+  </div>
+</section>
+
+<!-- UBICACION (vista propia con mapa interactivo) -->
+<section class="vista py-24 px-gutter" id="ubicacion" data-vista="ubicacion">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-12">
+      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Dónde estamos</span>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Nuestra Ubicación</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="rounded-2xl overflow-hidden border border-surface-dim" style="height:340px;">
+        <iframe src="https://www.google.com/maps?q=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de elle studio"></iframe>
+      </div>
+      <div class="flex flex-col items-start gap-5">
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-tertiary mt-1">location_on</span>
+          <div>
+            <p class="font-body-lg text-body-lg text-on-background">Av. Paz Soldán 235</p>
+            <p class="font-body-md text-body-md text-on-surface-variant">San Isidro, Lima, Perú</p>
+          </div>
+        </div>
+        <img src="img/spa-ambiente.jpg" alt="Ambiente de elle studio" loading="lazy" class="rounded-2xl w-full object-cover" style="max-height:180px;"/>
+        <div class="flex flex-wrap gap-3">
+          <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-7 py-3 rounded-full hover:bg-tertiary/5 transition-all uppercase" href="https://www.google.com/maps/search/?api=1&query=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a id="waUbicacion" hidden class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Reservar cita</button>
         </div>
       </div>
-      <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-3 rounded-full hover:bg-tertiary/5 transition-all uppercase w-full text-center" href="https://www.google.com/maps/search/?api=1&query=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru" target="_blank" rel="noopener">Ver en Google Maps</a>
-      <div class="mt-10 w-full border-t border-gold-600/30 pt-8">
-        <p class="font-body-md text-body-md text-on-surface-variant">¿Prefieres escribirnos directo?</p>
-        <a id="waUbicacion" hidden class="mt-4 gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-3 rounded-full hover:brightness-110 transition-all uppercase w-full text-center inline-block" href="#" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
     </div>
-    <div class="hidden lg:block lg:col-span-1"></div>
-    <div class="lg:col-span-7 bg-surface-container-lowest p-8 md:p-12 border border-surface-dim shadow-sm rounded-2xl">
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="vista py-24 px-gutter max-w-3xl mx-auto" id="faq" data-vista="como">
+  <div class="text-center mb-14">
+    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background">Preguntas frecuentes</h2>
+  </div>
+  <div class="space-y-4">
+    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
+      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿La depilación láser duele? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4">La molestia es mínima. Usamos tecnología láser moderna y preparamos la piel en cada sesión para que la experiencia sea rápida y cómoda.</p>
+    </details>
+    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
+      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Cuántas sesiones necesito? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Depende de la zona y del tipo de vello. Trabajamos con sesiones individuales y paquetes de 3 y 6 sesiones que hacen el tratamiento más efectivo y económico.</p>
+    </details>
+    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
+      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Atienden a hombres? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Sí. Tenemos precios y protocolos de depilación láser tanto para mujeres como para hombres, en todas las zonas.</p>
+    </details>
+    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
+      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Cómo confirmo mi cita? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Dejas tu reserva en esta página con tus datos y el servicio que te interesa, y te escribimos por WhatsApp para confirmar el horario exacto.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-on-background border-t border-tertiary/30 w-full">
+  <div class="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto px-gutter py-20">
+    <div class="flex flex-col gap-6 mb-12 md:mb-0">
+      <div class="font-headline-sm text-headline-sm italic text-surface-bright">elle studio</div>
+      <p class="text-surface-container-highest max-w-xs font-body-md text-body-md">El balance perfecto entre tecnología láser y cuidado estético en Lima.</p>
+      <p class="text-surface-variant font-label-upper text-[10px] mt-8 uppercase">© 2026 elle studio. Todos los derechos reservados.</p>
+    </div>
+    <div class="flex flex-col gap-4">
+      <span class="font-label-upper text-label-upper text-gold-400 uppercase mb-2">Contacto</span>
+      <a id="waFooter" hidden class="text-surface-container-highest hover:text-gold-400 transition-colors font-body-md text-body-md" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="text-surface-container-highest hover:text-gold-400 transition-colors font-body-md text-body-md" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">Instagram · @_elleestudio</a>
+      <p class="text-surface-container-highest mt-2 flex items-start gap-2 max-w-[220px] font-body-md text-body-md">
+        <span class="material-symbols-outlined text-[18px] mt-1">location_on</span> Av. Paz Soldán 235, San Isidro, Lima
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL DE RESERVA (popup) -->
+<div id="modalReserva" style="display:none;position:fixed;inset:0;z-index:9990;background:rgba(25,28,23,.55);backdrop-filter:blur(4px);align-items:flex-start;justify-content:center;overflow-y:auto;padding:4vh 16px;">
+  <div style="position:relative;width:100%;max-width:560px;margin:auto;">
+    <button onclick="cerrarReserva()" aria-label="Cerrar" style="position:absolute;top:10px;right:14px;z-index:2;background:none;border:none;font-size:1.6rem;color:#7a776e;cursor:pointer;line-height:1;">×</button>
+    <div class="bg-surface-container-lowest p-8 md:p-12 border border-surface-dim shadow-sm rounded-2xl">
       <div class="mb-10">
         <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-3">Reserva tu cita</h2>
         <p class="font-body-md text-body-md text-on-surface-variant">Déjanos tus datos y te confirmamos por WhatsApp.</p>
@@ -456,56 +547,12 @@
           <div id="estadoReserva" class="text-center font-body-md text-body-md mt-4 min-h-[24px]" role="status"></div>
         </div>
       </form>
-    </div>
+      </div>
   </div>
-</section>
+</div>
 
-<!-- FAQ -->
-<section class="py-24 px-gutter max-w-3xl mx-auto" id="faq">
-  <div class="text-center mb-14">
-    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background">Preguntas frecuentes</h2>
-  </div>
-  <div class="space-y-4">
-    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
-      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿La depilación láser duele? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-4">La molestia es mínima. Usamos tecnología láser moderna y preparamos la piel en cada sesión para que la experiencia sea rápida y cómoda.</p>
-    </details>
-    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
-      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Cuántas sesiones necesito? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Depende de la zona y del tipo de vello. Trabajamos con sesiones individuales y paquetes de 3 y 6 sesiones que hacen el tratamiento más efectivo y económico.</p>
-    </details>
-    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
-      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Atienden a hombres? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Sí. Tenemos precios y protocolos de depilación láser tanto para mujeres como para hombres, en todas las zonas.</p>
-    </details>
-    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
-      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Cómo confirmo mi cita? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Dejas tu reserva en esta página con tus datos y el servicio que te interesa, y te escribimos por WhatsApp para confirmar el horario exacto.</p>
-    </details>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-on-background border-t border-tertiary/30 w-full">
-  <div class="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto px-gutter py-20">
-    <div class="flex flex-col gap-6 mb-12 md:mb-0">
-      <div class="font-headline-sm text-headline-sm italic text-surface-bright">elle studio</div>
-      <p class="text-surface-container-highest max-w-xs font-body-md text-body-md">El balance perfecto entre tecnología láser y cuidado estético en Lima.</p>
-      <p class="text-surface-variant font-label-upper text-[10px] mt-8 uppercase">© 2026 elle studio. Todos los derechos reservados.</p>
-    </div>
-    <div class="flex flex-col gap-4">
-      <span class="font-label-upper text-label-upper text-gold-400 uppercase mb-2">Contacto</span>
-      <a id="waFooter" hidden class="text-surface-container-highest hover:text-gold-400 transition-colors font-body-md text-body-md" href="#" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="text-surface-container-highest hover:text-gold-400 transition-colors font-body-md text-body-md" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">Instagram · @_elleestudio</a>
-      <p class="text-surface-container-highest mt-2 flex items-start gap-2 max-w-[220px] font-body-md text-body-md">
-        <span class="material-symbols-outlined text-[18px] mt-1">location_on</span> Av. Paz Soldán 235, San Isidro, Lima
-      </p>
-    </div>
-  </div>
-</footer>
-
-<script async src="https://www.instagram.com/embed.js"></script>
+<script src="js/vistas.js?v=1"></script>
 <script src="js/reserva.js?v=4"></script>
-<script src="js/chatbot.js?v=2"></script>
+<script src="js/chatbot.js?v=3"></script>
 </body>
 </html>
