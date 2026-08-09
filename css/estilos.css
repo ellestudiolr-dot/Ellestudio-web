@@ -11,6 +11,7 @@
   --borde:rgba(28,31,24,0.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--crema);color:var(--texto);line-height:1.6}
 
