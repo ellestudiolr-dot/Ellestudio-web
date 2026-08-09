@@ -128,13 +128,18 @@
         .vista:not(.activa) { display: none !important; }
         .nav-activa { color: #D8BC7E !important; }
         /* Reel real de Instagram mostrando SOLO el video (sin Me gusta ni comentarios) */
-        .reel-marco { position: relative; width: 100%; max-width: 330px; aspect-ratio: 9/16; overflow: hidden; border-radius: 1rem; border: 1px solid #d9dbd2; background: #edefe6; }
-        .reel-marco iframe { position: absolute; top: -54px; left: 0; width: 100%; height: calc(100% + 300px); border: 0; }
+        .reel-marco { position: relative; width: 100%; max-width: 340px; aspect-ratio: 4/5; overflow: hidden; border-radius: 1rem; border: 1px solid #d9dbd2; background: #000; }
+        .reel-marco iframe { position: absolute; top: -54px; left: 0; width: 100%; height: calc(100% + 360px); border: 0; background: #000; }
         .chip-svc { border: 1.2px solid #B99043; color: #7b580e; background: transparent; border-radius: 999px; padding: 8px 14px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
         .chip-svc.activo { background: linear-gradient(135deg,#B99043,#D8BC7E); color: #191c17; border-color: transparent; }
         .red-circulo { width: 44px; height: 44px; border-radius: 50%; border: 1.4px solid #B99043; color: #D8BC7E; display: inline-flex; align-items: center; justify-content: center; transition: background .15s; }
         .red-circulo:hover { background: rgba(216,188,126,.12); }
         .red-circulo svg { width: 20px; height: 20px; }
+        @media (max-width: 640px){
+          .hero-elle { letter-spacing: -2px; }
+          .reel-marco { max-width: 100%; }
+          #modalReserva > div { max-width: 100%; }
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">
@@ -144,15 +149,28 @@
   <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-4">
     <a href="#inicio" data-nav="inicio" onclick="return _nav('inicio')" class="font-headline-md text-headline-md italic text-surface-bright tracking-widest flex-shrink-0" style="text-decoration:none;">elle studio</a>
     <div class="hidden md:flex items-center gap-8">
-      <div class="relative group">
-        <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#servicios" data-nav="servicios" onclick="return _nav('servicios')">Servicios ▾</a>
-        <div class="absolute left-0 top-full pt-3 hidden group-hover:block" style="min-width:250px;z-index:60;">
-          <div class="rounded-2xl overflow-hidden" style="background:#23261f;border:1px solid rgba(216,188,126,.25);box-shadow:0 16px 40px rgba(0,0,0,.35);">
-            <a onclick="return _navSvc('svc-laser')" href="#servicios" class="block px-5 py-3.5 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Depilación Láser</a>
-            <a onclick="return _navSvc('svc-gluteos')" href="#servicios" class="block px-5 py-3.5 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;border-top:1px solid rgba(216,188,126,.12);">Glúteos De Porcelana</a>
-            <a onclick="return _navSvc('svc-facial')" href="#servicios" class="block px-5 py-3.5 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;border-top:1px solid rgba(216,188,126,.12);">Limpieza Facial</a>
-            <a onclick="return _navSvc('svc-corporal')" href="#servicios" class="block px-5 py-3.5 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;border-top:1px solid rgba(216,188,126,.12);">Tratamientos Corporales</a>
-            <a href="precios.html" class="block px-5 py-3.5 font-label-upper text-label-upper uppercase" style="color:#D8BC7E;border-top:1px solid rgba(216,188,126,.25);">Ver todos los precios</a>
+      <div class="relative" id="menuSvcWrap" onmouseenter="menuSvc(true)" onmouseleave="menuSvc(false)">
+        <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#servicios" data-nav="servicios" onclick="menuSvc(true); return false;">Servicios ▾</a>
+        <div id="menuSvcPanel" style="display:none;position:absolute;left:50%;transform:translateX(-46%);top:100%;padding-top:14px;z-index:60;">
+          <div style="width:640px;max-width:86vw;background:#23261f;border:1px solid rgba(216,188,126,.25);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.4);overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr;">
+            <div style="padding:14px 0;">
+              <div class="font-label-upper text-label-upper uppercase" style="color:#D8BC7E;padding:8px 22px;">Tratamientos</div>
+              <a onclick="return _navSvc('svc-laser')" href="#servicios" class="block px-6 py-3 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Depilación Láser</a>
+              <a onclick="return _navSvc('svc-gluteos')" href="#servicios" class="block px-6 py-3 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Glúteos De Porcelana</a>
+              <a onclick="return _navSvc('svc-facial')" href="#servicios" class="block px-6 py-3 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Limpieza Facial</a>
+              <a onclick="return _navSvc('svc-corporal')" href="#servicios" class="block px-6 py-3 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Tratamientos Corporales</a>
+              <a href="precios.html" class="block px-6 py-3 font-label-upper text-label-upper uppercase" style="color:#D8BC7E;">Ver todos los precios →</a>
+            </div>
+            <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:rgba(0,0,0,.18);">
+              <a onclick="return _navSvc('svc-laser')" href="#servicios" class="block relative rounded-xl overflow-hidden" style="aspect-ratio:3/4;">
+                <img src="img/laser-piernas.jpg" alt="Depilación láser" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+                <span style="position:absolute;left:0;right:0;bottom:0;padding:26px 10px 10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">Láser · desde S/ 25</span>
+              </a>
+              <a onclick="return _navSvc('svc-gluteos')" href="#servicios" class="block relative rounded-xl overflow-hidden" style="aspect-ratio:3/4;">
+                <img src="img/gluteos.jpg" alt="Glúteos de Porcelana" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+                <span style="position:absolute;left:0;right:0;bottom:0;padding:26px 10px 10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">Glúteos · desde S/ 89.90</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -166,11 +184,11 @@
 
 <!-- HERO con foto completa -->
 <header class="vista activa relative overflow-hidden" data-vista="inicio">
-  <div class="w-full px-gutter max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-16 md:py-20">
-    <div class="flex flex-col items-start justify-center order-2 md:order-1">
+  <div class="w-full px-gutter max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 items-center py-14 md:py-16">
+    <div class="flex flex-col items-start justify-center order-2 md:order-1 md:col-span-5">
       <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase mb-5">— EST · 2024 —</span>
       <div class="flex flex-col items-start">
-        <h1 class="hero-elle text-[120px] md:text-[185px]">elle</h1>
+        <h1 class="hero-elle text-[110px] md:text-[150px]">elle</h1>
         <div class="hero-underline" style="margin-left:0;width:260px;"></div>
         <span class="font-label-upper text-[16px] md:text-[22px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
       </div>
@@ -183,7 +201,7 @@
         <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="precios.html">Ver precios</a>
       </div>
     </div>
-    <div class="relative order-1 md:order-2">
+    <div class="relative order-1 md:order-2 md:col-span-7">
       <div class="absolute -inset-8 rounded-full pointer-events-none" style="background:radial-gradient(closest-side,rgba(216,188,126,.25),transparent);"></div>
       <img class="relative w-full h-auto rounded-2xl" src="img/hero-modelo.jpg" alt="Piel luminosa — elle studio, estética y depilación láser en San Isidro, Lima" data-edit-img="hero_foto"/>
     </div>
@@ -541,7 +559,7 @@
   </div>
 </div>
 
-<script src="js/vistas.js?v=2"></script>
+<script src="js/vistas.js?v=3"></script>
 <script src="js/contenido.js?v=1"></script>
 <script src="js/reserva.js?v=5"></script>
 <script src="js/chatbot.js?v=3"></script>

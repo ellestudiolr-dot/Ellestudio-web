@@ -14,6 +14,33 @@
     try{ history.replaceState(null, '', '#' + v); }catch(e){}
   };
 
+  // Mega-menu de Servicios (hover y click)
+  var _menuTimer=null;
+  window.menuSvc = function(abrir){
+    var p=document.getElementById('menuSvcPanel');
+    if(!p) return;
+    clearTimeout(_menuTimer);
+    if(abrir){ p.style.display='block'; }
+    else { _menuTimer=setTimeout(function(){ p.style.display='none'; }, 180); }
+  };
+  document.addEventListener('click', function(e){
+    var w=document.getElementById('menuSvcWrap');
+    var p=document.getElementById('menuSvcPanel');
+    if(p && w && !w.contains(e.target)) p.style.display='none';
+  });
+
+  // Menú móvil (hamburguesa)
+  window.menuMovil = function(){
+    var p=document.getElementById('menuMovilPanel');
+    if(p) p.style.display = (p.style.display==='none'||!p.style.display) ? 'block' : 'none';
+  };
+  window._navMovil = function(v){
+    var p=document.getElementById('menuMovilPanel');
+    if(p) p.style.display='none';
+    verVista(v);
+    return false;
+  };
+
   // Para los onclick del menú (fallback robusto, no depende de listeners)
   window._nav = function(v){ verVista(v); return false; };
   window._navSvc = function(idCard){
