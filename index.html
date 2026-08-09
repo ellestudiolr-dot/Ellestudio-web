@@ -178,7 +178,19 @@
       <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#como" data-nav="como" onclick="return _nav('como')">Cómo funciona</a>
       <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#ubicacion" data-nav="ubicacion" onclick="return _nav('ubicacion')">Ubicación</a>
     </div>
-    <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full hover:brightness-110 transition-all shadow-[0_4px_20px_rgba(185,144,67,0.2)] uppercase whitespace-nowrap" href="#reserva">Reservar cita</a>
+    <div class="flex items-center gap-3">
+      <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-5 py-3 rounded-full hover:brightness-110 transition-all shadow-[0_4px_20px_rgba(185,144,67,0.2)] uppercase whitespace-nowrap" style="border:none;cursor:pointer;">Reservar cita</button>
+      <button class="md:hidden" onclick="menuMovil()" aria-label="Menú" style="background:none;border:1.4px solid rgba(216,188,126,.5);border-radius:10px;width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8BC7E" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="menuMovilPanel" class="md:hidden" style="display:none;background:#23261f;border-top:1px solid rgba(216,188,126,.2);">
+    <a onclick="return _navMovil('inicio')" href="#inicio" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Inicio</a>
+    <a onclick="return _navMovil('servicios')" href="#servicios" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Servicios</a>
+    <a href="precios.html" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Precios</a>
+    <a onclick="return _navMovil('como')" href="#como" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Cómo funciona</a>
+    <a onclick="return _navMovil('ubicacion')" href="#ubicacion" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;">Ubicación</a>
   </div>
 </nav>
 
