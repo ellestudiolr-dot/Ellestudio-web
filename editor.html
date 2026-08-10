@@ -99,6 +99,22 @@
   </div>
 
   <div class="grupo">
+    <h2>El Estudio (instalación y tecnología)</h2>
+    <label>Título de la sección</label><input type="text" id="c-estudio_titulo" placeholder="Un espacio pensado para ti"/>
+    <label>Texto de la instalación</label><textarea id="c-estudio_texto" placeholder="Nuestro estudio en San Isidro cuenta con cubículos privados..."></textarea>
+    <label>Foto de la instalación</label>
+    <div class="img-fila"><img id="v-foto_estudio" src="img/spa-ambiente.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'foto_estudio')"/></div>
+    <label>Foto equipo: Láser</label>
+    <div class="img-fila"><img id="v-equipo_laser" src="img/equipo-laser.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_laser')"/></div>
+    <label>Foto equipo: Ultracavitación</label>
+    <div class="img-fila"><img id="v-equipo_cavitacion" src="img/equipo-cavitacion.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_cavitacion')"/></div>
+    <label>Foto equipo: Radiofrecuencia</label>
+    <div class="img-fila"><img id="v-equipo_radio" src="img/equipo-radiofrecuencia.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_radio')"/></div>
+    <label>Foto equipo: Lipoláser</label>
+    <div class="img-fila"><img id="v-equipo_lipolaser" src="img/equipo-lipolaser.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_lipolaser')"/></div>
+  </div>
+
+  <div class="grupo">
     <h2>Datos del estudio</h2>
     <label>Dirección</label><input type="text" id="c-direccion" placeholder="Av. Paz Soldán 235, San Isidro, Lima"/>
   </div>
@@ -111,8 +127,8 @@
 
 <script>
 var REPO='ellestudiolr-dot/Ellestudio-web';
-var CLAVES_TXT=['hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','direccion'];
-var CLAVES_IMG=['hero_foto','foto_laser','foto_gluteos','foto_facial','foto_corporal','foto_banner'];
+var CLAVES_TXT=['hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','estudio_titulo','estudio_texto','direccion'];
+var CLAVES_IMG=['hero_foto','foto_laser','foto_gluteos','foto_facial','foto_corporal','foto_banner','foto_estudio','equipo_laser','equipo_cavitacion','equipo_radio','equipo_lipolaser'];
 var imgsNuevas={};   // clave -> base64 (sin encabezado)
 var contenidoSha=null;
 

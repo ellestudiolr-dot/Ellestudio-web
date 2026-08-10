@@ -185,6 +185,7 @@
         </div>
       </div>
       <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="precios.html">Precios</a>
+      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#estudio" data-nav="estudio" onclick="return _nav('estudio')">El Estudio</a>
       <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#como" data-nav="como" onclick="return _nav('como')">Cómo funciona</a>
       <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#ubicacion" data-nav="ubicacion" onclick="return _nav('ubicacion')">Ubicación</a>
     </div>
@@ -199,6 +200,7 @@
     <a onclick="return _navMovil('inicio')" href="#inicio" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Inicio</a>
     <a onclick="return _navMovil('servicios')" href="#servicios" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Servicios</a>
     <a href="precios.html" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Precios</a>
+    <a onclick="return _navMovil('estudio')" href="#estudio" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">El Estudio</a>
     <a onclick="return _navMovil('como')" href="#como" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Cómo funciona</a>
     <a onclick="return _navMovil('ubicacion')" href="#ubicacion" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;">Ubicación</a>
   </div>
@@ -457,6 +459,67 @@
       <p class="font-body-md text-body-md mt-1" style="color:#cfc9b8;">Reserva tu cita y te confirmamos por WhatsApp.</p>
     </div>
     <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-10 py-4 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Reservar cita</button>
+  </div>
+</section>
+
+<!-- EL ESTUDIO: instalacion + tecnologia -->
+<section class="vista py-24 px-gutter" id="estudio" data-vista="estudio">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-12">
+      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Conócenos</span>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Nuestro Estudio</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-20">
+      <div class="rounded-2xl overflow-hidden">
+        <img src="img/spa-ambiente.jpg" alt="Instalaciones de elle studio en San Isidro" class="w-full h-full object-cover" data-edit-img="foto_estudio" style="min-height:300px;"/>
+      </div>
+      <div class="flex flex-col gap-5">
+        <h3 class="font-headline-sm text-headline-sm text-on-background" data-edit="estudio_titulo">Un espacio pensado para ti</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-edit="estudio_texto">Nuestro estudio en San Isidro cuenta con cubículos privados e individuales, protocolos de higiene en cada atención y un ambiente tranquilo para que tu sesión sea un momento para ti. Te atendemos con cita, sin esperas y con total privacidad.</p>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">meeting_room</span><span class="font-body-md text-body-md">Cubículos privados e individuales</span></div>
+          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">sanitizer</span><span class="font-body-md text-body-md">Higiene y protocolos en cada sesión</span></div>
+          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">schedule</span><span class="font-body-md text-body-md">Atención puntual, solo con cita</span></div>
+        </div>
+        <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase self-start" style="border:none;cursor:pointer;">Reservar cita</button>
+      </div>
+    </div>
+
+    <div class="text-center mb-12">
+      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Confianza y resultados</span>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Nuestra Tecnología</h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl mx-auto">Trabajamos con equipos de estética profesional para que cada tratamiento sea seguro, cómodo y efectivo.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden">
+        <img src="img/equipo-laser.jpg" alt="Equipo de depilación láser" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_laser"/>
+        <div class="p-6">
+          <h3 class="font-headline-sm text-headline-sm mb-2">Láser de Depilación</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Sesiones rápidas y prácticamente sin dolor, para ella y para él, en todas las zonas.</p>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden">
+        <img src="img/equipo-cavitacion.jpg" alt="Equipo de ultracavitación" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_cavitacion"/>
+        <div class="p-6">
+          <h3 class="font-headline-sm text-headline-sm mb-2">Ultracavitación</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Ultrasonido que ayuda a reducir medidas y moldear la silueta en zonas localizadas.</p>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden">
+        <img src="img/equipo-radiofrecuencia.jpg" alt="Equipo de radiofrecuencia" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_radio"/>
+        <div class="p-6">
+          <h3 class="font-headline-sm text-headline-sm mb-2">Radiofrecuencia</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Calor controlado que reafirma la piel y estimula el colágeno.</p>
+        </div>
+      </div>
+      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden">
+        <img src="img/equipo-lipolaser.jpg" alt="Equipo de lipoláser" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_lipolaser"/>
+        <div class="p-6">
+          <h3 class="font-headline-sm text-headline-sm mb-2">Lipoláser</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant">Láser de baja intensidad que ayuda a trabajar la grasa localizada, junto a carboxiterapia y enzimas.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -1,6 +1,6 @@
 // elle studio · Navegación por vistas + popup de reserva
 (function(){
-  var VISTAS = ['inicio','servicios','como','ubicacion'];
+  var VISTAS = ['inicio','servicios','estudio','como','ubicacion'];
 
   window.verVista = function(v){
     if(VISTAS.indexOf(v) < 0) v = 'inicio';
