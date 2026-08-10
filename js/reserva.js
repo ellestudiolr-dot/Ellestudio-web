@@ -3,7 +3,7 @@
 var CONFIG = {
   SUPABASE_URL: 'https://bwgiktpsmrvfaoyoftwy.supabase.co',
   SUPABASE_ANON: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ3Z2lrdHBzbXJ2ZmFveW9mdHd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzY2NjUsImV4cCI6MjA4NzU1MjY2NX0.-3YsxigCNWDeZnW8uLSro6UXsHhRNLmcJHEap0fnHz0',
-  WHATSAPP: '',                 // número del estudio con código de país, ej: '51987654321' — al ponerlo aparecen los botones de WhatsApp
+  WHATSAPP: '51983790638',      // WhatsApp del estudio (+51 983 790 638)
   INSTAGRAM: '_elleestudio',    // usuario de Instagram sin @
   TIKTOK: ''                    // usuario de TikTok sin @ — al ponerlo aparece el icono en el pie
 };

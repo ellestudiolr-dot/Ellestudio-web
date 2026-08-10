@@ -50,8 +50,7 @@
     nombre = nombre.trim();
     var telLimpio = tel.replace(/\D/g, '');
     if(estado){ estado.style.color = '#b0503c'; }
-    if(nombre.length < 2){ if(estado) estado.textContent = 'Escribe tu nombre.'; return; }
-    if(telLimpio.length < 9){ if(estado) estado.textContent = 'Escribe un celular válido (9 dígitos).'; return; }
+    // Solo el tratamiento es obligatorio: el resto se sabe por WhatsApp
     if(!svc){ if(estado) estado.textContent = 'Elige el tratamiento que te interesa.'; return; }
 
     // Fecha en formato bonito
@@ -64,9 +63,9 @@
     }
 
     var texto = 'Hola elle studio 🌸\n\nVengo de la página web y quiero *agendar una cita*:\n\n'
-      + '• Nombre: ' + nombre + '\n'
-      + '• Celular: ' + telLimpio + '\n'
       + '• Tratamiento: ' + svc + '\n'
+      + (nombre ? '• Nombre: ' + nombre + '\n' : '')
+      + (telLimpio.length >= 9 ? '• Celular: ' + telLimpio + '\n' : '')
       + (fechaTxt ? '• Día que prefiero: ' + fechaTxt + '\n' : '')
       + (horario ? '• Horario: ' + horario + '\n' : '')
       + (msj.trim() ? '• Comentario: ' + msj.trim() + '\n' : '')
@@ -84,7 +83,7 @@
             'Prefer': 'return=minimal'
           },
           body: JSON.stringify({
-            nombre: nombre, telefono: telLimpio, servicio: svc,
+            nombre: (nombre || 'Desde la web'), telefono: (telLimpio.length>=6 ? telLimpio : '000000'), servicio: svc,
             fecha_preferida: fecha || null, hora_preferida: horario || null,
             mensaje: (msj.trim() || null)
           })

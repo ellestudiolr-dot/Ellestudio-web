@@ -789,10 +789,10 @@
     <div class="bg-surface-container-lowest p-8 md:p-12 border border-surface-dim shadow-sm rounded-2xl">
       <div class="mb-10">
         <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-3">Agenda tu cita</h2>
-        <p class="font-body-md text-body-md text-on-surface-variant">Elige lo que quieres y te abrimos WhatsApp con tu solicitud lista. Solo le das enviar.</p>
+        <p class="font-body-md text-body-md text-on-surface-variant">Elige lo que quieres y te abrimos WhatsApp con el mensaje listo. Solo le das enviar.</p>
       </div>
       <div class="mb-6">
-        <p class="font-label-upper text-label-upper uppercase text-tertiary mb-3">¿Qué te interesa?</p>
+        <p class="font-label-upper text-label-upper uppercase text-tertiary mb-3">1 · ¿Qué te interesa? (necesario)</p>
         <div class="flex flex-wrap gap-2" id="chipsReserva">
           <button type="button" onclick="elegirSvc(this,'Depilación Láser')" class="chip-svc">Depilación Láser</button>
           <button type="button" onclick="elegirSvc(this,'Glúteos De Porcelana')" class="chip-svc">Glúteos</button>
@@ -803,8 +803,8 @@
       </div>
       <form class="space-y-8" id="formReserva" novalidate onsubmit="enviarSolicitud();return false;">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div><input class="w-full input-underline font-body-md text-body-md text-on-background placeholder:text-outline/60" id="nombre" maxlength="120" placeholder="Nombre y apellido" required type="text"/></div>
-          <div><input class="w-full input-underline font-body-md text-body-md text-on-background placeholder:text-outline/60" id="celular" maxlength="15" inputmode="numeric" placeholder="Celular (WhatsApp)" required type="tel"/></div>
+          <div><input class="w-full input-underline font-body-md text-body-md text-on-background placeholder:text-outline/60" id="nombre" maxlength="120" placeholder="Nombre (opcional)" type="text"/></div>
+          <div><input class="w-full input-underline font-body-md text-body-md text-on-background placeholder:text-outline/60" id="celular" maxlength="15" inputmode="numeric" placeholder="Celular (opcional)" type="tel"/></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="relative">
@@ -914,8 +914,8 @@ pintaLaser(); pintaEstetica();
 // el asistente y los popups para poder editar sin estorbos.
 window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
 </script>
-<script src="js/whatsapp.js?v=2"></script>
-<script src="js/reserva.js?v=6"></script>
+<script src="js/whatsapp.js?v=3"></script>
+<script src="js/reserva.js?v=7"></script>
 <script src="js/chatbot.js?v=5"></script>
 </body>
 </html>
