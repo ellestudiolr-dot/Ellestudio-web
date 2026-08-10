@@ -9,13 +9,25 @@
   }
   window.hayWhatsApp = function(){ return !!numero(); };
 
-  // Abre WhatsApp con el texto ya escrito
+  // Abre la app de WhatsApp con el número del estudio y el texto ya escrito
   window.abrirWa = function(texto){
     if(window._MODO_EDITOR){ return true; }   // en el editor no se abre WhatsApp
     var n = numero();
     if(!n){ return false; }
     var url = 'https://wa.me/' + n + '?text=' + encodeURIComponent(texto);
-    window.open(url, '_blank', 'noopener');
+    window._ULTIMO_WA = url;
+    var esMovil = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent || '');
+    if(esMovil){
+      // En celular: va directo a la app de WhatsApp (no lo bloquea el navegador)
+      window.location.href = url;
+    } else {
+      // En computadora: nueva pestaña con WhatsApp Web / la app de escritorio
+      var a = document.createElement('a');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
     return true;
   };
 
@@ -92,7 +104,11 @@
     }catch(e){}
 
     if(abrirWa(texto)){
-      if(estado){ estado.style.color = '#4d6b3c'; estado.textContent = 'Te abrimos WhatsApp con tu solicitud lista. Solo tócale enviar.'; }
+      if(estado){
+        estado.style.color = '#4d6b3c';
+        estado.innerHTML = 'Te abrimos WhatsApp con tu solicitud lista. Solo tócale enviar.'
+          + '<br><a href="' + (window._ULTIMO_WA || '#') + '" target="_blank" rel="noopener" style="color:#7b580e;font-weight:700;text-decoration:underline;">Si no se abrió, toca aquí</a>';
+      }
     } else {
       if(estado){ estado.style.color = '#4d6b3c'; estado.textContent = 'Listo, recibimos tu solicitud. Te escribimos por WhatsApp para confirmar.'; }
     }
