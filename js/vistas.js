@@ -1,6 +1,6 @@
 // elle studio · Navegación por vistas + popup de reserva
 (function(){
-  var VISTAS = ['inicio','servicios','estudio','como','ubicacion'];
+  var VISTAS = ['inicio','servicios','precios','estudio','ubicacion'];
 
   window.verVista = function(v){
     if(VISTAS.indexOf(v) < 0) v = 'inicio';
@@ -87,8 +87,9 @@
   if(h === 'reservar' || h === 'reserva'){
     verVista('inicio');
     setTimeout(abrirReserva, 400);
-  } else if(h === 'como-funciona'){
-    verVista('como');
+  } else if(h === 'como-funciona' || h === 'como'){
+    verVista('inicio');
+    setTimeout(function(){ var el=document.getElementById('como-funciona'); if(el) el.scrollIntoView({behavior:'smooth'}); }, 200);
   } else if(h === 'instagram'){
     verVista('inicio');
     setTimeout(function(){

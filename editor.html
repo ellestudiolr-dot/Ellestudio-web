@@ -64,6 +64,20 @@
     <div style="font-size:.75rem;color:#888;margin-top:8px;">Se guarda solo en este navegador. Pídeselo a tu asistente si no lo tienes.</div>
   </div>
 
+  <div class="grupo" style="border-color:#B99043;border-width:1.6px;">
+    <h2>WhatsApp del estudio (importante)</h2>
+    <div style="font-size:.82rem;color:#666;margin-bottom:4px;">Con este número, TODOS los botones de la página abren WhatsApp con el mensaje ya escrito. Pon el número con 51 adelante y sin espacios.</div>
+    <label>Número de WhatsApp</label><input type="text" id="c-whatsapp" placeholder="51987654321"/>
+  </div>
+
+  <div class="grupo">
+    <h2>Instagram · las 3 publicaciones que se muestran</h2>
+    <div style="font-size:.82rem;color:#666;margin-bottom:4px;">Pega el enlace de cada publicación o reel (copiar enlace desde Instagram). Cámbialos cuando subas algo nuevo.</div>
+    <label>Publicación 1</label><input type="text" id="c-reel1" placeholder="https://www.instagram.com/reel/XXXX/"/>
+    <label>Publicación 2</label><input type="text" id="c-reel2" placeholder="https://www.instagram.com/reel/XXXX/"/>
+    <label>Publicación 3</label><input type="text" id="c-reel3" placeholder="https://www.instagram.com/p/XXXX/"/>
+  </div>
+
   <div class="grupo">
     <h2>Portada</h2>
     <label>Título principal</label><textarea id="c-hero_titulo" placeholder="La piel que deseas, el cuidado que mereces"></textarea>
@@ -170,7 +184,7 @@
 
 <script>
 var REPO='ellestudiolr-dot/Ellestudio-web';
-var CLAVES_TXT=['hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','estudio_titulo','estudio_texto','galeria_titulo','direccion',
+var CLAVES_TXT=['whatsapp','hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','estudio_titulo','estudio_texto','galeria_titulo','direccion',
   'ofertas_kicker','ofertas_titulo','ofertas_nota',
   'oferta1_etiqueta','oferta1_titulo','oferta1_texto','oferta1_precio',
   'oferta2_etiqueta','oferta2_titulo','oferta2_texto','oferta2_precio',
@@ -203,6 +217,7 @@ function cargar(){
     try{ c=JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))))); }catch(e){}
     CLAVES_TXT.forEach(function(k){ var el=document.getElementById('c-'+k); if(el && c[k]) el.value=c[k]; });
     CLAVES_IMG.forEach(function(k){ var v=document.getElementById('v-'+k); if(v && c[k]) v.src=c[k]+'?t='+Date.now(); });
+    (c.instagram_reels||[]).forEach(function(u,i){ var el=document.getElementById('c-reel'+(i+1)); if(el) el.value=u; });
     galeria=(c.galeria||[]).map(function(f){ return (typeof f==='string') ? {src:f, pie:''} : {src:f.src, pie:f.pie||''}; });
     pintarGalLista();
     estado('Contenido cargado.', 'ok');
@@ -287,6 +302,8 @@ async function publicar(){
       }
     }
     contenido.galeria = galeria.map(function(g){ return { src:g.src, pie:g.pie||'' }; });
+    var reels=['reel1','reel2','reel3'].map(function(id){ var el=document.getElementById('c-'+id); return el?el.value.trim():''; }).filter(Boolean);
+    if(reels.length) contenido.instagram_reels = reels;
 
     // Conservar imagenes ya personalizadas que no se cambiaron ahora
     var actual=null;

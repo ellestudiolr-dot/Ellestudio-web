@@ -33,6 +33,26 @@
     .then(function(r){ return r.ok ? r.json() : {}; })
     .then(function(c){
       c = (c && typeof c === 'object') ? c : {};
+      // Número de WhatsApp configurado desde el editor
+      if(c.whatsapp){
+        window._WA_NUM = String(c.whatsapp).replace(/\D/g,'');
+        if(typeof CONFIG !== 'undefined') CONFIG.WHATSAPP = window._WA_NUM;
+        var msg = encodeURIComponent('Hola, quiero información sobre sus servicios');
+        var url = 'https://wa.me/' + window._WA_NUM + '?text=' + msg;
+        ['waHero','waUbicacion','waFooter'].forEach(function(id){
+          var el = document.getElementById(id);
+          if(el){ el.href = url; el.hidden = false; }
+        });
+      }
+      if(c.instagram_reels && c.instagram_reels.length){
+        var marcos = document.querySelectorAll('.reel-marco iframe');
+        c.instagram_reels.slice(0,3).forEach(function(u, i){
+          if(marcos[i] && u){
+            var limpio = String(u).trim().replace(/\/$/,'').split('?')[0];
+            marcos[i].src = limpio + '/embed/';
+          }
+        });
+      }
       Object.keys(c).forEach(function(clave){
         var valor = c[clave];
         if(valor === null || valor === undefined || valor === '' || clave === 'galeria') return;
