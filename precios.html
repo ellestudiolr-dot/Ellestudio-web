@@ -68,6 +68,32 @@
         }
         .cupon::before{ left:-12px; clip-path: inset(0 0 0 50%); }
         .cupon::after{ right:-12px; clip-path: inset(0 50% 0 0); }
+
+        /* ===== TIPOGRAFIA estilo editorial (mayusculas finas y espaciadas) ===== */
+        h1, h2, h3,
+        .font-headline-lg, .font-headline-md, .font-headline-sm {
+            font-family: 'DM Sans', sans-serif !important;
+            font-weight: 300 !important;
+        }
+        h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: .045em;
+            line-height: 1.18;
+        }
+        /* El logo "elle" y la marca del nav/pie se quedan en su serif dorado */
+        .hero-elle {
+            font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif !important;
+            text-transform: none !important;
+            letter-spacing: -4px !important;
+        }
+        nav a[data-nav="inicio"], nav a[href="index.html"], footer .font-headline-sm,
+        .pie-logo, a[href*="instagram.com/_elleestudio"].font-headline-sm {
+            font-family: 'EB Garamond', Georgia, serif !important;
+            text-transform: none !important;
+            letter-spacing: 2px !important;
+        }
+        /* Frases largas (testimonios) legibles: sin mayusculas */
+        p.font-headline-sm { text-transform: none; letter-spacing: normal; }
 </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">

@@ -32,6 +32,15 @@
   .ok{color:#9fca8a !important}.error{color:#e08f7c !important}
   .token-caja{display:flex;gap:8px}
   .token-caja input{flex:1}
+  .gal-lista{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+  .gal-item{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--borde);border-radius:12px;padding:10px}
+  .gal-item img{width:84px;height:62px;object-fit:cover;border-radius:8px;flex-shrink:0;background:#eee}
+  .gal-item input{flex:1;padding:9px 11px;border:1px solid var(--borde);border-radius:9px;font-size:.9rem;font-family:'DM Sans',sans-serif}
+  .gal-btns{display:flex;gap:5px;flex-shrink:0}
+  .mini{width:32px;height:32px;border-radius:8px;border:1px solid var(--borde);background:#fff;cursor:pointer;font-size:.95rem;line-height:1;color:#7b580e}
+  .mini.rojo{border-color:#d99;color:#c0392b}
+  .agregar{border:1.6px dashed var(--oro);border-radius:12px;padding:16px;text-align:center;margin-top:12px;background:#fffdf8}
+  .agregar input[type=file]{font-size:.85rem}
 </style>
 </head>
 <body>
@@ -110,8 +119,19 @@
     <div class="img-fila"><img id="v-equipo_cavitacion" src="img/equipo-cavitacion.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_cavitacion')"/></div>
     <label>Foto equipo: Radiofrecuencia</label>
     <div class="img-fila"><img id="v-equipo_radio" src="img/equipo-radiofrecuencia.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_radio')"/></div>
+    <label>Título de la galería</label><input type="text" id="c-galeria_titulo" placeholder="Conoce el estudio"/>
     <label>Foto equipo: Lipoláser</label>
     <div class="img-fila"><img id="v-equipo_lipolaser" src="img/equipo-lipolaser.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_lipolaser')"/></div>
+  </div>
+
+  <div class="grupo">
+    <h2>Galería del estudio (agrega las que quieras)</h2>
+    <div style="font-size:.8rem;color:#777;margin-bottom:6px;">La primera foto sale grande a lo ancho. Puedes subir varias de golpe, ponerles nombre, moverlas o quitarlas.</div>
+    <div class="gal-lista" id="galLista"></div>
+    <div class="agregar">
+      <input type="file" accept="image/*" multiple onchange="agregarGaleria(this)"/>
+      <div style="font-size:.75rem;color:#999;margin-top:6px;">Puedes seleccionar varias fotos a la vez</div>
+    </div>
   </div>
 
   <div class="grupo">
@@ -127,9 +147,10 @@
 
 <script>
 var REPO='ellestudiolr-dot/Ellestudio-web';
-var CLAVES_TXT=['hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','estudio_titulo','estudio_texto','direccion'];
+var CLAVES_TXT=['hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','estudio_titulo','estudio_texto','galeria_titulo','direccion'];
 var CLAVES_IMG=['hero_foto','foto_laser','foto_gluteos','foto_facial','foto_corporal','foto_banner','foto_estudio','equipo_laser','equipo_cavitacion','equipo_radio','equipo_lipolaser'];
 var imgsNuevas={};   // clave -> base64 (sin encabezado)
+var galeria=[];      // [{src|b64, ext, pie}]
 var contenidoSha=null;
 
 function token(){ return localStorage.getItem('elle_editor_token')||''; }
@@ -155,8 +176,47 @@ function cargar(){
     try{ c=JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))))); }catch(e){}
     CLAVES_TXT.forEach(function(k){ var el=document.getElementById('c-'+k); if(el && c[k]) el.value=c[k]; });
     CLAVES_IMG.forEach(function(k){ var v=document.getElementById('v-'+k); if(v && c[k]) v.src=c[k]+'?t='+Date.now(); });
+    galeria=(c.galeria||[]).map(function(f){ return (typeof f==='string') ? {src:f, pie:''} : {src:f.src, pie:f.pie||''}; });
+    pintarGalLista();
     estado('Contenido cargado.', 'ok');
   }).catch(function(){ estado('No se pudo cargar (revisa el código).', 'error'); });
+}
+
+// ===== GALERÍA =====
+function pintarGalLista(){
+  var c=document.getElementById('galLista');
+  if(!galeria.length){ c.innerHTML='<div style="font-size:.85rem;color:#999;">Aún no hay fotos. Sube las que quieras abajo.</div>'; return; }
+  c.innerHTML=galeria.map(function(f,i){
+    var vista=f.src || ('data:image/'+(f.ext||'jpeg')+';base64,'+f.b64);
+    return '<div class="gal-item">'
+      +'<img src="'+vista+'"/>'
+      +'<input type="text" value="'+(f.pie||'').replace(/"/g,'&quot;')+'" placeholder="Nombre (ej. Cabina de faciales)" oninput="galPie('+i+',this.value)"/>'
+      +'<div class="gal-btns">'
+        +'<button class="mini" onclick="galMover('+i+',-1)" title="Subir">↑</button>'
+        +'<button class="mini" onclick="galMover('+i+',1)" title="Bajar">↓</button>'
+        +'<button class="mini rojo" onclick="galQuitar('+i+')" title="Quitar">×</button>'
+      +'</div></div>';
+  }).join('');
+}
+function galPie(i,v){ if(galeria[i]) galeria[i].pie=v; }
+function galQuitar(i){ galeria.splice(i,1); pintarGalLista(); estado('Foto quitada (recuerda publicar).'); }
+function galMover(i,d){
+  var j=i+d; if(j<0||j>=galeria.length) return;
+  var t=galeria[i]; galeria[i]=galeria[j]; galeria[j]=t; pintarGalLista();
+}
+function agregarGaleria(input){
+  var files=[].slice.call(input.files||[]);
+  if(!files.length) return;
+  var pend=files.length;
+  files.forEach(function(f){
+    if(f.size > 4*1024*1024){ estado('Una foto pesa más de 4 MB y se omitió.', 'error'); if(--pend===0){input.value='';pintarGalLista();} return; }
+    var lector=new FileReader();
+    lector.onload=function(){
+      galeria.push({ b64: lector.result.split(',')[1], ext:(f.name.split('.').pop()||'jpg').toLowerCase().replace('jpeg','jpg'), pie:'' });
+      if(--pend===0){ input.value=''; pintarGalLista(); estado(files.length+' foto(s) listas para publicar.', 'ok'); }
+    };
+    lector.readAsDataURL(f);
+  });
 }
 
 function cargarImg(input, clave){
@@ -189,6 +249,18 @@ async function publicar(){
       if(!r.ok) throw new Error('foto '+clave);
       contenido[clave]=ruta;
     }
+    // Subir fotos nuevas de la galería y armar la lista final
+    for(var gi=0; gi<galeria.length; gi++){
+      var g=galeria[gi];
+      if(g.b64){
+        var rutaG='img/custom/galeria-'+Date.now()+'-'+gi+'.'+g.ext;
+        var rg=await gh('contents/'+rutaG, { method:'PUT', body: JSON.stringify({ message:'Foto de galería desde el editor', content: g.b64 }) });
+        if(!rg.ok) throw new Error('galería '+(gi+1));
+        g.src=rutaG; delete g.b64; delete g.ext;
+      }
+    }
+    contenido.galeria = galeria.map(function(g){ return { src:g.src, pie:g.pie||'' }; });
+
     // Conservar imagenes ya personalizadas que no se cambiaron ahora
     var actual=null;
     var rc=await gh('contents/contenido.json');
@@ -202,6 +274,7 @@ async function publicar(){
     if(!r2.ok) throw new Error('contenido');
     var dj2=await r2.json(); contenidoSha=dj2.content && dj2.content.sha;
     imgsNuevas={};
+    pintarGalLista();
     estado('Publicado. En 1-2 minutos se ve en la página.', 'ok');
   }catch(e){
     estado('No se pudo publicar ('+e.message+'). Revisa tu código o intenta de nuevo.', 'error');
@@ -210,6 +283,7 @@ async function publicar(){
 }
 
 // Inicio
+pintarGalLista();
 if(token()){ document.getElementById('token').value='••••••••••'; cargar(); }
 </script>
 </body>

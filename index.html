@@ -144,13 +144,47 @@
         .historia:hover .anillo { transform: scale(1.06); }
         .anillo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #f8faf1; }
         .hist-nombre { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .05em; color: #49473f; text-transform: uppercase; }
+        /* Foto que se funde con la tarjeta (como la portada) */
+        .foto-fundida { position: relative; }
+        .foto-fundida::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,.35) 32%, rgba(255,255,255,0) 62%); pointer-events: none; }
+        .foto-galeria { position: relative; border-radius: 1rem; overflow: hidden; }
+        .foto-galeria img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s; }
+        .foto-galeria:hover img { transform: scale(1.04); }
+        .foto-galeria::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(248,250,241,.85) 0%, rgba(248,250,241,.25) 30%, rgba(248,250,241,0) 60%); pointer-events: none; }
+        .foto-galeria .pie { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 22px; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #2a2d24; }
         @media (max-width: 640px){
           .hero-elle { letter-spacing: -2px; }
           nav a[data-nav="inicio"] { font-size: 1.15rem !important; letter-spacing: 2px !important; }
           .reel-marco { max-width: 100%; }
           #modalReserva > div { max-width: 100%; }
         }
-    </style>
+    
+        /* ===== TIPOGRAFIA estilo editorial (mayusculas finas y espaciadas) ===== */
+        h1, h2, h3,
+        .font-headline-lg, .font-headline-md, .font-headline-sm {
+            font-family: 'DM Sans', sans-serif !important;
+            font-weight: 300 !important;
+        }
+        h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: .045em;
+            line-height: 1.18;
+        }
+        /* El logo "elle" y la marca del nav/pie se quedan en su serif dorado */
+        .hero-elle {
+            font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif !important;
+            text-transform: none !important;
+            letter-spacing: -4px !important;
+        }
+        nav a[data-nav="inicio"], nav a[href="index.html"], footer .font-headline-sm,
+        .pie-logo, a[href*="instagram.com/_elleestudio"].font-headline-sm {
+            font-family: 'EB Garamond', Georgia, serif !important;
+            text-transform: none !important;
+            letter-spacing: 2px !important;
+        }
+        /* Frases largas (testimonios) legibles: sin mayusculas */
+        p.font-headline-sm { text-transform: none; letter-spacing: normal; }
+</style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">
 
@@ -469,11 +503,12 @@
       <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Conócenos</span>
       <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Nuestro Estudio</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-20">
-      <div class="rounded-2xl overflow-hidden">
-        <img src="img/spa-ambiente.jpg" alt="Instalaciones de elle studio en San Isidro" class="w-full h-full object-cover" data-edit-img="foto_estudio" style="min-height:300px;"/>
+    <div class="relative rounded-2xl overflow-hidden mb-20" style="min-height:460px;display:flex;align-items:center;">
+      <div class="absolute inset-0">
+        <img src="img/spa-ambiente.jpg" alt="Instalaciones de elle studio en San Isidro" class="w-full h-full object-cover" data-edit-img="foto_estudio"/>
+        <div class="absolute inset-0" style="background:linear-gradient(90deg,#f8faf1 0%,rgba(248,250,241,.92) 38%,rgba(248,250,241,.55) 60%,transparent 100%);"></div>
       </div>
-      <div class="flex flex-col gap-5">
+      <div class="relative z-10 flex flex-col gap-5 p-8 md:p-14 max-w-xl">
         <h3 class="font-headline-sm text-headline-sm text-on-background" data-edit="estudio_titulo">Un espacio pensado para ti</h3>
         <p class="font-body-md text-body-md text-on-surface-variant" data-edit="estudio_texto">Nuestro estudio en San Isidro cuenta con cubículos privados e individuales, protocolos de higiene en cada atención y un ambiente tranquilo para que tu sesión sea un momento para ti. Te atendemos con cita, sin esperas y con total privacidad.</p>
         <div class="flex flex-col gap-3">
@@ -492,28 +527,28 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden">
-        <img src="img/equipo-laser.jpg" alt="Equipo de depilación láser" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_laser"/>
+        <div class="foto-fundida"><img src="img/equipo-laser.jpg" alt="Equipo de depilación láser" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_laser"/></div>
         <div class="p-6">
           <h3 class="font-headline-sm text-headline-sm mb-2">Láser de Depilación</h3>
           <p class="font-body-md text-body-md text-on-surface-variant">Sesiones rápidas y prácticamente sin dolor, para ella y para él, en todas las zonas.</p>
         </div>
       </div>
       <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden">
-        <img src="img/equipo-cavitacion.jpg" alt="Equipo de ultracavitación" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_cavitacion"/>
+        <div class="foto-fundida"><img src="img/equipo-cavitacion.jpg" alt="Equipo de ultracavitación" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_cavitacion"/></div>
         <div class="p-6">
           <h3 class="font-headline-sm text-headline-sm mb-2">Ultracavitación</h3>
           <p class="font-body-md text-body-md text-on-surface-variant">Ultrasonido que ayuda a reducir medidas y moldear la silueta en zonas localizadas.</p>
         </div>
       </div>
       <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden">
-        <img src="img/equipo-radiofrecuencia.jpg" alt="Equipo de radiofrecuencia" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_radio"/>
+        <div class="foto-fundida"><img src="img/equipo-radiofrecuencia.jpg" alt="Equipo de radiofrecuencia" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_radio"/></div>
         <div class="p-6">
           <h3 class="font-headline-sm text-headline-sm mb-2">Radiofrecuencia</h3>
           <p class="font-body-md text-body-md text-on-surface-variant">Calor controlado que reafirma la piel y estimula el colágeno.</p>
         </div>
       </div>
       <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden">
-        <img src="img/equipo-lipolaser.jpg" alt="Equipo de lipoláser" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_lipolaser"/>
+        <div class="foto-fundida"><img src="img/equipo-lipolaser.jpg" alt="Equipo de lipoláser" class="w-full object-cover" style="aspect-ratio:4/3;" data-edit-img="equipo_lipolaser"/></div>
         <div class="p-6">
           <h3 class="font-headline-sm text-headline-sm mb-2">Lipoláser</h3>
           <p class="font-body-md text-body-md text-on-surface-variant">Láser de baja intensidad que ayuda a trabajar la grasa localizada, junto a carboxiterapia y enzimas.</p>
@@ -521,7 +556,16 @@
       </div>
     </div>
   </div>
-</section>
+
+    <!-- GALERIA (crece sola con las fotos que agregues desde el editor) -->
+    <div class="mt-24" id="galeriaWrap">
+      <div class="text-center mb-12">
+        <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Nuestro espacio</span>
+        <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3" data-edit="galeria_titulo">Conoce el estudio</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="galeriaEstudio"></div>
+    </div>
+  </section>
 
 <!-- UBICACION (vista propia con mapa interactivo) -->
 <section class="vista py-24 px-gutter" id="ubicacion" data-vista="ubicacion">
@@ -673,7 +717,7 @@
 </div>
 
 <script src="js/vistas.js?v=4"></script>
-<script src="js/contenido.js?v=1"></script>
+<script src="js/contenido.js?v=2"></script>
 <script src="js/reserva.js?v=5"></script>
 <script src="js/chatbot.js?v=3"></script>
 </body>
