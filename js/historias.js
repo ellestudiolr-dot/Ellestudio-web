@@ -72,8 +72,13 @@
   };
   window.cerrarHistoria = function(){
     clearTimeout(temporizador);
-    el('visorHist').style.display = 'none';
+    // Vaciar el lienzo destruye el reproductor: el video se detiene de verdad
+    var lienzo = el('histLienzo');
+    if(lienzo) lienzo.innerHTML = '';
+    var visor = el('visorHist');
+    if(visor) visor.style.display = 'none';
     document.body.style.overflow = '';
+    actual = null; indice = 0;
   };
   window.histSiguiente = function(){
     var col = COLECCIONES[actual];
