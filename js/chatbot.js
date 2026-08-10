@@ -2,6 +2,7 @@
 // Responde preguntas por tratamiento y lleva a la clienta a WhatsApp o al formulario de reserva.
 // 100% en la página (sin servidores ni claves): sólido, instantáneo y gratis.
 (function(){
+  if(window._MODO_EDITOR) return;   // en el editor no molesta
 
   // ===== Conocimiento por tratamiento (precios reales de la lista del estudio) =====
   var TRATAMIENTOS = {

@@ -903,6 +903,11 @@ pintaLaser(); pintaEstetica();
 <script src="js/historias.js?v=2"></script>
 <script src="js/estudio.js?v=1"></script>
 <script src="js/contenido.js?v=2"></script>
+<script>
+// MODO EDITOR: cuando la pagina se abre dentro del editor (?editar=1) se desactivan
+// el asistente y los popups para poder editar sin estorbos.
+window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
+</script>
 <script src="js/whatsapp.js?v=1"></script>
 <script src="js/reserva.js?v=6"></script>
 <script src="js/chatbot.js?v=4"></script>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Editor · elle studio</title>
+<meta name="robots" content="noindex"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231c1f18'/><text x='50' y='68' text-anchor='middle' font-family='Georgia,serif' font-size='52' fill='%23e8e0cc'>e</text></svg>"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,500&display=swap" rel="stylesheet"/>
+<style>
+  :root{ --tinta:#1c1f18; --crema:#f6f1e7; --oro:#b99043; --oro2:#d8bc7e; --borde:#d9dbd2; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'DM Sans',sans-serif;background:var(--crema);color:#2a2d24;padding-bottom:90px}
+  header{background:var(--tinta);color:#e8e0cc;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+  header .t{font-family:'EB Garamond',serif;font-style:italic;font-size:1.3rem}
+  header .s{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro2)}
+  main{max-width:760px;margin:0 auto;padding:26px 18px}
+  .aviso{background:#fffdf8;border:1px solid var(--borde);border-radius:14px;padding:16px;font-size:.85rem;margin-bottom:20px;color:#555}
+  .grupo{background:#fffdf8;border:1px solid var(--borde);border-radius:16px;padding:20px;margin-bottom:18px}
+  .grupo h2{font-family:'EB Garamond',serif;font-size:1.25rem;color:var(--tinta);margin-bottom:14px}
+  label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#7b580e;margin:14px 0 6px}
+  textarea, input[type=text], input[type=password]{width:100%;padding:11px 13px;border:1px solid var(--borde);border-radius:10px;font-size:.95rem;font-family:'DM Sans',sans-serif;background:#fff}
+  textarea{resize:vertical;min-height:58px}
+  .img-fila{display:flex;gap:14px;align-items:center;margin-top:6px}
+  .img-fila img{width:110px;height:80px;object-fit:cover;border-radius:10px;border:1px solid var(--borde);background:#eee}
+  .img-fila input[type=file]{font-size:.8rem}
+  .btn{border:none;cursor:pointer;border-radius:999px;font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .btn-oro{background:linear-gradient(135deg,var(--oro),var(--oro2));color:#1c1f18;padding:14px 30px;font-size:.85rem}
+  .btn-borde{background:transparent;border:1.4px solid var(--oro);color:#7b580e;padding:9px 18px;font-size:.72rem}
+  .barra{position:fixed;bottom:0;left:0;right:0;background:var(--tinta);padding:14px 18px;display:flex;align-items:center;justify-content:center;gap:16px;z-index:20}
+  #estado{font-size:.85rem;color:#cfc9b8;min-height:20px;text-align:center}
+  .ok{color:#9fca8a !important}.error{color:#e08f7c !important}
+  .token-caja{display:flex;gap:8px}
+  .token-caja input{flex:1}
+  .gal-lista{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+  .gal-item{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--borde);border-radius:12px;padding:10px}
+  .gal-item img{width:84px;height:62px;object-fit:cover;border-radius:8px;flex-shrink:0;background:#eee}
+  .gal-item input{flex:1;padding:9px 11px;border:1px solid var(--borde);border-radius:9px;font-size:.9rem;font-family:'DM Sans',sans-serif}
+  .gal-btns{display:flex;gap:5px;flex-shrink:0}
+  .mini{width:32px;height:32px;border-radius:8px;border:1px solid var(--borde);background:#fff;cursor:pointer;font-size:.95rem;line-height:1;color:#7b580e}
+  .mini.rojo{border-color:#d99;color:#c0392b}
+  .agregar{border:1.6px dashed var(--oro);border-radius:12px;padding:16px;text-align:center;margin-top:12px;background:#fffdf8}
+  .agregar input[type=file]{font-size:.85rem}
+</style>
+</head>
+<body>
+<header>
+  <div><span class="t">elle studio</span><span class="s" style="display:block;">Editor de la página</span></div>
+  <a href="index.html" style="color:#d8bc7e;font-size:.8rem;text-decoration:none;">Ver página</a>
+</header>
+<main>
+  <div class="aviso">
+    Cambia los textos y fotos y toca <b>Publicar cambios</b>. En 1-2 minutos se ven en la página.
+    Si un campo se deja vacío, la página usa su texto original.
+  </div>
+
+  <div class="grupo">
+    <h2>Acceso</h2>
+    <label>Código de publicación (token de GitHub)</label>
+    <div class="token-caja">
+      <input type="password" id="token" placeholder="ghp_..."/>
+      <button class="btn btn-borde" onclick="guardarToken()">Guardar</button>
+    </div>
+    <div style="font-size:.75rem;color:#888;margin-top:8px;">Se guarda solo en este navegador. Pídeselo a tu asistente si no lo tienes.</div>
+  </div>
+
+  <div class="grupo" style="border-color:#B99043;border-width:1.6px;">
+    <h2>WhatsApp del estudio (importante)</h2>
+    <div style="font-size:.82rem;color:#666;margin-bottom:4px;">Con este número, TODOS los botones de la página abren WhatsApp con el mensaje ya escrito. Pon el número con 51 adelante y sin espacios.</div>
+    <label>Número de WhatsApp</label><input type="text" id="c-whatsapp" placeholder="51987654321"/>
+  </div>
+
+  <div class="grupo">
+    <h2>Instagram · las 3 publicaciones que se muestran</h2>
+    <div style="font-size:.82rem;color:#666;margin-bottom:4px;">Pega el enlace de cada publicación o reel (copiar enlace desde Instagram). Cámbialos cuando subas algo nuevo.</div>
+    <label>Publicación 1</label><input type="text" id="c-reel1" placeholder="https://www.instagram.com/reel/XXXX/"/>
+    <label>Publicación 2</label><input type="text" id="c-reel2" placeholder="https://www.instagram.com/reel/XXXX/"/>
+    <label>Publicación 3</label><input type="text" id="c-reel3" placeholder="https://www.instagram.com/p/XXXX/"/>
+  </div>
+
+  <div class="grupo">
+    <h2>Portada</h2>
+    <label>Título principal</label><textarea id="c-hero_titulo" placeholder="La piel que deseas, el cuidado que mereces"></textarea>
+    <label>Frase de abajo</label><textarea id="c-hero_sub" placeholder="Depilación láser y estética premium en San Isidro, Lima."></textarea>
+    <label>Foto de portada</label>
+    <div class="img-fila"><img id="v-hero_foto" src="img/hero-modelo.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'hero_foto')"/></div>
+  </div>
+
+  <div class="grupo">
+    <h2>Fotos de tratamientos</h2>
+    <label>Depilación Láser</label>
+    <div class="img-fila"><img id="v-foto_laser" src="img/laser-piernas.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'foto_laser')"/></div>
+    <label>Glúteos De Porcelana</label>
+    <div class="img-fila"><img id="v-foto_gluteos" src="img/gluteos.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'foto_gluteos')"/></div>
+    <label>Limpieza Facial</label>
+    <div class="img-fila"><img id="v-foto_facial" src="img/facial.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'foto_facial')"/></div>
+    <label>Tratamientos Corporales</label>
+    <div class="img-fila"><img id="v-foto_corporal" src="img/corporal.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'foto_corporal')"/></div>
+    <label>Foto del banner de paquetes</label>
+    <div class="img-fila"><img id="v-foto_banner" src="img/spa-ambiente.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'foto_banner')"/></div>
+  </div>
+
+  <div class="grupo">
+    <h2>Ofertas del mes (portada)</h2>
+    <label>Texto pequeño de arriba</label><input type="text" id="c-ofertas_kicker" placeholder="Promociones vigentes"/>
+    <label>Título de la sección</label><input type="text" id="c-ofertas_titulo" placeholder="Ofertas del mes"/>
+    <div style="border-top:1px dashed var(--borde);margin:16px 0 4px;"></div>
+    <label>Oferta 1 · etiqueta</label><input type="text" id="c-oferta1_etiqueta" placeholder="Más elegida"/>
+    <label>Oferta 1 · título</label><input type="text" id="c-oferta1_titulo" placeholder="Paquete láser ×6 sesiones"/>
+    <label>Oferta 1 · descripción</label><textarea id="c-oferta1_texto" placeholder="Hasta 40% de ahorro..."></textarea>
+    <label>Oferta 1 · precio</label><input type="text" id="c-oferta1_precio" placeholder="S/ 90"/>
+    <div style="border-top:1px dashed var(--borde);margin:16px 0 4px;"></div>
+    <label>Oferta 2 · etiqueta</label><input type="text" id="c-oferta2_etiqueta" placeholder="Nuevas clientas"/>
+    <label>Oferta 2 · título</label><input type="text" id="c-oferta2_titulo" placeholder="Glúteos de Porcelana"/>
+    <label>Oferta 2 · descripción</label><textarea id="c-oferta2_texto" placeholder="Levantamiento, firmeza..."></textarea>
+    <label>Oferta 2 · precio</label><input type="text" id="c-oferta2_precio" placeholder="S/ 89.90"/>
+    <div style="border-top:1px dashed var(--borde);margin:16px 0 4px;"></div>
+    <label>Oferta 3 · etiqueta</label><input type="text" id="c-oferta3_etiqueta" placeholder="Cuidado facial"/>
+    <label>Oferta 3 · título</label><input type="text" id="c-oferta3_titulo" placeholder="Limpieza facial profunda"/>
+    <label>Oferta 3 · descripción</label><textarea id="c-oferta3_texto" placeholder="Limpieza, hidratación..."></textarea>
+    <label>Oferta 3 · precio</label><input type="text" id="c-oferta3_precio" placeholder="S/ 80"/>
+    <div style="border-top:1px dashed var(--borde);margin:16px 0 4px;"></div>
+    <label>Nota al pie de las ofertas</label><input type="text" id="c-ofertas_nota" placeholder="* Precios referenciales por zona..."/>
+  </div>
+
+  <div class="grupo">
+    <h2>Banner de paquetes</h2>
+    <label>Texto del banner</label><textarea id="c-banner_titulo" placeholder="Hasta 40% de ahorro con paquetes de 3 y 6 sesiones"></textarea>
+  </div>
+
+  <div class="grupo">
+    <h2>Testimonios</h2>
+    <label>Testimonio 1</label><textarea id="c-t1_frase" placeholder='"El mejor servicio de depilación láser en San Isidro..."'></textarea>
+    <label>Nombre 1</label><input type="text" id="c-t1_nombre" placeholder="— Valeria M."/>
+    <label>Testimonio 2</label><textarea id="c-t2_frase" placeholder='"Los resultados de los Glúteos de Porcelana son increíbles..."'></textarea>
+    <label>Nombre 2</label><input type="text" id="c-t2_nombre" placeholder="— Camila S."/>
+    <label>Testimonio 3</label><textarea id="c-t3_frase" placeholder='"Atención de primera..."'></textarea>
+    <label>Nombre 3</label><input type="text" id="c-t3_nombre" placeholder="— Luciana F."/>
+    <label>Testimonio 4</label><textarea id="c-t4_frase" placeholder='"Las sesiones de láser son rapidísimas..."'></textarea>
+    <label>Nombre 4</label><input type="text" id="c-t4_nombre" placeholder="— Andrea R."/>
+    <label>Testimonio 5</label><textarea id="c-t5_frase" placeholder='"Reservé por la página..."'></textarea>
+    <label>Nombre 5</label><input type="text" id="c-t5_nombre" placeholder="— Fiorella T."/>
+    <label>Testimonio 6</label><textarea id="c-t6_frase" placeholder='"Los tratamientos corporales me encantaron..."'></textarea>
+    <label>Nombre 6</label><input type="text" id="c-t6_nombre" placeholder="— Daniela V."/>
+  </div>
+
+  <div class="grupo">
+    <h2>El Estudio (instalación y tecnología)</h2>
+    <label>Título de la sección</label><input type="text" id="c-estudio_titulo" placeholder="Un espacio pensado para ti"/>
+    <label>Texto de la instalación</label><textarea id="c-estudio_texto" placeholder="Nuestro estudio en San Isidro cuenta con cubículos privados..."></textarea>
+    <label>Foto de la instalación</label>
+    <div class="img-fila"><img id="v-foto_estudio" src="img/spa-ambiente.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'foto_estudio')"/></div>
+    <label>Foto equipo: Láser</label>
+    <div class="img-fila"><img id="v-equipo_laser" src="img/equipo-laser.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_laser')"/></div>
+    <label>Foto equipo: Ultracavitación</label>
+    <div class="img-fila"><img id="v-equipo_cavitacion" src="img/equipo-cavitacion.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_cavitacion')"/></div>
+    <label>Foto equipo: Radiofrecuencia</label>
+    <div class="img-fila"><img id="v-equipo_radio" src="img/equipo-radiofrecuencia.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_radio')"/></div>
+    <label>Título de la galería</label><input type="text" id="c-galeria_titulo" placeholder="Conoce el estudio"/>
+    <label>Foto equipo: Lipoláser</label>
+    <div class="img-fila"><img id="v-equipo_lipolaser" src="img/equipo-lipolaser.jpg"/><input type="file" accept="image/*" onchange="cargarImg(this,'equipo_lipolaser')"/></div>
+  </div>
+
+  <div class="grupo">
+    <h2>Galería del estudio (agrega las que quieras)</h2>
+    <div style="font-size:.8rem;color:#777;margin-bottom:6px;">La primera foto sale grande a lo ancho. Puedes subir varias de golpe, ponerles nombre, moverlas o quitarlas.</div>
+    <div class="gal-lista" id="galLista"></div>
+    <div class="agregar">
+      <input type="file" accept="image/*" multiple onchange="agregarGaleria(this)"/>
+      <div style="font-size:.75rem;color:#999;margin-top:6px;">Puedes seleccionar varias fotos a la vez</div>
+    </div>
+  </div>
+
+  <div class="grupo">
+    <h2>Datos del estudio</h2>
+    <label>Dirección</label><input type="text" id="c-direccion" placeholder="Av. Paz Soldán 235, San Isidro, Lima"/>
+  </div>
+</main>
+
+<div class="barra">
+  <button class="btn btn-oro" id="btnPublicar" onclick="publicar()">Publicar cambios</button>
+  <div id="estado"></div>
+</div>
+
+<script>
+var REPO='ellestudiolr-dot/Ellestudio-web';
+var CLAVES_TXT=['whatsapp','hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','estudio_titulo','estudio_texto','galeria_titulo','direccion',
+  'ofertas_kicker','ofertas_titulo','ofertas_nota',
+  'oferta1_etiqueta','oferta1_titulo','oferta1_texto','oferta1_precio',
+  'oferta2_etiqueta','oferta2_titulo','oferta2_texto','oferta2_precio',
+  'oferta3_etiqueta','oferta3_titulo','oferta3_texto','oferta3_precio'];
+var CLAVES_IMG=['hero_foto','foto_laser','foto_gluteos','foto_facial','foto_corporal','foto_banner','foto_estudio','equipo_laser','equipo_cavitacion','equipo_radio','equipo_lipolaser'];
+var imgsNuevas={};   // clave -> base64 (sin encabezado)
+var galeria=[];      // [{src|b64, ext, pie}]
+var contenidoSha=null;
+
+function token(){ return localStorage.getItem('elle_editor_token')||''; }
+function guardarToken(){
+  var t=document.getElementById('token').value.trim();
+  if(t){ localStorage.setItem('elle_editor_token', t); estado('Código guardado.', 'ok'); cargar(); }
+}
+function estado(msg, cls){ var e=document.getElementById('estado'); e.textContent=msg; e.className=cls||''; }
+
+function gh(ruta, opts){
+  opts=opts||{};
+  opts.headers=Object.assign({'Authorization':'token '+token(),'Accept':'application/vnd.github+json'}, opts.headers||{});
+  return fetch('https://api.github.com/repos/'+REPO+'/'+ruta, opts);
+}
+
+// Cargar contenido actual
+function cargar(){
+  if(!token()) return;
+  gh('contents/contenido.json').then(function(r){ return r.ok? r.json(): null; }).then(function(d){
+    if(!d) return;
+    contenidoSha=d.sha;
+    var c={};
+    try{ c=JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))))); }catch(e){}
+    CLAVES_TXT.forEach(function(k){ var el=document.getElementById('c-'+k); if(el && c[k]) el.value=c[k]; });
+    CLAVES_IMG.forEach(function(k){ var v=document.getElementById('v-'+k); if(v && c[k]) v.src=c[k]+'?t='+Date.now(); });
+    (c.instagram_reels||[]).forEach(function(u,i){ var el=document.getElementById('c-reel'+(i+1)); if(el) el.value=u; });
+    galeria=(c.galeria||[]).map(function(f){ return (typeof f==='string') ? {src:f, pie:''} : {src:f.src, pie:f.pie||''}; });
+    pintarGalLista();
+    estado('Contenido cargado.', 'ok');
+  }).catch(function(){ estado('No se pudo cargar (revisa el código).', 'error'); });
+}
+
+// ===== GALERÍA =====
+function pintarGalLista(){
+  var c=document.getElementById('galLista');
+  if(!galeria.length){ c.innerHTML='<div style="font-size:.85rem;color:#999;">Aún no hay fotos. Sube las que quieras abajo.</div>'; return; }
+  c.innerHTML=galeria.map(function(f,i){
+    var vista=f.src || ('data:image/'+(f.ext||'jpeg')+';base64,'+f.b64);
+    return '<div class="gal-item">'
+      +'<img src="'+vista+'"/>'
+      +'<input type="text" value="'+(f.pie||'').replace(/"/g,'&quot;')+'" placeholder="Nombre (ej. Cabina de faciales)" oninput="galPie('+i+',this.value)"/>'
+      +'<div class="gal-btns">'
+        +'<button class="mini" onclick="galMover('+i+',-1)" title="Subir">↑</button>'
+        +'<button class="mini" onclick="galMover('+i+',1)" title="Bajar">↓</button>'
+        +'<button class="mini rojo" onclick="galQuitar('+i+')" title="Quitar">×</button>'
+      +'</div></div>';
+  }).join('');
+}
+function galPie(i,v){ if(galeria[i]) galeria[i].pie=v; }
+function galQuitar(i){ galeria.splice(i,1); pintarGalLista(); estado('Foto quitada (recuerda publicar).'); }
+function galMover(i,d){
+  var j=i+d; if(j<0||j>=galeria.length) return;
+  var t=galeria[i]; galeria[i]=galeria[j]; galeria[j]=t; pintarGalLista();
+}
+function agregarGaleria(input){
+  var files=[].slice.call(input.files||[]);
+  if(!files.length) return;
+  var pend=files.length;
+  files.forEach(function(f){
+    if(f.size > 4*1024*1024){ estado('Una foto pesa más de 4 MB y se omitió.', 'error'); if(--pend===0){input.value='';pintarGalLista();} return; }
+    var lector=new FileReader();
+    lector.onload=function(){
+      galeria.push({ b64: lector.result.split(',')[1], ext:(f.name.split('.').pop()||'jpg').toLowerCase().replace('jpeg','jpg'), pie:'' });
+      if(--pend===0){ input.value=''; pintarGalLista(); estado(files.length+' foto(s) listas para publicar.', 'ok'); }
+    };
+    lector.readAsDataURL(f);
+  });
+}
+
+function cargarImg(input, clave){
+  var f=input.files && input.files[0];
+  if(!f) return;
+  if(f.size > 4*1024*1024){ estado('La imagen es muy pesada (máx 4 MB).', 'error'); input.value=''; return; }
+  var lector=new FileReader();
+  lector.onload=function(){
+    var b64=lector.result.split(',')[1];
+    imgsNuevas[clave]={ b64:b64, ext:(f.name.split('.').pop()||'jpg').toLowerCase().replace('jpeg','jpg') };
+    document.getElementById('v-'+clave).src=lector.result;
+    estado('Foto lista para publicar.', 'ok');
+  };
+  lector.readAsDataURL(f);
+}
+
+async function publicar(){
+  if(!token()){ estado('Primero guarda tu código de publicación.', 'error'); return; }
+  var btn=document.getElementById('btnPublicar');
+  btn.disabled=true; btn.textContent='Publicando...';
+  try{
+    var contenido={};
+    CLAVES_TXT.forEach(function(k){ var v=document.getElementById('c-'+k).value.trim(); if(v) contenido[k]=v; });
+
+    // 1. Subir imagenes nuevas
+    for(var clave in imgsNuevas){
+      var img=imgsNuevas[clave];
+      var ruta='img/custom/'+clave+'-'+Date.now()+'.'+img.ext;
+      var r=await gh('contents/'+ruta, { method:'PUT', body: JSON.stringify({ message:'Foto nueva desde el editor: '+clave, content: img.b64 }) });
+      if(!r.ok) throw new Error('foto '+clave);
+      contenido[clave]=ruta;
+    }
+    // Subir fotos nuevas de la galería y armar la lista final
+    for(var gi=0; gi<galeria.length; gi++){
+      var g=galeria[gi];
+      if(g.b64){
+        var rutaG='img/custom/galeria-'+Date.now()+'-'+gi+'.'+g.ext;
+        var rg=await gh('contents/'+rutaG, { method:'PUT', body: JSON.stringify({ message:'Foto de galería desde el editor', content: g.b64 }) });
+        if(!rg.ok) throw new Error('galería '+(gi+1));
+        g.src=rutaG; delete g.b64; delete g.ext;
+      }
+    }
+    contenido.galeria = galeria.map(function(g){ return { src:g.src, pie:g.pie||'' }; });
+    var reels=['reel1','reel2','reel3'].map(function(id){ var el=document.getElementById('c-'+id); return el?el.value.trim():''; }).filter(Boolean);
+    if(reels.length) contenido.instagram_reels = reels;
+
+    // Conservar imagenes ya personalizadas que no se cambiaron ahora
+    var actual=null;
+    var rc=await gh('contents/contenido.json');
+    if(rc.ok){ var dj=await rc.json(); contenidoSha=dj.sha; try{ actual=JSON.parse(decodeURIComponent(escape(atob(dj.content.replace(/\n/g,''))))); }catch(e){} }
+    if(actual){ CLAVES_IMG.forEach(function(k){ if(!contenido[k] && actual[k]) contenido[k]=actual[k]; }); }
+
+    // 2. Guardar contenido.json
+    var cuerpo={ message:'Contenido actualizado desde el editor', content: btoa(unescape(encodeURIComponent(JSON.stringify(contenido, null, 2)))) };
+    if(contenidoSha) cuerpo.sha=contenidoSha;
+    var r2=await gh('contents/contenido.json', { method:'PUT', body: JSON.stringify(cuerpo) });
+    if(!r2.ok) throw new Error('contenido');
+    var dj2=await r2.json(); contenidoSha=dj2.content && dj2.content.sha;
+    imgsNuevas={};
+    pintarGalLista();
+    estado('Publicado. En 1-2 minutos se ve en la página.', 'ok');
+  }catch(e){
+    estado('No se pudo publicar ('+e.message+'). Revisa tu código o intenta de nuevo.', 'error');
+  }
+  btn.disabled=false; btn.textContent='Publicar cambios';
+}
+
+// Inicio
+pintarGalLista();
+if(token()){ document.getElementById('token').value='••••••••••'; cargar(); }
+</script>
+</body>
+</html>

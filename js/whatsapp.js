@@ -11,6 +11,7 @@
 
   // Abre WhatsApp con el texto ya escrito
   window.abrirWa = function(texto){
+    if(window._MODO_EDITOR){ return true; }   // en el editor no se abre WhatsApp
     var n = numero();
     if(!n){ return false; }
     var url = 'https://wa.me/' + n + '?text=' + encodeURIComponent(texto);
