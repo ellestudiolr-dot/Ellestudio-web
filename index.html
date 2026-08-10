@@ -268,30 +268,32 @@
   </div>
 </nav>
 
-<!-- HERO: texto arriba y banda de resultados a todo lo ancho -->
-<header class="vista activa" data-vista="inicio">
-  <div class="w-full px-gutter max-w-container-max mx-auto pt-14 pb-10 text-center flex flex-col items-center">
-    <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase mb-4">— EST · 2024 —</span>
-    <h1 class="hero-elle text-[96px] md:text-[168px]">elle</h1>
-    <div class="hero-underline" style="width:280px;"></div>
-    <span class="font-label-upper text-[14px] md:text-[20px] tracking-[0.42em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
-    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-2xl" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces</h2>
-    <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-lg" data-edit="hero_sub">Depilación láser y estética premium en San Isidro, Lima.</p>
-    <div class="flex flex-col sm:flex-row gap-4 mt-8">
-      <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2" style="border:none;cursor:pointer;">
-        Reservar cita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-      </button>
-      <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#precios" onclick="return _nav('precios')">Ver precios</a>
-      <a id="waHero" hidden class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#" target="_blank" rel="noopener">
-        <span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
-      </a>
-    </div>
+<!-- HERO con foto grande al lado -->
+<header class="vista activa relative min-h-[80vh] flex items-center overflow-hidden" data-vista="inicio">
+  <div class="absolute right-0 top-0 w-full md:w-[58%] h-full">
+    <img class="object-cover w-full h-full opacity-30 md:opacity-100" style="object-position:center center;" src="img/hero-modelo.jpg?v=3" alt="Resultados de depilación láser: abdomen, glúteos y torso con piel lisa — elle studio, San Isidro" data-edit-img="hero_foto"/>
+    <div class="absolute inset-0" style="background:linear-gradient(90deg,#f8faf1 0%,rgba(248,250,241,.80) 18%,rgba(248,250,241,.30) 40%,transparent 62%);"></div>
   </div>
-  <!-- Banda de resultados: la foto completa, sin nada encima -->
-  <div class="relative w-full overflow-hidden">
-    <img class="w-full h-auto block" src="img/hero-modelo.jpg?v=3" alt="Resultados de depilación láser: abdomen, glúteos y torso con piel lisa — elle studio, San Isidro" data-edit-img="hero_foto"/>
-    <div class="absolute inset-x-0 top-0 h-20 pointer-events-none" style="background:linear-gradient(#f8faf1,transparent);"></div>
-    <div class="absolute inset-x-0 bottom-0 h-16 pointer-events-none" style="background:linear-gradient(transparent,#f8faf1);"></div>
+  <div class="w-full px-gutter max-w-container-max mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 py-16">
+    <div class="md:col-span-6 flex flex-col items-start justify-center">
+      <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase mb-5">— EST · 2024 —</span>
+      <div class="flex flex-col items-start">
+        <h1 class="hero-elle text-[100px] md:text-[170px]">elle</h1>
+        <div class="hero-underline" style="margin-left:0;width:250px;"></div>
+        <span class="font-label-upper text-[14px] md:text-[20px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
+      </div>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-lg" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md" data-edit="hero_sub">Depilación láser y estética premium en San Isidro, Lima.</p>
+      <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
+        <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2" style="border:none;cursor:pointer;">
+          Reservar cita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+        <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#precios" onclick="return _nav('precios')">Ver precios</a>
+        <a id="waHero" hidden class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2" href="#" target="_blank" rel="noopener">
+          <span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+        </a>
+      </div>
+    </div>
   </div>
 </header>
 
