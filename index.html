@@ -197,6 +197,14 @@
             text-transform: none !important;
             letter-spacing: 2px !important;
         }
+        /* Logo del nav con el mismo oro brillante del hero */
+        nav a.marca-elle {
+            background: linear-gradient(110deg,#9a8452 0%,#c8b882 20%,#e8d391 38%,#f0dfa0 50%,#d4af37 62%,#c8b882 80%,#9a8452 100%);
+            background-size: 250% 100%;
+            -webkit-background-clip: text; background-clip: text;
+            color: transparent !important;
+            animation: elleShimmer 4.5s linear infinite;
+        }
         /* Frases largas (testimonios) legibles: sin mayusculas */
         p.font-headline-sm { text-transform: none; letter-spacing: normal; }
 </style>
@@ -264,9 +272,9 @@
     <div class="md:col-span-7 lg:col-span-6 flex flex-col items-start justify-center">
       <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase mb-5">— EST · 2024 —</span>
       <div class="flex flex-col items-start">
-        <h1 class="hero-elle text-[100px] md:text-[170px]">elle</h1>
-        <div class="hero-underline" style="margin-left:0;width:240px;"></div>
-        <span class="font-label-upper text-[14px] md:text-[20px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
+        <h1 class="hero-elle text-[118px] md:text-[210px]">elle</h1>
+        <div class="hero-underline" style="margin-left:0;width:300px;"></div>
+        <span class="font-label-upper text-[15px] md:text-[24px] tracking-[0.42em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
       </div>
       <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-lg" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces</h2>
       <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md" data-edit="hero_sub">Depilación láser y estética premium en San Isidro, Lima.</p>
