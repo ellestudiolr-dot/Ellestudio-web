@@ -64,7 +64,7 @@
 </div>
 
 <div class="lienzo-wrap" id="lienzoWrap">
-  <iframe id="lienzo" src="index.html?editar=1"></iframe>
+  <iframe id="lienzo"></iframe>
 
   <div class="panel" id="panel">
     <button class="cerrar" onclick="cerrarPanel()">×</button>
@@ -116,6 +116,8 @@ var galeria=[];
 var contenidoSha=null;
 var claveFotoActual=null;
 var doc=null;
+// El lienzo siempre carga la version mas reciente (sin cache)
+document.getElementById('lienzo').src='index.html?editar=1&t='+Date.now();
 
 function token(){ return localStorage.getItem('elle_editor_token')||''; }
 function guardarToken(){
