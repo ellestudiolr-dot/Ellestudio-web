@@ -59,11 +59,22 @@
     var msj     = (document.getElementById('mensaje')  || {}).value || '';
     var estado  = document.getElementById('estadoReserva');
 
-    nombre = nombre.trim();
+    nombre = nombre.trim().replace(/\s+/g, ' ');
     var telLimpio = tel.replace(/\D/g, '');
     if(estado){ estado.style.color = '#b0503c'; }
-    // Solo el tratamiento es obligatorio: el resto se sabe por WhatsApp
+    // Obligatorios: tratamiento, nombre con apellido y celular
     if(!svc){ if(estado) estado.textContent = 'Elige el tratamiento que te interesa.'; return; }
+    var partes = nombre.split(' ').filter(function(p){ return p.length > 1; });
+    if(partes.length < 2){
+      if(estado) estado.textContent = 'Escribe tu nombre y apellido.';
+      var elN = document.getElementById('nombre'); if(elN) elN.focus();
+      return;
+    }
+    if(telLimpio.length < 9){
+      if(estado) estado.textContent = 'Escribe el celular desde el que nos escribes (9 dígitos).';
+      var elC = document.getElementById('celular'); if(elC) elC.focus();
+      return;
+    }
 
     // Fecha en formato bonito
     var fechaTxt = '';
@@ -75,9 +86,9 @@
     }
 
     var texto = 'Hola elle studio\n\nVengo de la página web y quiero *agendar una cita*:\n\n'
+      + '• Nombre: ' + nombre + '\n'
+      + '• Celular: ' + telLimpio + '\n'
       + '• Tratamiento: ' + svc + '\n'
-      + (nombre ? '• Nombre: ' + nombre + '\n' : '')
-      + (telLimpio.length >= 9 ? '• Celular: ' + telLimpio + '\n' : '')
       + (fechaTxt ? '• Día que prefiero: ' + fechaTxt + '\n' : '')
       + (horario ? '• Horario: ' + horario + '\n' : '')
       + (msj.trim() ? '• Comentario: ' + msj.trim() + '\n' : '')
@@ -95,7 +106,7 @@
             'Prefer': 'return=minimal'
           },
           body: JSON.stringify({
-            nombre: (nombre || 'Desde la web'), telefono: (telLimpio.length>=6 ? telLimpio : '000000'), servicio: svc,
+            nombre: nombre, telefono: telLimpio, servicio: svc,
             fecha_preferida: fecha || null, hora_preferida: horario || null,
             mensaje: (msj.trim() || null)
           })
