@@ -33,7 +33,7 @@
 
   // Pedido rápido desde cualquier botón (tarjeta de precio, oferta, tratamiento…)
   window.pedirWa = function(quePide){
-    var texto = 'Hola elle studio 🌸\n\nVengo de la página web y quiero información para agendar:\n'
+    var texto = 'Hola elle studio \uD83C\uDF38\n\nVengo de la página web y quiero información para agendar:\n'
               + '• ' + (quePide || 'un tratamiento') + '\n\n¿Me confirman disponibilidad y precio, por favor?';
     if(!abrirWa(texto)){
       // Sin número configurado: abre el formulario para no perder a la clienta
@@ -74,7 +74,7 @@
       fechaTxt = dias[d.getDay()] + ' ' + d.getDate() + ' de ' + meses[d.getMonth()];
     }
 
-    var texto = 'Hola elle studio 🌸\n\nVengo de la página web y quiero *agendar una cita*:\n\n'
+    var texto = 'Hola elle studio \uD83C\uDF38\n\nVengo de la página web y quiero *agendar una cita*:\n\n'
       + '• Tratamiento: ' + svc + '\n'
       + (nombre ? '• Nombre: ' + nombre + '\n' : '')
       + (telLimpio.length >= 9 ? '• Celular: ' + telLimpio + '\n' : '')
