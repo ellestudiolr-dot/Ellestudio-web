@@ -409,6 +409,72 @@
 </section>
 
 <!-- TESTIMONIOS -->
+<!-- OFERTAS DEL MES (editable) -->
+<section class="vista activa py-20 px-gutter" data-vista="inicio" id="ofertas">
+  <div class="max-w-container-max mx-auto">
+    <div class="text-center mb-12">
+      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase" data-edit="ofertas_kicker">Promociones vigentes</span>
+      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3" data-edit="ofertas_titulo">Ofertas del mes</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-8 flex flex-col items-start gap-3" style="border-top:3px solid #B99043;">
+        <span class="font-label-upper text-label-upper uppercase px-3 py-1.5 rounded-full" style="background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;" data-edit="oferta1_etiqueta">Más elegida</span>
+        <h3 class="font-headline-sm text-headline-sm text-on-background" data-edit="oferta1_titulo">Paquete láser ×6 sesiones</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-edit="oferta1_texto">Hasta 40% de ahorro frente a pagar sesión por sesión. Elige tus zonas y te armamos el combo.</p>
+        <div class="mt-auto pt-4 w-full border-t border-surface-dim flex items-end justify-between">
+          <span class="font-label-upper text-label-upper text-outline uppercase">Desde</span>
+          <span class="font-headline-sm text-headline-sm text-gold-gradient" data-edit="oferta1_precio">S/ 90</span>
+        </div>
+        <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="border:none;cursor:pointer;">Lo quiero</button>
+      </div>
+      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-8 flex flex-col items-start gap-3">
+        <span class="font-label-upper text-label-upper uppercase px-3 py-1.5 rounded-full" style="border:1.2px solid #B99043;color:#7b580e;" data-edit="oferta2_etiqueta">Nuevas clientas</span>
+        <h3 class="font-headline-sm text-headline-sm text-on-background" data-edit="oferta2_titulo">Glúteos de Porcelana</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-edit="oferta2_texto">Levantamiento, firmeza y textura renovada. Evaluación de tu piel incluida en la primera visita.</p>
+        <div class="mt-auto pt-4 w-full border-t border-surface-dim flex items-end justify-between">
+          <span class="font-label-upper text-label-upper text-outline uppercase">Desde</span>
+          <span class="font-headline-sm text-headline-sm text-gold-gradient" data-edit="oferta2_precio">S/ 89.90</span>
+        </div>
+        <button onclick="abrirReserva()" class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="background:transparent;cursor:pointer;">Reservar</button>
+      </div>
+      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-8 flex flex-col items-start gap-3">
+        <span class="font-label-upper text-label-upper uppercase px-3 py-1.5 rounded-full" style="border:1.2px solid #B99043;color:#7b580e;" data-edit="oferta3_etiqueta">Cuidado facial</span>
+        <h3 class="font-headline-sm text-headline-sm text-on-background" data-edit="oferta3_titulo">Limpieza facial profunda</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant" data-edit="oferta3_texto">Limpieza, hidratación y cuidado del rostro. Ideal cada 4 a 6 semanas para mantener tu piel sana.</p>
+        <div class="mt-auto pt-4 w-full border-t border-surface-dim flex items-end justify-between">
+          <span class="font-label-upper text-label-upper text-outline uppercase">Desde</span>
+          <span class="font-headline-sm text-headline-sm text-gold-gradient" data-edit="oferta3_precio">S/ 80</span>
+        </div>
+        <button onclick="abrirReserva()" class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="background:transparent;cursor:pointer;">Reservar</button>
+      </div>
+    </div>
+    <p class="text-center font-body-md text-body-md text-outline mt-8 italic" data-edit="ofertas_nota">* Precios referenciales por zona. Pide tu cotización exacta al reservar.</p>
+  </div>
+</section>
+
+<!-- COMPARATIVA -->
+<section class="vista activa py-20 px-gutter" data-vista="inicio" id="comparativa" style="background:#1c1f18;">
+  <div class="max-w-container-max mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
+      <h2 class="font-headline-lg text-headline-md" style="color:#e8e0cc;">Por qué elegirnos</h2>
+      <a href="precios.html" class="font-label-upper text-label-upper uppercase px-7 py-3 rounded-full self-start" style="background:#f6f1e7;color:#1c1f18;text-decoration:none;">Ver precios</a>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="w-full" style="min-width:520px;border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="font-label-upper text-label-upper uppercase" style="padding:16px;color:#191c17;background:linear-gradient(135deg,#B99043,#D8BC7E);border-radius:12px 12px 0 0;">elle studio</th>
+            <th class="font-label-upper text-label-upper uppercase" style="padding:16px;color:#8d8a7c;">Otros</th>
+          </tr>
+        </thead>
+        <tbody id="tablaComparativa"></tbody>
+      </table>
+    </div>
+    <p class="font-body-md text-body-md mt-6" style="color:#8d8a7c;">Comparación referencial de lo que ofrecemos en cada atención.</p>
+  </div>
+</section>
+
 <section class="vista activa py-24 px-gutter bg-surface-container-lowest border-y border-surface-dim" id="testimonios" data-vista="inicio">
   <div class="text-center mb-14">
     <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background">Lo que dicen nuestras clientas</h2>
@@ -716,6 +782,34 @@
   </div>
 </div>
 
+<script>
+(function(){
+  var FILAS=[
+    ['Precios publicados en la web', true, false],
+    ['Paquetes de 3 y 6 sesiones', true, true],
+    ['Cubículos privados e individuales', true, false],
+    ['Confirmación por WhatsApp', true, false],
+    ['Atención con cita, sin esperas', true, false],
+    ['Sesión individual desde', 'S/ 25', false]
+  ];
+  var si='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D8BC7E" stroke-width="2.6" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  var no='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b6858" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+  var cuerpo=document.getElementById('tablaComparativa');
+  if(!cuerpo) return;
+  cuerpo.innerHTML=FILAS.map(function(f){
+    function celda(v){
+      if(v===true) return si;
+      if(v===false) return no;
+      return '<span class="font-label-upper text-label-upper uppercase" style="color:#D8BC7E;">'+v+'</span>';
+    }
+    return '<tr style="border-bottom:1px solid rgba(216,188,126,.14);">'
+      +'<td class="font-body-md text-body-md" style="padding:16px 12px 16px 0;color:#cfc9b8;">'+f[0]+'</td>'
+      +'<td style="padding:16px;text-align:center;background:rgba(216,188,126,.06);">'+celda(f[1])+'</td>'
+      +'<td style="padding:16px;text-align:center;">'+celda(f[2])+'</td>'
+      +'</tr>';
+  }).join('');
+})();
+</script>
 <script src="js/vistas.js?v=4"></script>
 <script src="js/contenido.js?v=2"></script>
 <script src="js/reserva.js?v=5"></script>

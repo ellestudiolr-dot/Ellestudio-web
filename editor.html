@@ -87,6 +87,29 @@
   </div>
 
   <div class="grupo">
+    <h2>Ofertas del mes (portada)</h2>
+    <label>Texto pequeño de arriba</label><input type="text" id="c-ofertas_kicker" placeholder="Promociones vigentes"/>
+    <label>Título de la sección</label><input type="text" id="c-ofertas_titulo" placeholder="Ofertas del mes"/>
+    <div style="border-top:1px dashed var(--borde);margin:16px 0 4px;"></div>
+    <label>Oferta 1 · etiqueta</label><input type="text" id="c-oferta1_etiqueta" placeholder="Más elegida"/>
+    <label>Oferta 1 · título</label><input type="text" id="c-oferta1_titulo" placeholder="Paquete láser ×6 sesiones"/>
+    <label>Oferta 1 · descripción</label><textarea id="c-oferta1_texto" placeholder="Hasta 40% de ahorro..."></textarea>
+    <label>Oferta 1 · precio</label><input type="text" id="c-oferta1_precio" placeholder="S/ 90"/>
+    <div style="border-top:1px dashed var(--borde);margin:16px 0 4px;"></div>
+    <label>Oferta 2 · etiqueta</label><input type="text" id="c-oferta2_etiqueta" placeholder="Nuevas clientas"/>
+    <label>Oferta 2 · título</label><input type="text" id="c-oferta2_titulo" placeholder="Glúteos de Porcelana"/>
+    <label>Oferta 2 · descripción</label><textarea id="c-oferta2_texto" placeholder="Levantamiento, firmeza..."></textarea>
+    <label>Oferta 2 · precio</label><input type="text" id="c-oferta2_precio" placeholder="S/ 89.90"/>
+    <div style="border-top:1px dashed var(--borde);margin:16px 0 4px;"></div>
+    <label>Oferta 3 · etiqueta</label><input type="text" id="c-oferta3_etiqueta" placeholder="Cuidado facial"/>
+    <label>Oferta 3 · título</label><input type="text" id="c-oferta3_titulo" placeholder="Limpieza facial profunda"/>
+    <label>Oferta 3 · descripción</label><textarea id="c-oferta3_texto" placeholder="Limpieza, hidratación..."></textarea>
+    <label>Oferta 3 · precio</label><input type="text" id="c-oferta3_precio" placeholder="S/ 80"/>
+    <div style="border-top:1px dashed var(--borde);margin:16px 0 4px;"></div>
+    <label>Nota al pie de las ofertas</label><input type="text" id="c-ofertas_nota" placeholder="* Precios referenciales por zona..."/>
+  </div>
+
+  <div class="grupo">
     <h2>Banner de paquetes</h2>
     <label>Texto del banner</label><textarea id="c-banner_titulo" placeholder="Hasta 40% de ahorro con paquetes de 3 y 6 sesiones"></textarea>
   </div>
@@ -147,7 +170,11 @@
 
 <script>
 var REPO='ellestudiolr-dot/Ellestudio-web';
-var CLAVES_TXT=['hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','estudio_titulo','estudio_texto','galeria_titulo','direccion'];
+var CLAVES_TXT=['hero_titulo','hero_sub','banner_titulo','t1_frase','t1_nombre','t2_frase','t2_nombre','t3_frase','t3_nombre','t4_frase','t4_nombre','t5_frase','t5_nombre','t6_frase','t6_nombre','estudio_titulo','estudio_texto','galeria_titulo','direccion',
+  'ofertas_kicker','ofertas_titulo','ofertas_nota',
+  'oferta1_etiqueta','oferta1_titulo','oferta1_texto','oferta1_precio',
+  'oferta2_etiqueta','oferta2_titulo','oferta2_texto','oferta2_precio',
+  'oferta3_etiqueta','oferta3_titulo','oferta3_texto','oferta3_precio'];
 var CLAVES_IMG=['hero_foto','foto_laser','foto_gluteos','foto_facial','foto_corporal','foto_banner','foto_estudio','equipo_laser','equipo_cavitacion','equipo_radio','equipo_lipolaser'];
 var imgsNuevas={};   // clave -> base64 (sin encabezado)
 var galeria=[];      // [{src|b64, ext, pie}]
