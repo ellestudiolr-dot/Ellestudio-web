@@ -53,6 +53,11 @@
           }
         });
       }
+      // Feed de Instagram automático (Behold): si está puesto, manda sobre los videos fijos
+      if(c.behold_feed){
+        window._BEHOLD_FEED = String(c.behold_feed).trim();
+        if(typeof window.cargarInstagram === 'function') window.cargarInstagram();
+      }
       Object.keys(c).forEach(function(clave){
         var valor = c[clave];
         if(valor === null || valor === undefined || valor === '' || clave === 'galeria') return;
