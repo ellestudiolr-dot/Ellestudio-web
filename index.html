@@ -43,8 +43,10 @@
 }
 </script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -80,8 +82,8 @@
                         "section-padding": "120px"
                     },
                     fontFamily: {
-                        "body-lg": ["DM Sans"], "body-md": ["DM Sans"], "label-upper": ["DM Sans"],
-                        "display-lg": ["EB Garamond"], "headline-lg": ["EB Garamond"], "headline-md": ["EB Garamond"], "headline-sm": ["EB Garamond"]
+                        "body-lg": ["-apple-system","BlinkMacSystemFont","SF Pro Display","SF Pro Text","Helvetica Neue","Inter","Segoe UI","Roboto","sans-serif"], "body-md": ["-apple-system","BlinkMacSystemFont","SF Pro Display","SF Pro Text","Helvetica Neue","Inter","Segoe UI","Roboto","sans-serif"], "label-upper": ["-apple-system","BlinkMacSystemFont","SF Pro Display","SF Pro Text","Helvetica Neue","Inter","Segoe UI","Roboto","sans-serif"],
+                        "display-lg": ["-apple-system","BlinkMacSystemFont","SF Pro Display","SF Pro Text","Helvetica Neue","Inter","Segoe UI","Roboto","sans-serif"], "headline-lg": ["-apple-system","BlinkMacSystemFont","SF Pro Display","SF Pro Text","Helvetica Neue","Inter","Segoe UI","Roboto","sans-serif"], "headline-md": ["-apple-system","BlinkMacSystemFont","SF Pro Display","SF Pro Text","Helvetica Neue","Inter","Segoe UI","Roboto","sans-serif"], "headline-sm": ["-apple-system","BlinkMacSystemFont","SF Pro Display","SF Pro Text","Helvetica Neue","Inter","Segoe UI","Roboto","sans-serif"]
                     },
                     fontSize: {
                         "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
@@ -96,8 +98,7 @@
             }
         }
     </script>
-<style>
-        .gold-gradient-bg { background: linear-gradient(135deg, #B99043 0%, #D8BC7E 100%); }
+<style>        .gold-gradient-bg { background: linear-gradient(135deg, #B99043 0%, #D8BC7E 100%); }
         .text-gold-gradient {
             background: linear-gradient(135deg, #B99043 0%, #D8BC7E 100%);
             -webkit-background-clip: text;
@@ -125,7 +126,6 @@
         .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
         [hidden] { display: none !important; }
         /* Navegacion por vistas (cada pestana muestra su seccion) */
-        .vista:not(.activa) { display: none !important; }
         .nav-activa { color: #D8BC7E !important; }
         .cupon { position: relative; border: 1.6px dashed #B99043; border-radius: 16px; background: #fffdf8; }
         .cupon::before, .cupon::after { content:''; position:absolute; top:50%; width:22px; height:22px; border-radius:50%; background:#f8faf1; border:1.6px dashed #B99043; transform:translateY(-50%); }
@@ -180,463 +180,529 @@
           #modalReserva > div { max-width: 100%; }
         }
     
-        /* ===== TIPOGRAFIA estilo editorial (mayusculas finas y espaciadas) ===== */
-        h1, h2, h3,
-        .font-headline-lg, .font-headline-md, .font-headline-sm {
-            font-family: 'DM Sans', sans-serif !important;
-            font-weight: 300 !important;
+        
+        /* ===== TIPOGRAFIA estilo Apple (SF Pro en iPhone/Mac, Inter en el resto) ===== */
+        :root{
+          --f-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Inter", "Segoe UI", Roboto, sans-serif;
+          --crema:#f8faf1; --tinta:#191c17; --tarjeta:#2b2e27; --oro:#B99043; --oro-claro:#D8BC7E; --salvia:#bbc3ab; --azul:#7f98a3;
         }
-        h2, h3 {
-            text-transform: uppercase;
-            letter-spacing: .045em;
-            line-height: 1.18;
+        html{ scroll-behavior:smooth; }
+        body{ font-family:var(--f-apple); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; background:var(--crema); color:var(--tinta); }
+        h1,h2,h3,.font-headline-lg,.font-headline-md,.font-headline-sm{ font-family:var(--f-apple) !important; font-weight:600 !important; letter-spacing:-0.03em; line-height:1.08; text-transform:none; }
+        p.font-headline-sm{ font-weight:400 !important; letter-spacing:0; }
+        .font-label-upper,.font-body-md,.font-body-lg{ font-family:var(--f-apple) !important; }
+        /* El logo y la marca siguen en su serif dorado */
+        .hero-elle{ font-family:'EB Garamond','Cormorant Garamond',Georgia,serif !important; font-weight:300 !important; text-transform:none !important; letter-spacing:-4px !important; }
+        nav a.marca-elle, footer .font-headline-sm{ font-family:'EB Garamond',Georgia,serif !important; font-weight:400 !important; font-style:italic; text-transform:none !important; letter-spacing:1px !important; }
+        nav a.marca-elle{ font-size:1.6rem; text-decoration:none;
+            background:linear-gradient(110deg,#9a8452 0%,#c8b882 20%,#e8d391 38%,#f0dfa0 50%,#d4af37 62%,#c8b882 80%,#9a8452 100%);
+            background-size:250% 100%; -webkit-background-clip:text; background-clip:text; color:transparent !important; animation:elleShimmer 4.5s linear infinite; }
+
+        /* ===== Apple: los textos aparecen al entrar en pantalla y desaparecen al salir ===== */
+        html.js .rv{ opacity:0; transform:translateY(26px); transition:opacity .9s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1); will-change:opacity,transform; }
+        html.js .rv.on{ opacity:1; transform:none; }
+        html.js .rv-words .w{ display:inline-block; opacity:0; transform:translateY(.4em); filter:blur(8px); transition:opacity .75s ease, transform .75s cubic-bezier(.22,.61,.36,1), filter .75s ease; }
+        html.js .rv-words.on .w{ opacity:1; transform:none; filter:blur(0); }
+        @media (prefers-reduced-motion: reduce){
+          html.js .rv, html.js .rv-words .w{ opacity:1 !important; transform:none !important; filter:none !important; transition:none !important; }
         }
-        /* El logo "elle" y la marca del nav/pie se quedan en su serif dorado */
-        .hero-elle {
-            font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif !important;
-            text-transform: none !important;
-            letter-spacing: -4px !important;
-        }
-        nav a.marca-elle, footer .font-headline-sm,
-        .pie-logo, a[href*="instagram.com/_elleestudio"].font-headline-sm {
-            font-family: 'EB Garamond', Georgia, serif !important;
-            text-transform: none !important;
-            letter-spacing: 2px !important;
-        }
-        /* Logo del nav con el mismo oro brillante del hero */
-        nav a.marca-elle {
-            background: linear-gradient(110deg,#9a8452 0%,#c8b882 20%,#e8d391 38%,#f0dfa0 50%,#d4af37 62%,#c8b882 80%,#9a8452 100%);
-            background-size: 250% 100%;
-            -webkit-background-clip: text; background-clip: text;
-            color: transparent !important;
-            animation: elleShimmer 4.5s linear infinite;
-        }
-        /* Frases largas (testimonios) legibles: sin mayusculas */
-        p.font-headline-sm { text-transform: none; letter-spacing: normal; }
+
+        /* ===== Piezas nuevas (ap-) ===== */
+        .ap-cont{ max-width:1180px; margin:0 auto; padding:0 24px; }
+        .ap-ceja{ display:block; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--oro); margin-bottom:14px; }
+        .ap-ceja-claro{ color:rgba(255,255,255,.75); }
+        .ap-ceja-oro{ color:var(--oro-claro); }
+        .ap-h1{ font-size:clamp(40px,7vw,88px); color:#fff; max-width:14ch; margin:0 0 18px; }
+        .ap-h2{ font-size:clamp(32px,4.6vw,60px); margin:0 0 18px; text-wrap:balance; }
+        .ap-h3{ font-size:clamp(24px,2.6vw,34px); margin:0 0 10px; }
+        .ap-claro{ color:#fff; }
+        .ap-parrafo{ font-size:clamp(17px,1.4vw,21px); line-height:1.5; color:#4a4a44; max-width:60ch; margin:0 auto; }
+        .ap-parrafo.ap-claro{ color:rgba(255,255,255,.85); }
+        .ap-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 26px; border-radius:999px; font-family:var(--f-apple); font-size:15px; font-weight:600; letter-spacing:0; text-decoration:none; border:1px solid transparent; cursor:pointer; transition:transform .25s ease, background .25s ease, border-color .25s ease; white-space:nowrap; line-height:1.2; }
+        .ap-btn:hover{ transform:scale(1.03); }
+        .ap-btn-blanco{ background:#fff; color:var(--tinta); }
+        .ap-btn-oscuro{ background:var(--tinta); color:#fff; }
+        .ap-btn-fantasma{ background:rgba(255,255,255,.08); color:#fff; border-color:rgba(255,255,255,.5); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+        .ap-botones{ display:flex; flex-wrap:wrap; gap:12px; }
+
+        /* Cada pestaña del menú muestra solo su vista */
+        .vista:not(.activa){ display:none !important; }
+
+        /* Barra superior */
+        .ap-logo{ height:44px; width:auto; display:block; }
+        .ap-logo-pie{ height:58px; width:auto; display:block; }
+        .ap-links a.nav-activa{ color:var(--tinta); }
+        /* Barra transparente sobre el video (como Club VIO); al bajar o en otra pestaña se vuelve oscura */
+        .ap-nav{ position:sticky; top:0; z-index:50; background:transparent; border-bottom:1px solid transparent; transition:background .35s, border-color .35s; }
+        .ap-nav.con-fondo{ background:rgba(25,28,23,.86); backdrop-filter:blur(18px) saturate(140%); -webkit-backdrop-filter:blur(18px) saturate(140%); border-bottom-color:rgba(255,255,255,.08); }
+        .ap-nav-in{ max-width:1180px; margin:0 auto; padding:0 24px; height:68px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+        .ap-links{ display:none; gap:36px; }
+        .ap-links a{ color:rgba(255,255,255,.86); text-decoration:none; font-size:12px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; transition:color .2s; }
+        .ap-links a:hover, .ap-links a.nav-activa{ color:#fff; }
+        .ap-nav-der{ display:flex; align-items:center; gap:10px; }
+        .ap-nav .ap-btn{ padding:11px 18px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; border-radius:4px; }
+        .ap-nav .ap-btn-blanco{ background:#fff; color:var(--tinta); }
+        .ap-burger{ width:40px; height:40px; border-radius:8px; border:1px solid rgba(255,255,255,.35); background:none; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; }
+        .ap-burger svg{ stroke:#fff; }
+        .ap-menu-movil{ background:rgba(25,28,23,.96); border-top:1px solid rgba(255,255,255,.08); }
+        .ap-menu-movil a{ display:block; padding:16px 24px; color:#fff; text-decoration:none; font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,.06); }
+        @media (min-width:860px){ .ap-links{ display:flex; } .ap-burger{ display:none; } .ap-menu-movil{ display:none !important; } }
+
+        /* Inicio con video */
+        .ap-hero{ position:relative; min-height:100vh; margin-top:-68px; display:flex; align-items:flex-end; overflow:hidden; background:#101210; }
+        .ap-hero video, .ap-modulo video, .ap-split-video video, .ap-banda video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+        .ap-hero-velo{ position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.12) 100%); }
+        .ap-hero-texto{ position:relative; z-index:2; width:100%; max-width:1180px; margin:0 auto; padding:140px 24px 110px; }
+        .ap-hero-logo{ display:block; width:min(62vw,420px); height:auto; margin:0 0 10px -6px; filter:drop-shadow(0 6px 24px rgba(0,0,0,.35)); }
+        .ap-hero-linea{ display:block; width:min(62vw,420px); height:1px; background:linear-gradient(90deg, rgba(255,255,255,.7), rgba(255,255,255,0)); margin:0 0 28px; }
+        .ap-hero-titulo{ font-size:clamp(28px,3.4vw,46px); color:#fff; max-width:22ch; margin:0 0 30px; font-weight:500 !important; letter-spacing:-0.015em; line-height:1.18; }
+        .ap-hero-texto .ap-ceja{ color:var(--oro-claro); }
+        .ap-hero-sub{ font-size:clamp(17px,1.6vw,22px); color:rgba(255,255,255,.86); margin:0 0 28px; max-width:52ch; line-height:1.45; }
+        .ap-pista{ position:absolute; left:50%; bottom:22px; transform:translateX(-50%); z-index:2; color:rgba(255,255,255,.6); font-size:11px; letter-spacing:.2em; text-transform:uppercase; display:flex; flex-direction:column; align-items:center; gap:8px; }
+        .ap-pista i{ display:block; width:1px; height:34px; background:linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.85)); animation:apPista 1.8s ease-in-out infinite; }
+        @keyframes apPista{ 0%{ transform:scaleY(0); transform-origin:top; } 50%{ transform:scaleY(1); transform-origin:top; } 51%{ transform-origin:bottom; } 100%{ transform:scaleY(0); transform-origin:bottom; } }
+
+        /* Invitación */
+        .ap-intro{ text-align:center; padding:120px 24px 96px; max-width:900px; margin:0 auto; }
+        .ap-cifras{ display:flex; flex-wrap:wrap; justify-content:center; gap:40px 64px; margin-top:56px; }
+        .ap-cifras div{ display:flex; flex-direction:column; align-items:center; gap:6px; }
+        .ap-cifras b{ font-size:clamp(34px,4vw,52px); font-weight:600; letter-spacing:-.03em; line-height:1; background:linear-gradient(135deg,#B99043,#D8BC7E); -webkit-background-clip:text; background-clip:text; color:transparent; }
+        .ap-cifras span{ font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#6b6a62; font-weight:600; }
+
+        /* Ofertas (tarjetas oscuras) */
+        .ap-ofertas{ background:var(--tinta); color:#fff; padding:100px 0; }
+        .ap-cab-fila{ display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:44px; }
+        .ap-cab-fila .ap-h2{ margin-bottom:0; }
+        .ap-nota-cab{ color:rgba(255,255,255,.55); font-size:14px; max-width:40ch; margin:0; }
+        .ap-tarjeta{ background:var(--tarjeta); border:1px solid rgba(255,255,255,.08); border-radius:28px; padding:36px; display:flex; flex-direction:column; gap:14px; transition:border-color .3s; }
+        .ap-tarjeta:hover{ border-color:rgba(255,255,255,.22); }
+        .ap-tarjeta-ancha{ margin-bottom:28px; flex-direction:row; flex-wrap:wrap; justify-content:space-between; gap:28px; }
+        .ap-tarjeta-ancha > div:first-child{ flex:1 1 380px; display:flex; flex-direction:column; gap:12px; }
+        .ap-tarjeta-precio{ display:flex; flex-direction:column; align-items:flex-start; gap:12px; justify-content:center; }
+        @media (min-width:860px){ .ap-tarjeta-precio{ align-items:flex-end; text-align:right; border-left:1px solid rgba(255,255,255,.1); padding-left:40px; } }
+        .ap-badge{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:6px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.3); color:#fff; width:max-content; }
+        .ap-badge-oro{ background:var(--oro); border-color:var(--oro); color:var(--tinta); }
+        .ap-tarjeta-txt{ color:rgba(255,255,255,.75); font-size:16px; line-height:1.55; margin:0; }
+        .ap-guiones{ list-style:none; padding:0; margin:4px 0 0; display:flex; flex-direction:column; gap:8px; color:rgba(255,255,255,.85); font-size:15px; }
+        .ap-guiones li::before{ content:'—'; color:var(--oro-claro); margin-right:10px; }
+        .ap-mini{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.5); font-weight:600; }
+        .ap-precio{ font-size:clamp(34px,3.6vw,48px); font-weight:600; letter-spacing:-.03em; line-height:1; }
+        .ap-precio small{ font-size:16px; font-weight:400; color:rgba(255,255,255,.6); letter-spacing:0; }
+        .ap-grid2{ display:grid; grid-template-columns:1fr; gap:28px; }
+        .ap-grid3{ display:grid; grid-template-columns:1fr; gap:24px; }
+        @media (min-width:760px){ .ap-grid2{ grid-template-columns:1fr 1fr; } .ap-grid3{ grid-template-columns:repeat(3,1fr); } }
+        .ap-tarjeta .ap-btn{ align-self:flex-start; }
+        .ap-tarjeta > .ap-btn{ margin-top:auto; }
+
+        /* Tratamientos (módulos con video) */
+        .ap-modulos{ padding:110px 0; }
+        .ap-cab-centro{ text-align:center; max-width:720px; margin:0 auto 56px; }
+        .ap-modulo{ position:relative; display:block; aspect-ratio:4/5; min-height:420px; border-radius:28px; overflow:hidden; background:#1a1c18; text-decoration:none; color:#fff; box-shadow:0 20px 50px rgba(25,28,23,.12); }
+        .ap-modulo video{ transition:transform 1s ease; }
+        .ap-modulo:hover video{ transform:scale(1.04); }
+        .ap-modulo-velo{ position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.25) 50%, rgba(0,0,0,0) 100%); }
+        .ap-modulo-txt{ position:absolute; left:0; right:0; bottom:0; padding:30px; }
+        .ap-circ{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,.7); display:inline-flex; align-items:center; justify-content:center; margin-bottom:14px; }
+        .ap-modulo h3{ color:#fff; font-size:26px; margin:0 0 6px; }
+        .ap-modulo p{ margin:0; color:rgba(255,255,255,.82); font-size:15px; line-height:1.45; }
+
+        /* Mitad color, mitad video */
+        .ap-split{ display:grid; grid-template-columns:1fr; min-height:620px; }
+        @media (min-width:860px){ .ap-split{ grid-template-columns:1fr 1fr; } }
+        .ap-split-txt{ background:var(--azul); color:#fff; padding:80px 24px; display:flex; flex-direction:column; justify-content:center; }
+        .ap-split-txt > *{ max-width:560px; }
+        .ap-split-txt .ap-parrafo{ margin:0 0 30px; }
+        @media (min-width:860px){ .ap-split-txt{ padding:96px 72px; } }
+        .ap-split-video{ position:relative; min-height:420px; background:#101210; }
+
+        /* Banda con video a lo ancho */
+        .ap-banda{ position:relative; min-height:78vh; display:flex; align-items:center; overflow:hidden; background:#101210; }
+        .ap-banda-velo{ position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.45) 50%, rgba(0,0,0,.2) 100%); }
+        .ap-banda-txt{ position:relative; z-index:2; max-width:1180px; margin:0 auto; padding:90px 24px; width:100%; }
+        .ap-banda-txt > *{ max-width:620px; }
+        .ap-banda-txt .ap-parrafo{ margin:0 0 28px; }
+
+        /* Pasos */
+        .ap-pasos{ padding:110px 0; }
+        .ap-paso{ text-align:center; padding:0 12px; }
+        .ap-num{ width:60px; height:60px; border-radius:50%; border:1px solid rgba(25,28,23,.2); background:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:22px; font-weight:600; margin-bottom:18px; }
+        .ap-paso h3{ font-size:22px; margin:0 0 8px; }
+        .ap-paso p{ margin:0 auto; color:#5a5a53; font-size:16px; line-height:1.5; max-width:30ch; }
+
+        /* Instagram: cinta de publicaciones que se mueve sola */
+        .ap-ig{ padding:100px 0 90px; background:#fff; overflow:hidden; }
+        .ap-ig .ap-cab-fila{ margin-bottom:36px; }
+        .ap-ig-handle{ display:inline-block; margin-top:8px; font-size:18px; font-weight:600; color:var(--oro); text-decoration:none; }
+        .ap-ig-handle:hover{ text-decoration:underline; }
+        .ap-ig-cinta{ display:flex; gap:18px; padding:8px 24px 18px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+        .ap-ig-cinta::-webkit-scrollbar{ display:none; }
+        .ap-ig-cinta.auto{ overflow:hidden; padding-left:0; padding-right:0; }
+        .ap-ig-pista{ display:flex; gap:18px; width:max-content; padding-left:18px; animation:apCinta 48s linear infinite; }
+        .ap-ig-cinta.auto:hover .ap-ig-pista{ animation-play-state:paused; }
+        @keyframes apCinta{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+        .ap-ig-post{ position:relative; flex:0 0 auto; width:min(74vw,290px); aspect-ratio:4/5; border-radius:22px; overflow:hidden; background:#1a1c18; scroll-snap-align:start; text-decoration:none; color:#fff; box-shadow:0 14px 34px rgba(25,28,23,.12); transition:transform .4s ease; }
+        .ap-ig-post:hover{ transform:translateY(-6px); }
+        .ap-ig-post img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 1.2s ease; }
+        .ap-ig-post:hover img{ transform:scale(1.05); }
+        .ap-ig-post .velo{ position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,0) 55%); }
+        .ap-ig-post .play{ position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:50%; background:rgba(0,0,0,.45); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; }
+        .ap-ig-post .texto{ position:absolute; left:0; right:0; bottom:0; padding:18px; }
+        .ap-ig-post .texto small{ display:block; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--oro-claro); font-weight:600; margin-bottom:6px; }
+        .ap-ig-post .texto p{ margin:0; font-size:14px; line-height:1.4; color:rgba(255,255,255,.92); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .ap-ig-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; max-width:1180px; margin:0 auto; padding:0 24px; }
+        @media (min-width:760px){ .ap-ig-grid{ grid-template-columns:repeat(3,1fr); gap:20px; } }
+        .ap-ig-grid .ap-ig-post{ width:auto; }
+        .ap-ig-grid .ap-ig-post:nth-child(1){ transition-delay:.05s; } .ap-ig-grid .ap-ig-post:nth-child(2){ transition-delay:.12s; } .ap-ig-grid .ap-ig-post:nth-child(3){ transition-delay:.19s; }
+        .ap-ig-grid .ap-ig-post:nth-child(4){ transition-delay:.26s; } .ap-ig-grid .ap-ig-post:nth-child(5){ transition-delay:.33s; } .ap-ig-grid .ap-ig-post:nth-child(6){ transition-delay:.40s; }
+        .ap-ig-nota{ text-align:center; color:#6b6a62; font-size:14px; margin:22px 24px 0; }
+
+        /* Precios en vivo con fotos */
+        .ap-precios{ padding:70px 0 110px; }
+        .ap-precios .ap-cab-centro{ margin-bottom:34px; }
+        .ap-chips{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:0 0 18px; }
+        .ap-chip{ border:1px solid rgba(25,28,23,.18); background:#fff; color:var(--tinta); border-radius:999px; padding:10px 16px; font-family:var(--f-apple); font-size:14px; font-weight:500; cursor:pointer; transition:background .2s, color .2s, border-color .2s; }
+        .ap-chip[aria-pressed="true"]{ background:var(--tinta); color:#fff; border-color:var(--tinta); }
+        .ap-seg-wrap{ text-align:center; margin:0 0 28px; }
+        .ap-seg{ display:inline-flex; border:1px solid rgba(25,28,23,.18); border-radius:999px; padding:3px; background:#fff; }
+        .ap-seg button{ border:0; background:none; padding:8px 20px; border-radius:999px; font-family:var(--f-apple); font-size:14px; font-weight:500; cursor:pointer; color:var(--tinta); }
+        .ap-seg button[aria-pressed="true"]{ background:var(--tinta); color:#fff; }
+        .ap-pgrid{ display:grid; grid-template-columns:1fr; gap:20px; }
+        @media (min-width:700px){ .ap-pgrid{ grid-template-columns:repeat(2,1fr); } }
+        @media (min-width:1000px){ .ap-pgrid{ grid-template-columns:repeat(3,1fr); } }
+        .ap-pcard{ background:#fff; border:1px solid rgba(25,28,23,.08); border-radius:24px; overflow:hidden; display:flex; flex-direction:column; transition:transform .35s ease, box-shadow .35s ease; }
+        .ap-pcard:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(25,28,23,.10); }
+        .ap-pfoto{ aspect-ratio:4/3; overflow:hidden; background:#ecebe3; }
+        .ap-pfoto img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform 1s ease; }
+        .ap-pcard:hover .ap-pfoto img{ transform:scale(1.04); }
+        .ap-pbody{ padding:20px 22px 22px; display:flex; flex-direction:column; gap:8px; flex:1; }
+        .ap-pnombre{ font-size:20px; font-weight:600; letter-spacing:-.02em; line-height:1.2; }
+        .ap-pnombre-sm{ font-size:16px; }
+        .ap-pquien{ font-size:12px; color:#6b6a62; letter-spacing:.08em; text-transform:uppercase; font-weight:600; }
+        .ap-pprecio{ font-size:30px; font-weight:600; letter-spacing:-.03em; line-height:1; margin-top:4px; }
+        .ap-pprecio small{ font-size:12px; font-weight:600; color:#6b6a62; margin-left:8px; letter-spacing:.06em; text-transform:uppercase; }
+        .ap-pprecio-sm{ font-size:20px; margin-top:0; }
+        .ap-ppaqs{ display:flex; flex-wrap:wrap; gap:8px; }
+        .ap-ppaq{ font-size:13px; background:#f3f4ec; border-radius:999px; padding:6px 12px; }
+        .ap-pextra{ font-size:13px; color:#7b580e; font-weight:600; }
+        .ap-pincluye{ font-size:14px; color:#4a4a44; line-height:1.5; }
+        .ap-pincluye summary{ cursor:pointer; font-weight:600; color:var(--tinta); list-style:none; }
+        .ap-pincluye summary::-webkit-details-marker{ display:none; }
+        .ap-pincluye p{ margin:6px 0 0; }
+        .ap-pbtn{ margin-top:auto; align-self:flex-start; }
+        .ap-pmini{ padding:7px 14px !important; font-size:12px !important; }
+        .ap-ppromo{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--oro); font-weight:700; }
+        .ap-pvence{ font-size:13px; color:#6b6a62; }
+        .ap-pbanda{ position:relative; border-radius:24px; overflow:hidden; aspect-ratio:21/9; min-height:200px; margin-bottom:22px; background:#1a1c18; }
+        .ap-pbanda img{ width:100%; height:100%; object-fit:cover; display:block; }
+        .ap-pbanda > div{ position:absolute; left:0; right:0; bottom:0; padding:26px 28px; background:linear-gradient(transparent, rgba(0,0,0,.72)); color:#fff; }
+        .ap-pbanda b{ display:block; font-size:clamp(22px,2.6vw,30px); font-weight:600; letter-spacing:-.02em; }
+        .ap-pbanda span{ font-size:14px; color:rgba(255,255,255,.85); }
+        .ap-pgrupo{ background:#fff; border:1px solid rgba(25,28,23,.08); border-radius:24px; overflow:hidden; display:grid; grid-template-columns:1fr; margin-bottom:18px; }
+        @media (min-width:860px){ .ap-pgrupo.con-foto{ grid-template-columns:280px 1fr; } .ap-pgrupo .ap-pfoto{ aspect-ratio:auto; height:100%; } }
+        .ap-pzonas{ padding:18px 22px 20px; min-width:0; }
+        .ap-pzonas h3{ font-size:20px; margin:0 0 10px; }
+        .ap-pzona{ display:grid; grid-template-columns:1fr 72px 72px 72px auto; gap:8px; align-items:center; padding:10px 0; border-top:1px solid rgba(25,28,23,.07); font-size:14px; }
+        .ap-pzona.cab{ border-top:0; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#6b6a62; font-weight:600; padding:0 0 4px; }
+        .ap-pzona span:not(:first-child){ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+        @media (max-width:560px){ .ap-pzona{ grid-template-columns:1fr 58px 58px 58px; font-size:13px; } .ap-pzona .ap-pmini{ grid-column:1 / -1; justify-self:start; } .ap-pzona.cab span:last-child{ display:none; } }
+        .ap-pnota{ font-size:13px; color:#6b6a62; margin:14px 0 0; }
+        .ap-plista{ background:#fff; border:1px solid rgba(25,28,23,.08); border-radius:24px; padding:6px 22px; }
+        .ap-pfila{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 0; border-top:1px solid rgba(25,28,23,.07); }
+        .ap-pfila:first-child{ border-top:0; }
+        .ap-pfila-der{ display:flex; align-items:center; gap:12px; flex-shrink:0; }
+
+        /* Cómo funciona + preguntas: banda oscura compacta */
+        .ap-como{ background:var(--tinta); color:#fff; padding:84px 0; }
+        .ap-como-grid{ display:grid; grid-template-columns:1fr; gap:48px; }
+        @media (min-width:900px){ .ap-como-grid{ grid-template-columns:1.05fr 1fr; gap:72px; align-items:start; } }
+        .ap-como-tit{ font-size:clamp(28px,3.2vw,40px); margin:0 0 26px; }
+        .ap-timeline{ list-style:none; margin:0 0 28px; padding:0; position:relative; }
+        .ap-timeline::before{ content:''; position:absolute; left:19px; top:14px; bottom:14px; width:1px; background:rgba(255,255,255,.14); }
+        .ap-timeline li{ position:relative; display:flex; gap:18px; align-items:flex-start; padding:12px 0; opacity:.55; transition:opacity .5s ease; }
+        .ap-timeline li.activa{ opacity:1; }
+        .ap-tl-num{ position:relative; z-index:1; flex:0 0 40px; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.45); background:var(--tinta); display:inline-flex; align-items:center; justify-content:center; font-size:15px; font-weight:600; transition:background .5s ease, color .5s ease, transform .5s ease; }
+        .ap-timeline li.activa .ap-tl-num{ background:#fff; color:var(--tinta); border-color:#fff; transform:scale(1.08); }
+        .ap-timeline b{ display:block; font-size:18px; font-weight:600; letter-spacing:-.01em; margin:8px 0 4px; }
+        .ap-timeline p{ margin:0; font-size:15px; line-height:1.5; color:rgba(255,255,255,.72); max-width:38ch; }
+        .ap-faq{ background:var(--tarjeta); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:0 18px; margin-bottom:10px; transition:border-color .3s; }
+        .ap-faq[open]{ border-color:rgba(255,255,255,.22); }
+        .ap-faq summary{ list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:14px; padding:16px 0; font-size:16px; font-weight:600; }
+        .ap-faq summary::-webkit-details-marker{ display:none; }
+        .ap-faq summary i{ flex:0 0 22px; width:22px; height:22px; border-radius:50%; border:1px solid rgba(255,255,255,.4); position:relative; transition:transform .3s ease; }
+        .ap-faq summary i::before, .ap-faq summary i::after{ content:''; position:absolute; left:50%; top:50%; width:9px; height:1.5px; background:#fff; transform:translate(-50%,-50%); }
+        .ap-faq summary i::after{ transform:translate(-50%,-50%) rotate(90deg); }
+        .ap-faq[open] summary i{ transform:rotate(45deg); }
+        .ap-faq p{ margin:0; padding:0 0 18px; font-size:15px; line-height:1.55; color:rgba(255,255,255,.75); max-width:52ch; }
+
+        /* Llamado final */
+        .ap-cta{ background:var(--tinta); color:#fff; padding:90px 24px; text-align:center; }
+        .ap-cta .ap-parrafo{ margin:0 auto 28px; }
+
+        /* Secciones de siempre (precios, estudio, ubicación, popup) con el mismo lenguaje:
+           píldoras oscuras, sin mayúsculas, el oro solo en detalles pequeños */
+        .gold-gradient-bg{ background:var(--tinta) !important; color:#fff !important; box-shadow:none !important; }
+        .gold-gradient-bg:hover{ filter:none !important; transform:scale(1.02); }
+        .border-gold-600{ border-color:rgba(25,28,23,.25) !important; color:var(--tinta) !important; }
+        .text-gold-gradient{ background:none !important; -webkit-text-fill-color:var(--tinta) !important; color:var(--tinta) !important; }
+        .font-label-upper.rounded-full{ text-transform:none !important; letter-spacing:0 !important; font-size:14px !important; font-weight:600 !important; transition:transform .25s ease; }
+        .font-label-upper.rounded-full:hover{ transform:scale(1.02); }
+        #precios button[style*="linear-gradient"]{ background:var(--tinta) !important; color:#fff !important; }
+        #precios button[style*="border:1.2px solid"]{ color:var(--tinta) !important; border-color:rgba(25,28,23,.22) !important; }
+        #precios div[style*="#1c1f18"]{ background:var(--tinta) !important; }
+        .cupon{ border:1px solid rgba(25,28,23,.1) !important; background:#fff !important; border-radius:24px !important; }
+        .cupon::before, .cupon::after{ display:none !important; }
+        .cupon .hero-elle{ font-family:var(--f-apple) !important; font-style:normal !important; font-weight:600 !important; letter-spacing:-0.03em !important; background:none !important; -webkit-text-fill-color:var(--tinta) !important; color:var(--tinta) !important; animation:none !important; filter:none !important; }
+        .chip-svc{ border-color:rgba(25,28,23,.25) !important; color:var(--tinta) !important; text-transform:none !important; letter-spacing:0 !important; font-size:14px !important; font-weight:500 !important; }
+        .chip-svc.activo{ background:var(--tinta) !important; color:#fff !important; border-color:var(--tinta) !important; }
+        .input-underline:focus{ border-color:var(--tinta) !important; }
+        #modalReserva > div > div{ border-radius:28px !important; }
+        .red-circulo{ border-color:rgba(25,28,23,.3) !important; color:#fff !important; }
+
+        /* Las secciones de siempre quedan debajo de la barra fija al navegar */
+        #inicio,#ofertas,#tratamientos,#como-funciona,#precios,#estudio,#instagram,#faq,#ubicacion{ scroll-margin-top:64px; }
+
 </style>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">
 
-<!-- NAV -->
-<nav class="bg-on-background sticky top-0 z-50 border-b border-outline/20 w-full">
-  <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter py-4">
-    <a href="#inicio" onclick="return _nav('inicio')" class="marca-elle font-headline-md text-headline-md italic text-surface-bright tracking-widest flex-shrink-0" style="text-decoration:none;">elle studio</a>
-    <div class="hidden md:flex items-center gap-8">
-      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#inicio" data-nav="inicio" onclick="return _nav('inicio')">Inicio</a>
-      <div class="relative" id="menuSvcWrap" onmouseenter="menuSvc(true)" onmouseleave="menuSvc(false)">
-        <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#servicios" data-nav="servicios" onclick="menuSvc(true); return false;">Servicios ▾</a>
-        <div id="menuSvcPanel" style="display:none;position:absolute;left:50%;transform:translateX(-46%);top:100%;padding-top:14px;z-index:60;">
-          <div style="width:640px;max-width:86vw;background:#23261f;border:1px solid rgba(216,188,126,.25);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.4);overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr;">
-            <div style="padding:14px 0;">
-              <div class="font-label-upper text-label-upper uppercase" style="color:#D8BC7E;padding:8px 22px;">Tratamientos</div>
-              <a onclick="return _navSvc('svc-laser')" href="#servicios" class="block px-6 py-3 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Depilación Láser</a>
-              <a onclick="return _navSvc('svc-gluteos')" href="#servicios" class="block px-6 py-3 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Glúteos De Porcelana</a>
-              <a onclick="return _navSvc('svc-facial')" href="#servicios" class="block px-6 py-3 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Limpieza Facial</a>
-              <a onclick="return _navSvc('svc-corporal')" href="#servicios" class="block px-6 py-3 font-body-md text-body-md hover:bg-white/5" style="color:#e8e0cc;">Tratamientos Corporales</a>
-              <a href="#precios" onclick="return _nav('precios')" class="block px-6 py-3 font-label-upper text-label-upper uppercase" style="color:#D8BC7E;">Ver todos los precios →</a>
-            </div>
-            <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;background:rgba(0,0,0,.18);">
-              <a onclick="return _navSvc('svc-laser')" href="#servicios" class="block relative rounded-xl overflow-hidden" style="aspect-ratio:3/4;">
-                <img src="img/laser-piernas.jpg" alt="Depilación láser" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-                <span style="position:absolute;left:0;right:0;bottom:0;padding:26px 10px 10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">Láser · desde S/ 25</span>
-              </a>
-              <a onclick="return _navSvc('svc-gluteos')" href="#servicios" class="block relative rounded-xl overflow-hidden" style="aspect-ratio:3/4;">
-                <img src="img/gluteos.jpg" alt="Glúteos de Porcelana" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-                <span style="position:absolute;left:0;right:0;bottom:0;padding:26px 10px 10px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;">Glúteos · desde S/ 89.90</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#precios" data-nav="precios" onclick="return _nav('precios')">Precios</a>
-      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#estudio" data-nav="estudio" onclick="return _nav('estudio')">Estudio</a>
-      <a class="text-surface-variant font-label-upper text-label-upper hover:text-gold-400 transition-colors uppercase" href="#ubicacion" data-nav="ubicacion" onclick="return _nav('ubicacion')">Ubicación</a>
+<!-- BARRA SUPERIOR -->
+<nav class="ap-nav" id="apNav">
+  <div class="ap-nav-in">
+    <a href="#inicio" onclick="return _nav('inicio')" aria-label="elle studio · inicio" style="text-decoration:none;"><img src="img/logo-elle-claro.png" alt="elle studio" class="ap-logo"/></a>
+    <div class="ap-links">
+      <a href="#inicio" onclick="return _nav('inicio')" data-nav="inicio">Inicio</a>
+      <a href="#tratamientos" onclick="return _nav('tratamientos')" data-nav="tratamientos">Tratamientos</a>
+      <a href="#precios" onclick="return _nav('precios')" data-nav="precios">Precios</a>
+      <a href="#estudio" onclick="return _nav('estudio')" data-nav="estudio">Estudio</a>
+      <a href="#ubicacion" onclick="return _nav('ubicacion')" data-nav="ubicacion">Ubicación</a>
     </div>
-    <div class="flex items-center gap-3">
-      <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-5 py-3 rounded-full hover:brightness-110 transition-all shadow-[0_4px_20px_rgba(185,144,67,0.2)] uppercase whitespace-nowrap" style="border:none;cursor:pointer;">Reservar cita</button>
-      <button class="md:hidden" onclick="menuMovil()" aria-label="Menú" style="background:none;border:1.4px solid rgba(216,188,126,.5);border-radius:10px;width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
+    <div class="ap-nav-der">
+      <button class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
+      <button class="ap-burger" onclick="menuMovil()" aria-label="Menú">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8BC7E" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
-  <div id="menuMovilPanel" class="md:hidden" style="display:none;background:#23261f;border-top:1px solid rgba(216,188,126,.2);">
-    <a onclick="return _navMovil('inicio')" href="#inicio" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Inicio</a>
-    <a onclick="return _navMovil('servicios')" href="#servicios" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Servicios</a>
-    <a onclick="return _navMovil('precios')" href="#precios" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Precios</a>
-    <a onclick="return _navMovil('estudio')" href="#estudio" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;border-bottom:1px solid rgba(216,188,126,.1);">Estudio</a>
-    <a onclick="return _navMovil('ubicacion')" href="#ubicacion" class="block px-6 py-4 font-label-upper text-label-upper uppercase" style="color:#e8e0cc;">Ubicación</a>
+  <div id="menuMovilPanel" class="ap-menu-movil" style="display:none;">
+    <a onclick="return _navMovil('inicio')" href="#inicio">Inicio</a>
+    <a onclick="return _navMovil('tratamientos')" href="#tratamientos">Tratamientos</a>
+    <a onclick="return _navMovil('precios')" href="#precios">Precios</a>
+    <a onclick="return _navMovil('estudio')" href="#estudio">Estudio</a>
+    <a onclick="return _navMovil('ubicacion')" href="#ubicacion">Ubicación</a>
   </div>
 </nav>
 
-<!-- HERO con foto grande al lado -->
-<header class="vista activa relative min-h-[80vh] flex items-center overflow-hidden" data-vista="inicio">
-  <div class="absolute right-0 top-0 w-full md:w-[64%] h-full">
-    <img class="object-cover w-full h-full opacity-30 md:opacity-100" style="object-position:center center;" src="img/hero-modelo.jpg?v=3" alt="Resultados de depilación láser: abdomen, glúteos y torso con piel lisa — elle studio, San Isidro" data-edit-img="hero_foto"/>
-    <div class="absolute inset-0" style="background:linear-gradient(90deg,#f8faf1 0%,rgba(248,250,241,.72) 12%,rgba(248,250,241,.22) 30%,transparent 48%);"></div>
-  </div>
-  <div class="w-full px-gutter max-w-container-max mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 py-16">
-    <div class="md:col-span-6 flex flex-col items-start justify-center">
-      <span class="font-label-upper text-label-upper text-tertiary tracking-[0.2em] uppercase mb-5">— EST · 2024 —</span>
-      <div class="flex flex-col items-start">
-        <h1 class="hero-elle text-[100px] md:text-[170px]">elle</h1>
-        <div class="hero-underline" style="margin-left:0;width:250px;"></div>
-        <span class="font-label-upper text-[14px] md:text-[20px] tracking-[0.4em] text-on-background uppercase mt-3">S·T·U·D·I·O</span>
-      </div>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-8 leading-tight max-w-lg" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces</h2>
-      <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-md" data-edit="hero_sub">Depilación láser y estética premium en San Isidro, Lima.</p>
-      <div class="flex flex-col sm:flex-row gap-4 mt-8 w-full sm:w-auto">
-        <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase flex items-center justify-center gap-2 whitespace-nowrap" style="border:none;cursor:pointer;">
-          Reservar cita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-        </button>
-        <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2 whitespace-nowrap" href="#precios" onclick="return _nav('precios')">Ver precios</a>
-        <a id="waHero" hidden class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase flex items-center justify-center gap-2 whitespace-nowrap" href="#" target="_blank" rel="noopener">
-          <span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
-        </a>
-      </div>
+<!-- INICIO: video a pantalla completa -->
+<header class="ap-hero vista activa" data-vista="inicio" id="inicio">
+  <video data-video autoplay muted loop playsinline preload="auto" poster="img/v/laser-pierna.jpg" aria-hidden="true">
+    <source src="video/hero.mp4" type="video/mp4"/>
+  </video>
+  <div class="ap-hero-velo"></div>
+  <div class="ap-hero-texto" id="heroTexto">
+    <img src="img/logo-elle-claro.png" alt="elle studio" class="ap-hero-logo rv"/>
+    <span class="ap-hero-linea rv" aria-hidden="true"></span>
+    <h1 class="ap-hero-titulo rv rv-words" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces.</h1>
+    <div class="ap-botones rv">
+      <button class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
+      <a class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver precios</a>
     </div>
   </div>
+  <div class="ap-pista" aria-hidden="true">Desliza<i></i></div>
 </header>
 
-<!-- BARRA DE CONFIANZA -->
-<section class="vista activa bg-on-background py-6" data-vista="inicio">
-  <div class="max-w-container-max mx-auto px-gutter">
-    <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-2 text-center">
-      <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">+250 clientas atendidas</span>
-      <span class="hidden md:inline" style="color:rgba(216,188,126,.4);">·</span>
-      <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">+1,000 sesiones realizadas</span>
-      <span class="hidden md:inline" style="color:rgba(216,188,126,.4);">·</span>
-      <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">Tecnología láser moderna</span>
-      <span class="hidden md:inline" style="color:rgba(216,188,126,.4);">·</span>
-      <span class="font-label-upper text-label-upper uppercase tracking-wider" style="color:#d8bc7e;">Atención personalizada</span>
-    </div>
+<!-- UNA INVITACIÓN -->
+<section class="ap-intro vista activa" data-vista="inicio">
+  <span class="ap-ceja rv">Una invitación</span>
+  <h2 class="ap-h2 rv rv-words">Cuidarte no es una cita. Es constancia.</h2>
+  <p class="ap-parrafo rv">Sesiones cortas, con cita y sin esperas. Te acompañamos sesión a sesión hasta que veas el resultado.</p>
+  <div class="ap-cifras rv">
+    <div><b class="contador" data-hasta="250" data-pre="+">+0</b><span>clientas atendidas</span></div>
+    <div><b class="contador" data-hasta="1000" data-pre="+">+0</b><span>sesiones realizadas</span></div>
+    <div><b>3</b><span>cubículos privados</span></div>
   </div>
 </section>
 
-<!-- TRATAMIENTOS (tarjetas con foto) -->
-<section class="vista py-24 px-gutter max-w-container-max mx-auto relative z-10" id="servicios" data-vista="servicios">
-  <div class="text-center mb-16">
-    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-4">Nuestros Tratamientos</h2>
-    <div class="w-12 h-[1px] bg-gold-600/50 mx-auto"></div>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
-    <a class="group block" href="#precios" onclick="return _nav('precios')" id="svc-laser">
-      <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/laser-piernas.jpg" data-edit-img="foto_laser" alt="Depilación láser — piernas suaves" loading="lazy"/>
+<!-- OFERTAS DEL MES (editable desde el editor) -->
+<section class="ap-ofertas vista activa" data-vista="inicio" id="ofertas">
+  <div class="ap-cont">
+    <div class="ap-cab-fila rv">
+      <div>
+        <span class="ap-ceja" data-edit="ofertas_kicker">Promociones vigentes</span>
+        <h2 class="ap-h2 ap-claro" data-edit="ofertas_titulo">Ofertas del mes</h2>
       </div>
-      <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
-        <div>
-          <h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Depilación Láser</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant">Suavidad duradera, para ella y para él.</p>
-        </div>
-        <div class="text-right flex-shrink-0 pl-4">
-          <span class="font-label-upper text-label-upper text-outline block mb-1 uppercase">desde</span>
-          <span class="font-headline-sm text-headline-sm text-gold-gradient">S/ 25</span>
-        </div>
-      </div>
-      <div class="pt-4 flex items-center justify-between text-tertiary">
-        <span class="font-label-upper text-label-upper uppercase">Ver precios por zona</span>
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </div>
-    </a>
-    <a class="group block md:mt-12" href="#precios" onclick="return _nav('precios')" id="svc-gluteos">
-      <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/gluteos.jpg" data-edit-img="foto_gluteos" alt="Glúteos de Porcelana — firmeza y textura" loading="lazy"/>
-      </div>
-      <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
-        <div>
-          <h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Glúteos De Porcelana</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant">Levantamiento, firmeza y textura renovada.</p>
-        </div>
-        <div class="text-right flex-shrink-0 pl-4">
-          <span class="font-label-upper text-label-upper text-outline block mb-1 uppercase">desde</span>
-          <span class="font-headline-sm text-headline-sm text-gold-gradient">S/ 89.90</span>
-        </div>
-      </div>
-      <div class="pt-4 flex items-center justify-between text-tertiary">
-        <span class="font-label-upper text-label-upper uppercase">Ver más</span>
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </div>
-    </a>
-    <a class="group block" href="#precios" onclick="return _nav('precios')" id="svc-facial">
-      <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/facial.jpg" data-edit-img="foto_facial" alt="Limpieza facial profesional" loading="lazy"/>
-      </div>
-      <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
-        <div>
-          <h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Limpieza Facial</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant">Piel luminosa, limpia e hidratada.</p>
-        </div>
-        <div class="text-right flex-shrink-0 pl-4">
-          <span class="font-label-upper text-label-upper text-outline block mb-1 uppercase">desde</span>
-          <span class="font-headline-sm text-headline-sm text-gold-gradient">S/ 80</span>
-        </div>
-      </div>
-      <div class="pt-4 flex items-center justify-between text-tertiary">
-        <span class="font-label-upper text-label-upper uppercase">Ver más</span>
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </div>
-    </a>
-    <a class="group block md:mt-12" href="#precios" onclick="return _nav('precios')" id="svc-corporal">
-      <div class="aspect-[4/3] rounded-2xl overflow-hidden mb-6 relative">
-        <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="img/corporal.jpg" data-edit-img="foto_corporal" alt="Tratamientos corporales — moldear y reafirmar" loading="lazy"/>
-      </div>
-      <div class="flex justify-between items-end border-b border-gold-600/30 pb-4">
-        <div>
-          <h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Tratamientos Corporales</h3>
-          <p class="font-body-md text-body-md text-on-surface-variant">Body Porcelana, Sculptbody, Slimbody y más.</p>
-        </div>
-        <div class="text-right flex-shrink-0 pl-4">
-          <span class="font-label-upper text-label-upper text-outline block mb-1 uppercase">desde</span>
-          <span class="font-headline-sm text-headline-sm text-gold-gradient">S/ 50</span>
-        </div>
-      </div>
-      <div class="pt-4 flex items-center justify-between text-tertiary">
-        <span class="font-label-upper text-label-upper uppercase">Ver más</span>
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- BANNER PAQUETES (foto spa) -->
-<section class="vista px-gutter pb-24" data-vista="servicios">
-  <div class="max-w-container-max mx-auto relative rounded-2xl overflow-hidden">
-    <img class="absolute inset-0 w-full h-full object-cover" src="img/spa-ambiente.jpg" alt="Ambiente del estudio" loading="lazy" data-edit-img="foto_banner"/>
-    <div class="absolute inset-0" style="background:linear-gradient(90deg,rgba(25,28,23,.82),rgba(25,28,23,.45));"></div>
-    <div class="relative z-10 px-8 md:px-16 py-16 md:py-20 flex flex-col items-start gap-5 max-w-2xl">
-      <span class="font-label-upper text-label-upper uppercase tracking-widest" style="color:#d8bc7e;">Paquetes ×3 y ×6</span>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg leading-tight" style="color:#f6f1e7;" data-edit="banner_titulo">Hasta 40% de ahorro con paquetes de 3 y 6 sesiones</h2>
-      <a class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase inline-block" href="#precios" onclick="return _nav('precios')">Ver todos los precios</a>
+      <p class="ap-nota-cab" data-edit="ofertas_nota">Precios referenciales por zona. Pide tu cotización exacta al reservar.</p>
     </div>
-  </div>
-</section>
 
-<!-- COMO FUNCIONA -->
-<section class="vista activa bg-on-background py-24 px-gutter" id="como-funciona" data-vista="inicio">
-  <div class="max-w-container-max mx-auto">
-    <div class="text-center mb-20">
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-surface-bright mb-4">Cómo funciona</h2>
-      <div class="w-12 h-[1px] bg-gold-600/50 mx-auto mt-6"></div>
+    <div class="ap-tarjeta ap-tarjeta-ancha rv">
+      <div>
+        <span class="ap-badge ap-badge-oro" data-edit="oferta1_etiqueta">Más elegida</span>
+        <h3 class="ap-h3 ap-claro" data-edit="oferta1_titulo">Paquete láser ×6 sesiones</h3>
+        <p class="ap-tarjeta-txt" data-edit="oferta1_texto">Hasta 40% de ahorro frente a pagar sesión por sesión. Elige tus zonas y te armamos el combo.</p>
+        <ul class="ap-guiones">
+          <li>Para ella y para él, en todas las zonas</li>
+          <li>Sesiones rápidas y cómodas</li>
+          <li>Te confirmamos por WhatsApp</li>
+        </ul>
+      </div>
+      <div class="ap-tarjeta-precio">
+        <span class="ap-mini">Desde</span>
+        <div class="ap-precio" data-edit="oferta1_precio">S/ 90</div>
+        <button class="ap-btn ap-btn-blanco" onclick="pedirWa('Paquete láser ×6 sesiones')">Lo quiero</button>
+      </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative">
-      <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[1px] bg-outline/20"></div>
-      <div class="relative z-10 flex flex-col items-center">
-        <div class="w-24 h-24 rounded-full border border-gold-600 bg-on-background flex items-center justify-center mb-8 text-gold-400 font-headline-lg text-headline-lg">1</div>
-        <h3 class="font-headline-sm text-headline-sm text-surface-bright mb-3">Reserva en línea</h3>
-        <p class="font-body-md text-body-md text-surface-variant">Elige tu tratamiento y el día que prefieres, aquí mismo.</p>
+
+    <div class="ap-grid2">
+      <div class="ap-tarjeta rv">
+        <span class="ap-badge" data-edit="oferta2_etiqueta">Nuevas clientas</span>
+        <h3 class="ap-h3 ap-claro" data-edit="oferta2_titulo">Glúteos de Porcelana</h3>
+        <p class="ap-tarjeta-txt" data-edit="oferta2_texto">Levantamiento, firmeza y textura renovada. Evaluación de tu piel incluida en la primera visita.</p>
+        <div><span class="ap-mini">Desde</span><div class="ap-precio" data-edit="oferta2_precio">S/ 89.90</div></div>
+        <button class="ap-btn ap-btn-blanco" onclick="pedirWa('Glúteos De Porcelana')">Reservar</button>
       </div>
-      <div class="relative z-10 flex flex-col items-center">
-        <div class="w-24 h-24 rounded-full border border-gold-600 bg-on-background flex items-center justify-center mb-8 text-gold-400 font-headline-lg text-headline-lg">2</div>
-        <h3 class="font-headline-sm text-headline-sm text-surface-bright mb-3">Te confirmamos</h3>
-        <p class="font-body-md text-body-md text-surface-variant">Te escribimos por WhatsApp para confirmar tu horario.</p>
-      </div>
-      <div class="relative z-10 flex flex-col items-center">
-        <div class="w-24 h-24 rounded-full border border-gold-600 bg-on-background flex items-center justify-center mb-8 text-gold-400 font-headline-lg text-headline-lg">3</div>
-        <h3 class="font-headline-sm text-headline-sm text-surface-bright mb-3">Ven a tu cita</h3>
-        <p class="font-body-md text-body-md text-surface-variant">Disfruta tu tratamiento en nuestro estudio en San Isidro.</p>
+      <div class="ap-tarjeta rv">
+        <span class="ap-badge" data-edit="oferta3_etiqueta">Cuidado facial</span>
+        <h3 class="ap-h3 ap-claro" data-edit="oferta3_titulo">Limpieza facial profunda</h3>
+        <p class="ap-tarjeta-txt" data-edit="oferta3_texto">Limpieza, hidratación y cuidado del rostro. Ideal cada 4 a 6 semanas para mantener tu piel sana.</p>
+        <div><span class="ap-mini">Desde</span><div class="ap-precio" data-edit="oferta3_precio">S/ 80</div></div>
+        <button class="ap-btn ap-btn-blanco" onclick="pedirWa('Limpieza facial profunda')">Reservar</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIOS -->
-<!-- OFERTAS DEL MES (editable) -->
-<section class="vista activa py-20 px-gutter" data-vista="inicio" id="ofertas">
-  <div class="max-w-container-max mx-auto">
-    <div class="text-center mb-12">
-      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase" data-edit="ofertas_kicker">Promociones vigentes</span>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3" data-edit="ofertas_titulo">Ofertas del mes</h2>
+<!-- TRATAMIENTOS: tres módulos con video -->
+<section class="ap-modulos vista" data-vista="tratamientos" id="tratamientos">
+  <div class="ap-cont">
+    <div class="ap-cab-centro">
+      <span class="ap-ceja rv">Lo que hacemos</span>
+      <h2 class="ap-h2 rv rv-words">Tratamientos</h2>
+      <p class="ap-parrafo rv">Toca cada uno para ver sus precios por zona.</p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-8 flex flex-col items-start gap-3" style="border-top:3px solid #B99043;">
-        <span class="font-label-upper text-label-upper uppercase px-3 py-1.5 rounded-full" style="background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;" data-edit="oferta1_etiqueta">Más elegida</span>
-        <h3 class="font-headline-sm text-headline-sm text-on-background" data-edit="oferta1_titulo">Paquete láser ×6 sesiones</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant" data-edit="oferta1_texto">Hasta 40% de ahorro frente a pagar sesión por sesión. Elige tus zonas y te armamos el combo.</p>
-        <div class="mt-auto pt-4 w-full border-t border-surface-dim flex items-end justify-between">
-          <span class="font-label-upper text-label-upper text-outline uppercase">Desde</span>
-          <span class="font-headline-sm text-headline-sm text-gold-gradient" data-edit="oferta1_precio">S/ 90</span>
+    <div class="ap-grid3">
+      <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-laser">
+        <video data-video muted loop playsinline preload="metadata" poster="img/v/laser-axilas.jpg" aria-hidden="true"><source src="video/laser.mp4" type="video/mp4"/></video>
+        <div class="ap-modulo-velo"></div>
+        <div class="ap-modulo-txt">
+          <span class="ap-circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          <h3>Depilación láser</h3>
+          <p>Suave y rápida, para ella y para él. Desde S/ 25 por zona.</p>
         </div>
-        <button onclick="pedirWa('Paquete láser ×6 sesiones')" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="border:none;cursor:pointer;">Lo quiero</button>
-      </div>
-      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-8 flex flex-col items-start gap-3">
-        <span class="font-label-upper text-label-upper uppercase px-3 py-1.5 rounded-full" style="border:1.2px solid #B99043;color:#7b580e;" data-edit="oferta2_etiqueta">Nuevas clientas</span>
-        <h3 class="font-headline-sm text-headline-sm text-on-background" data-edit="oferta2_titulo">Glúteos de Porcelana</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant" data-edit="oferta2_texto">Levantamiento, firmeza y textura renovada. Evaluación de tu piel incluida en la primera visita.</p>
-        <div class="mt-auto pt-4 w-full border-t border-surface-dim flex items-end justify-between">
-          <span class="font-label-upper text-label-upper text-outline uppercase">Desde</span>
-          <span class="font-headline-sm text-headline-sm text-gold-gradient" data-edit="oferta2_precio">S/ 89.90</span>
+      </a>
+      <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-gluteos">
+        <video data-video muted loop playsinline preload="metadata" poster="img/v/gluteos.jpg" aria-hidden="true"><source src="video/gluteos.mp4" type="video/mp4"/></video>
+        <div class="ap-modulo-velo"></div>
+        <div class="ap-modulo-txt">
+          <span class="ap-circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          <h3>Glúteos de Porcelana</h3>
+          <p>Levantamiento, firmeza y textura renovada. Desde S/ 89.90.</p>
         </div>
-        <button onclick="pedirWa('Glúteos De Porcelana')" class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="background:transparent;cursor:pointer;">Reservar</button>
-      </div>
-      <div class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-8 flex flex-col items-start gap-3">
-        <span class="font-label-upper text-label-upper uppercase px-3 py-1.5 rounded-full" style="border:1.2px solid #B99043;color:#7b580e;" data-edit="oferta3_etiqueta">Cuidado facial</span>
-        <h3 class="font-headline-sm text-headline-sm text-on-background" data-edit="oferta3_titulo">Limpieza facial profunda</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant" data-edit="oferta3_texto">Limpieza, hidratación y cuidado del rostro. Ideal cada 4 a 6 semanas para mantener tu piel sana.</p>
-        <div class="mt-auto pt-4 w-full border-t border-surface-dim flex items-end justify-between">
-          <span class="font-label-upper text-label-upper text-outline uppercase">Desde</span>
-          <span class="font-headline-sm text-headline-sm text-gold-gradient" data-edit="oferta3_precio">S/ 80</span>
+      </a>
+      <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-facial">
+        <video data-video muted loop playsinline preload="metadata" poster="img/v/skin-face.jpg" aria-hidden="true"><source src="video/facial.mp4" type="video/mp4"/></video>
+        <div class="ap-modulo-velo"></div>
+        <div class="ap-modulo-txt">
+          <span class="ap-circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          <h3>Faciales</h3>
+          <p>Limpieza profunda, Hollywood Peel y más. Desde S/ 80.</p>
         </div>
-        <button onclick="pedirWa('Limpieza facial profunda')" class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="background:transparent;cursor:pointer;">Reservar</button>
-      </div>
-    </div>
-    <p class="text-center font-body-md text-body-md text-outline mt-8 italic" data-edit="ofertas_nota">* Precios referenciales por zona. Pide tu cotización exacta al reservar.</p>
-  </div>
-</section>
-
-<!-- COMPARATIVA -->
-<section class="vista activa py-20 px-gutter" data-vista="inicio" id="comparativa" style="background:#1c1f18;">
-  <div class="max-w-container-max mx-auto">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-12">
-      <h2 class="font-headline-lg text-headline-md" style="color:#e8e0cc;">Por qué elegirnos</h2>
-      <a href="#precios" onclick="return _nav('precios')" class="font-label-upper text-label-upper uppercase px-7 py-3 rounded-full self-start" style="background:#f6f1e7;color:#1c1f18;text-decoration:none;">Ver precios</a>
-    </div>
-    <div>
-      <table class="w-full tabla-comp" style="border-collapse:collapse;">
-        <thead>
-          <tr>
-            <th></th>
-            <th class="col-elle font-label-upper text-label-upper uppercase" style="padding:14px 8px;color:#191c17;background:linear-gradient(135deg,#B99043,#D8BC7E);border-radius:12px 12px 0 0;text-align:center;">elle studio</th>
-            <th class="col-otros font-label-upper text-label-upper uppercase" style="padding:14px 8px;color:#8d8a7c;text-align:center;">Otros</th>
-          </tr>
-        </thead>
-        <tbody id="tablaComparativa"></tbody>
-      </table>
-    </div>
-    <p class="font-body-md text-body-md mt-6" style="color:#8d8a7c;">Comparación referencial de lo que ofrecemos en cada atención.</p>
-  </div>
-</section>
-
-<section class="vista activa py-24 px-gutter bg-surface-container-lowest border-y border-surface-dim" id="testimonios" data-vista="inicio">
-  <div class="text-center mb-14">
-    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background">Lo que dicen nuestras clientas</h2>
-  </div>
-  <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
-        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
-      </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t1_frase">"El mejor servicio de depilación láser en San Isidro. El trato es súper exclusivo y profesional."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t1_nombre">— Valeria M.</p>
-    </div>
-    <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
-        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
-      </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t2_frase">"Los resultados de los Glúteos de Porcelana son increíbles. El estudio es hermoso y relajante."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t2_nombre">— Camila S.</p>
-    </div>
-    <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
-        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
-      </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t3_frase">"Atención de primera. Desde que entras se siente el cuidado y la dedicación en cada detalle."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t3_nombre">— Luciana F.</p>
-    </div>
-    <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
-        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
-      </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t4_frase">"Las sesiones de láser son rapidísimas y sin dolor. En pocas sesiones ya vi el cambio."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t4_nombre">— Andrea R.</p>
-    </div>
-    <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
-        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
-      </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t5_frase">"Reservé por la página y me confirmaron al toque por WhatsApp. Todo facilísimo y puntual."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t5_nombre">— Fiorella T.</p>
-    </div>
-    <div class="text-center flex flex-col items-center">
-      <div class="flex text-gold-400 mb-6 gap-1">
-        <span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span><span class="material-symbols-outlined fill">star</span>
-      </div>
-      <p class="font-headline-sm text-headline-sm italic text-on-surface-variant mb-6" data-edit="t6_frase">"Los tratamientos corporales me encantaron. Se nota la calidad en cada detalle del estudio."</p>
-      <p class="font-label-upper text-label-upper text-on-surface uppercase" data-edit="t6_nombre">— Daniela V.</p>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- INSTAGRAM -->
-<section class="vista activa py-24 px-gutter" id="instagram" data-vista="inicio">
-  <div class="max-w-container-max mx-auto">
-    <div class="text-center mb-12">
-      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Resultados reales</span>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3 mb-3">Síguenos en Instagram</h2>
-      <a class="inline-flex items-center gap-2 font-headline-sm text-headline-sm italic text-gold-gradient" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
+<!-- REDUCTORES: mitad color, mitad video -->
+<section class="ap-split vista" data-vista="tratamientos" id="svc-corporal">
+  <div class="ap-split-txt">
+    <span class="ap-ceja ap-ceja-claro rv">Reductores y body</span>
+    <h2 class="ap-h2 ap-claro rv rv-words">Medidas y contorno, sesión a sesión.</h2>
+    <p class="ap-parrafo ap-claro rv">Radiofrecuencia, lipoláser, maderoterapia y bambú. Elegimos contigo el protocolo según tu objetivo. Desde S/ 50.</p>
+    <div class="ap-botones rv">
+      <button class="ap-btn ap-btn-oscuro" onclick="abrirReserva()">Reservar cita</button>
+      <a class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver precios</a>
     </div>
-    <div class="flex flex-wrap justify-center gap-6 md:gap-9 mb-14" id="historias">
-      <button class="historia" onclick="verHistoria('faciales')" style="background:none;border:none;cursor:pointer;"><span class="anillo"><img src="img/facial.jpg" alt="Historias: Faciales"/></span><span class="hist-nombre">Faciales</span></button>
-      <button class="historia" onclick="verHistoria('gluteos')" style="background:none;border:none;cursor:pointer;"><span class="anillo"><img src="img/gluteos.jpg" alt="Historias: Glúteos"/></span><span class="hist-nombre">Glúteos</span></button>
-      <button class="historia" onclick="verHistoria('laser')" style="background:none;border:none;cursor:pointer;"><span class="anillo"><img src="img/laser-piernas.jpg" alt="Historias: Láser"/></span><span class="hist-nombre">Láser</span></button>
-      <button class="historia" onclick="verHistoria('corporales')" style="background:none;border:none;cursor:pointer;"><span class="anillo"><img src="img/corporal.jpg" alt="Historias: Corporales"/></span><span class="hist-nombre">Corporales</span></button>
-      <button class="historia" onclick="verHistoria('estudio')" style="background:none;border:none;cursor:pointer;"><span class="anillo"><img src="img/spa-ambiente.jpg" alt="Historias: El estudio"/></span><span class="hist-nombre">El estudio</span></button>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center" id="reelsIG">
-      <div class="reel-marco"><iframe src="https://www.instagram.com/reel/Dbt0MqyolVG/embed/" loading="lazy" allowfullscreen scrolling="no" title="Reel de elle studio"></iframe></div>
-      <div class="reel-marco"><iframe src="https://www.instagram.com/reel/DbeKMQwoJaa/embed/" loading="lazy" allowfullscreen scrolling="no" title="Reel de elle studio"></iframe></div>
-      <div class="reel-marco"><iframe src="https://www.instagram.com/reel/Da1Pk6ZI2mb/embed/" loading="lazy" allowfullscreen scrolling="no" title="Reel de elle studio"></iframe></div>
-    </div>
-    <div class="text-center mt-12">
-      <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-4 rounded-full hover:bg-tertiary/5 transition-all uppercase inline-flex items-center gap-2" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">Ver más en Instagram</a>
+  </div>
+  <div class="ap-split-video">
+    <video data-video muted loop playsinline preload="metadata" poster="img/v/rf.jpg" aria-hidden="true"><source src="video/reductor.mp4" type="video/mp4"/></video>
+  </div>
+</section>
+
+<!-- HOLLYWOOD PEEL: banda con video -->
+<section class="ap-banda vista" data-vista="tratamientos">
+  <video data-video muted loop playsinline preload="metadata" poster="img/v/peel-face.jpg" aria-hidden="true"><source src="video/peel.mp4" type="video/mp4"/></video>
+  <div class="ap-banda-velo"></div>
+  <div class="ap-banda-txt">
+    <span class="ap-ceja ap-ceja-oro rv">Hollywood Peel</span>
+    <h2 class="ap-h2 ap-claro rv rv-words">El secreto de las alfombras rojas, ahora en Elle.</h2>
+    <p class="ap-parrafo ap-claro rv">Máscara de carbón y láser. Piel más limpia, pareja y luminosa, sin reposo: sales y sigues con tu día.</p>
+    <div class="ap-botones rv">
+      <button class="ap-btn ap-btn-blanco" onclick="pedirWa('Hollywood Peel')">Lo quiero</button>
+      <a class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver precios</a>
     </div>
   </div>
 </section>
 
-<!-- CTA RESERVAR (visible en todas las vistas) -->
-<section class="px-gutter py-16" style="background:#1c1f18;">
-  <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-    <div>
-      <h2 class="font-headline-lg text-headline-md" style="color:#e8e0cc;">¿Lista para empezar?</h2>
-      <p class="font-body-md text-body-md mt-1" style="color:#cfc9b8;">Reserva tu cita y te confirmamos por WhatsApp.</p>
+<!-- CÓMO FUNCIONA + PREGUNTAS: banda oscura compacta (los pasos se encienden uno a uno) -->
+<section class="ap-como vista activa" data-vista="inicio" id="como-funciona">
+  <div class="ap-cont ap-como-grid">
+    <div class="ap-como-pasos">
+      <span class="ap-ceja ap-ceja-oro rv">Así de simple</span>
+      <h2 class="ap-como-tit ap-claro rv rv-words">Cómo funciona</h2>
+      <ol class="ap-timeline rv" id="apTimeline">
+        <li class="activa"><span class="ap-tl-num">1</span><div><b>Reserva en línea</b><p>Elige tu tratamiento y el día que prefieres, aquí mismo.</p></div></li>
+        <li><span class="ap-tl-num">2</span><div><b>Te confirmamos por WhatsApp</b><p>Te escribimos para fijar tu horario exacto.</p></div></li>
+        <li><span class="ap-tl-num">3</span><div><b>Ven a tu cita</b><p>Cubículo privado, con cita y sin esperas, en San Isidro.</p></div></li>
+      </ol>
+      <div class="rv"><button class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button></div>
     </div>
-    <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-10 py-4 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Reservar cita</button>
-  </div>
-</section>
-
-<!-- PRECIOS (vista dentro de la misma pagina) -->
-<section class="vista py-20 px-gutter" id="precios" data-vista="precios">
-  <div class="max-w-container-max mx-auto">
-    <div class="text-center mb-10">
-      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">elle studio · San Isidro</span>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Precios</h2>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl mx-auto">Transparentes y por zona. Toca <b>Pedir</b> en lo que te interese y te escribimos por WhatsApp.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-      <div class="cupon p-7 text-center">
-        <div class="hero-elle text-[44px]">-40%</div>
-        <div class="font-headline-sm text-headline-sm mt-1">Paquete ×6 sesiones</div>
-        <p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-5">Hasta 40 % de ahorro frente a pagar sesión por sesión.</p>
-        <button onclick="pedirWa('Paquete de 6 sesiones')" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full uppercase" style="border:none;cursor:pointer;">Lo quiero</button>
-      </div>
-      <div class="cupon p-7 text-center">
-        <div class="hero-elle text-[44px]">-27%</div>
-        <div class="font-headline-sm text-headline-sm mt-1">Paquete ×3 sesiones</div>
-        <p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-5">Precio preferencial para empezar con constancia.</p>
-        <button onclick="pedirWa('Paquete de 3 sesiones')" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full uppercase" style="border:none;cursor:pointer;">Lo quiero</button>
-      </div>
-      <div class="cupon p-7 text-center">
-        <div class="hero-elle text-[44px]">Gratis</div>
-        <div class="font-headline-sm text-headline-sm mt-1">Cotización personalizada</div>
-        <p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-5">Cuéntanos qué zonas te interesan y te armamos tu combo exacto.</p>
-        <button onclick="pedirWa('Cotización personalizada')" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full uppercase" style="border:none;cursor:pointer;">Cotizar</button>
-      </div>
-    </div>
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-6"><h3 class="font-headline-md text-headline-md text-on-background">Depilación Láser</h3></div>
-      <div class="flex justify-center gap-3 mb-6">
-        <button id="gEllaBtn" onclick="setGenero('ella')" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-3 rounded-full uppercase" style="border:none;cursor:pointer;">Para Ella</button>
-        <button id="gElBtn" onclick="setGenero('el')" class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-3 rounded-full uppercase" style="background:transparent;cursor:pointer;">Para Él</button>
-      </div>
-      <div id="chipsLaser" class="flex flex-wrap justify-center gap-2 mb-8"></div>
-      <div id="panelLaser" class="bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden"></div>
-      <div class="text-center mt-16 mb-6"><h3 class="font-headline-md text-headline-md text-on-background">Tratamientos de Estética</h3></div>
-      <div id="chipsEstetica" class="flex flex-wrap justify-center gap-2 mb-8"></div>
-      <div id="panelEstetica"></div>
+    <div class="ap-como-faq" id="faq">
+      <span class="ap-ceja ap-ceja-oro rv">Preguntas frecuentes</span>
+      <details class="ap-faq rv"><summary>¿La depilación láser duele?<i></i></summary><p>La molestia es mínima. Usamos tecnología láser moderna y preparamos la piel en cada sesión para que la experiencia sea rápida y cómoda.</p></details>
+      <details class="ap-faq rv"><summary>¿Cuántas sesiones necesito?<i></i></summary><p>Depende de la zona y del tipo de vello. Trabajamos con sesiones individuales y paquetes de 3 y 6 sesiones que hacen el tratamiento más efectivo y económico.</p></details>
+      <details class="ap-faq rv"><summary>¿Atienden a hombres?<i></i></summary><p>Sí. Tenemos precios y protocolos de depilación láser tanto para mujeres como para hombres, en todas las zonas.</p></details>
+      <details class="ap-faq rv"><summary>¿Cómo confirmo mi cita?<i></i></summary><p>Dejas tu reserva en esta página con tus datos y el servicio que te interesa, y te escribimos por WhatsApp para confirmar el horario exacto.</p></details>
     </div>
   </div>
 </section>
 
-<!-- EL ESTUDIO: instalacion + tecnologia -->
+<!-- INSTAGRAM: las publicaciones reales, al final del inicio -->
+<section class="ap-ig vista activa" data-vista="inicio" id="instagram">
+  <div class="ap-cont">
+    <div class="ap-cab-fila rv">
+      <div>
+        <span class="ap-ceja">Instagram</span>
+        <h2 class="ap-h2">Elle</h2>
+        <a class="ap-ig-handle" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
+      </div>
+      <a class="ap-btn ap-btn-oscuro" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+        Ir a Instagram
+      </a>
+    </div>
+  </div>
+  <div class="ap-ig-grid" id="reelsIG" aria-label="Últimas publicaciones de Instagram de elle studio"></div>
+  <p class="ap-ig-nota rv">Toca una publicación para verla en Instagram.</p>
+</section>
+
+
+<!-- PRECIOS: en vivo desde la base (los mismos del CRM) con las fotos del proceso -->
+<section class="vista ap-precios" id="precios" data-vista="precios">
+  <div class="ap-cont">
+    <div class="ap-cab-centro">
+      <span class="ap-ceja rv">elle studio · San Isidro</span>
+      <h2 class="ap-h2 rv rv-words">Precios</h2>
+      <p class="ap-parrafo rv">Claros y por zona, con fotos de cómo se hace cada tratamiento. Toca «Pedir» y te escribimos por WhatsApp.</p>
+    </div>
+    <div id="pChips" class="ap-chips" role="group" aria-label="Categorías"></div>
+    <div class="ap-seg-wrap" style="display:none;">
+      <div id="pGenero" class="ap-seg" role="group" aria-label="Mujer u hombre">
+        <button type="button" data-g="mujer" onclick="pGenero('mujer')">Mujer</button><button type="button" data-g="hombre" onclick="pGenero('hombre')">Hombre</button>
+      </div>
+    </div>
+    <div id="pCuerpo" class="ap-pcuerpo"><p class="ap-pnota" style="text-align:center;">Cargando precios…</p></div>
+  </div>
+</section>
+
+
 <section class="vista" id="estudio" data-vista="estudio">
 
   <!-- Banda a lo ancho con la foto completa y difuminada -->
@@ -686,7 +752,6 @@
   </div>
 </section>
 
-<!-- UBICACION (vista propia con mapa interactivo) -->
 <section class="vista py-24 px-gutter" id="ubicacion" data-vista="ubicacion">
   <div class="max-w-container-max mx-auto">
     <div class="text-center mb-12">
@@ -716,36 +781,21 @@
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="vista activa py-24 px-gutter max-w-3xl mx-auto" id="faq" data-vista="inicio">
-  <div class="text-center mb-14">
-    <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background">Preguntas frecuentes</h2>
-  </div>
-  <div class="space-y-4">
-    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
-      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿La depilación láser duele? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-4">La molestia es mínima. Usamos tecnología láser moderna y preparamos la piel en cada sesión para que la experiencia sea rápida y cómoda.</p>
-    </details>
-    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
-      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Cuántas sesiones necesito? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Depende de la zona y del tipo de vello. Trabajamos con sesiones individuales y paquetes de 3 y 6 sesiones que hacen el tratamiento más efectivo y económico.</p>
-    </details>
-    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
-      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Atienden a hombres? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Sí. Tenemos precios y protocolos de depilación láser tanto para mujeres como para hombres, en todas las zonas.</p>
-    </details>
-    <details class="bg-surface-container-lowest border border-surface-dim rounded-2xl p-6 group">
-      <summary class="font-headline-sm text-headline-sm cursor-pointer list-none flex justify-between items-center">¿Cómo confirmo mi cita? <span class="material-symbols-outlined text-tertiary group-open:rotate-180 transition-transform">expand_more</span></summary>
-      <p class="font-body-md text-body-md text-on-surface-variant mt-4">Dejas tu reserva en esta página con tus datos y el servicio que te interesa, y te escribimos por WhatsApp para confirmar el horario exacto.</p>
-    </details>
+<!-- LLAMADO FINAL -->
+<section class="ap-cta">
+  <span class="ap-ceja ap-ceja-oro rv">¿Lista para empezar?</span>
+  <h2 class="ap-h2 ap-claro rv rv-words">Reserva hoy. Te confirmamos por WhatsApp.</h2>
+  <p class="ap-parrafo ap-claro rv">Déjanos tu nombre y el tratamiento que te interesa; te abrimos WhatsApp con el mensaje listo.</p>
+  <div class="ap-botones rv" style="justify-content:center;">
+    <button class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
+    <a id="waFooterCta" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver precios</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="bg-on-background border-t border-tertiary/30 w-full">
   <div class="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto px-gutter py-20">
     <div class="flex flex-col gap-6 mb-12 md:mb-0">
-      <div class="font-headline-sm text-headline-sm italic text-surface-bright">elle studio</div>
+      <img src="img/logo-elle-claro.png" alt="elle studio" class="ap-logo-pie"/>
       <p class="text-surface-container-highest max-w-xs font-body-md text-body-md">El balance perfecto entre tecnología láser y cuidado estético en Lima.</p>
       <p class="text-surface-variant font-label-upper text-[10px] mt-8 uppercase">© 2026 elle studio. Todos los derechos reservados.</p>
     </div>
@@ -851,65 +901,9 @@
   </div>
 </div>
 
-<script>
-(function(){
-  var FILAS=[
-    ['Precios publicados en la web', true, false],
-    ['Paquetes de 3 y 6 sesiones', true, true],
-    ['Cubículos privados e individuales', true, false],
-    ['Confirmación por WhatsApp', true, false],
-    ['Atención con cita, sin esperas', true, false],
-    ['Sesión individual desde', 'S/ 25', false]
-  ];
-  var si='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D8BC7E" stroke-width="2.6" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>';
-  var no='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b6858" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
-  var cuerpo=document.getElementById('tablaComparativa');
-  if(!cuerpo) return;
-  cuerpo.innerHTML=FILAS.map(function(f){
-    function celda(v){
-      if(v===true) return si;
-      if(v===false) return no;
-      return '<span class="font-label-upper text-label-upper uppercase" style="color:#D8BC7E;white-space:nowrap;font-size:11px;">'+v+'</span>';
-    }
-    return '<tr style="border-bottom:1px solid rgba(216,188,126,.14);">'
-      +'<td class="font-body-md text-body-md" style="padding:16px 12px 16px 0;color:#cfc9b8;">'+f[0]+'</td>'
-      +'<td style="padding:16px;text-align:center;background:rgba(216,188,126,.06);">'+celda(f[1])+'</td>'
-      +'<td style="padding:16px;text-align:center;">'+celda(f[2])+'</td>'
-      +'</tr>';
-  }).join('');
-})();
-</script>
-<script>
-var LASER={"ella": [{"nombre": "Mini Zonas", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Frente</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 25</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Frente')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Entrecejo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 25</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Entrecejo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Patilla</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 25</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Patilla')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Bozo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 25</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Bozo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Mejillas</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 25</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Mejillas')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Mentón</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 25</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Mentón')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Dedos (manos y pies)</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 25</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Dedos (manos y pies)')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}, {"nombre": "Zonas Pequeñas", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Axilas</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Axilas')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Línea alba</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Línea alba')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Pezones</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Pezones')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Nuca</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Nuca')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Coxis/espalda baja</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 45</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 120</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 240</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Coxis/espalda baja')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}, {"nombre": "Zonas Medias", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Media pierna</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 95</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 255</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 480</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Media pierna')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Medio Brazo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 95</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 255</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 480</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Medio Brazo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Medio pecho</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 95</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 255</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 480</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Medio pecho')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Media espalda</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 95</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 255</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 480</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Media espalda')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}, {"nombre": "Zonas Completas", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Pierna completa</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 179.9</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 480</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 899</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Pierna completa')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Brazos completo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 250</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 450</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Brazos completo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Pecho completo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 90</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 240</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 450</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Pecho completo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Espalda completa</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 95</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 250</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 450</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Espalda completa')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}, {"nombre": "Zonas Íntimas", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Bikini</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 45</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 120</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 225</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Bikini')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Bikini brasileño</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 275</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Bikini brasileño')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Entre pierna</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Entre pierna')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Periné</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Periné')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Perianal</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Perianal')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Interglútea</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Interglútea')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Glúteos</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 129.9</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Glúteos')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}], "el": [{"nombre": "Mini Zonas", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Frente</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 75</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Frente')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Entrecejo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 75</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Entrecejo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Patilla</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 75</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Patilla')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Bozo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 75</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Bozo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Mejillas</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 75</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Mejillas')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Mentón</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 75</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Mentón')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Dedos (manos y pies)</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 75</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Dedos (manos y pies)')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}, {"nombre": "Zonas Pequeñas", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Axilas</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Axilas')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Línea alba</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 45</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 120</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 240</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Línea alba')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Nuca</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 85</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 159.9</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Nuca')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}, {"nombre": "Zonas Medias", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Media pierna</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 110</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 290</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 540</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Media pierna')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Medio Brazo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 110</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 290</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 540</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Medio Brazo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Medio pecho</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 110</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 290</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 540</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Medio pecho')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Media espalda</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 110</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 290</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 540</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Media espalda')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}, {"nombre": "Zonas Completas", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Pierna completa</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 179.9</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 480</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 899</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Pierna completa')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Brazos completo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 105</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 275</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 510</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Brazos completo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Pecho completo</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 105</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 275</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 510</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Pecho completo')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Espalda completa</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 105</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 275</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 510</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Espalda completa')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}, {"nombre": "Zonas Íntimas", "tabla": "<table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Pene</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 65</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 170</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 320</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Pene')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Testículos</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 55</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 145</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">S/ 275</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Testículos')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table>"}]};
-var ESTETICA=[{"nombre": "Glúteos", "cards": "<div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Glúteos De Porcelana</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">GLÚTEOS DE PORCELANA</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 89.9</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 239.9</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('GLÚTEOS DE PORCELANA')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">GLÚTEOS DE PORCELANA + PEELING</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 105</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 285</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('GLÚTEOS DE PORCELANA + PEELING')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Peptonas</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">GLÚTEOS DE PORCELANA 360</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 130</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('GLÚTEOS DE PORCELANA 360')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">5 sesiones + 5 ondas rusas</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 485</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 35</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('5 sesiones + 5 ondas rusas')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Musfirm</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">MURFIRM X SESIÓN</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 165</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('MURFIRM X SESIÓN')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">MURFIRM X 5</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 650</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('MURFIRM X 5')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Revolvera- Zona Trocanteira</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">ENZIMA + ULTRAVAVITADOR (CARBOX, RADIO DE REGALO)</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 130</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 365</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('ENZIMA + ULTRAVAVITADOR (CARBOX, RADIO DE REGALO)')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div>"}, {"nombre": "Faciales", "cards": "<div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Skin Face</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">SKIN FACE</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 80</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('SKIN FACE')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">SKIN FACE PORCELANA</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 110</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('SKIN FACE PORCELANA')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">SKIN FACE BALANCE</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 130</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('SKIN FACE BALANCE')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">SKIN FACE GLOW</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 140</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('SKIN FACE GLOW')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Hidralips</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">HIDRALIPS</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 140</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('HIDRALIPS')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Lipopapada</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">9-SESIONES(3 VISITAS)</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 425</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('9-SESIONES(3 VISITAS)')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div>"}, {"nombre": "Corporales", "cards": "<div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Sculpt Body</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">18-SESIONES (8 visitas)</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 850</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('18-SESIONES (8 visitas)')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Sesiones</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">ENZIMAS</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 95</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('ENZIMAS')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">ULTRACAVITADOR</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 60</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('ULTRACAVITADOR')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">ULTRA+ENZIMA</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 130</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('ULTRA+ENZIMA')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">CARBOXITERAPIA</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 50</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('CARBOXITERAPIA')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">CARBOXITERAPIA X 10</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 450</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('CARBOXITERAPIA X 10')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">Hidrolipoclasia</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 240</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('Hidrolipoclasia')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Slim Body</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">4 visitas</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 299</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('4 visitas')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Arms Sculpt</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">13-SESIONES ( 5 VISITAS)</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 555</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('13-SESIONES ( 5 VISITAS)')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div><div class=\"bg-surface-container-lowest border border-surface-dim rounded-2xl overflow-hidden mb-6\"><div class=\"px-6 py-4\" style=\"background:linear-gradient(135deg,#1c1f18,#3a3f33);\"><span class=\"font-headline-sm text-headline-sm\" style=\"color:#e8e0cc;\">Limpiezas</span></div><div class=\"p-6 overflow-x-auto\"><table class=\"w-full text-left\"><thead><tr class=\"border-b-2 border-gold-600/40\"><th class=\"py-2 pr-3 font-label-upper text-label-upper uppercase text-on-surface-variant\">Zona</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Sesión</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-on-surface-variant\">Paq. ×3</th><th class=\"py-2 text-center font-label-upper text-label-upper uppercase text-tertiary\">Paq. ×6</th><th></th></tr></thead><tbody><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">BODY DE PORCELANA</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 179.9</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('BODY DE PORCELANA')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr><tr class=\"border-b border-surface-dim last:border-0\"><td class=\"py-3 pr-3 font-body-md text-body-md\">BACK THERAPY</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">S/ 120</td><td class=\"py-3 text-center font-body-md text-body-md whitespace-nowrap\">—</td><td class=\"py-3 text-center font-body-md text-body-md font-semibold text-tertiary whitespace-nowrap\">—</td><td class=\"py-3 text-right whitespace-nowrap\"><button onclick=\"pedirWa('BACK THERAPY')\" class=\"font-label-upper text-label-upper uppercase px-4 py-2 rounded-full\" style=\"background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;cursor:pointer;\">Pedir</button></td></tr></tbody></table></div></div>"}];
-var _gen='ella', _cat=0, _est=0;
-function setGenero(g){_gen=g;_cat=0;pintaLaser();
-  var a=document.getElementById('gEllaBtn'),b=document.getElementById('gElBtn');
-  var act='gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-3 rounded-full uppercase';
-  var ina='border border-gold-600 text-tertiary font-label-upper text-label-upper px-8 py-3 rounded-full uppercase';
-  a.className=(g==='ella')?act:ina; b.className=(g==='el')?act:ina;
-  a.style.cssText=(g==='ella')?'border:none;cursor:pointer;':'background:transparent;cursor:pointer;';
-  b.style.cssText=(g==='el')?'border:none;cursor:pointer;':'background:transparent;cursor:pointer;';
-}
-function setCat(i){_cat=i;pintaLaser();}
-function setEst(i){_est=i;pintaEstetica();}
-function _chip(txt,activo,fn){return '<button onclick="'+fn+'" class="font-label-upper text-label-upper uppercase px-5 py-2.5 rounded-full" style="cursor:pointer;'+(activo?'background:linear-gradient(135deg,#B99043,#D8BC7E);color:#191c17;border:none;':'background:#fff;color:#7b580e;border:1.2px solid #B99043;')+'">'+txt+'</button>';}
-function pintaLaser(){
-  var cats=LASER[_gen]; if(!cats||!cats.length) return;
-  if(_cat>=cats.length)_cat=0;
-  var ch=document.getElementById('chipsLaser'); if(!ch) return;
-  ch.innerHTML=cats.map(function(c,i){return _chip(c.nombre,i===_cat,'setCat('+i+')');}).join('');
-  document.getElementById('panelLaser').innerHTML='<div class="px-6 py-4" style="background:linear-gradient(135deg,#1c1f18,#3a3f33);"><span class="font-headline-sm text-headline-sm" style="color:#e8e0cc;">'+cats[_cat].nombre+'</span></div><div class="p-6 overflow-x-auto">'+cats[_cat].tabla+'</div>';
-}
-function pintaEstetica(){
-  var ch=document.getElementById('chipsEstetica'); if(!ch) return;
-  ch.innerHTML=ESTETICA.map(function(g,i){return _chip(g.nombre,i===_est,'setEst('+i+')');}).join('');
-  document.getElementById('panelEstetica').innerHTML=ESTETICA[_est].cards;
-}
-pintaLaser(); pintaEstetica();
-</script>
-<script src="js/vistas.js?v=5"></script>
-<script src="js/historias.js?v=3"></script>
+<script src="js/precios.js?v=2"></script>
+<script src="js/pagina.js?v=4"></script>
+<script src="js/historias.js?v=4"></script>
 <script src="js/estudio.js?v=1"></script>
 <script src="js/contenido.js?v=2"></script>
 <script>
@@ -919,7 +913,7 @@ window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
 </script>
 <script src="js/whatsapp.js?v=7"></script>
 <script src="js/reserva.js?v=8"></script>
-<script src="js/instagram.js?v=1"></script>
+<script src="js/instagram.js?v=3"></script>
 <script src="js/chatbot.js?v=5"></script>
 </body>
 </html>
