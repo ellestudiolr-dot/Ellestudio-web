@@ -35,8 +35,10 @@
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'ev-foto' + (chico ? ' ev-foto-chica' : ''); b.innerHTML = chico ? ICONO : ICONO + ' Cambiar foto o video';
       b.title = 'Cambiar foto o video';
+      var arriba = r.top + window.scrollY + (chico ? 4 : 14);
+      if(!chico && r.top + window.scrollY < 80) arriba += 80;   // la portada queda bajo la barra del menú: el botón baja para no tapar el logo
       b.style.left = (r.left + window.scrollX + (chico ? 4 : 14)) + 'px';
-      b.style.top = (r.top + window.scrollY + (chico ? 4 : 14)) + 'px';
+      b.style.top = arriba + 'px';
       b.addEventListener('click', function(e){
         e.preventDefault(); e.stopPropagation();
         var src = el.currentSrc || el.src || ((el.querySelector && el.querySelector('source')) || {}).src || '';
