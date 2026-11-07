@@ -78,11 +78,11 @@
       .catch(cargarLocal);
   }
 
-  // Supabase: la tabla web_instagram se actualiza sola cada hora con lo último de @_elleestudio
+  // Supabase: la tabla web_instagram se actualiza sola cada hora con lo último de @_elleestudio (de la más reciente a la más antigua)
   window.cargarInstagram = function(){
     var c = (typeof CONFIG !== 'undefined') ? CONFIG : null;
     if(!c || !c.SUPABASE_URL || !c.SUPABASE_ANON){ cargarBehold(); return; }
-    fetch(c.SUPABASE_URL + '/rest/v1/web_instagram?select=shortcode,permalink,imagen,es_video,caption&order=orden.asc&limit=' + CUANTOS, {
+    fetch(c.SUPABASE_URL + '/rest/v1/web_instagram?select=shortcode,permalink,imagen,es_video,caption,publicado&order=publicado.desc.nullslast,orden.asc&limit=' + CUANTOS, {
       headers: { 'apikey': c.SUPABASE_ANON, 'Authorization': 'Bearer ' + c.SUPABASE_ANON },
       cache: 'no-store'
     })

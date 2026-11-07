@@ -140,7 +140,7 @@
             position: absolute; top: -77px; left: 50%; width: 100%; height: 1300px; border: 0; background: #000;
             transform: translateX(-50%) scale(1.423); transform-origin: top center;
         }
-        .chip-svc { border: 1.2px solid #B99043; color: #7b580e; background: transparent; border-radius: 999px; padding: 8px 14px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+        .chip-svc { border: 1.2px solid #B99043; color: #7b580e; background: transparent; border-radius: 999px; padding: 8px 14px; font-family: var(--f-apple); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
         .chip-svc.activo { background: linear-gradient(135deg,#B99043,#D8BC7E); color: #191c17; border-color: transparent; }
         .red-circulo { width: 44px; height: 44px; border-radius: 50%; border: 1.4px solid #B99043; color: #D8BC7E; display: inline-flex; align-items: center; justify-content: center; transition: background .15s; }
         .red-circulo:hover { background: rgba(216,188,126,.12); }
@@ -150,7 +150,7 @@
         .anillo { width: 92px; height: 92px; border-radius: 50%; padding: 3.5px; background: linear-gradient(135deg,#B99043,#f0dfa0,#d4af37); display: inline-flex; transition: transform .15s; }
         .historia:hover .anillo { transform: scale(1.06); }
         .anillo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #f8faf1; }
-        .hist-nombre { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .05em; color: #49473f; text-transform: uppercase; }
+        .hist-nombre { font-family: var(--f-apple); font-size: 12px; font-weight: 600; letter-spacing: .05em; color: #49473f; text-transform: uppercase; }
         /* Foto que se funde con la tarjeta (como la portada) */
         .equipo { position: relative; border-radius: 1rem; overflow: hidden; border: 1px solid #d9dbd2; background: #fff; cursor: pointer; transition: box-shadow .2s, transform .2s; }
         .equipo:hover { box-shadow: 0 18px 40px rgba(25,28,23,.10); }
@@ -160,7 +160,7 @@
         .equipo .foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,.3) 34%, rgba(255,255,255,0) 64%); }
         .equipo .detalle { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
         .equipo.abierto .detalle { max-height: 260px; }
-        .equipo .mas { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #7b580e; }
+        .equipo .mas { font-family: var(--f-apple); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #7b580e; }
         .foto-fundida { position: relative; }
         .foto-fundida::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,.35) 32%, rgba(255,255,255,0) 62%); pointer-events: none; }
         .reel-hist { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 14px; background: #000; }
@@ -169,7 +169,7 @@
         .foto-galeria img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s; }
         .foto-galeria:hover img { transform: scale(1.04); }
         .foto-galeria::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(248,250,241,.85) 0%, rgba(248,250,241,.25) 30%, rgba(248,250,241,0) 60%); pointer-events: none; }
-        .foto-galeria .pie { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 22px; z-index: 2; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #2a2d24; }
+        .foto-galeria .pie { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px 22px; z-index: 2; font-family: var(--f-apple); font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #2a2d24; }
         .tabla-comp .col-elle, .tabla-comp .col-otros { width: 22%; }
         @media (max-width: 640px){
           .tabla-comp td:first-child { padding: 12px 6px 12px 0 !important; font-size: 13px !important; line-height: 1.35; }
@@ -566,6 +566,15 @@
         .ct-galeria img{ width:100%; height:100%; object-fit:cover; display:block; }
         .ct-galeria figcaption{ position:absolute; left:10px; bottom:10px; background:rgba(255,255,255,.92); color:#2b2b26; font-size:12px; font-weight:600; padding:5px 11px; border-radius:999px; }
         .ct-foto-nota{ font-size:12px; opacity:.65; margin:6px 0 0; }
+        /* ===== Catálogo y guías con la MISMA letra de la página (estilo Apple), sin serif ===== */
+        .ct, .ct *, .ct-guias button{ font-family:var(--f-apple) !important; }
+        .ct .ct-tit, .ct .ct-tit-grande{ font-family:var(--f-apple) !important; font-weight:600 !important; letter-spacing:-0.03em !important; }
+        .ct .ct-tit-grande{ line-height:1.02 !important; }
+        .ct .ct-tit-grande em{ font-style:normal !important; }
+        .ct .ct-frase{ font-style:normal !important; font-weight:400 !important; letter-spacing:-0.01em; }
+        .ct-indice b, .ct-incluye b, .ct-circ b, .ct-resumen li b, .ct-cierre b, .ct-sello{ font-weight:600 !important; letter-spacing:-0.02em; }
+        .ct-indice b{ font-size:19px !important; } .ct-incluye b{ font-size:16px !important; } .ct-circ b{ font-size:26px !important; }
+        .ct-circ-sm b{ font-size:21px !important; } .ct-resumen li b{ font-size:19px !important; } .ct-cierre b{ font-size:22px !important; } .ct-sello{ font-size:19px !important; }
         .ct-foto{ width:100%; aspect-ratio:4/3; border-radius:200px 200px 24px 24px; overflow:hidden; background:#ddd6c7; }
         .ct-foto img{ width:100%; height:100%; object-fit:cover; display:block; }
         .ct-circs{ display:flex; flex-wrap:wrap; gap:12px; }
@@ -992,10 +1001,10 @@
   <button onclick="histSiguiente()" aria-label="Siguiente" style="position:absolute;right:0;top:0;bottom:0;width:14%;background:none;border:none;cursor:pointer;z-index:4;"></button>
   <div style="position:relative;width:min(420px,100vw);height:min(92vh,760px);">
     <div id="histBarras" style="position:absolute;top:12px;left:12px;right:12px;display:flex;gap:4px;z-index:3;"></div>
-    <div id="histTitulo" style="position:absolute;top:30px;left:14px;z-index:3;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);"></div>
+    <div id="histTitulo" style="position:absolute;top:30px;left:14px;z-index:3;color:#fff;font-family:var(--f-apple);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.6);"></div>
     <div id="histLienzo" style="width:100%;height:100%;border-radius:14px;overflow:hidden;background:#000;"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 22px;background:linear-gradient(transparent,rgba(0,0,0,.75));border-radius:0 0 14px 14px;z-index:3;">
-      <div id="histPie" style="color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:12px;"></div>
+      <div id="histPie" style="color:#fff;font-family:var(--f-apple);font-size:14px;margin-bottom:12px;"></div>
       <button data-edit="visor_boton" onclick="pedirWa(histServicio())" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="border:none;cursor:pointer;">Lo quiero por WhatsApp</button>
     </div>
   </div>
@@ -1082,8 +1091,8 @@ window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
 </script>
 <script src="js/whatsapp.js?v=7"></script>
 <script src="js/reserva.js?v=8"></script>
-<script src="js/instagram.js?v=3"></script>
-<script src="js/chatbot.js?v=5"></script>
+<script src="js/instagram.js?v=4"></script>
+<script src="js/chatbot.js?v=6"></script>
 <script src="js/navidad.js?v=2"></script>
 <script src="js/editor_vivo.js?v=7"></script>
 </body>
