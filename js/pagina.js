@@ -9,7 +9,7 @@
 
   var VISTAS = ['inicio', 'tratamientos', 'precios', 'estudio', 'ubicacion'];
   // Nombres viejos o anclas internas → vista que las contiene
-  var ALIAS = { servicios:'tratamientos', ofertas:'inicio', 'como-funciona':'inicio', como:'inicio', faq:'inicio', instagram:'inicio', reservar:'inicio', reserva:'inicio' };
+  var ALIAS = { servicios:'tratamientos', catalogo:'precios', ofertas:'inicio', 'como-funciona':'inicio', como:'inicio', faq:'inicio', instagram:'inicio', reservar:'inicio', reserva:'inicio' };
 
   function vistaDe(v){ v = ALIAS[v] || v; return VISTAS.indexOf(v) >= 0 ? v : 'inicio'; }
 
@@ -61,6 +61,17 @@
     return _nav(v);
   };
 
+  // Textos legales (pie): se leen de web_contenido (legal_*) y se editan desde el CRM
+  var LEGAL_TITULOS = { privacidad:'Política de privacidad', terminos:'Términos y condiciones', accesibilidad:'Accesibilidad', reclamaciones:'Libro de reclamaciones' };
+  window.verLegal = function(clave){
+    var m = document.getElementById('legalModal'); if(!m) return;
+    var textos = window._WEB_CONTENIDO || {};
+    document.getElementById('legalTitulo').textContent = LEGAL_TITULOS[clave] || 'Información';
+    document.getElementById('legalTexto').textContent = textos['legal_' + clave] || 'Escríbenos por WhatsApp y te lo enviamos.';
+    m.style.display = 'flex'; document.body.style.overflow = 'hidden';
+  };
+  window.cerrarLegal = function(){ var m = document.getElementById('legalModal'); if(m){ m.style.display = 'none'; document.body.style.overflow = ''; } };
+
   // Popup de reserva
   window.abrirReserva = function(){
     var m = document.getElementById('modalReserva');
@@ -80,7 +91,7 @@
     var m = document.getElementById('modalReserva');
     if(m && e.target === m) cerrarReserva();
   });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') cerrarReserva(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ cerrarReserva(); cerrarLegal(); } });
 
   // Barra superior más sólida al bajar + el texto del inicio se desvanece con el scroll (como Apple)
   var nav = document.getElementById('apNav');
@@ -106,8 +117,7 @@
   });
 
   // Palabra por palabra: cada palabra entra con un pequeño retraso
-  document.querySelectorAll('.rv-words').forEach(function(el){
-    if(el.querySelector('.w')) return;
+  window.apPartirPalabras = function(el){
     var palabras = el.textContent.trim().split(/\s+/);
     el.textContent = '';
     palabras.forEach(function(p, i){
@@ -118,7 +128,8 @@
       el.appendChild(s);
       el.appendChild(document.createTextNode(' '));
     });
-  });
+  };
+  document.querySelectorAll('.rv-words').forEach(function(el){ if(!el.querySelector('.w')) window.apPartirPalabras(el); });
 
   // Aparece al entrar en pantalla y desaparece al salir
   var todos = document.querySelectorAll('.rv');
