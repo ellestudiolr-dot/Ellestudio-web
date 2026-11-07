@@ -87,6 +87,23 @@
       if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[m.clave] = m.valor;
       reubicar();
     }
+    // Vista previa sin guardar: el CRM manda el archivo elegido (foto, GIF o video) y aquí se muestra al instante
+    if(m.tipo === 'previsualizar-img' && m.clave && m.archivo){
+      var urlLocal = URL.createObjectURL(m.archivo);
+      document.querySelectorAll('[data-edit-img="' + m.clave + '"]').forEach(function(el){ if(window.apAplicarImg) window.apAplicarImg(el, urlLocal, !!m.esVideo); });
+      if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[m.clave] = urlLocal;
+      reubicar();
+    }
+    if(m.tipo === 'restaurar-img' && m.clave){
+      if(window.apRestaurarImg) window.apRestaurarImg(m.clave);
+      if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[m.clave] = '';
+      reubicar();
+    }
+    if(m.tipo === 'catalogo-preview' && m.item && typeof window.apCatalogoPreview === 'function'){
+      window.apCatalogoPreview(m.item);
+      var bq = document.querySelector('.ct-bloque[data-cat-id="' + m.item.id + '"]'); if(bq) marcar(bq);
+      reubicar();
+    }
     if(m.tipo === 'recargar-catalogo' && typeof window.cargarCatalogo === 'function'){ window.cargarCatalogo(); }
     if(m.tipo === 'recargar-textos'){ location.reload(); }
     if(m.tipo === 'ir' && m.vista && typeof window.verVista === 'function'){ window.verVista(m.vista); reubicar(); }

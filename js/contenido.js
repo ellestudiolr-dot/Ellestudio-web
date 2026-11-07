@@ -4,11 +4,19 @@
 // data-edit-img="clave"  → foto, GIF o video (si está vacío se queda el archivo original del código)
 (function(){
   window._WEB_CONTENIDO = {};
+  window._WEB_ORIGINALES = {};   // HTML original (del código) de cada foto/video, para poder volver a él sin recargar
 
-  // Cambia una foto/GIF/video. Si el elemento es un video y llega una imagen, el video se reemplaza por la imagen.
-  window.apAplicarImg = function(el, valor){
+  function guardarOriginal(el){
+    var k = el && el.getAttribute && el.getAttribute('data-edit-img');
+    if(k && !window._WEB_ORIGINALES[k]) window._WEB_ORIGINALES[k] = el.outerHTML;
+  }
+
+  // Cambia una foto/GIF/video. Si el elemento es un video y llega una imagen, el video se reemplaza por la imagen (y al revés).
+  // esVideoForzado: true/false cuando la dirección no dice qué es (p. ej. una vista previa local del editor).
+  window.apAplicarImg = function(el, valor, esVideoForzado){
     if(!el || !valor) return;
-    var esVideo = /\.(mp4|webm|mov)(\?|$)/i.test(valor);
+    guardarOriginal(el);
+    var esVideo = (typeof esVideoForzado === 'boolean') ? esVideoForzado : /\.(mp4|webm|mov)(\?|$)/i.test(valor);
     if(el.tagName === 'VIDEO'){
       if(esVideo){
         el.querySelectorAll('source').forEach(function(s){ s.src = valor; });
@@ -33,8 +41,21 @@
     }
   };
 
+  // Vuelve al archivo original del código (el que había antes de cualquier cambio)
+  window.apRestaurarImg = function(clave){
+    var html = window._WEB_ORIGINALES[clave];
+    if(!html) return false;
+    document.querySelectorAll('[data-edit-img="' + clave + '"]').forEach(function(el){
+      el.insertAdjacentHTML('beforebegin', html);
+      var nuevo = el.previousElementSibling; el.remove();
+      if(nuevo && nuevo.tagName === 'VIDEO'){ nuevo.muted = true; nuevo.load(); var p = nuevo.play(); if(p && p.catch) p.catch(function(){}); }
+    });
+    return true;
+  };
+
   function aplicar(mapa){
     window._WEB_CONTENIDO = mapa;
+    document.querySelectorAll('[data-edit-img]').forEach(guardarOriginal);
     Object.keys(mapa).forEach(function(clave){
       var valor = mapa[clave];
       if(valor === null || valor === undefined || String(valor).trim() === '') return;

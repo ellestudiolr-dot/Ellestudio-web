@@ -75,9 +75,12 @@
       + '<button type="button" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button></section>';
   }
 
+  var cache = [];   // lo último pintado (para la vista previa del editor)
+
   function pintar(items){
     var caja = document.getElementById('catalogoApp');
     if(!caja) return;
+    cache = items.slice();
     var activos = items.filter(function(i){ return i && i.activo !== false; }).sort(function(a, b){ return (a.orden || 0) - (b.orden || 0); });
     if(!activos.length){ caja.innerHTML = ''; return; }
     var html = portada(), k = 0;
@@ -107,6 +110,13 @@
   }
 
   window.cargarCatalogo = cargar;
+  // Vista previa de un bloque editado en el CRM (sin guardar): se vuelve a pintar con ese bloque cambiado
+  window.apCatalogoPreview = function(item){
+    if(!item || item.id == null) return;
+    var i = cache.findIndex(function(x){ return String(x.id) === String(item.id); });
+    if(i >= 0) cache[i] = Object.assign({}, cache[i], item); else cache.push(item);
+    pintar(cache);
+  };
 
   // Espera a los textos de la portada (web_contenido) si ya están cargando; si no, pinta igual
   var pintado = false;
