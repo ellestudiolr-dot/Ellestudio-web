@@ -6,6 +6,16 @@
   window._WEB_CONTENIDO = {};
   window._WEB_ORIGINALES = {};   // HTML original (del código) de cada foto/video, para poder volver a él sin recargar
 
+  var cssOculta = document.createElement('style'); cssOculta.textContent = '.ap-sin-media{ display:none !important; }'; document.head.appendChild(cssOculta);
+
+  // Deja el hueco sin foto ni video (valor «ninguna» en web_contenido)
+  window.apQuitarImg = function(el){
+    if(!el) return;
+    guardarOriginal(el);
+    el.classList.add('ap-sin-media');
+    if(el.tagName === 'VIDEO'){ try{ el.pause(); }catch(e){} }
+  };
+
   function guardarOriginal(el){
     var k = el && el.getAttribute && el.getAttribute('data-edit-img');
     if(k && !window._WEB_ORIGINALES[k]) window._WEB_ORIGINALES[k] = el.outerHTML;
@@ -15,7 +25,9 @@
   // esVideoForzado: true/false cuando la dirección no dice qué es (p. ej. una vista previa local del editor).
   window.apAplicarImg = function(el, valor, esVideoForzado){
     if(!el || !valor) return;
+    if(valor === 'ninguna'){ window.apQuitarImg(el); return; }
     guardarOriginal(el);
+    el.classList.remove('ap-sin-media');
     var esVideo = (typeof esVideoForzado === 'boolean') ? esVideoForzado : /\.(mp4|webm|mov)(\?|$)/i.test(valor);
     if(el.tagName === 'VIDEO'){
       if(esVideo){

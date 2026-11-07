@@ -25,28 +25,38 @@
 
   // Botón «Cambiar foto» sobre cada foto o video editable
   var ICONO = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>';
+  // Un botón por foto/video, creado UNA sola vez y solo re-colocado (si se borraran y volvieran a crear, el clic se perdía)
+  var botones = new Map(), presionando = false;
   function botonesFoto(){
-    document.querySelectorAll('.ev-foto').forEach(function(b){ b.remove(); });
+    if(presionando) return;
+    var vivos = new Set();
     document.querySelectorAll('[data-edit-img]').forEach(function(el){
-      if(!el.offsetParent && el.tagName !== 'VIDEO') return;
+      vivos.add(el);
+      var b = botones.get(el);
+      var visible = (el.offsetParent || el.tagName === 'VIDEO') && !el.classList.contains('ap-sin-media');
       var r = el.getBoundingClientRect();
-      if(r.width < 24 || r.height < 24) return;
+      if(!visible || r.width < 24 || r.height < 24){ if(b) b.style.display = 'none'; return; }
       var chico = r.width < 220 || r.height < 70;   // logos y fotos pequeñas: solo el icono
-      var b = document.createElement('button');
-      b.type = 'button'; b.className = 'ev-foto' + (chico ? ' ev-foto-chica' : ''); b.innerHTML = chico ? ICONO : ICONO + ' Cambiar foto o video';
-      b.title = 'Cambiar foto o video';
+      if(!b){
+        b = document.createElement('button');
+        b.type = 'button'; b.title = 'Cambiar foto o video';
+        b.addEventListener('mousedown', function(){ presionando = true; });
+        b.addEventListener('click', function(e){
+          e.preventDefault(); e.stopPropagation(); presionando = false;
+          var src = el.currentSrc || el.src || ((el.querySelector && el.querySelector('source')) || {}).src || '';
+          enviar({ tipo: 'imagen', clave: el.getAttribute('data-edit-img'), valor: el.classList.contains('ap-sin-media') ? 'ninguna' : src, esVideo: el.tagName === 'VIDEO' });
+        });
+        document.body.appendChild(b); botones.set(el, b);
+      }
+      var claseNueva = 'ev-foto' + (chico ? ' ev-foto-chica' : '');
+      if(b.className !== claseNueva){ b.className = claseNueva; b.innerHTML = chico ? ICONO : ICONO + ' Cambiar foto o video'; }
       var arriba = r.top + window.scrollY + (chico ? 4 : 14);
       if(!chico && r.top + window.scrollY < 80) arriba += 80;   // la portada queda bajo la barra del menú: el botón baja para no tapar el logo
-      b.style.left = (r.left + window.scrollX + (chico ? 4 : 14)) + 'px';
-      b.style.top = arriba + 'px';
-      b.addEventListener('click', function(e){
-        e.preventDefault(); e.stopPropagation();
-        var src = el.currentSrc || el.src || ((el.querySelector && el.querySelector('source')) || {}).src || '';
-        enviar({ tipo: 'imagen', clave: el.getAttribute('data-edit-img'), valor: src, esVideo: el.tagName === 'VIDEO' });
-      });
-      document.body.appendChild(b);
+      b.style.display = ''; b.style.left = (r.left + window.scrollX + (chico ? 4 : 14)) + 'px'; b.style.top = arriba + 'px';
     });
+    botones.forEach(function(b, el){ if(!vivos.has(el) || !el.isConnected){ b.remove(); botones.delete(el); } });
   }
+  document.addEventListener('mouseup', function(){ presionando = false; });
   var pendiente = null;
   function reubicar(){ clearTimeout(pendiente); pendiente = setTimeout(botonesFoto, 120); }
   window.addEventListener('scroll', reubicar, { passive: true });
@@ -97,6 +107,11 @@
       var urlLocal = URL.createObjectURL(m.archivo);
       document.querySelectorAll('[data-edit-img="' + m.clave + '"]').forEach(function(el){ if(window.apAplicarImg) window.apAplicarImg(el, urlLocal, !!m.esVideo); });
       if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[m.clave] = urlLocal;
+      reubicar();
+    }
+    if(m.tipo === 'quitar-img' && m.clave){
+      document.querySelectorAll('[data-edit-img="' + m.clave + '"]').forEach(function(el){ if(window.apQuitarImg) window.apQuitarImg(el); });
+      if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[m.clave] = 'ninguna';
       reubicar();
     }
     if(m.tipo === 'restaurar-img' && m.clave){
