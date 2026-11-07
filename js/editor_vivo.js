@@ -15,6 +15,7 @@
     + '.ct-bloque.ev-activo{ outline:2px solid #3d4f30 !important; outline-offset:-2px; }'
     + '.ev-foto{ position:absolute; z-index:9000; display:inline-flex; align-items:center; gap:6px; background:#191c17; color:#fff; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:8px 14px; font:600 12px/1 -apple-system,BlinkMacSystemFont,"Inter",sans-serif; cursor:pointer; box-shadow:0 8px 24px rgba(0,0,0,.35); }'
     + '.ev-foto:hover{ background:#3d4f30; }'
+    + '.ev-foto-chica{ padding:7px; border-radius:50%; }'
     + '#elleChatBtn, .elle-chat-btn, #waFlotante{ display:none !important; }'
     + 'html.js .rv{ opacity:1 !important; transform:none !important; } html.js .rv-words .w{ opacity:1 !important; transform:none !important; filter:none !important; }';
   document.head.appendChild(css);
@@ -29,11 +30,13 @@
     document.querySelectorAll('[data-edit-img]').forEach(function(el){
       if(!el.offsetParent && el.tagName !== 'VIDEO') return;
       var r = el.getBoundingClientRect();
-      if(r.width < 40 || r.height < 40) return;
+      if(r.width < 24 || r.height < 24) return;
+      var chico = r.width < 220 || r.height < 70;   // logos y fotos pequeñas: solo el icono
       var b = document.createElement('button');
-      b.type = 'button'; b.className = 'ev-foto'; b.innerHTML = ICONO + ' Cambiar foto o video';
-      b.style.left = (r.left + window.scrollX + 14) + 'px';
-      b.style.top = (r.top + window.scrollY + 14) + 'px';
+      b.type = 'button'; b.className = 'ev-foto' + (chico ? ' ev-foto-chica' : ''); b.innerHTML = chico ? ICONO : ICONO + ' Cambiar foto o video';
+      b.title = 'Cambiar foto o video';
+      b.style.left = (r.left + window.scrollX + (chico ? 4 : 14)) + 'px';
+      b.style.top = (r.top + window.scrollY + (chico ? 4 : 14)) + 'px';
       b.addEventListener('click', function(e){
         e.preventDefault(); e.stopPropagation();
         var src = el.currentSrc || el.src || ((el.querySelector && el.querySelector('source')) || {}).src || '';
@@ -76,8 +79,7 @@
     var m = e.data || {};
     if(m.tipo === 'aplicar' && m.clave){
       document.querySelectorAll('[data-edit="' + m.clave + '"]').forEach(function(el){
-        el.textContent = m.valor;
-        if(el.classList.contains('rv-words') && typeof window.apPartirPalabras === 'function') window.apPartirPalabras(el);
+        if(window.apAplicarTexto) window.apAplicarTexto(el, m.valor); else el.textContent = m.valor;
         el.classList.add('on');
       });
       if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[m.clave] = m.valor;

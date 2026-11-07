@@ -53,16 +53,24 @@
     return true;
   };
 
+  // Cambia un texto. Si es un contador animado (data-hasta) también actualiza el número al que sube.
+  window.apAplicarTexto = function(el, valor){
+    if(!el) return;
+    if(el.hasAttribute('data-hasta')){
+      var m = String(valor).match(/^(\D*)([\d.,\s]+)(\D*)$/);
+      if(m){ var n = parseInt(m[2].replace(/[^\d]/g, ''), 10); if(!isNaN(n)){ el.setAttribute('data-hasta', String(n)); el.setAttribute('data-pre', m[1]); el.setAttribute('data-suf', m[3]); } }
+    }
+    el.textContent = valor;
+    if(el.classList.contains('rv-words') && typeof window.apPartirPalabras === 'function') window.apPartirPalabras(el);
+  };
+
   function aplicar(mapa){
     window._WEB_CONTENIDO = mapa;
     document.querySelectorAll('[data-edit-img]').forEach(guardarOriginal);
     Object.keys(mapa).forEach(function(clave){
       var valor = mapa[clave];
       if(valor === null || valor === undefined || String(valor).trim() === '') return;
-      document.querySelectorAll('[data-edit="' + clave + '"]').forEach(function(el){
-        el.textContent = valor;
-        if(el.classList.contains('rv-words') && typeof window.apPartirPalabras === 'function') window.apPartirPalabras(el);
-      });
+      document.querySelectorAll('[data-edit="' + clave + '"]').forEach(function(el){ window.apAplicarTexto(el, valor); });
       document.querySelectorAll('[data-edit-img="' + clave + '"]').forEach(function(el){ window.apAplicarImg(el, valor); });
     });
     document.dispatchEvent(new CustomEvent('web-contenido-listo', { detail: mapa }));

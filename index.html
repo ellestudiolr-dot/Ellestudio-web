@@ -570,27 +570,27 @@
 <!-- BARRA SUPERIOR -->
 <nav class="ap-nav" id="apNav">
   <div class="ap-nav-in">
-    <a href="#inicio" onclick="return _nav('inicio')" aria-label="elle studio · inicio" style="text-decoration:none;"><img src="img/logo-elle-claro.png" alt="elle studio" class="ap-logo"/></a>
+    <a href="#inicio" onclick="return _nav('inicio')" aria-label="elle studio · inicio" style="text-decoration:none;"><img data-edit-img="logo_nav" src="img/logo-elle-claro.png" alt="elle studio" class="ap-logo"/></a>
     <div class="ap-links">
-      <a href="#inicio" onclick="return _nav('inicio')" data-nav="inicio">Inicio</a>
-      <a href="#tratamientos" onclick="return _nav('tratamientos')" data-nav="tratamientos">Tratamientos</a>
-      <a href="#precios" onclick="return _nav('precios')" data-nav="precios">Catálogo</a>
-      <a href="#estudio" onclick="return _nav('estudio')" data-nav="estudio">Estudio</a>
-      <a href="#ubicacion" onclick="return _nav('ubicacion')" data-nav="ubicacion">Ubicación</a>
+      <a data-edit="nav_inicio" href="#inicio" onclick="return _nav('inicio')" data-nav="inicio">Inicio</a>
+      <a data-edit="nav_tratamientos" href="#tratamientos" onclick="return _nav('tratamientos')" data-nav="tratamientos">Tratamientos</a>
+      <a data-edit="nav_catalogo" href="#precios" onclick="return _nav('precios')" data-nav="precios">Catálogo</a>
+      <a data-edit="nav_estudio" href="#estudio" onclick="return _nav('estudio')" data-nav="estudio">Estudio</a>
+      <a data-edit="nav_ubicacion" href="#ubicacion" onclick="return _nav('ubicacion')" data-nav="ubicacion">Ubicación</a>
     </div>
     <div class="ap-nav-der">
-      <button class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
+      <button data-edit="nav_boton" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
       <button class="ap-burger" onclick="menuMovil()" aria-label="Menú">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8BC7E" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
   <div id="menuMovilPanel" class="ap-menu-movil" style="display:none;">
-    <a onclick="return _navMovil('inicio')" href="#inicio">Inicio</a>
-    <a onclick="return _navMovil('tratamientos')" href="#tratamientos">Tratamientos</a>
-    <a onclick="return _navMovil('precios')" href="#precios">Catálogo</a>
-    <a onclick="return _navMovil('estudio')" href="#estudio">Estudio</a>
-    <a onclick="return _navMovil('ubicacion')" href="#ubicacion">Ubicación</a>
+    <a data-edit="nav_inicio" onclick="return _navMovil('inicio')" href="#inicio">Inicio</a>
+    <a data-edit="nav_tratamientos" onclick="return _navMovil('tratamientos')" href="#tratamientos">Tratamientos</a>
+    <a data-edit="nav_catalogo" onclick="return _navMovil('precios')" href="#precios">Catálogo</a>
+    <a data-edit="nav_estudio" onclick="return _navMovil('estudio')" href="#estudio">Estudio</a>
+    <a data-edit="nav_ubicacion" onclick="return _navMovil('ubicacion')" href="#ubicacion">Ubicación</a>
   </div>
 </nav>
 
@@ -601,15 +601,15 @@
   </video>
   <div class="ap-hero-velo"></div>
   <div class="ap-hero-texto" id="heroTexto">
-    <img src="img/logo-elle-claro.png" alt="elle studio" class="ap-hero-logo rv"/>
+    <img data-edit-img="logo_hero" src="img/logo-elle-claro.png" alt="elle studio" class="ap-hero-logo rv"/>
     <span class="ap-hero-linea rv" aria-hidden="true"></span>
     <h1 class="ap-hero-titulo rv rv-words" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces.</h1>
     <div class="ap-botones rv">
-      <button class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
-      <a class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
+      <button data-edit="hero_boton1" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
+      <a data-edit="hero_boton2" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
     </div>
   </div>
-  <div class="ap-pista" aria-hidden="true">Desliza<i></i></div>
+  <div data-edit="hero_desliza" class="ap-pista" aria-hidden="true">Desliza<i></i></div>
 </header>
 
 <!-- UNA INVITACIÓN -->
@@ -618,9 +618,9 @@
   <h2 class="ap-h2 rv rv-words" data-edit="intro_titulo">Cuidarte no es una cita. Es constancia.</h2>
   <p class="ap-parrafo rv" data-edit="intro_texto">Sesiones cortas, con cita y sin esperas. Te acompañamos sesión a sesión hasta que veas el resultado.</p>
   <div class="ap-cifras rv">
-    <div><b class="contador" data-hasta="250" data-pre="+">+0</b><span>clientas atendidas</span></div>
-    <div><b class="contador" data-hasta="1000" data-pre="+">+0</b><span>sesiones realizadas</span></div>
-    <div><b>3</b><span>cubículos privados</span></div>
+    <div><b data-edit="cifra1_num" class="contador" data-hasta="250" data-pre="+">+0</b><span data-edit="cifra1_txt">clientas atendidas</span></div>
+    <div><b data-edit="cifra2_num" class="contador" data-hasta="1000" data-pre="+">+0</b><span data-edit="cifra2_txt">sesiones realizadas</span></div>
+    <div><b data-edit="cifra3_num">3</b><span data-edit="cifra3_txt">cubículos privados</span></div>
   </div>
 </section>
 
@@ -641,15 +641,15 @@
         <h3 class="ap-h3 ap-claro" data-edit="oferta1_titulo">Paquete láser ×6 sesiones</h3>
         <p class="ap-tarjeta-txt" data-edit="oferta1_texto">Hasta 40% de ahorro frente a pagar sesión por sesión. Elige tus zonas y te armamos el combo.</p>
         <ul class="ap-guiones">
-          <li>Para ella y para él, en todas las zonas</li>
-          <li>Sesiones rápidas y cómodas</li>
-          <li>Te confirmamos por WhatsApp</li>
+          <li data-edit="ofertas_punto1">Para ella y para él, en todas las zonas</li>
+          <li data-edit="ofertas_punto2">Sesiones rápidas y cómodas</li>
+          <li data-edit="ofertas_punto3">Te confirmamos por WhatsApp</li>
         </ul>
       </div>
       <div class="ap-tarjeta-precio">
-        <span class="ap-mini">Desde</span>
+        <span data-edit="ofertas_desde" class="ap-mini">Desde</span>
         <div class="ap-precio" data-edit="oferta1_precio">S/ 90</div>
-        <button class="ap-btn ap-btn-blanco" onclick="pedirWa('Paquete láser ×6 sesiones')">Lo quiero</button>
+        <button data-edit="oferta1_boton" class="ap-btn ap-btn-blanco" onclick="pedirWa('Paquete láser ×6 sesiones')">Lo quiero</button>
       </div>
     </div>
 
@@ -658,15 +658,15 @@
         <span class="ap-badge" data-edit="oferta2_etiqueta">Nuevas clientas</span>
         <h3 class="ap-h3 ap-claro" data-edit="oferta2_titulo">Glúteos de Porcelana</h3>
         <p class="ap-tarjeta-txt" data-edit="oferta2_texto">Levantamiento, firmeza y textura renovada. Evaluación de tu piel incluida en la primera visita.</p>
-        <div><span class="ap-mini">Desde</span><div class="ap-precio" data-edit="oferta2_precio">S/ 89.90</div></div>
-        <button class="ap-btn ap-btn-blanco" onclick="pedirWa('Glúteos De Porcelana')">Reservar</button>
+        <div><span data-edit="ofertas_desde" class="ap-mini">Desde</span><div class="ap-precio" data-edit="oferta2_precio">S/ 89.90</div></div>
+        <button data-edit="oferta2_boton" class="ap-btn ap-btn-blanco" onclick="pedirWa('Glúteos De Porcelana')">Reservar</button>
       </div>
       <div class="ap-tarjeta rv">
         <span class="ap-badge" data-edit="oferta3_etiqueta">Cuidado facial</span>
         <h3 class="ap-h3 ap-claro" data-edit="oferta3_titulo">Limpieza facial profunda</h3>
         <p class="ap-tarjeta-txt" data-edit="oferta3_texto">Limpieza, hidratación y cuidado del rostro. Ideal cada 4 a 6 semanas para mantener tu piel sana.</p>
-        <div><span class="ap-mini">Desde</span><div class="ap-precio" data-edit="oferta3_precio">S/ 80</div></div>
-        <button class="ap-btn ap-btn-blanco" onclick="pedirWa('Limpieza facial profunda')">Reservar</button>
+        <div><span data-edit="ofertas_desde" class="ap-mini">Desde</span><div class="ap-precio" data-edit="oferta3_precio">S/ 80</div></div>
+        <button data-edit="oferta3_boton" class="ap-btn ap-btn-blanco" onclick="pedirWa('Limpieza facial profunda')">Reservar</button>
       </div>
     </div>
   </div>
@@ -719,8 +719,8 @@
     <h2 class="ap-h2 ap-claro rv rv-words" data-edit="red_titulo">Medidas y contorno, sesión a sesión.</h2>
     <p class="ap-parrafo ap-claro rv" data-edit="red_texto">Radiofrecuencia, lipoláser, maderoterapia y bambú. Elegimos contigo el protocolo según tu objetivo. Desde S/ 50.</p>
     <div class="ap-botones rv">
-      <button class="ap-btn ap-btn-oscuro" onclick="abrirReserva()">Reservar cita</button>
-      <a class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
+      <button data-edit="corporal_boton1" class="ap-btn ap-btn-oscuro" onclick="abrirReserva()">Reservar cita</button>
+      <a data-edit="corporal_boton2" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
     </div>
   </div>
   <div class="ap-split-video">
@@ -737,8 +737,8 @@
     <h2 class="ap-h2 ap-claro rv rv-words" data-edit="peel_titulo">El secreto de las alfombras rojas, ahora en Elle.</h2>
     <p class="ap-parrafo ap-claro rv" data-edit="peel_texto">Máscara de carbón y láser. Piel más limpia, pareja y luminosa, sin reposo: sales y sigues con tu día.</p>
     <div class="ap-botones rv">
-      <button class="ap-btn ap-btn-blanco" onclick="pedirWa('Hollywood Peel')">Lo quiero</button>
-      <a class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
+      <button data-edit="peel_boton1" class="ap-btn ap-btn-blanco" onclick="pedirWa('Hollywood Peel')">Lo quiero</button>
+      <a data-edit="peel_boton2" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
     </div>
   </div>
 </section>
@@ -747,17 +747,17 @@
 <section class="ap-como vista activa" data-vista="inicio" id="como-funciona">
   <div class="ap-cont ap-como-grid">
     <div class="ap-como-pasos">
-      <span class="ap-ceja ap-ceja-oro rv">Así de simple</span>
-      <h2 class="ap-como-tit ap-claro rv rv-words">Cómo funciona</h2>
+      <span data-edit="como_ceja" class="ap-ceja ap-ceja-oro rv">Así de simple</span>
+      <h2 data-edit="como_titulo" class="ap-como-tit ap-claro rv rv-words">Cómo funciona</h2>
       <ol class="ap-timeline rv" id="apTimeline">
         <li class="activa"><span class="ap-tl-num">1</span><div><b data-edit="paso1_titulo">Reserva en línea</b><p data-edit="paso1_texto">Elige tu tratamiento y el día que prefieres, aquí mismo.</p></div></li>
         <li><span class="ap-tl-num">2</span><div><b data-edit="paso2_titulo">Te confirmamos por WhatsApp</b><p data-edit="paso2_texto">Te escribimos para fijar tu horario exacto.</p></div></li>
         <li><span class="ap-tl-num">3</span><div><b data-edit="paso3_titulo">Ven a tu cita</b><p data-edit="paso3_texto">Cubículo privado, con cita y sin esperas, en San Isidro.</p></div></li>
       </ol>
-      <div class="rv"><button class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button></div>
+      <div class="rv"><button data-edit="como_boton" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button></div>
     </div>
     <div class="ap-como-faq" id="faq">
-      <span class="ap-ceja ap-ceja-oro rv">Preguntas frecuentes</span>
+      <span data-edit="faq_ceja" class="ap-ceja ap-ceja-oro rv">Preguntas frecuentes</span>
       <details class="ap-faq rv"><summary><span data-edit="faq1_p">¿La depilación láser duele?</span><i></i></summary><p data-edit="faq1_r">La molestia es mínima. Usamos tecnología láser moderna y preparamos la piel en cada sesión para que la experiencia sea rápida y cómoda.</p></details>
       <details class="ap-faq rv"><summary><span data-edit="faq2_p">¿Cuántas sesiones necesito?</span><i></i></summary><p data-edit="faq2_r">Depende de la zona y del tipo de vello. Trabajamos con sesiones individuales y paquetes de 3 y 6 sesiones que hacen el tratamiento más efectivo y económico.</p></details>
       <details class="ap-faq rv"><summary><span data-edit="faq3_p">¿Atienden a hombres?</span><i></i></summary><p data-edit="faq3_r">Sí. Tenemos precios y protocolos de depilación láser tanto para mujeres como para hombres, en todas las zonas.</p></details>
@@ -771,18 +771,18 @@
   <div class="ap-cont">
     <div class="ap-cab-fila rv">
       <div>
-        <span class="ap-ceja">Instagram</span>
+        <span data-edit="ig_ceja" class="ap-ceja">Instagram</span>
         <h2 class="ap-h2" data-edit="ig_titulo">Elle</h2>
-        <a class="ap-ig-handle" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
+        <a data-edit="ig_handle" class="ap-ig-handle" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">@_elleestudio</a>
       </div>
-      <a class="ap-btn ap-btn-oscuro" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">
+      <a data-edit="ig_boton" class="ap-btn ap-btn-oscuro" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
         Ir a Instagram
       </a>
     </div>
   </div>
   <div class="ap-ig-grid" id="reelsIG" aria-label="Últimas publicaciones de Instagram de elle studio"></div>
-  <p class="ap-ig-nota rv">Toca una publicación para verla en Instagram.</p>
+  <p data-edit="ig_nota" class="ap-ig-nota rv">Toca una publicación para verla en Instagram.</p>
 </section>
 
 
@@ -790,18 +790,18 @@
 <section class="ap-mapa vista activa" data-vista="inicio" id="mapa">
   <div class="ap-cont ap-mapa-grid">
     <div class="ap-mapa-txt">
-      <span class="ap-ceja rv">Dónde estamos</span>
+      <span data-edit="mapa_ceja" class="ap-ceja rv">Dónde estamos</span>
       <h2 class="ap-mapa-tit rv rv-words" data-edit="mapa_titulo">Av. Paz Soldán 235, San Isidro.</h2>
       <p class="ap-parrafo rv" data-edit="mapa_texto">Lima. Toca el mapa y Google Maps te lleva desde donde estés.</p>
       <div class="ap-botones rv">
-        <a class="ap-btn ap-btn-oscuro" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Cómo llegar</a>
-        <a class="ap-btn ap-btn-borde" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Ver en Google Maps</a>
+        <a data-edit="mapa_boton1" class="ap-btn ap-btn-oscuro" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Cómo llegar</a>
+        <a data-edit="mapa_boton2" class="ap-btn ap-btn-borde" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Ver en Google Maps</a>
       </div>
     </div>
     <a class="ap-mapa-card rv" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener" aria-label="Cómo llegar a elle studio en Google Maps">
       <iframe src="https://www.google.com/maps?q=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru&amp;z=16&amp;output=embed" loading="lazy" title="Mapa de elle studio" tabindex="-1" aria-hidden="true"></iframe>
       <span class="ap-pin" aria-hidden="true"><i></i><i></i><b></b></span>
-      <span class="ap-mapa-etq">Cómo llegar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      <span data-edit="mapa_etq" class="ap-mapa-etq">Cómo llegar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
     </a>
   </div>
 </section>
@@ -812,14 +812,14 @@
   <div class="ap-cont">
     <div id="catalogoApp"></div>
     <div class="ap-cab-centro" id="listaPrecios">
-      <span class="ap-ceja rv">elle studio · San Isidro</span>
+      <span data-edit="lista_ceja" class="ap-ceja rv">elle studio · San Isidro</span>
       <h2 class="ap-h2 rv rv-words" data-edit="lista_titulo">Todos los precios</h2>
       <p class="ap-parrafo rv" data-edit="lista_texto">Claros y por zona, con fotos de cómo se hace cada tratamiento. Toca «Pedir» y te escribimos por WhatsApp.</p>
     </div>
     <div id="pChips" class="ap-chips" role="group" aria-label="Categorías"></div>
     <div class="ap-seg-wrap" style="display:none;">
       <div id="pGenero" class="ap-seg" role="group" aria-label="Mujer u hombre">
-        <button type="button" data-g="mujer" onclick="pGenero('mujer')">Mujer</button><button type="button" data-g="hombre" onclick="pGenero('hombre')">Hombre</button>
+        <button data-edit="lista_mujer" type="button" data-g="mujer" onclick="pGenero('mujer')">Mujer</button><button data-edit="lista_hombre" type="button" data-g="hombre" onclick="pGenero('hombre')">Hombre</button>
       </div>
     </div>
     <div id="pCuerpo" class="ap-pcuerpo"><p class="ap-pnota" style="text-align:center;">Cargando precios…</p></div>
@@ -839,16 +839,16 @@
     </div>
     <div class="relative z-10 w-full max-w-container-max mx-auto px-gutter py-20">
       <div class="max-w-xl">
-        <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Conócenos</span>
-        <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3 mb-5">Nuestro Estudio</h2>
+        <span data-edit="estudio_ceja" class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Conócenos</span>
+        <h2 data-edit="estudio_titulo" class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3 mb-5">Nuestro Estudio</h2>
         <h3 class="font-headline-sm text-headline-sm text-on-background mb-3" data-edit="estudio_titulo">Un espacio pensado para ti</h3>
         <p class="font-body-lg text-body-lg text-on-surface-variant mb-7" data-edit="estudio_texto">Nuestro estudio en San Isidro cuenta con cubículos privados e individuales, protocolos de higiene en cada atención y un ambiente tranquilo para que tu sesión sea un momento para ti. Te atendemos con cita, sin esperas y con total privacidad.</p>
         <div class="flex flex-col gap-3 mb-8">
-          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">meeting_room</span><span class="font-body-md text-body-md">Cubículos privados e individuales</span></div>
-          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">sanitizer</span><span class="font-body-md text-body-md">Higiene y protocolos en cada sesión</span></div>
-          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">schedule</span><span class="font-body-md text-body-md">Atención puntual, solo con cita</span></div>
+          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">meeting_room</span><span data-edit="estudio_punto1" class="font-body-md text-body-md">Cubículos privados e individuales</span></div>
+          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">sanitizer</span><span data-edit="estudio_punto2" class="font-body-md text-body-md">Higiene y protocolos en cada sesión</span></div>
+          <div class="flex items-center gap-3"><span class="material-symbols-outlined text-gold-600">schedule</span><span data-edit="estudio_punto3" class="font-body-md text-body-md">Atención puntual, solo con cita</span></div>
         </div>
-        <button onclick="pedirWa('conocer el estudio y agendar mi cita')" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Agendar por WhatsApp</button>
+        <button data-edit="estudio_boton" onclick="pedirWa('conocer el estudio y agendar mi cita')" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-4 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Agendar por WhatsApp</button>
       </div>
     </div>
   </div>
@@ -856,10 +856,10 @@
   <!-- Contadores (se animan al entrar) -->
   <div class="px-gutter py-14">
     <div class="max-w-container-max mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div><div class="contador font-headline-lg text-headline-md text-gold-gradient" data-hasta="250" data-pre="+">+0</div><div class="font-label-upper text-label-upper uppercase text-on-surface-variant mt-1">Clientas atendidas</div></div>
-      <div><div class="contador font-headline-lg text-headline-md text-gold-gradient" data-hasta="1000" data-pre="+">+0</div><div class="font-label-upper text-label-upper uppercase text-on-surface-variant mt-1">Sesiones realizadas</div></div>
-      <div><div class="contador font-headline-lg text-headline-md text-gold-gradient" data-hasta="4" data-suf="">0</div><div class="font-label-upper text-label-upper uppercase text-on-surface-variant mt-1">Equipos profesionales</div></div>
-      <div><div class="contador font-headline-lg text-headline-md text-gold-gradient" data-hasta="3" data-suf="">0</div><div class="font-label-upper text-label-upper uppercase text-on-surface-variant mt-1">Cubículos privados</div></div>
+      <div><div data-edit="estudio_cifra1_num" class="contador font-headline-lg text-headline-md text-gold-gradient" data-hasta="250" data-pre="+">+0</div><div data-edit="estudio_cifra1_txt" class="font-label-upper text-label-upper uppercase text-on-surface-variant mt-1">Clientas atendidas</div></div>
+      <div><div data-edit="estudio_cifra2_num" class="contador font-headline-lg text-headline-md text-gold-gradient" data-hasta="1000" data-pre="+">+0</div><div data-edit="estudio_cifra2_txt" class="font-label-upper text-label-upper uppercase text-on-surface-variant mt-1">Sesiones realizadas</div></div>
+      <div><div data-edit="estudio_cifra3_num" class="contador font-headline-lg text-headline-md text-gold-gradient" data-hasta="4" data-suf="">0</div><div data-edit="estudio_cifra3_txt" class="font-label-upper text-label-upper uppercase text-on-surface-variant mt-1">Equipos profesionales</div></div>
+      <div><div data-edit="estudio_cifra4_num" class="contador font-headline-lg text-headline-md text-gold-gradient" data-hasta="3" data-suf="">0</div><div data-edit="estudio_cifra4_txt" class="font-label-upper text-label-upper uppercase text-on-surface-variant mt-1">Cubículos privados</div></div>
     </div>
   </div>
 
@@ -867,9 +867,9 @@
   <div class="px-gutter pb-24">
     <div class="max-w-container-max mx-auto">
       <div class="text-center mb-12">
-        <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Confianza y resultados</span>
-        <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Nuestra Tecnología</h2>
-        <p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl mx-auto">Toca cada equipo para ver qué trata y pedir tu cita.</p>
+        <span data-edit="tecno_ceja" class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Confianza y resultados</span>
+        <h2 data-edit="tecno_titulo" class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Nuestra Tecnología</h2>
+        <p data-edit="tecno_texto" class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-xl mx-auto">Toca cada equipo para ver qué trata y pedir tu cita.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="equipos"></div>
     </div>
@@ -879,8 +879,8 @@
 <section class="vista py-24 px-gutter" id="ubicacion" data-vista="ubicacion">
   <div class="max-w-container-max mx-auto">
     <div class="text-center mb-12">
-      <span class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Dónde estamos</span>
-      <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Nuestra Ubicación</h2>
+      <span data-edit="ubi_ceja" class="font-label-upper text-label-upper text-tertiary tracking-widest uppercase">Dónde estamos</span>
+      <h2 data-edit="ubi_titulo" class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mt-3">Nuestra Ubicación</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
       <div class="rounded-2xl overflow-hidden border border-surface-dim" style="height:340px;">
@@ -891,14 +891,14 @@
           <span class="material-symbols-outlined text-tertiary mt-1">location_on</span>
           <div>
             <p class="font-body-lg text-body-lg text-on-background" data-edit="direccion">Av. Paz Soldán 235, San Isidro, Lima</p>
-            <p class="font-body-md text-body-md text-on-surface-variant">Lima, Perú</p>
+            <p data-edit="ubi_ciudad" class="font-body-md text-body-md text-on-surface-variant">Lima, Perú</p>
           </div>
         </div>
         <img src="img/spa-ambiente.jpg" alt="Ambiente de elle studio" loading="lazy" class="rounded-2xl w-full object-cover" style="max-height:180px;" data-edit-img="foto_ubicacion"/>
         <div class="flex flex-wrap gap-3">
-          <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-7 py-3 rounded-full hover:bg-tertiary/5 transition-all uppercase" href="https://www.google.com/maps/dir/?api=1&destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Cómo llegar</a>
-          <a id="waUbicacion" hidden class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" href="#" target="_blank" rel="noopener">WhatsApp</a>
-          <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Reservar cita</button>
+          <a data-edit="ubi_boton1" class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-7 py-3 rounded-full hover:bg-tertiary/5 transition-all uppercase" href="https://www.google.com/maps/dir/?api=1&destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Cómo llegar</a>
+          <a data-edit="ubi_boton2" id="waUbicacion" hidden class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <button data-edit="ubi_boton3" onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Reservar cita</button>
         </div>
       </div>
     </div>
@@ -911,21 +911,21 @@
   <h2 class="ap-h2 ap-claro rv rv-words" data-edit="cta_titulo">Reserva hoy. Te confirmamos por WhatsApp.</h2>
   <p class="ap-parrafo ap-claro rv" data-edit="cta_texto">Déjanos tu nombre y el tratamiento que te interesa; te abrimos WhatsApp con el mensaje listo.</p>
   <div class="ap-botones rv" style="justify-content:center;">
-    <button class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
-    <a id="waFooterCta" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
+    <button data-edit="cta_boton1" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
+    <a data-edit="cta_boton2" id="waFooterCta" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
   </div>
 </section>
 
 <footer class="bg-on-background border-t border-tertiary/30 w-full">
   <div class="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto px-gutter py-20">
     <div class="flex flex-col gap-6 mb-12 md:mb-0">
-      <img src="img/logo-elle-claro.png" alt="elle studio" class="ap-logo-pie"/>
+      <img data-edit-img="logo_pie" src="img/logo-elle-claro.png" alt="elle studio" class="ap-logo-pie"/>
       <p class="text-surface-container-highest max-w-xs font-body-md text-body-md" data-edit="pie_texto">El balance perfecto entre tecnología láser y cuidado estético en Lima.</p>
       <p class="text-surface-variant font-label-upper text-[10px] mt-8 uppercase" data-edit="pie_copy">© 2026 elle studio. Todos los derechos reservados.</p>
-      <ul class="ap-legal-links"><li><a onclick="verLegal('privacidad')">Política de privacidad</a></li><li><a onclick="verLegal('terminos')">Términos y condiciones</a></li><li><a onclick="verLegal('accesibilidad')">Accesibilidad</a></li><li><a onclick="verLegal('reclamaciones')">Libro de reclamaciones</a></li></ul>
+      <ul class="ap-legal-links"><li><a data-edit="legal_link1" onclick="verLegal('privacidad')">Política de privacidad</a></li><li><a data-edit="legal_link2" onclick="verLegal('terminos')">Términos y condiciones</a></li><li><a data-edit="legal_link3" onclick="verLegal('accesibilidad')">Accesibilidad</a></li><li><a data-edit="legal_link4" onclick="verLegal('reclamaciones')">Libro de reclamaciones</a></li></ul>
     </div>
     <div class="flex flex-col gap-4">
-      <span class="font-label-upper text-label-upper text-gold-400 uppercase mb-2">Síguenos</span>
+      <span data-edit="pie_siguenos" class="font-label-upper text-label-upper text-gold-400 uppercase mb-2">Síguenos</span>
       <div class="flex items-center gap-3">
         <a class="red-circulo" href="https://www.instagram.com/_elleestudio/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
@@ -955,7 +955,7 @@
     <div id="histLienzo" style="width:100%;height:100%;border-radius:14px;overflow:hidden;background:#000;"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 22px;background:linear-gradient(transparent,rgba(0,0,0,.75));border-radius:0 0 14px 14px;z-index:3;">
       <div id="histPie" style="color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:12px;"></div>
-      <button onclick="pedirWa(histServicio())" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="border:none;cursor:pointer;">Lo quiero por WhatsApp</button>
+      <button data-edit="visor_boton" onclick="pedirWa(histServicio())" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-6 py-3 rounded-full uppercase w-full" style="border:none;cursor:pointer;">Lo quiero por WhatsApp</button>
     </div>
   </div>
 </div>
@@ -966,17 +966,17 @@
     <button onclick="cerrarReserva()" aria-label="Cerrar" style="position:absolute;top:10px;right:14px;z-index:2;background:none;border:none;font-size:1.6rem;color:#7a776e;cursor:pointer;line-height:1;">×</button>
     <div class="bg-surface-container-lowest p-8 md:p-12 border border-surface-dim shadow-sm rounded-2xl">
       <div class="mb-10">
-        <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-3">Agenda tu cita</h2>
-        <p class="font-body-md text-body-md text-on-surface-variant">Elige lo que quieres, déjanos tu nombre y celular, y te abrimos WhatsApp con el mensaje listo.</p>
+        <h2 data-edit="reserva_titulo" class="font-headline-lg text-headline-md md:text-headline-lg text-on-background mb-3">Agenda tu cita</h2>
+        <p data-edit="reserva_texto" class="font-body-md text-body-md text-on-surface-variant">Elige lo que quieres, déjanos tu nombre y celular, y te abrimos WhatsApp con el mensaje listo.</p>
       </div>
       <div class="mb-6">
-        <p class="font-label-upper text-label-upper uppercase text-tertiary mb-3">1 · ¿Qué te interesa?</p>
+        <p data-edit="reserva_paso1" class="font-label-upper text-label-upper uppercase text-tertiary mb-3">1 · ¿Qué te interesa?</p>
         <div class="flex flex-wrap gap-2" id="chipsReserva">
-          <button type="button" onclick="elegirSvc(this,'Depilación Láser')" class="chip-svc">Depilación Láser</button>
-          <button type="button" onclick="elegirSvc(this,'Glúteos De Porcelana')" class="chip-svc">Glúteos</button>
-          <button type="button" onclick="elegirSvc(this,'Limpieza Facial')" class="chip-svc">Facial</button>
-          <button type="button" onclick="elegirSvc(this,'Body Porcelana')" class="chip-svc">Corporal</button>
-          <button type="button" onclick="elegirSvc(this,'Otro / no estoy segura')" class="chip-svc">No estoy segura</button>
+          <button data-edit="reserva_chip1" type="button" onclick="elegirSvc(this,'Depilación Láser')" class="chip-svc">Depilación Láser</button>
+          <button data-edit="reserva_chip2" type="button" onclick="elegirSvc(this,'Glúteos De Porcelana')" class="chip-svc">Glúteos</button>
+          <button data-edit="reserva_chip3" type="button" onclick="elegirSvc(this,'Limpieza Facial')" class="chip-svc">Facial</button>
+          <button data-edit="reserva_chip4" type="button" onclick="elegirSvc(this,'Body Porcelana')" class="chip-svc">Corporal</button>
+          <button data-edit="reserva_chip5" type="button" onclick="elegirSvc(this,'Otro / no estoy segura')" class="chip-svc">No estoy segura</button>
         </div>
       </div>
       <form class="space-y-8" id="formReserva" novalidate onsubmit="enviarSolicitud();return false;">
@@ -1016,7 +1016,7 @@
         </div>
         <div><textarea class="w-full input-underline font-body-md text-body-md text-on-background placeholder:text-outline/60 resize-none" id="mensaje" maxlength="500" placeholder="Mensaje o zona que te interesa (opcional)" rows="3"></textarea></div>
         <div class="pt-4">
-          <button class="w-full gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-5 rounded-full hover:brightness-110 transition-all uppercase tracking-widest flex items-center justify-center gap-3" id="btnEnviar" type="button" onclick="enviarSolicitud()">
+          <button data-edit="reserva_boton" class="w-full gold-gradient-bg text-on-background font-label-upper text-label-upper px-8 py-5 rounded-full hover:brightness-110 transition-all uppercase tracking-widest flex items-center justify-center gap-3" id="btnEnviar" type="button" onclick="enviarSolicitud()">
             Enviar por WhatsApp <span class="material-symbols-outlined text-[18px]">chat</span>
           </button>
           <div id="estadoReserva" class="text-center font-body-md text-body-md mt-4 min-h-[24px]" role="status"></div>
@@ -1033,7 +1033,7 @@
 <script src="js/pagina.js?v=5"></script>
 <script src="js/historias.js?v=4"></script>
 <script src="js/estudio.js?v=1"></script>
-<script src="js/contenido.js?v=5"></script>
+<script src="js/contenido.js?v=6"></script>
 <script>
 // MODO EDITOR: cuando la pagina se abre dentro del editor (?editar=1) se desactivan
 // el asistente y los popups para poder editar sin estorbos.
@@ -1043,6 +1043,6 @@ window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
 <script src="js/reserva.js?v=8"></script>
 <script src="js/instagram.js?v=3"></script>
 <script src="js/chatbot.js?v=5"></script>
-<script src="js/editor_vivo.js?v=3"></script>
+<script src="js/editor_vivo.js?v=4"></script>
 </body>
 </html>
