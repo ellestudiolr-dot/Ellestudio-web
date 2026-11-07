@@ -24,7 +24,7 @@
   }
 
   function intro(it){
-    return '<section class="ct-bloque ct-intro">'
+    return '<section class="ct-bloque ct-intro" data-cat-id="' + esc(it.id) + '">'
       + '<div><span class="ct-ceja">' + esc(it.ceja || txt('cat_intro_ceja', 'Empieza aquí')) + '</span>'
       + '<h3 class="ct-tit">' + esc(it.titulo) + '</h3>'
       + (it.texto ? '<p class="ct-texto">' + esc(it.texto) + '</p>' : '') + '</div>'
@@ -39,7 +39,7 @@
     if(it.precio_sesion != null && it.precio_sesion !== '') circs += circulo('Sesión', it.precio_sesion, false);
     paqs.forEach(function(p){ if(p && p.sesiones && p.precio != null) circs += circulo('Paquete de ' + p.sesiones, p.precio, true); });
     var datos = [it.duracion, it.frecuencia].filter(Boolean).map(esc).join(' · ');
-    return '<section class="ct-bloque ct-trat ct-' + tema + '">'
+    return '<section class="ct-bloque ct-trat ct-' + tema + '" data-cat-id="' + esc(it.id) + '">'
       + '<div class="ct-trat-txt">'
       + '<span class="ct-ceja">' + (it.numero ? esc(it.numero) + ' · ' : '') + esc(it.ceja || '') + '</span>'
       + '<h3 class="ct-tit">' + esc(it.titulo) + '</h3>'
@@ -59,7 +59,7 @@
 
   function consejos(it){
     var si = lista(it.pasos).filter(function(p){ return p.n !== 'no'; }), no = lista(it.pasos).filter(function(p){ return p.n === 'no'; });
-    return '<section class="ct-bloque ct-consejos">'
+    return '<section class="ct-bloque ct-consejos" data-cat-id="' + esc(it.id) + '">'
       + '<div><span class="ct-ceja">' + esc(it.ceja || '') + '</span><h3 class="ct-tit">' + esc(it.titulo) + '</h3>'
       + (it.frase ? '<p class="ct-frase">' + esc(it.frase) + '</p>' : '') + (it.texto ? '<p class="ct-texto">' + esc(it.texto) + '</p>' : '') + '</div>'
       + '<div class="ct-sino">'
@@ -105,6 +105,8 @@
       .then(function(filas){ if(Array.isArray(filas)) pintar(filas); })
       .catch(function(){});
   }
+
+  window.cargarCatalogo = cargar;
 
   // Espera a los textos de la portada (web_contenido) si ya están cargando; si no, pinta igual
   var pintado = false;
