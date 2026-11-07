@@ -2,12 +2,12 @@
 // Cada bloque es una fila de web_catalogo (Supabase, columna guia) y se edita desde el CRM. Se pinta en la pestaña Catálogo.
 (function(){
   var TEMAS = ['crema', 'crema', 'rosa', 'oscuro', 'oscuro', 'crema'];
-  var GUIAS = [ { id: 'corporal', nombre: 'Edición Corporal', pref: 'cat2_', portada: 'img/catalogo/corporal-portada.jpg' },
+  var GUIAS = [ { id: 'corporal', nombre: 'Edición Corporal', pref: 'cat2_', portada: 'img/catalogo/l-portada.jpg', crema: true },
                 { id: 'gluteos',  nombre: 'Glúteos de Porcelana', pref: 'cat_', portada: 'img/precios/gluteos.jpg?v=20261107' } ];
   var activa = 'corporal';
 
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function money(n){ n = Number(n); if(isNaN(n)) return ''; return 'S/ ' + (Number.isInteger(n) ? String(n) : n.toFixed(2)); }
+  function money(n){ n = Number(n); if(isNaN(n)) return ''; var t = Number.isInteger(n) ? String(n) : n.toFixed(2); var p = t.split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); return 'S/ ' + p.join('.'); }
   function txt(clave, porDefecto){ var m = window._WEB_CONTENIDO || {}; return (m[clave] && String(m[clave]).trim()) ? m[clave] : (porDefecto || ''); }
   function lista(v){ return Array.isArray(v) ? v : []; }
   function guiaDe(it){ return (it && it.guia) ? it.guia : 'gluteos'; }
@@ -23,23 +23,40 @@
       + ((antes || nota) ? '<small class="ct-circ-nota">' + (antes ? 'Antes ' + esc(money(antes)) + (nota ? ' · ' : '') : '') + esc(nota || '') + '</small>' : '') + '</div>';
   }
 
+  // «Moldea tu cuerpo» → «Moldea» + «tu cuerpo» en cursiva dorada (como su portada); con una o dos palabras queda igual
+  function tituloAcento(t){
+    var w = String(t || '').trim().split(/\s+/);
+    if(w.length < 3) return esc(t);
+    return esc(w.slice(0, w.length - 2).join(' ')) + ' <em>' + esc(w.slice(-2).join(' ')) + '</em>';
+  }
   function portada(g){
     var p = g.pref, puntos = txt(p + 'puntos', '').split('·').map(function(s){ return s.trim(); }).filter(Boolean);
-    return '<section class="ct-portada">'
+    var titulo = txt(p + 'titulo', g.nombre);
+    return '<section class="ct-portada' + (g.crema ? ' ct-portada-crema' : '') + '">'
       + '<div class="ct-portada-txt"><span class="ct-ceja ct-ceja-oro" data-edit="' + p + 'ceja">' + esc(txt(p + 'ceja', 'La guía Elle')) + '</span>'
-      + '<h2 class="ct-tit-grande" data-edit="' + p + 'titulo">' + esc(txt(p + 'titulo', g.nombre)) + '</h2>'
+      + '<h2 class="ct-tit-grande" data-edit="' + p + 'titulo">' + (g.crema ? tituloAcento(titulo) : esc(titulo)) + '</h2>'
       + '<p class="ct-frase" data-edit="' + p + 'frase">' + esc(txt(p + 'frase', '')) + '</p>'
       + (puntos.length ? '<ul class="ct-puntos">' + puntos.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '')
       + '</div><div class="ct-portada-foto"><img src="' + esc(txt(p + 'portada_foto', g.portada)) + '" alt="" loading="lazy" data-edit-img="' + p + 'portada_foto"/></div></section>';
   }
 
   function intro(it, g){
-    return '<section class="ct-bloque ct-intro" data-cat-id="' + esc(it.id) + '">'
-      + '<div><span class="ct-ceja">' + esc(it.ceja || txt(g.pref + 'intro_ceja', 'Empieza aquí')) + '</span>'
+    var cab = '<span class="ct-ceja">' + esc(it.ceja || txt(g.pref + 'intro_ceja', 'Empieza aquí')) + '</span>'
       + '<h3 class="ct-tit">' + esc(it.titulo) + '</h3>'
-      + (it.texto ? '<p class="ct-texto">' + esc(it.texto) + '</p>' : '') + '</div>'
-      + '<ol class="ct-indice">' + lista(it.pasos).map(function(p){ return '<li><small>' + esc(p.t) + '</small><b>' + esc(p.n) + '</b></li>'; }).join('') + '</ol>'
-      + '</section>';
+      + (it.texto ? '<p class="ct-texto">' + esc(it.texto) + '</p>' : '');
+    var indice = '<ol class="ct-indice">' + lista(it.pasos).map(function(p){ return '<li><small>' + esc(p.t) + '</small><b>' + esc(p.n) + '</b></li>'; }).join('') + '</ol>';
+    if(it.foto) return '<section class="ct-bloque ct-intro con-foto" data-cat-id="' + esc(it.id) + '">'
+      + '<div class="ct-intro-foto"><img src="' + esc(it.foto) + '" alt="" loading="lazy"/></div><div>' + cab + indice + '</div></section>';
+    return '<section class="ct-bloque ct-intro" data-cat-id="' + esc(it.id) + '"><div>' + cab + '</div>' + indice + '</section>';
+  }
+  // Fila de fotos del tratamiento (como en su catálogo): misma altura, sin recortar; «Antes/Después» como etiqueta
+  function galeria(it){
+    var g = lista(it.galeria).map(function(x){ return typeof x === 'string' ? { src: x } : x; }).filter(function(x){ return x && x.src; });
+    if(!g.length) return '';
+    return '<div class="ct-galeria">' + g.map(function(f){
+        var w = Number(f.w) || 4, h = Number(f.h) || 3;
+        return '<figure style="flex:' + (w / h).toFixed(3) + ' 1 0;aspect-ratio:' + w + '/' + h + '"><img src="' + esc(f.src) + '" alt="" loading="lazy"/>' + (f.etq ? '<figcaption>' + esc(f.etq) + '</figcaption>' : '') + '</figure>';
+      }).join('') + '</div>' + (it.foto_nota ? '<p class="ct-foto-nota">' + esc(it.foto_nota) + '</p>' : '');
   }
 
   function tratamiento(it, k){
@@ -55,6 +72,7 @@
       + '<h3 class="ct-tit">' + esc(it.titulo) + '</h3>'
       + (it.frase ? '<p class="ct-frase">' + esc(it.frase) + '</p>' : '')
       + badge(it)
+      + galeria(it)
       + (it.texto ? '<p class="ct-texto">' + esc(it.texto) + '</p>' : '')
       + (lista(it.zonas).length ? '<span class="ct-sub">Zonas</span>' + chips(it.zonas) : '')
       + (lista(it.beneficios).length ? chips(it.beneficios, 'ct-benef') : '')

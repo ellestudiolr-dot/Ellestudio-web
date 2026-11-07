@@ -550,6 +550,22 @@
         .ct-resumen li{ display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-top:1px solid rgba(255,255,255,.14); font-size:16px; align-items:baseline; }
         .ct-resumen li:first-child{ border-top:0; }
         .ct-resumen li small{ opacity:.7; font-size:13px; } .ct-resumen li b{ color:#d8c08e; white-space:nowrap; font-weight:500; font-family:'EB Garamond',Georgia,serif; font-size:22px; } .ct-resumen li s{ opacity:.55; font-size:15px; margin-right:8px; }
+        .ct-portada-crema{ background:#f1e9dd; color:#2b2b26; }
+        .ct-portada-crema .ct-portada-txt{ justify-content:center; }
+        .ct-portada-crema .ct-tit-grande{ color:#2b2b26; } .ct-portada-crema .ct-tit-grande em{ font-style:italic; color:#b8955a; }
+        .ct-portada-crema .ct-frase{ color:#4a463c; } .ct-portada-crema .ct-puntos{ color:#2b2b26; font-weight:600; }
+        .ct-portada-crema .ct-portada-foto{ padding:24px; display:flex; justify-content:center; align-items:center; }
+        .ct-portada-crema .ct-portada-foto img{ width:100%; max-width:420px; height:auto; max-height:640px; aspect-ratio:800/1672; object-fit:cover; border-radius:999px 999px 28px 28px; box-shadow:0 18px 40px rgba(60,45,20,.18); }
+        @media (max-width:859px){ .ct-portada-crema .ct-portada-foto{ padding:0 24px 28px; } .ct-portada-crema .ct-portada-foto img{ max-width:300px; max-height:430px; } }
+        .ct-intro.con-foto{ grid-template-columns:1fr; }
+        @media (min-width:860px){ .ct-intro.con-foto{ grid-template-columns:.75fr 1.25fr; align-items:center; } }
+        .ct-intro-foto img{ width:100%; max-height:560px; object-fit:cover; border-radius:999px 999px 24px 24px; display:block; }
+        @media (max-width:859px){ .ct-intro-foto img{ max-height:360px; } }
+        .ct-galeria{ display:flex; gap:10px; margin:16px 0 4px; }
+        .ct-galeria figure{ position:relative; margin:0; min-width:0; border-radius:16px; overflow:hidden; background:#ddd6c7; }
+        .ct-galeria img{ width:100%; height:100%; object-fit:cover; display:block; }
+        .ct-galeria figcaption{ position:absolute; left:10px; bottom:10px; background:rgba(255,255,255,.92); color:#2b2b26; font-size:12px; font-weight:600; padding:5px 11px; border-radius:999px; }
+        .ct-foto-nota{ font-size:12px; opacity:.65; margin:6px 0 0; }
         .ct-foto{ width:100%; aspect-ratio:4/3; border-radius:200px 200px 24px 24px; overflow:hidden; background:#ddd6c7; }
         .ct-foto img{ width:100%; height:100%; object-fit:cover; display:block; }
         .ct-circs{ display:flex; flex-wrap:wrap; gap:12px; }
@@ -1054,7 +1070,7 @@
 <div id="legalModal" onclick="if(event.target===this) cerrarLegal()"><div class="caja"><button class="cerrar" onclick="cerrarLegal()" aria-label="Cerrar">×</button><h3 id="legalTitulo"></h3><p id="legalTexto"></p></div></div>
 
 <script src="js/precios.js?v=4"></script>
-<script src="js/catalogo.js?v=6"></script>
+<script src="js/catalogo.js?v=7"></script>
 <script src="js/pagina.js?v=5"></script>
 <script src="js/historias.js?v=5"></script>
 <script src="js/estudio.js?v=1"></script>
