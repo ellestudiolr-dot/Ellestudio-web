@@ -15,7 +15,7 @@
                {src:'img/equipo-laser.jpg', pie:'Equipo profesional, sesiones rápidas'} ] },
     corporales: { titulo: 'Corporales',  servicio: 'Tratamientos Corporales',
       fotos: [ {reel:'https://www.instagram.com/reel/DatUSDIoP29/', pie:'Equipos reductores · desde S/ 50'},
-               {src:'img/corporal.jpg', pie:'Body Porcelana, Sculptbody y Slimbody'} ] },
+               {src:'img/corporal.jpg?v=2', pie:'Body Porcelana, Sculptbody y Slimbody'} ] },
     estudio:    { titulo: 'El estudio',  servicio: 'una cita en el estudio',
       fotos: [ {reel:'https://www.instagram.com/reel/Dbqa4UWo2S6/', pie:'Así es nuestro estudio en San Isidro'},
                {src:'img/spa-ambiente.jpg', pie:'Av. Paz Soldán 235, San Isidro'} ] }

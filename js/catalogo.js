@@ -20,7 +20,7 @@
       + '<h2 class="ct-tit-grande">' + esc(txt('cat_titulo', 'Glúteos de Porcelana')) + '</h2>'
       + '<p class="ct-frase">' + esc(txt('cat_frase', '')) + '</p>'
       + (puntos.length ? '<ul class="ct-puntos">' + puntos.map(function(p){ return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>' : '')
-      + '</div><div class="ct-portada-foto"><img src="' + esc(txt('cat_portada_foto', 'img/precios/gluteos.jpg')) + '" alt="" loading="lazy" data-edit-img="cat_portada_foto"/></div></section>';
+      + '</div><div class="ct-portada-foto"><img src="' + esc(txt('cat_portada_foto', 'img/precios/gluteos.jpg?v=20261107')) + '" alt="" loading="lazy" data-edit-img="cat_portada_foto"/></div></section>';
   }
 
   function intro(it){

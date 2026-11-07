@@ -8,6 +8,7 @@
 
   // ---- fotos del proceso (mismas reglas que la lista de precios del CRM) ----
   var FOTO_DIR = 'img/precios/';
+  var FOTO_V = '?v=20261107';
   var FOTO_SERV = { 'hollywood peel|gluteos': 'gluteos-carbon-2', 'hollywood peel|entrepierna': 'gluteos-carbon', 'hollywood peel|axilas, codos o cuello': 'peel-codo' };
   var FOTO_REGLAS = [
     [/mini zona/, 'laser-bozo'], [/media pierna.*axilas|axilas.*media pierna/, 'laser-pierna-2'], [/media pierna/, 'laser-pierna'], [/bikini/, 'laser-axilas-2'],
@@ -37,11 +38,11 @@
   function fotoSrc(texto, categoria){
     var t = norm(texto).replace(/\s+/g, ' ').trim(), c = norm(categoria).trim();
     var propia = FOTO_SERV[c + '|' + t];
-    if(propia) return FOTO_DIR + propia + '.jpg';
-    for(var i = 0; i < FOTO_REGLAS.length; i++){ if(FOTO_REGLAS[i][0].test(t)) return FOTO_DIR + FOTO_REGLAS[i][1] + '.jpg'; }
+    if(propia) return FOTO_DIR + propia + '.jpg' + FOTO_V;
+    for(var i = 0; i < FOTO_REGLAS.length; i++){ if(FOTO_REGLAS[i][0].test(t)) return FOTO_DIR + FOTO_REGLAS[i][1] + '.jpg' + FOTO_V; }
     var tipo = fotoTipo(texto, categoria); if(!tipo) return '';
     var lista = FOTOS[tipo], k = (cnt[tipo] = (cnt[tipo] || 0) + 1) - 1;
-    return FOTO_DIR + lista[k % lista.length] + '.jpg';
+    return FOTO_DIR + lista[k % lista.length] + '.jpg' + FOTO_V;
   }
   function fotoHtml(src){ return src ? '<div class="ap-pfoto"><img src="' + esc(src) + '" alt="" loading="lazy"/></div>' : ''; }
 
@@ -89,7 +90,7 @@
     grupos.forEach(function(g){
       var zs = rows.filter(function(s){ return (s.grupo || 'Zonas') === g; });
       var foto = FOTO_GRUPO[norm(g).trim()];
-      html += '<div class="ap-pgrupo' + (foto ? ' con-foto' : '') + '">' + (foto ? fotoHtml(FOTO_DIR + foto + '.jpg') : '')
+      html += '<div class="ap-pgrupo' + (foto ? ' con-foto' : '') + '">' + (foto ? fotoHtml(FOTO_DIR + foto + '.jpg' + FOTO_V) : '')
         + '<div class="ap-pzonas"><h3>' + esc(g) + '</h3>'
         + '<div class="ap-pzona cab"><span>Zona</span><span>1</span><span>×3</span><span>×6</span><span></span></div>'
         + zs.map(function(s){
