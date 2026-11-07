@@ -86,7 +86,7 @@
     if(!rows.length) return '<p class="ap-pnota">Sin zonas cargadas.</p>';
     var grupos = []; rows.forEach(function(s){ var g = s.grupo || 'Zonas'; if(grupos.indexOf(g) < 0) grupos.push(g); });
     var v = function(n){ return n == null ? '—' : money(n); };
-    var html = '<div class="ap-pbanda"><img src="' + FOTO_DIR + 'laser-axilas-2.jpg" alt=""/><div><b>Depilación láser · ' + (gen === 'hombre' ? 'Hombre' : 'Mujer') + '</b><span>Láser diodo · una sesión al mes · paquetes de 3 y 6 sesiones</span></div></div>';
+    var html = '<div class="ap-pbanda"><img src="' + FOTO_DIR + 'laser-axilas-2.jpg' + FOTO_V + '" alt=""/><div><b>Depilación láser · ' + (gen === 'hombre' ? 'Hombre' : 'Mujer') + '</b><span>Láser diodo · una sesión al mes · paquetes de 3 y 6 sesiones</span></div></div>';
     grupos.forEach(function(g){
       var zs = rows.filter(function(s){ return (s.grupo || 'Zonas') === g; });
       var foto = FOTO_GRUPO[norm(g).trim()];
