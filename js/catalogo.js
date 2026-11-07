@@ -1,31 +1,41 @@
-// elle studio · Catálogo «Glúteos de Porcelana» (la guía que armó Lyrosse)
-// Cada tratamiento es una fila de la tabla web_catalogo (Supabase) y se edita desde el CRM.
-// Se pinta arriba de la lista completa de precios, en la pestaña Catálogo.
+// elle studio · Catálogo: dos guías de Lyrosse, «Edición Corporal» (Moldea tu cuerpo) y «Glúteos de Porcelana».
+// Cada bloque es una fila de web_catalogo (Supabase, columna guia) y se edita desde el CRM. Se pinta en la pestaña Catálogo.
 (function(){
-  var TEMAS = ['crema', 'crema', 'rosa', 'oscuro', 'oscuro', 'crema'];   // se alternan por tratamiento
+  var TEMAS = ['crema', 'crema', 'rosa', 'oscuro', 'oscuro', 'crema'];
+  var GUIAS = [ { id: 'corporal', nombre: 'Edición Corporal', pref: 'cat2_', portada: 'img/catalogo/corporal-portada.jpg' },
+                { id: 'gluteos',  nombre: 'Glúteos de Porcelana', pref: 'cat_', portada: 'img/precios/gluteos.jpg?v=20261107' } ];
+  var activa = 'corporal';
 
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function money(n){ n = Number(n); if(isNaN(n)) return ''; return 'S/ ' + (Number.isInteger(n) ? String(n) : n.toFixed(2)); }
   function txt(clave, porDefecto){ var m = window._WEB_CONTENIDO || {}; return (m[clave] && String(m[clave]).trim()) ? m[clave] : (porDefecto || ''); }
   function lista(v){ return Array.isArray(v) ? v : []; }
+  function guiaDe(it){ return (it && it.guia) ? it.guia : 'gluteos'; }
 
-  function circulo(etq, precio, chico){
-    return '<div class="ct-circ' + (chico ? ' ct-circ-sm' : '') + '"><small>' + esc(etq) + '</small><b>' + esc(money(precio)) + '</b></div>';
+  function chips(l, cls){ l = lista(l).filter(Boolean); if(!l.length) return ''; return '<div class="ct-chips' + (cls ? ' ' + cls : '') + '">' + l.map(function(z){ return '<span>' + esc(z) + '</span>'; }).join('') + '</div>'; }
+  function badge(it){
+    if(it.inyectables === true) return '<span class="ct-badge ct-badge-iny">Lleva inyectables</span>';
+    if(it.inyectables === false) return '<span class="ct-badge">No lleva inyectables</span>';
+    return '';
+  }
+  function circulo(etq, precio, chico, antes, nota){
+    return '<div class="ct-circ-wrap"><div class="ct-circ' + (chico ? ' ct-circ-sm' : '') + '"><small>' + esc(etq) + '</small><b>' + esc(money(precio)) + '</b></div>'
+      + ((antes || nota) ? '<small class="ct-circ-nota">' + (antes ? 'Antes ' + esc(money(antes)) + (nota ? ' · ' : '') : '') + esc(nota || '') + '</small>' : '') + '</div>';
   }
 
-  function portada(){
-    var puntos = txt('cat_puntos', '').split('·').map(function(s){ return s.trim(); }).filter(Boolean);
+  function portada(g){
+    var p = g.pref, puntos = txt(p + 'puntos', '').split('·').map(function(s){ return s.trim(); }).filter(Boolean);
     return '<section class="ct-portada">'
-      + '<div class="ct-portada-txt"><span class="ct-ceja ct-ceja-oro">' + esc(txt('cat_ceja', 'La guía Elle')) + '</span>'
-      + '<h2 class="ct-tit-grande">' + esc(txt('cat_titulo', 'Glúteos de Porcelana')) + '</h2>'
-      + '<p class="ct-frase">' + esc(txt('cat_frase', '')) + '</p>'
-      + (puntos.length ? '<ul class="ct-puntos">' + puntos.map(function(p){ return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>' : '')
-      + '</div><div class="ct-portada-foto"><img src="' + esc(txt('cat_portada_foto', 'img/precios/gluteos.jpg?v=20261107')) + '" alt="" loading="lazy" data-edit-img="cat_portada_foto"/></div></section>';
+      + '<div class="ct-portada-txt"><span class="ct-ceja ct-ceja-oro" data-edit="' + p + 'ceja">' + esc(txt(p + 'ceja', 'La guía Elle')) + '</span>'
+      + '<h2 class="ct-tit-grande" data-edit="' + p + 'titulo">' + esc(txt(p + 'titulo', g.nombre)) + '</h2>'
+      + '<p class="ct-frase" data-edit="' + p + 'frase">' + esc(txt(p + 'frase', '')) + '</p>'
+      + (puntos.length ? '<ul class="ct-puntos">' + puntos.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '')
+      + '</div><div class="ct-portada-foto"><img src="' + esc(txt(p + 'portada_foto', g.portada)) + '" alt="" loading="lazy" data-edit-img="' + p + 'portada_foto"/></div></section>';
   }
 
-  function intro(it){
+  function intro(it, g){
     return '<section class="ct-bloque ct-intro" data-cat-id="' + esc(it.id) + '">'
-      + '<div><span class="ct-ceja">' + esc(it.ceja || txt('cat_intro_ceja', 'Empieza aquí')) + '</span>'
+      + '<div><span class="ct-ceja">' + esc(it.ceja || txt(g.pref + 'intro_ceja', 'Empieza aquí')) + '</span>'
       + '<h3 class="ct-tit">' + esc(it.titulo) + '</h3>'
       + (it.texto ? '<p class="ct-texto">' + esc(it.texto) + '</p>' : '') + '</div>'
       + '<ol class="ct-indice">' + lista(it.pasos).map(function(p){ return '<li><small>' + esc(p.t) + '</small><b>' + esc(p.n) + '</b></li>'; }).join('') + '</ol>'
@@ -34,17 +44,21 @@
 
   function tratamiento(it, k){
     var tema = TEMAS[k % TEMAS.length];
-    var pasos = lista(it.pasos), paqs = lista(it.paquetes);
+    var pasos = lista(it.pasos), paqs = lista(it.paquetes), incluye = lista(it.incluye);
     var circs = '';
     if(it.precio_sesion != null && it.precio_sesion !== '') circs += circulo('Sesión', it.precio_sesion, false);
-    paqs.forEach(function(p){ if(p && p.sesiones && p.precio != null) circs += circulo('Paquete de ' + p.sesiones, p.precio, true); });
+    paqs.forEach(function(p){ if(p && p.precio != null) circs += circulo(p.etiqueta || ('Paquete de ' + p.sesiones), p.precio, true, p.antes, p.nota); });
     var datos = [it.duracion, it.frecuencia].filter(Boolean).map(esc).join(' · ');
     return '<section class="ct-bloque ct-trat ct-' + tema + '" data-cat-id="' + esc(it.id) + '">'
       + '<div class="ct-trat-txt">'
       + '<span class="ct-ceja">' + (it.numero ? esc(it.numero) + ' · ' : '') + esc(it.ceja || '') + '</span>'
       + '<h3 class="ct-tit">' + esc(it.titulo) + '</h3>'
       + (it.frase ? '<p class="ct-frase">' + esc(it.frase) + '</p>' : '')
+      + badge(it)
       + (it.texto ? '<p class="ct-texto">' + esc(it.texto) + '</p>' : '')
+      + (lista(it.zonas).length ? '<span class="ct-sub">Zonas</span>' + chips(it.zonas) : '')
+      + (lista(it.beneficios).length ? chips(it.beneficios, 'ct-benef') : '')
+      + (incluye.length ? '<span class="ct-sub">Todo lo que incluye</span><div class="ct-incluye">' + incluye.map(function(c){ return '<div><b>' + esc(c.t) + '</b>' + (c.n ? '<small>' + esc(c.n) + '</small>' : '') + '</div>'; }).join('') + '</div>' : '')
       + (pasos.length ? '<ol class="ct-pasos">' + pasos.map(function(p, i){ return '<li><span class="ct-num">' + (i + 1) + '</span><div><b>' + esc(p.t) + '</b>' + (p.n ? '<small>' + esc(p.n) + '</small>' : '') + '</div></li>'; }).join('') + '</ol>' : '')
       + (it.regalo ? '<div class="ct-regalo"><small>De regalo</small>' + esc(it.regalo) + '</div>' : '')
       + '</div>'
@@ -70,8 +84,20 @@
       + '</section>';
   }
 
-  function cierre(){
-    return '<section class="ct-bloque ct-cierre"><div class="ct-sello">S/ 15</div><div><b>Separa tu cita</b><p>' + esc(txt('cat_reserva', 'Reserva con S/ 15 y se descuenta de tu tratamiento. Escríbenos por WhatsApp.')) + '</p></div>'
+  // Resumen de precios de la guía (como la última página del catálogo impreso)
+  function resumen(g, items){
+    var filas = items.filter(function(it){ return it.tipo !== 'intro' && it.tipo !== 'consejos'; }).map(function(it){
+      var p = lista(it.paquetes)[0], precio = p ? p.precio : it.precio_sesion;
+      if(precio == null || precio === '') return '';
+      var etq = p ? (p.etiqueta || (p.sesiones + ' sesiones')) : 'sesión';
+      return '<li><span>' + esc(it.titulo) + ' <small>· ' + esc(etq) + '</small></span><b>' + (p && p.antes ? '<s>' + esc(money(p.antes)) + '</s>' : '') + esc(money(precio)) + '</b></li>';
+    }).filter(Boolean);
+    if(!filas.length) return '';
+    return '<section class="ct-bloque ct-oscuro ct-resumen"><span class="ct-ceja">Tu lista de precios</span><h3 class="ct-tit">' + esc(g.nombre) + '</h3><ul>' + filas.join('') + '</ul></section>';
+  }
+
+  function cierre(g){
+    return '<section class="ct-bloque ct-cierre"><div class="ct-sello">S/ 15</div><div><b>Separa tu cita</b><p data-edit="' + g.pref + 'reserva">' + esc(txt(g.pref + 'reserva', 'Reserva con S/ 15 y se descuenta de tu tratamiento. Escríbenos por WhatsApp.')) + '</p></div>'
       + '<button type="button" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button></section>';
   }
 
@@ -81,16 +107,33 @@
     var caja = document.getElementById('catalogoApp');
     if(!caja) return;
     cache = items.slice();
-    var activos = items.filter(function(i){ return i && i.activo !== false; }).sort(function(a, b){ return (a.orden || 0) - (b.orden || 0); });
-    if(!activos.length){ caja.innerHTML = ''; return; }
-    var html = portada(), k = 0;
-    activos.forEach(function(it){
-      if(it.tipo === 'intro') html += intro(it);
-      else if(it.tipo === 'consejos') html += consejos(it);
-      else { html += tratamiento(it, k); k++; }
+    var bloques = {}, html = '';
+    GUIAS.forEach(function(g){
+      var act = items.filter(function(i){ return i && i.activo !== false && guiaDe(i) === g.id; }).sort(function(a, b){ return (a.orden || 0) - (b.orden || 0); });
+      if(!act.length) return;
+      var h = portada(g), k = 0;
+      act.forEach(function(it){
+        if(it.tipo === 'intro') h += intro(it, g);
+        else if(it.tipo === 'consejos') h += consejos(it);
+        else { h += tratamiento(it, k); k++; }
+      });
+      h += resumen(g, act) + cierre(g);
+      bloques[g.id] = h;
     });
-    html += cierre();
-    caja.innerHTML = '<div class="ct">' + html + '</div>';
+    var ids = Object.keys(bloques);
+    if(!ids.length){ caja.innerHTML = ''; return; }
+    if(ids.indexOf(activa) < 0) activa = ids[0];
+    if(ids.length > 1) html += '<div class="ct-guias">' + GUIAS.filter(function(g){ return bloques[g.id]; }).map(function(g){ return '<button type="button" class="' + (g.id === activa ? 'on' : '') + '" data-guia="' + g.id + '">' + esc(g.nombre) + '</button>'; }).join('') + '</div>';
+    ids.forEach(function(id){ html += '<div class="ct' + (id === activa ? '' : ' ct-oculta') + '" data-guia="' + id + '">' + bloques[id] + '</div>'; });
+    caja.innerHTML = html;
+    caja.querySelectorAll('.ct-guias button').forEach(function(b){
+      b.addEventListener('click', function(){
+        activa = b.getAttribute('data-guia');
+        caja.querySelectorAll('.ct-guias button').forEach(function(x){ x.classList.toggle('on', x === b); });
+        caja.querySelectorAll('.ct[data-guia]').forEach(function(c){ c.classList.toggle('ct-oculta', c.getAttribute('data-guia') !== activa); });
+        var top = caja.getBoundingClientRect().top + window.scrollY - 90; if(window.scrollY > top) window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
     // entran con el mismo efecto que el resto de la página
     if(window.IntersectionObserver){
       var io = new IntersectionObserver(function(es){ es.forEach(function(e){ e.target.classList.toggle('on', e.isIntersecting); }); }, { threshold: 0.08 });
@@ -110,11 +153,13 @@
   }
 
   window.cargarCatalogo = cargar;
-  // Vista previa de un bloque editado en el CRM (sin guardar): se vuelve a pintar con ese bloque cambiado
+  window.verGuiaCatalogo = function(id){ activa = id; pintar(cache); };
+  // Vista previa de un bloque editado en el CRM (sin guardar): se vuelve a pintar con ese bloque cambiado, en su guía
   window.apCatalogoPreview = function(item){
     if(!item || item.id == null) return;
     var i = cache.findIndex(function(x){ return String(x.id) === String(item.id); });
     if(i >= 0) cache[i] = Object.assign({}, cache[i], item); else cache.push(item);
+    activa = guiaDe(item);
     pintar(cache);
   };
 

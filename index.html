@@ -525,6 +525,31 @@
         .ct-oscuro .ct-regalo{ background:rgba(255,255,255,.1); }
         .ct-trat-lado{ display:flex; flex-direction:column; gap:16px; align-items:flex-start; }
         @media (min-width:900px){ .ct-trat-lado{ align-items:flex-end; text-align:right; } }
+        /* Catálogo · dos guías (Edición Corporal + Glúteos), insignias, chips, «todo lo que incluye», resumen de precios */
+        .ct-guias{ display:flex; gap:8px; flex-wrap:wrap; margin:0 0 18px; }
+        .ct-guias button{ border:1px solid rgba(43,43,38,.2); background:#fff; color:#2b2b26; border-radius:999px; padding:11px 18px; font-size:13px; font-weight:600; cursor:pointer; letter-spacing:.02em; }
+        .ct-guias button.on{ background:#2c342b; color:#fff; border-color:#2c342b; }
+        .ct-oculta{ display:none !important; }
+        .ct-badge{ display:inline-block; font-size:12px; font-weight:600; padding:5px 11px; border-radius:999px; background:rgba(43,43,38,.08); margin:0 0 12px; }
+        .ct-badge-iny{ background:rgba(154,75,60,.12); color:#9a4b3c; }
+        .ct-oscuro .ct-badge{ background:rgba(255,255,255,.14); color:#fff; }
+        .ct-sub{ display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; margin:18px 0 8px; opacity:.8; }
+        .ct-chips{ display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 0; }
+        .ct-chips span{ font-size:13px; padding:7px 12px; border-radius:999px; background:rgba(43,43,38,.07); }
+        .ct-benef{ margin-top:14px; } .ct-benef span{ font-weight:600; }
+        .ct-oscuro .ct-chips span{ background:rgba(255,255,255,.12); }
+        .ct-incluye{ display:grid; grid-template-columns:1fr; gap:10px; }
+        @media (min-width:560px){ .ct-incluye{ grid-template-columns:1fr 1fr; } }
+        .ct-incluye > div{ background:rgba(255,255,255,.55); border-radius:14px; padding:12px 14px; }
+        .ct-oscuro .ct-incluye > div{ background:rgba(255,255,255,.1); }
+        .ct-incluye b{ display:block; font-family:'EB Garamond',Georgia,serif; font-weight:500; font-size:19px; line-height:1.15; }
+        .ct-incluye small{ display:block; font-size:13px; opacity:.75; margin-top:3px; }
+        .ct-circ-wrap{ display:flex; flex-direction:column; align-items:center; gap:6px; max-width:160px; }
+        .ct-circ-nota{ font-size:11.5px; line-height:1.3; opacity:.75; text-align:center; }
+        .ct-resumen ul{ list-style:none; margin:10px 0 0; padding:0; }
+        .ct-resumen li{ display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-top:1px solid rgba(255,255,255,.14); font-size:16px; align-items:baseline; }
+        .ct-resumen li:first-child{ border-top:0; }
+        .ct-resumen li small{ opacity:.7; font-size:13px; } .ct-resumen li b{ color:#d8c08e; white-space:nowrap; font-weight:500; font-family:'EB Garamond',Georgia,serif; font-size:22px; } .ct-resumen li s{ opacity:.55; font-size:15px; margin-right:8px; }
         .ct-foto{ width:100%; aspect-ratio:4/3; border-radius:200px 200px 24px 24px; overflow:hidden; background:#ddd6c7; }
         .ct-foto img{ width:100%; height:100%; object-fit:cover; display:block; }
         .ct-circs{ display:flex; flex-wrap:wrap; gap:12px; }
@@ -1029,7 +1054,7 @@
 <div id="legalModal" onclick="if(event.target===this) cerrarLegal()"><div class="caja"><button class="cerrar" onclick="cerrarLegal()" aria-label="Cerrar">×</button><h3 id="legalTitulo"></h3><p id="legalTexto"></p></div></div>
 
 <script src="js/precios.js?v=4"></script>
-<script src="js/catalogo.js?v=5"></script>
+<script src="js/catalogo.js?v=6"></script>
 <script src="js/pagina.js?v=5"></script>
 <script src="js/historias.js?v=5"></script>
 <script src="js/estudio.js?v=1"></script>
