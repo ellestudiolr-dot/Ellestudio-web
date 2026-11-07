@@ -254,7 +254,7 @@
 
         /* Inicio con video */
         .ap-hero{ position:relative; min-height:100vh; margin-top:-68px; display:flex; align-items:flex-end; overflow:hidden; background:#101210; }
-        .ap-hero video, .ap-modulo video, .ap-split-video video, .ap-banda video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+        .ap-hero video, .ap-modulo video, .ap-split-video video, .ap-banda video, .ap-hero img.ap-media, .ap-modulo img.ap-media, .ap-split-video img.ap-media, .ap-banda img.ap-media{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
         .ap-hero-velo{ position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.12) 100%); }
         .ap-hero-texto{ position:relative; z-index:2; width:100%; max-width:1180px; margin:0 auto; padding:140px 24px 110px; }
         .ap-hero-logo{ display:block; width:min(62vw,420px); height:auto; margin:0 0 10px -6px; filter:drop-shadow(0 6px 24px rgba(0,0,0,.35)); }
@@ -596,7 +596,7 @@
 
 <!-- INICIO: video a pantalla completa -->
 <header class="ap-hero vista activa" data-vista="inicio" id="inicio">
-  <video data-video autoplay muted loop playsinline preload="auto" poster="img/v/laser-pierna.jpg" aria-hidden="true">
+  <video data-video data-edit-img="hero_media" autoplay muted loop playsinline preload="auto" poster="img/v/laser-pierna.jpg" aria-hidden="true">
     <source src="video/hero.mp4" type="video/mp4"/>
   </video>
   <div class="ap-hero-velo"></div>
@@ -682,7 +682,7 @@
     </div>
     <div class="ap-grid3">
       <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-laser">
-        <video data-video muted loop playsinline preload="metadata" poster="img/v/laser-axilas.jpg" aria-hidden="true"><source src="video/laser.mp4" type="video/mp4"/></video>
+        <video data-video muted loop playsinline preload="metadata" data-edit-img="mod1_media" poster="img/v/laser-axilas.jpg" aria-hidden="true"><source src="video/laser.mp4" type="video/mp4"/></video>
         <div class="ap-modulo-velo"></div>
         <div class="ap-modulo-txt">
           <span class="ap-circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
@@ -691,7 +691,7 @@
         </div>
       </a>
       <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-gluteos">
-        <video data-video muted loop playsinline preload="metadata" poster="img/v/gluteos.jpg" aria-hidden="true"><source src="video/gluteos.mp4" type="video/mp4"/></video>
+        <video data-video muted loop playsinline preload="metadata" data-edit-img="mod2_media" poster="img/v/gluteos.jpg" aria-hidden="true"><source src="video/gluteos.mp4" type="video/mp4"/></video>
         <div class="ap-modulo-velo"></div>
         <div class="ap-modulo-txt">
           <span class="ap-circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
@@ -700,7 +700,7 @@
         </div>
       </a>
       <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-facial">
-        <video data-video muted loop playsinline preload="metadata" poster="img/v/skin-face.jpg" aria-hidden="true"><source src="video/facial.mp4" type="video/mp4"/></video>
+        <video data-video muted loop playsinline preload="metadata" data-edit-img="mod3_media" poster="img/v/skin-face.jpg" aria-hidden="true"><source src="video/facial.mp4" type="video/mp4"/></video>
         <div class="ap-modulo-velo"></div>
         <div class="ap-modulo-txt">
           <span class="ap-circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
@@ -724,13 +724,13 @@
     </div>
   </div>
   <div class="ap-split-video">
-    <video data-video muted loop playsinline preload="metadata" poster="img/v/rf.jpg" aria-hidden="true"><source src="video/reductor.mp4" type="video/mp4"/></video>
+    <video data-video muted loop playsinline preload="metadata" data-edit-img="red_media" poster="img/v/rf.jpg" aria-hidden="true"><source src="video/reductor.mp4" type="video/mp4"/></video>
   </div>
 </section>
 
 <!-- HOLLYWOOD PEEL: banda con video -->
 <section class="ap-banda vista" data-vista="tratamientos">
-  <video data-video muted loop playsinline preload="metadata" poster="img/v/peel-face.jpg" aria-hidden="true"><source src="video/peel.mp4" type="video/mp4"/></video>
+  <video data-video muted loop playsinline preload="metadata" data-edit-img="peel_media" poster="img/v/peel-face.jpg" aria-hidden="true"><source src="video/peel.mp4" type="video/mp4"/></video>
   <div class="ap-banda-velo"></div>
   <div class="ap-banda-txt">
     <span class="ap-ceja ap-ceja-oro rv" data-edit="peel_ceja">Hollywood Peel</span>
@@ -894,7 +894,7 @@
             <p class="font-body-md text-body-md text-on-surface-variant">Lima, Perú</p>
           </div>
         </div>
-        <img src="img/spa-ambiente.jpg" alt="Ambiente de elle studio" loading="lazy" class="rounded-2xl w-full object-cover" style="max-height:180px;"/>
+        <img src="img/spa-ambiente.jpg" alt="Ambiente de elle studio" loading="lazy" class="rounded-2xl w-full object-cover" style="max-height:180px;" data-edit-img="foto_ubicacion"/>
         <div class="flex flex-wrap gap-3">
           <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-7 py-3 rounded-full hover:bg-tertiary/5 transition-all uppercase" href="https://www.google.com/maps/dir/?api=1&destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Cómo llegar</a>
           <a id="waUbicacion" hidden class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" href="#" target="_blank" rel="noopener">WhatsApp</a>
@@ -1029,11 +1029,11 @@
 <div id="legalModal" onclick="if(event.target===this) cerrarLegal()"><div class="caja"><button class="cerrar" onclick="cerrarLegal()" aria-label="Cerrar">×</button><h3 id="legalTitulo"></h3><p id="legalTexto"></p></div></div>
 
 <script src="js/precios.js?v=2"></script>
-<script src="js/catalogo.js?v=2"></script>
+<script src="js/catalogo.js?v=3"></script>
 <script src="js/pagina.js?v=5"></script>
 <script src="js/historias.js?v=4"></script>
 <script src="js/estudio.js?v=1"></script>
-<script src="js/contenido.js?v=3"></script>
+<script src="js/contenido.js?v=4"></script>
 <script>
 // MODO EDITOR: cuando la pagina se abre dentro del editor (?editar=1) se desactivan
 // el asistente y los popups para poder editar sin estorbos.
@@ -1043,6 +1043,6 @@ window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
 <script src="js/reserva.js?v=8"></script>
 <script src="js/instagram.js?v=3"></script>
 <script src="js/chatbot.js?v=5"></script>
-<script src="js/editor_vivo.js?v=1"></script>
+<script src="js/editor_vivo.js?v=2"></script>
 </body>
 </html>
