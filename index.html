@@ -435,6 +435,25 @@
         .ap-faq[open] summary i{ transform:rotate(45deg); }
         .ap-faq p{ margin:0; padding:0 0 18px; font-size:15px; line-height:1.55; color:rgba(255,255,255,.75); max-width:52ch; }
 
+        /* Mapa pequeño con «cómo llegar» */
+        .ap-mapa{ background:#f3f4ec; padding:90px 0; }
+        .ap-mapa-grid{ display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
+        @media (min-width:860px){ .ap-mapa-grid{ grid-template-columns:1fr 1.15fr; gap:64px; } }
+        .ap-mapa-tit{ font-size:clamp(28px,3.4vw,44px); margin:0 0 14px; }
+        .ap-mapa-txt .ap-parrafo{ margin:0 0 26px; }
+        .ap-btn-borde{ background:transparent; color:var(--tinta); border-color:rgba(25,28,23,.3); }
+        .ap-mapa-card{ position:relative; display:block; border-radius:28px; overflow:hidden; aspect-ratio:4/3; min-height:280px; background:#dfe3d6; box-shadow:0 24px 60px rgba(25,28,23,.14); transition:transform .4s ease, box-shadow .4s ease; }
+        .ap-mapa-card:hover{ transform:translateY(-4px); box-shadow:0 30px 70px rgba(25,28,23,.18); }
+        .ap-mapa-card iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; pointer-events:none; filter:saturate(.85); }
+        .ap-pin{ position:absolute; left:50%; top:50%; width:0; height:0; }
+        .ap-pin i{ position:absolute; left:-30px; top:-30px; width:60px; height:60px; border-radius:50%; border:2px solid var(--oro); opacity:0; animation:apPulso 2.4s ease-out infinite; }
+        .ap-pin i + i{ animation-delay:1.2s; }
+        .ap-pin b{ position:absolute; left:-9px; top:-9px; width:18px; height:18px; border-radius:50%; background:var(--oro); border:3px solid #fff; box-shadow:0 4px 12px rgba(0,0,0,.3); }
+        @keyframes apPulso{ 0%{ transform:scale(.25); opacity:.9; } 100%{ transform:scale(1.6); opacity:0; } }
+        .ap-mapa-etq{ position:absolute; left:18px; bottom:18px; display:inline-flex; align-items:center; gap:8px; background:var(--tinta); color:#fff; border-radius:999px; padding:12px 18px; font-size:14px; font-weight:600; box-shadow:0 10px 24px rgba(0,0,0,.25); transition:transform .3s ease; }
+        .ap-mapa-card:hover .ap-mapa-etq{ transform:translateX(4px); }
+        @media (prefers-reduced-motion:reduce){ .ap-pin i{ animation:none; opacity:.5; transform:scale(.6); } }
+
         /* Llamado final */
         .ap-cta{ background:var(--tinta); color:#fff; padding:90px 24px; text-align:center; }
         .ap-cta .ap-parrafo{ margin:0 auto 28px; }
@@ -685,6 +704,27 @@
 </section>
 
 
+<!-- MAPA: la dirección y «cómo llegar» de una vez en Google Maps -->
+<section class="ap-mapa vista activa" data-vista="inicio" id="mapa">
+  <div class="ap-cont ap-mapa-grid">
+    <div class="ap-mapa-txt">
+      <span class="ap-ceja rv">Dónde estamos</span>
+      <h2 class="ap-mapa-tit rv rv-words" data-edit="direccion">Av. Paz Soldán 235, San Isidro.</h2>
+      <p class="ap-parrafo rv">Lima. Toca el mapa y Google Maps te lleva desde donde estés.</p>
+      <div class="ap-botones rv">
+        <a class="ap-btn ap-btn-oscuro" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="ap-btn ap-btn-borde" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Ver en Google Maps</a>
+      </div>
+    </div>
+    <a class="ap-mapa-card rv" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener" aria-label="Cómo llegar a elle studio en Google Maps">
+      <iframe src="https://www.google.com/maps?q=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru&amp;z=16&amp;output=embed" loading="lazy" title="Mapa de elle studio" tabindex="-1" aria-hidden="true"></iframe>
+      <span class="ap-pin" aria-hidden="true"><i></i><i></i><b></b></span>
+      <span class="ap-mapa-etq">Cómo llegar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+  </div>
+</section>
+
+
 <!-- PRECIOS: en vivo desde la base (los mismos del CRM) con las fotos del proceso -->
 <section class="vista ap-precios" id="precios" data-vista="precios">
   <div class="ap-cont">
@@ -773,7 +813,7 @@
         </div>
         <img src="img/spa-ambiente.jpg" alt="Ambiente de elle studio" loading="lazy" class="rounded-2xl w-full object-cover" style="max-height:180px;"/>
         <div class="flex flex-wrap gap-3">
-          <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-7 py-3 rounded-full hover:bg-tertiary/5 transition-all uppercase" href="https://www.google.com/maps/search/?api=1&query=Av.+Paz+Soldan+235,+San+Isidro,+Lima,+Peru" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a class="border border-gold-600 text-tertiary font-label-upper text-label-upper px-7 py-3 rounded-full hover:bg-tertiary/5 transition-all uppercase" href="https://www.google.com/maps/dir/?api=1&destination=Av.+Paz+Sold%C3%A1n+235,+San+Isidro,+Lima,+Per%C3%BA" target="_blank" rel="noopener">Cómo llegar</a>
           <a id="waUbicacion" hidden class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" href="#" target="_blank" rel="noopener">WhatsApp</a>
           <button onclick="abrirReserva()" class="gold-gradient-bg text-on-background font-label-upper text-label-upper px-7 py-3 rounded-full hover:brightness-110 transition-all uppercase" style="border:none;cursor:pointer;">Reservar cita</button>
         </div>
