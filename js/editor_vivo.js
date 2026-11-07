@@ -85,6 +85,7 @@
         el.classList.add('on');
       });
       if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[m.clave] = m.valor;
+      if(m.clave === 'navidad' && typeof window.apNavidad === 'function') window.apNavidad(m.valor);
     }
     if(m.tipo === 'aplicar-img' && m.clave && m.valor){
       document.querySelectorAll('[data-edit-img="' + m.clave + '"]').forEach(function(el){ if(window.apAplicarImg) window.apAplicarImg(el, m.valor); });
