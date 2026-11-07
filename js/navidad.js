@@ -5,7 +5,7 @@
   var MOV_REDUCIDO = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var GORRO = 'img/gorro-navidad.webp?v=1';
 
-  var css = '.nv-logo{ position:relative; display:inline-block; line-height:0; }'
+  var css = '.nv-logo{ position:relative; display:inline-block; line-height:0; width:fit-content; max-width:100%; align-self:flex-start; flex:0 0 auto; }'
     + '.nv-gorro{ position:absolute; left:-10%; top:-20%; width:44%; height:auto; transform:rotate(-4deg); transform-origin:60% 90%; pointer-events:none; filter:drop-shadow(0 3px 4px rgba(0,0,0,.35)); }'
     + '#nvNieve{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:40; }'
     + 'html.js:not(.nv-editor) .nv-logo > .rv:not(.on) + .nv-gorro{ opacity:0; transform:rotate(-4deg) translateY(26px); }'
