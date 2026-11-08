@@ -63,15 +63,16 @@
   };
 
   // Contadores que suben al entrar en pantalla
+  // Lee el número en CADA paso: si el valor guardado en el CRM llega a mitad de la animación, termina en ese número
   function animarContador(el){
-    var hasta = parseInt(el.getAttribute('data-hasta') || '0', 10);
-    var pre = el.getAttribute('data-pre') || '';
     var inicio = null, dur = 1100;
     function paso(t){
       if(!inicio) inicio = t;
+      var hasta = parseInt(el.getAttribute('data-hasta') || '0', 10) || 0;
+      var pre = el.getAttribute('data-pre') || '', suf = el.getAttribute('data-suf') || '';
       var p = Math.min((t - inicio) / dur, 1);
-      var val = Math.floor(hasta * (1 - Math.pow(1 - p, 3)));
-      el.textContent = pre + val.toLocaleString('es-PE');
+      var val = p < 1 ? Math.floor(hasta * (1 - Math.pow(1 - p, 3))) : hasta;
+      el.textContent = pre + val.toLocaleString('es-PE') + (p < 1 ? '' : suf);
       if(p < 1) requestAnimationFrame(paso);
     }
     requestAnimationFrame(paso);
