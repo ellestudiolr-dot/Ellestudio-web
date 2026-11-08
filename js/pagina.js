@@ -7,9 +7,9 @@
 (function(){
   document.documentElement.classList.add('js');
 
-  var VISTAS = ['inicio', 'tratamientos', 'catalogo', 'estudio', 'ubicacion'];
+  var VISTAS = ['inicio', 'tratamientos', 'catalogo', 'estudio', 'ubicacion', 'cuenta'];
   // Nombres viejos o anclas internas → vista que las contiene
-  var ALIAS = { servicios:'tratamientos', precios:'catalogo', lista:'catalogo', ofertas:'inicio', 'como-funciona':'inicio', como:'inicio', faq:'inicio', instagram:'inicio', reservar:'inicio', reserva:'inicio' };
+  var ALIAS = { 'mi-cuenta':'cuenta', perfil:'cuenta', registro:'cuenta', servicios:'tratamientos', precios:'catalogo', lista:'catalogo', ofertas:'inicio', 'como-funciona':'inicio', como:'inicio', faq:'inicio', instagram:'inicio', reservar:'inicio', reserva:'inicio' };
 
   function vistaDe(v){ v = ALIAS[v] || v; return VISTAS.indexOf(v) >= 0 ? v : 'inicio'; }
 

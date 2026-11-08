@@ -1,0 +1,90 @@
+/* elle studio · «Mi cuenta» (portal de clientas). Colores de la página: crema, negro y etiquetas doradas. */
+#cuenta{ background:var(--crema, #f8faf1); padding:112px 16px 96px; }
+@media (min-width:860px){ #cuenta{ padding-top:132px; } }
+.cu{ max-width:980px; margin:0 auto; font-family:var(--f-apple); color:#191c17; }
+.cu *{ box-sizing:border-box; }
+.cu-ceja{ display:block; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#B99043; margin:0 0 10px; }
+.cu-h2{ font-size:clamp(32px, 5vw, 52px); font-weight:600; letter-spacing:-.03em; line-height:1.05; margin:0 0 12px; text-wrap:balance; color:#191c17; }
+.cu-h3{ font-size:22px; font-weight:600; letter-spacing:-.02em; margin:0 0 14px; color:#191c17; }
+.cu-sub{ color:#6b6a62; margin:0; font-size:15px; overflow-wrap:anywhere; }
+
+/* Entrar / crear cuenta */
+.cu-acceso{ display:grid; grid-template-columns:1fr; grid-template-areas:'intro' 'form' 'benef'; gap:28px; align-items:start; }
+.cu-acceso > .cu-intro{ grid-area:intro; } .cu-acceso > .cu-tarjeta{ grid-area:form; } .cu-acceso > .cu-beneficios{ grid-area:benef; margin:0; }
+@media (min-width:860px){ .cu-acceso{ grid-template-columns:1fr 1fr; grid-template-areas:'intro form' 'benef form'; column-gap:56px; row-gap:24px; } }
+.cu-intro p{ font-size:17px; line-height:1.55; color:#49473f; max-width:42ch; margin:0; }
+.cu-beneficios{ list-style:none; padding:0; margin:24px 0 0; display:grid; gap:14px; }
+.cu-beneficios li{ display:flex; gap:12px; align-items:center; font-size:15px; color:#191c17; }
+.cu-beneficios li span.cu-ico{ width:36px; height:36px; border-radius:999px; background:#edefe6; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; }
+.cu-tarjeta{ background:#fff; border-radius:24px; padding:28px 24px; }
+.cu-pestanas{ display:flex; gap:4px; background:#edefe6; border-radius:999px; padding:4px; margin:0 0 22px; }
+.cu-pestanas button{ flex:1; border:0; background:transparent; border-radius:999px; padding:11px 12px; font:600 14px var(--f-apple); color:#49473f; cursor:pointer; }
+.cu-pestanas button.on{ background:#191c17; color:#fff; }
+.cu-campo{ display:block; margin:0 0 14px; }
+.cu-campo > span{ display:block; font-size:13px; font-weight:600; margin:0 0 6px; color:#191c17; }
+.cu-campo input{ width:100%; border:1px solid #cac6bc; border-radius:14px; padding:13px 14px; font:16px var(--f-apple); color:#191c17; background:#fff; -webkit-appearance:none; appearance:none; }
+.cu-campo input:focus{ outline:none; border-color:#191c17; box-shadow:0 0 0 3px rgba(25,28,23,.12); }
+.cu-campo small{ display:block; font-size:12.5px; color:#6b6a62; margin-top:6px; }
+.cu-check{ display:flex; gap:10px; align-items:flex-start; font-size:14px; line-height:1.45; color:#49473f; margin:4px 0 12px; cursor:pointer; }
+.cu-check input{ width:20px; height:20px; margin:1px 0 0; accent-color:#191c17; flex:0 0 auto; }
+.cu-check a{ color:#191c17; text-decoration:underline; }
+.cu-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; width:100%; border:0; border-radius:999px; background:#191c17; color:#fff; padding:15px 22px; font:600 15px var(--f-apple); cursor:pointer; margin-top:6px; text-decoration:none; }
+.cu-btn:hover{ background:#000; }
+.cu-btn[disabled]{ opacity:.55; cursor:default; }
+.cu-btn-linea{ width:auto; background:transparent; color:#191c17; border:1px solid rgba(25,28,23,.25); margin:0; padding:11px 18px; }
+.cu-btn-linea:hover{ background:#edefe6; }
+.cu-btn-chico{ width:auto; padding:11px 18px; font-size:14px; }
+.cu-link{ display:block; margin:16px auto 0; background:none; border:0; color:#49473f; font:500 14px var(--f-apple); text-decoration:underline; cursor:pointer; }
+.cu-aviso{ border-radius:14px; padding:12px 14px; font-size:14px; line-height:1.45; margin:0 0 16px; background:#edefe6; color:#191c17; }
+.cu-aviso.error{ background:#191c17; color:#fff; }
+.cu-aviso .cu-btn{ margin-top:10px; }
+.cu button:focus-visible, .cu a:focus-visible, .cu input:focus-visible{ outline:2px solid #B99043; outline-offset:2px; }
+
+/* Perfil */
+.cu-perfil{ display:flex; flex-direction:column; gap:32px; padding-top:8px; }
+.cu-cab{ display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; }
+.cu-grid{ display:grid; grid-template-columns:1fr; gap:14px; }
+@media (min-width:720px){ .cu-grid{ grid-template-columns:1fr 1fr; } }
+.cu-caja{ background:#fff; border-radius:22px; padding:22px; }
+.cu-oscura{ background:#191c17; color:#fff; border-radius:22px; padding:24px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+.cu-oscura .cu-ceja{ color:#D8BC7E; }
+.cu-oscura p{ color:rgba(255,255,255,.82); margin:0; font-size:15px; }
+.cu-oscura .cu-btn{ width:auto; background:#fff; color:#191c17; margin:0; }
+.cu-grande{ display:block; font-size:clamp(24px, 3.4vw, 32px); font-weight:600; letter-spacing:-.02em; margin:0 0 6px; }
+.cu-grande::first-letter{ text-transform:uppercase; }
+.cu-trat{ background:#fff; border-radius:22px; padding:22px; display:flex; flex-direction:column; gap:6px; }
+.cu-trat-cab{ display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+.cu-trat-cab b{ font-size:18px; font-weight:600; letter-spacing:-.01em; }
+.cu-chip{ font-size:12px; font-weight:600; padding:5px 10px; border-radius:999px; background:#edefe6; white-space:nowrap; color:#191c17; }
+.cu-num{ display:flex; align-items:baseline; gap:8px; margin:8px 0 4px; }
+.cu-num strong{ font-size:44px; font-weight:600; letter-spacing:-.03em; line-height:1; font-variant-numeric:tabular-nums; }
+.cu-num span{ color:#6b6a62; font-size:15px; }
+.cu-dato{ margin:0; font-size:14px; color:#49473f; }
+.cu-toca{ margin:8px 0 0; font-size:14px; font-weight:600; color:#191c17; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.cu-toca .cu-btn{ margin:0; }
+.cu-zonas{ list-style:none; margin:10px 0 0; padding:0; border-top:1px solid #e1e3db; }
+.cu-zonas li{ display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid #e1e3db; font-size:14px; }
+.cu-zonas li:last-child{ border-bottom:0; }
+.cu-zonas small{ color:#6b6a62; font-size:13px; text-align:right; white-space:nowrap; }
+.cu-desc{ background:#fff; border-radius:22px; padding:22px; border:1px dashed rgba(185,144,67,.7); }
+.cu-desc b{ display:block; font-size:18px; font-weight:600; margin:0 0 4px; }
+.cu-desc p{ margin:0 0 12px; color:#49473f; font-size:14px; line-height:1.5; }
+.cu-codigo{ display:inline-block; font-weight:700; letter-spacing:.12em; background:#191c17; color:#fff; padding:7px 12px; border-radius:8px; font-size:14px; }
+.cu-desc small{ display:block; margin-top:10px; color:#6b6a62; font-size:12.5px; }
+.cu-hist{ list-style:none; margin:0; padding:0; background:#fff; border-radius:22px; overflow:hidden; }
+.cu-hist li{ display:flex; justify-content:space-between; gap:14px; padding:14px 18px; border-bottom:1px solid #edefe6; font-size:14px; }
+.cu-hist li:last-child{ border-bottom:0; }
+.cu-hist time{ color:#6b6a62; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.cu-vacio{ background:#fff; border-radius:22px; padding:22px; color:#49473f; font-size:15px; line-height:1.5; margin:0; }
+.cu-pref{ background:#fff; border-radius:22px; padding:22px; display:flex; flex-direction:column; gap:16px; }
+.cu-pref details summary{ cursor:pointer; font-weight:600; font-size:15px; }
+.cu-pref details[open] summary{ margin-bottom:14px; }
+.cu-pref .cu-btn{ width:auto; }
+
+/* Botón de la barra de arriba */
+.ap-cuenta-btn{ width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.35); display:inline-flex; align-items:center; justify-content:center; color:#fff; flex:0 0 auto; position:relative; }
+.ap-cuenta-btn:hover{ background:rgba(255,255,255,.1); }
+.ap-cuenta-btn.nav-activa{ border-color:#D8BC7E; color:#D8BC7E; }
+.ap-cuenta-btn.con-sesion::after{ content:''; position:absolute; top:6px; right:6px; width:8px; height:8px; border-radius:50%; background:#D8BC7E; }
+@media (max-width:859px){ .ap-cuenta-btn{ width:36px; height:36px; } }
+@media (max-width:349px){ .ap-cuenta-btn{ display:none; } }

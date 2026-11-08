@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script>
 /* Versión publicada de la página: si el teléfono guardó una versión vieja, se recarga sola con la nueva (máx. 1 vez por minuto, nunca con el formulario abierto) */
-window.WEB_VERSION = '20261107-202529';
+window.WEB_VERSION = '20261108-113717';
 (function(){
   if(/[?&]editar=1/.test(location.search) || !window.fetch) return;
   function revisar(){
@@ -13,7 +13,8 @@ window.WEB_VERSION = '20261107-202529';
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
         if(!d || !d.v || d.v === window.WEB_VERSION) return;
-        var abierto = ['modalReserva', 'legalModal'].some(function(id){ var m = document.getElementById(id); return m && m.style.display === 'flex'; });
+        var abierto = ['modalReserva', 'legalModal'].some(function(id){ var m = document.getElementById(id); return m && m.style.display === 'flex'; })
+          || !!(document.activeElement && /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName));
         if(abierto) return;
         var k = 'web_recarga', antes = 0;
         try{ antes = +sessionStorage.getItem(k) || 0; }catch(e){}
@@ -612,6 +613,7 @@ window.WEB_VERSION = '20261107-202529';
 
 </style>
 <link rel="stylesheet" href="css/tailwind.css?v=1"/>
+<link rel="stylesheet" href="css/cuenta.css?v=1"/>
 </head>
 <body class="bg-background text-on-background font-body-md antialiased selection:bg-tertiary/20 selection:text-tertiary">
 
@@ -627,6 +629,7 @@ window.WEB_VERSION = '20261107-202529';
       <a data-edit="nav_ubicacion" href="#ubicacion" onclick="return _nav('ubicacion')" data-nav="ubicacion">Ubicación</a>
     </div>
     <div class="ap-nav-der">
+      <a class="ap-cuenta-btn" href="#cuenta" onclick="return _nav('cuenta')" data-nav="cuenta" aria-label="Mi cuenta" title="Mi cuenta"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
       <button data-edit="nav_boton" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
       <button class="ap-burger" onclick="menuMovil()" aria-label="Menú">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8BC7E" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -639,6 +642,7 @@ window.WEB_VERSION = '20261107-202529';
     <a data-edit="nav_catalogo" onclick="return _navMovil('catalogo')" href="#catalogo">Catálogo</a>
     <a data-edit="nav_estudio" onclick="return _navMovil('estudio')" href="#estudio">Estudio</a>
     <a data-edit="nav_ubicacion" onclick="return _navMovil('ubicacion')" href="#ubicacion">Ubicación</a>
+    <a onclick="return _navMovil('cuenta')" href="#cuenta">Mi cuenta</a>
   </div>
 </nav>
 
@@ -953,6 +957,9 @@ window.WEB_VERSION = '20261107-202529';
   </div>
 </section>
 
+<!-- MI CUENTA: portal de clientas (js/cuenta.js + css/cuenta.css) -->
+<section class="vista" id="cuenta" data-vista="cuenta" aria-label="Mi cuenta"><div class="cu" id="cuentaApp"></div></section>
+
 <!-- LLAMADO FINAL -->
 <section class="ap-cta">
   <span class="ap-ceja ap-ceja-oro rv" data-edit="cta_ceja">¿Lista para empezar?</span>
@@ -1079,7 +1086,7 @@ window.WEB_VERSION = '20261107-202529';
 
 <script src="js/precios.js?v=6"></script>
 <script src="js/catalogo.js?v=9"></script>
-<script src="js/pagina.js?v=7"></script>
+<script src="js/pagina.js?v=8"></script>
 <script src="js/historias.js?v=5"></script>
 <script src="js/estudio.js?v=2"></script>
 <script src="js/contenido.js?v=10"></script>
@@ -1092,6 +1099,7 @@ window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
 <script src="js/reserva.js?v=8"></script>
 <script src="js/instagram.js?v=6"></script>
 <script src="js/chatbot.js?v=7"></script>
+<script src="js/cuenta.js?v=1"></script>
 <script src="js/navidad.js?v=3"></script>
 <script src="js/editor_vivo.js?v=10"></script>
 </body>
