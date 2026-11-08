@@ -9,6 +9,12 @@
   }
   window.hayWhatsApp = function(){ return !!numero(); };
 
+  // «Hablar con una persona»: abre WhatsApp del estudio sin llenar el formulario
+  window.hablarWhatsApp = function(tratamiento){
+    window.abrirWa('Hola, quisiera hablar con alguien de elle studio.' + (tratamiento ? ' Me interesa ' + tratamiento + '.' : ''));
+    return false;
+  };
+
   // Abre la app de WhatsApp con el número del estudio y el texto ya escrito
   window.abrirWa = function(texto){
     if(window._MODO_EDITOR){ return true; }   // en el editor no se abre WhatsApp

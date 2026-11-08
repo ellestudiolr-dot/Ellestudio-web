@@ -99,5 +99,6 @@
   window.apNavidad = function(valor){ if(activo(valor)) encender(); else apagar(); };
   function arrancar(){ var m = window._WEB_CONTENIDO || {}; window.apNavidad(m.navidad); }
   document.addEventListener('web-contenido-listo', arrancar);
+  document.addEventListener('web-contenido-cambio', function(e){ var cl = (e.detail && e.detail.claves) || []; if(cl.indexOf('navidad') >= 0) arrancar(); });
   if(window._WEB_CONTENIDO && Object.keys(window._WEB_CONTENIDO).length) arrancar();
 })();

@@ -106,9 +106,18 @@
 
   // ===== Flujos =====
   function menuTratamientos(){
-    setOpciones(Object.keys(TRATAMIENTOS).map(function(nombre){
+    setOpciones([{ txt: 'Hablar con una persona', principal: true, fn: hablarConPersona }].concat(Object.keys(TRATAMIENTOS).map(function(nombre){
       return { txt: nombre, fn: function(){ elegirTratamiento(nombre); } };
-    }).concat([{ txt: 'Otra consulta', fn: otraConsulta }]));
+    })).concat([{ txt: 'Otra consulta', fn: otraConsulta }]));
+  }
+
+  // Comunica con alguien del estudio por WhatsApp (sin formulario)
+  function hablarConPersona(){
+    user('Hablar con una persona');
+    bot('Te abro nuestro WhatsApp. Escríbenos y una persona del equipo te responde.');
+    if(typeof window.hablarWhatsApp === 'function') window.hablarWhatsApp(tratamientoActual);
+    else if(typeof CONFIG !== 'undefined' && CONFIG.WHATSAPP) window.open('https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Hola, quisiera hablar con alguien de elle studio.'), '_blank', 'noopener');
+    setTimeout(menuTratamientos, 400);
   }
 
   function elegirTratamiento(nombre){
@@ -124,7 +133,7 @@
       { txt: '¿Duele?', fn: function(){ responder('duele', '¿Duele?'); } },
       { txt: '¿Cuántas sesiones?', fn: function(){ responder('sesiones', '¿Cuántas sesiones?'); } },
       { txt: 'Reservar cita', principal: true, fn: irAReservar },
-      { txt: 'WhatsApp', fn: irAWhatsApp },
+      { txt: 'Hablar por WhatsApp', fn: irAWhatsApp },
       { txt: 'Otro tratamiento', fn: function(){ user('Otro tratamiento'); bot('Claro, ¿cuál te interesa?'); menuTratamientos(); } }
     ]);
   }
@@ -140,7 +149,7 @@
     bot('Estamos en Av. Paz Soldán 235, San Isidro, Lima. Atendemos con cita previa: déjala en la página y te confirmamos por WhatsApp.');
     setOpciones([
       { txt: 'Reservar cita', principal: true, fn: irAReservar },
-      { txt: 'WhatsApp', fn: irAWhatsApp },
+      { txt: 'Hablar por WhatsApp', fn: irAWhatsApp },
       { txt: 'Ver tratamientos', fn: function(){ user('Ver tratamientos'); bot('¿Cuál te interesa?'); menuTratamientos(); } }
     ]);
   }
@@ -188,7 +197,7 @@
     if(!saludado){
       saludado = true;
       bot('Hola, soy la asistente de elle studio. Te ayudo con precios, dudas y tu reserva.');
-      setTimeout(function(){ bot('¿Qué tratamiento te interesa?'); menuTratamientos(); }, 300);
+      setTimeout(function(){ bot('¿Qué tratamiento te interesa? Si prefieres, te comunico con una persona por WhatsApp.'); menuTratamientos(); }, 300);
     }
   }
   function cerrar(){ panel.classList.remove('abierto'); }

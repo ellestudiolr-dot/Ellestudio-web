@@ -173,5 +173,25 @@
       if(cuerpo) cuerpo.innerHTML = '<p class="ap-pnota">No pudimos cargar los precios ahora. Escríbenos por WhatsApp y te los pasamos.</p>';
     });
   }
+  // Se actualiza sola: si en el CRM cambian precios o promociones, se vuelve a pintar sin recargar la página
+  var firmaP = '';
+  function revisarPrecios(){
+    var c = (typeof CONFIG !== 'undefined') ? CONFIG : null;
+    if(!c || !c.SUPABASE_URL || !c.SUPABASE_ANON || window._MODO_EDITOR || document.hidden) return;
+    var h = { 'apikey': c.SUPABASE_ANON, 'Authorization': 'Bearer ' + c.SUPABASE_ANON };
+    Promise.all([
+      fetchJson(c.SUPABASE_URL + '/rest/v1/precios_servicios?select=categoria,grupo,nombre,genero,incluye,realiza,precio_sesion,paquetes,extra,consultar,orden&activo=eq.true&order=orden.asc', h),
+      fetchJson(c.SUPABASE_URL + '/rest/v1/precios_promociones?select=nombre,precio,nota,inicio,fin,orden&order=orden.asc', h)
+    ]).then(function(r){
+      if(!Array.isArray(r[0]) || !r[0].length) return;
+      var nueva = JSON.stringify(r);
+      if(firmaP && nueva !== firmaP){ SERV = r[0]; PROMO = Array.isArray(r[1]) ? r[1] : []; render(); }
+      firmaP = nueva;
+    }).catch(function(){});
+  }
+  setInterval(revisarPrecios, 45000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) revisarPrecios(); });
+  setTimeout(revisarPrecios, 5000);
+
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', cargar); else cargar();
 })();

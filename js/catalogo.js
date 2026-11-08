@@ -181,6 +181,28 @@
     pintar(cache);
   };
 
+  // Se actualiza solo: textos de portada (cat_ / cat2_) y bloques guardados en el CRM, sin recargar la página
+  document.addEventListener('web-contenido-cambio', function(e){
+    var cl = (e.detail && e.detail.claves) || [];
+    if(cl.some(function(k){ return /^cat2?_/.test(k); }) && cache.length) pintar(cache);
+  });
+  var firma = '';
+  function revisarCatalogo(){
+    var c = (typeof CONFIG !== 'undefined') ? CONFIG : null;
+    if(!c || !c.SUPABASE_URL || !c.SUPABASE_ANON || window._MODO_EDITOR || document.hidden) return;
+    fetch(c.SUPABASE_URL + '/rest/v1/web_catalogo?select=id,orden,activo,actualizado&order=id.asc', {
+      headers: { 'apikey': c.SUPABASE_ANON, 'Authorization': 'Bearer ' + c.SUPABASE_ANON }, cache: 'no-store'
+    }).then(function(r){ return r.ok ? r.json() : null; }).then(function(f){
+      if(!Array.isArray(f)) return;
+      var nueva = JSON.stringify(f);
+      if(firma && nueva !== firma) cargar();
+      firma = nueva;
+    }).catch(function(){});
+  }
+  setInterval(revisarCatalogo, 15000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) revisarCatalogo(); });
+  setTimeout(revisarCatalogo, 4000);
+
   // Espera a los textos de la portada (web_contenido) si ya están cargando; si no, pinta igual
   var pintado = false;
   function arrancar(){ if(pintado) return; pintado = true; cargar(); }

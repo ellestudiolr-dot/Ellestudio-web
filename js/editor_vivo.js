@@ -44,6 +44,7 @@
         b.addEventListener('click', function(e){
           e.preventDefault(); e.stopPropagation(); presionando = false;
           var src = el.currentSrc || el.src || ((el.querySelector && el.querySelector('source')) || {}).src || '';
+          marcar(null); fotoActiva = el.getAttribute('data-edit-img'); mostrarAyudaFoto(true);
           enviar({ tipo: 'imagen', clave: el.getAttribute('data-edit-img'), valor: el.classList.contains('ap-sin-media') ? 'ninguna' : src, esVideo: el.tagName === 'VIDEO' });
         });
         document.body.appendChild(b); botones.set(el, b);
@@ -69,6 +70,7 @@
     if(t.closest && t.closest('.ev-foto')) return;
     var el = t.closest && t.closest('[data-edit]');
     if(el){
+      fotoActiva = null; mostrarAyudaFoto(false);
       e.preventDefault(); e.stopPropagation();
       marcar(el);
       enviar({ tipo: 'texto', clave: el.getAttribute('data-edit'), valor: el.textContent.replace(/\s+/g, ' ').trim() });
@@ -85,6 +87,46 @@
     var ext = t.closest && t.closest('a[target="_blank"], [data-pedir], [onclick*="abrirReserva"], [onclick*="pedirWa"], .ap-mapa-card');
     if(ext){ e.preventDefault(); e.stopPropagation(); }
   }, true);
+
+  // ===== Ubicar la foto activa: arrastrar para moverla, rueda para acercar / alejar =====
+  var fotoActiva = null, arrastre = null, ultimoEnvio = 0;
+  var ayuda = document.createElement('div');
+  ayuda.style.cssText = 'position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:9500;background:#191c17;color:#fff;border-radius:999px;padding:10px 18px;font:600 12px/1.2 -apple-system,BlinkMacSystemFont,"Inter",sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35);display:none;pointer-events:none;';
+  ayuda.textContent = 'Arrastra sobre la foto para moverla · rueda del mouse para acercar o alejar';
+  document.body.appendChild(ayuda);
+  function mostrarAyudaFoto(si){ ayuda.style.display = si ? 'block' : 'none'; }
+  function elFoto(){ if(!fotoActiva) return null; var l = document.querySelectorAll('[data-edit-img="' + fotoActiva + '"]'); for(var i = 0; i < l.length; i++){ var r = l[i].getBoundingClientRect(); if(r.width > 20 && r.height > 20) return l[i]; } return null; }
+  function posActual(){ var a = String((window._WEB_CONTENIDO || {})[fotoActiva + '_pos'] || '50,50,1').split(',').map(Number); return { x: isFinite(a[0]) ? a[0] : 50, y: isFinite(a[1]) ? a[1] : 50, z: (isFinite(a[2]) && a[2] > 0) ? a[2] : 1 }; }
+  function dentro(el, ev){ var r = el.getBoundingClientRect(); return ev.clientX >= r.left && ev.clientX <= r.right && ev.clientY >= r.top && ev.clientY <= r.bottom; }
+  function aplicarPos(p, final){
+    var valor = Math.round(p.x) + ',' + Math.round(p.y) + ',' + (Math.round(p.z * 100) / 100);
+    if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[fotoActiva + '_pos'] = valor;
+    if(window.apPosImg) window.apPosImg(fotoActiva, valor);
+    var ahora = Date.now();
+    if(final || ahora - ultimoEnvio > 80){ ultimoEnvio = ahora; enviar({ tipo: 'pos-img-cambio', clave: fotoActiva, valor: valor }); }
+  }
+  function lim(v, a, b){ return Math.max(a, Math.min(b, v)); }
+  document.addEventListener('pointerdown', function(ev){
+    var el = elFoto(); if(!el || ev.button !== 0) return;
+    if(ev.target.closest && (ev.target.closest('.ev-foto') || ev.target.closest('[data-edit]'))) return;
+    if(!dentro(el, ev)) return;
+    ev.preventDefault(); ev.stopPropagation();
+    var r = el.getBoundingClientRect();
+    arrastre = { x0: ev.clientX, y0: ev.clientY, p: posActual(), w: r.width, h: r.height };
+  }, true);
+  document.addEventListener('pointermove', function(ev){
+    if(!arrastre) return;
+    ev.preventDefault();
+    var p = arrastre.p, f = 100 / Math.max(1, p.z);
+    aplicarPos({ x: lim(p.x - (ev.clientX - arrastre.x0) / arrastre.w * f, 0, 100), y: lim(p.y - (ev.clientY - arrastre.y0) / arrastre.h * f, 0, 100), z: p.z }, false);
+  }, true);
+  document.addEventListener('pointerup', function(){ if(arrastre){ arrastre = null; aplicarPos(posActual(), true); } }, true);
+  document.addEventListener('wheel', function(ev){
+    var el = elFoto(); if(!el || !dentro(el, ev)) return;
+    ev.preventDefault();
+    var p = posActual(); p.z = lim(p.z - ev.deltaY * 0.0015, 0.5, 3);
+    aplicarPos(p, true);
+  }, { passive: false, capture: true });
 
   window.addEventListener('message', function(e){
     if(PADRES.indexOf(e.origin) < 0) return;
@@ -127,7 +169,12 @@
     if(m.tipo === 'recargar-catalogo' && typeof window.cargarCatalogo === 'function'){ window.cargarCatalogo(); }
     if(m.tipo === 'recargar-textos'){ location.reload(); }
     if(m.tipo === 'ir' && m.vista && typeof window.verVista === 'function'){ window.verVista(m.vista); reubicar(); }
-    if(m.tipo === 'quitar'){ marcar(null); }
+    if(m.tipo === 'quitar'){ marcar(null); fotoActiva = null; arrastre = null; mostrarAyudaFoto(false); }
+    if(m.tipo === 'pos-img' && m.clave){
+      if(window._WEB_CONTENIDO) window._WEB_CONTENIDO[m.clave + '_pos'] = m.valor;
+      if(window.apPosImg) window.apPosImg(m.clave, m.valor);
+      reubicar();
+    }
   });
 
   enviar({ tipo: 'listo' });
