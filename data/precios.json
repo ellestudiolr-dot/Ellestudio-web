@@ -1,991 +1,991 @@
 {
- "actualizado": "2026-11-06",
- "servicios": [
-  {
-   "categoria": "Hollywood Peel",
-   "grupo": null,
-   "nombre": "Axilas, codos o cuello",
-   "genero": "ambos",
-   "incluye": "Carbon Peel corporal. Una sesión cada 15 dias",
-   "realiza": null,
-   "precio_sesion": 70.0,
-   "paquetes": [
-    {
-     "precio": 240,
-     "sesiones": 4
-    },
-    {
-     "precio": 320,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 1
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Mini zonas",
-   "nombre": "Mini zonas: frente, entrecejo, patilla, bozo, mejillas, mentón o dedos",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 35.0,
-   "paquetes": [
-    {
-     "precio": 55,
-     "sesiones": 3
-    },
-    {
-     "precio": 90,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 1
-  },
-  {
-   "categoria": "Glúteos y body",
-   "grupo": null,
-   "nombre": "Glúteos de Porcelana",
-   "genero": "ambos",
-   "incluye": "Desinfección, exfoliante aclarador, punta de diamante, dermaplaning, mascarilla según diagnóstico con arco LED y ondas rusas.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 89.9,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 1
-  },
-  {
-   "categoria": "Faciales",
-   "grupo": null,
-   "nombre": "Hollywood Peel facial",
-   "genero": "ambos",
-   "incluye": "Exfoliación, paleta ultrasónica, mascarilla con arco LED, carbón, láser Nd:YAG, mascarilla calmante y protector solar.",
-   "realiza": "Lyrosse",
-   "precio_sesion": 190.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 1
-  },
-  {
-   "categoria": "Reductores",
-   "grupo": null,
-   "nombre": "Peptonas",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "Wilda",
-   "precio_sesion": 120.0,
-   "paquetes": [
-    {
-     "precio": 450,
-     "sesiones": 4
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 1
-  },
-  {
-   "categoria": "Productos",
-   "grupo": null,
-   "nombre": "Exfoliante Yelave",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": null,
-   "precio_sesion": 85.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 1
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Mini zonas",
-   "nombre": "Mini zonas: frente, entrecejo, patilla, bozo, mejillas, mentón o dedos",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 45.0,
-   "paquetes": [
-    {
-     "precio": 75,
-     "sesiones": 3
-    },
-    {
-     "precio": 145,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 1
-  },
-  {
-   "categoria": "Reductores",
-   "grupo": null,
-   "nombre": "Sculpt Therapy",
-   "genero": "ambos",
-   "incluye": "Exfoliación, masaje manual, maderoterapia, radiofrecuencia, bambuterapia o vacumterapia, ondas rusas y drenaje linfático.",
-   "realiza": "Wilda",
-   "precio_sesion": 99.0,
-   "paquetes": [
-    {
-     "precio": 359.9,
-     "sesiones": 4
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 2
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas pequeñas",
-   "nombre": "Axilas",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 35.0,
-   "paquetes": [
-    {
-     "precio": 85,
-     "sesiones": 3
-    },
-    {
-     "precio": 159.9,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 2
-  },
-  {
-   "categoria": "Productos",
-   "grupo": null,
-   "nombre": "Desordorante Aloe Vera",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "4 unidades. 19-10",
-   "precio_sesion": 25.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 2
-  },
-  {
-   "categoria": "Hollywood Peel",
-   "grupo": null,
-   "nombre": "Entrepierna",
-   "genero": "ambos",
-   "incluye": "Carbon Peel corporal. Una sesión cada 15 dias",
-   "realiza": null,
-   "precio_sesion": 85.0,
-   "paquetes": [
-    {
-     "precio": 290,
-     "sesiones": 4
-    },
-    {
-     "precio": 390,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 2
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas pequeñas",
-   "nombre": "Axilas",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 35.0,
-   "paquetes": [
-    {
-     "precio": 85,
-     "sesiones": 3
-    },
-    {
-     "precio": 159.9,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 2
-  },
-  {
-   "categoria": "Faciales",
-   "grupo": null,
-   "nombre": "Skin Face",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "Lyrosse",
-   "precio_sesion": 80.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 2
-  },
-  {
-   "categoria": "Glúteos y body",
-   "grupo": null,
-   "nombre": "Glúteos de Porcelana + Carbon Peel",
-   "genero": "ambos",
-   "incluye": "Exfoliación, punta de diamante, mascarilla de carbón, láser Nd:YAG, mascarilla hidratante con arco LED y ondas rusas.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 169.9,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 2
-  },
-  {
-   "categoria": "Faciales",
-   "grupo": null,
-   "nombre": "Skin Face Porcelana",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "Lyrosse",
-   "precio_sesion": 110.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 3
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas pequeñas",
-   "nombre": "Línea alba",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 35.0,
-   "paquetes": [
-    {
-     "precio": 85,
-     "sesiones": 3
-    },
-    {
-     "precio": 159.9,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 3
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas pequeñas",
-   "nombre": "Línea alba",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 45.0,
-   "paquetes": [
-    {
-     "precio": 120,
-     "sesiones": 3
-    },
-    {
-     "precio": 240,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 3
-  },
-  {
-   "categoria": "Glúteos y body",
-   "grupo": null,
-   "nombre": "Body de Porcelana",
-   "genero": "ambos",
-   "incluye": "Glúteos de Porcelana más espalda con vapor de ozono y limpieza de puntos negros. Cierra con masaje relajante.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 179.9,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 3
-  },
-  {
-   "categoria": "Reductores",
-   "grupo": null,
-   "nombre": "Slim Body",
-   "genero": "ambos",
-   "incluye": "Carboxiterapia, ultracavitación, ondas rusas, radiofrecuencia, lipoláser y vacumterapia.",
-   "realiza": "Wilda",
-   "precio_sesion": null,
-   "paquetes": [
-    {
-     "precio": 299.9,
-     "sesiones": 4
-    }
-   ],
-   "extra": "+ 1 sesión de enzimas",
-   "consultar": false,
-   "orden": 3
-  },
-  {
-   "categoria": "Hollywood Peel",
-   "grupo": null,
-   "nombre": "Glúteos",
-   "genero": "ambos",
-   "incluye": "Carbon Peel corporal. Una sesión cada 15 dias",
-   "realiza": null,
-   "precio_sesion": 110.0,
-   "paquetes": [
-    {
-     "precio": 375,
-     "sesiones": 4
-    },
-    {
-     "precio": 500,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 3
-  },
-  {
-   "categoria": "Productos",
-   "grupo": null,
-   "nombre": "Crema urea 20%",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "15 unidades 19/10",
-   "precio_sesion": 35.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 3
-  },
-  {
-   "categoria": "Faciales",
-   "grupo": null,
-   "nombre": "Skin Face Balance",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "Lyrosse",
-   "precio_sesion": 130.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 4
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas pequeñas",
-   "nombre": "Pezones",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 35.0,
-   "paquetes": [
-    {
-     "precio": 85,
-     "sesiones": 3
-    },
-    {
-     "precio": 159.9,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 4
-  },
-  {
-   "categoria": "Productos",
-   "grupo": null,
-   "nombre": "Loción hidratante urea 10%",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "13 unidades al 19/10",
-   "precio_sesion": 45.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 4
-  },
-  {
-   "categoria": "Glúteos y body",
-   "grupo": null,
-   "nombre": "Glow Back",
-   "genero": "ambos",
-   "incluye": "Limpieza profunda de espalda.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 120.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 4
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas pequeñas",
-   "nombre": "Nuca",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 35.0,
-   "paquetes": [
-    {
-     "precio": 85,
-     "sesiones": 3
-    },
-    {
-     "precio": 159.9,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 4
-  },
-  {
-   "categoria": "Reductores",
-   "grupo": null,
-   "nombre": "Sculpt Body",
-   "genero": "ambos",
-   "incluye": "Nuestro paquete más completo.\n8 visitas \n24 sesiones \nCarboxiterapia, ultracavitación, ondas rusas, radiofrecuencia, lipoláser y vacumterapia.\nMaderoterapia /Bambuterapia\nDrenaje linfatico",
-   "realiza": "Wilda",
-   "precio_sesion": null,
-   "paquetes": [
-    {
-     "precio": 850,
-     "sesiones": 8
-    }
-   ],
-   "extra": "+ 3 sesiones de enzimas o hidrolipo",
-   "consultar": false,
-   "orden": 4
-  },
-  {
-   "categoria": "Faciales",
-   "grupo": null,
-   "nombre": "Skin Face Glow",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "Lyrosse",
-   "precio_sesion": 140.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 5
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas medias",
-   "nombre": "Zona media: media pierna, medio brazo, medio pecho o media espalda",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 110.0,
-   "paquetes": [
-    {
-     "precio": 290,
-     "sesiones": 3
-    },
-    {
-     "precio": 540,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 5
-  },
-  {
-   "categoria": "Productos",
-   "grupo": null,
-   "nombre": "Gel urea (jabón) - 250ml",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "12 unidades 19/10",
-   "precio_sesion": 25.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 5
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas pequeñas",
-   "nombre": "Nuca",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 35.0,
-   "paquetes": [
-    {
-     "precio": 85,
-     "sesiones": 3
-    },
-    {
-     "precio": 159.9,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 5
-  },
-  {
-   "categoria": "Reductores",
-   "grupo": null,
-   "nombre": "Body Reafirm",
-   "genero": "ambos",
-   "incluye": "Radiofrecuencia, bambú o maderoterapia, DLM",
-   "realiza": "Wilda",
-   "precio_sesion": null,
-   "paquetes": [
-    {
-     "precio": 359.9,
-     "sesiones": 4
-    }
-   ],
-   "extra": "+3 sesiones de silicio",
-   "consultar": false,
-   "orden": 5
-  },
-  {
-   "categoria": "Productos",
-   "grupo": null,
-   "nombre": "Locion y Crema (pequeñas)",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": null,
-   "precio_sesion": 25.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 6
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas pequeñas",
-   "nombre": "Coxis / espalda baja",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 45.0,
-   "paquetes": [
-    {
-     "precio": 120,
-     "sesiones": 3
-    },
-    {
-     "precio": 240,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 6
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas completas",
-   "nombre": "Pierna completa",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 179.9,
-   "paquetes": [
-    {
-     "precio": 480,
-     "sesiones": 3
-    },
-    {
-     "precio": 899,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 6
-  },
-  {
-   "categoria": "Reductores",
-   "grupo": null,
-   "nombre": "Sesión adicional de enzimas",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "Wilda",
-   "precio_sesion": 120.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 6
-  },
-  {
-   "categoria": "Faciales",
-   "grupo": null,
-   "nombre": "Hidralips",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "Lyrosse",
-   "precio_sesion": 45.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 6
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas completas",
-   "nombre": "Brazos, pecho o espalda completos",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 105.0,
-   "paquetes": [
-    {
-     "precio": 275,
-     "sesiones": 3
-    },
-    {
-     "precio": 510,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 7
-  },
-  {
-   "categoria": "Productos",
-   "grupo": null,
-   "nombre": "Niacinamina The ordinary",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": null,
-   "precio_sesion": 75.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 7
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas medias",
-   "nombre": "Zona media: media pierna, medio brazo, medio pecho o media espalda",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 95.0,
-   "paquetes": [
-    {
-     "precio": 255,
-     "sesiones": 3
-    },
-    {
-     "precio": 480,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 7
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas íntimas",
-   "nombre": "Pene",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 65.0,
-   "paquetes": [
-    {
-     "precio": 170,
-     "sesiones": 3
-    },
-    {
-     "precio": 320,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 8
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas completas",
-   "nombre": "Pierna completa",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 179.9,
-   "paquetes": [
-    {
-     "precio": 299.9,
-     "sesiones": 3
-    },
-    {
-     "precio": 899,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 8
-  },
-  {
-   "categoria": "Productos",
-   "grupo": null,
-   "nombre": "Protector solar (Exel)",
-   "genero": "ambos",
-   "incluye": null,
-   "realiza": "2",
-   "precio_sesion": 150.0,
-   "paquetes": [],
-   "extra": null,
-   "consultar": false,
-   "orden": 8
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas completas",
-   "nombre": "Brazos, pecho o espalda completos",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 120.0,
-   "paquetes": [
-    {
-     "precio": 299.9,
-     "sesiones": 3
-    },
-    {
-     "precio": 450,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 9
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas íntimas",
-   "nombre": "Testículos",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 55.0,
-   "paquetes": [
-    {
-     "precio": 145,
-     "sesiones": 3
-    },
-    {
-     "precio": 275,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 9
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas íntimas",
-   "nombre": "Pene + testículos",
-   "genero": "hombre",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": null,
-   "paquetes": [],
-   "extra": null,
-   "consultar": true,
-   "orden": 10
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas íntimas",
-   "nombre": "Bikini",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 45.0,
-   "paquetes": [
-    {
-     "precio": 120,
-     "sesiones": 3
-    },
-    {
-     "precio": 225,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 10
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas íntimas",
-   "nombre": "Bikini brasileño",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 55.0,
-   "paquetes": [
-    {
-     "precio": 145,
-     "sesiones": 3
-    },
-    {
-     "precio": 275,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 11
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas íntimas",
-   "nombre": "Entrepierna, periné, perianal o interglútea",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 35.0,
-   "paquetes": [
-    {
-     "precio": 85,
-     "sesiones": 3
-    },
-    {
-     "precio": 159.9,
-     "sesiones": 6
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 12
-  },
-  {
-   "categoria": "Depilación láser",
-   "grupo": "Zonas íntimas",
-   "nombre": "Glúteos",
-   "genero": "mujer",
-   "incluye": "Láser diodo. Una sesión al mes.",
-   "realiza": "Kiara / Adriana",
-   "precio_sesion": 55.0,
-   "paquetes": [
-    {
-     "precio": 129.9,
-     "sesiones": 3
-    }
-   ],
-   "extra": null,
-   "consultar": false,
-   "orden": 13
-  }
- ],
- "promociones": [
-  {
-   "nombre": "Láser axilas, 3 sesiones + la 4ta gratis",
-   "precio": 85.0,
-   "nota": "Solo en la compra del primer paquete",
-   "inicio": "2026-11-01",
-   "fin": "2026-11-30",
-   "orden": 1
-  },
-  {
-   "nombre": "Láser bikini + axilas, 3 sesiones",
-   "precio": 199.9,
-   "nota": null,
-   "inicio": "2026-11-01",
-   "fin": "2026-11-30",
-   "orden": 2
-  },
-  {
-   "nombre": "Láser media pierna, 3 sesiones",
-   "precio": 255.0,
-   "nota": null,
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 3
-  },
-  {
-   "nombre": "Láser mini zonas, 3 sesiones de una mini zona",
-   "precio": 55.0,
-   "nota": null,
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 4
-  },
-  {
-   "nombre": "Láser axilas + media pierna, 3 sesiones",
-   "precio": 299.9,
-   "nota": null,
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 5
-  },
-  {
-   "nombre": "Láser media pierna + glúteos, 3 sesiones",
-   "precio": 329.9,
-   "nota": null,
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 6
-  },
-  {
-   "nombre": "Láser axilas + media pierna + bikini, 3 sesiones",
-   "precio": 389.9,
-   "nota": null,
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 7
-  },
-  {
-   "nombre": "Slim Body, 4 sesiones + 1 sesión de enzimas de regalo",
-   "precio": 299.9,
-   "nota": "Abdomen, cintura y espalda",
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 8
-  },
-  {
-   "nombre": "Body Reafirm, 4 sesiones + 1 sesión de silicio de regalo",
-   "precio": 359.9,
-   "nota": "Maderoterapia, bambuterapia y radiofrecuencia. Abdomen, cintura y espalda",
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 9
-  },
-  {
-   "nombre": "Sculpt Therapy, 4 sesiones",
-   "precio": 359.9,
-   "nota": "Glúteos, entrepierna, parte posterior de la pierna y revolveras. De regalo: masoterapia, bambú reductor y carboxi",
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 10
-  },
-  {
-   "nombre": "Skin Face Porcelana, limpieza facial profunda",
-   "precio": 110.0,
-   "nota": null,
-   "inicio": "2026-11-03",
-   "fin": "2026-11-30",
-   "orden": 11
-  }
- ]
+"actualizado": "2026-11-07",
+"servicios": [
+{
+"categoria": "Hollywood Peel",
+"grupo": null,
+"nombre": "Axilas, codos o cuello",
+"genero": "ambos",
+"incluye": "Carbon Peel corporal. Una sesión cada 15 dias",
+"realiza": null,
+"precio_sesion": 70.0,
+"paquetes": [
+{
+"precio": 240,
+"sesiones": 4
+},
+{
+"precio": 320,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 1
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Mini zonas",
+"nombre": "Mini zonas: frente, entrecejo, patilla, bozo, mejillas, mentón o dedos",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 35.0,
+"paquetes": [
+{
+"precio": 55,
+"sesiones": 3
+},
+{
+"precio": 90,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 1
+},
+{
+"categoria": "Glúteos y body",
+"grupo": null,
+"nombre": "Glúteos de Porcelana",
+"genero": "ambos",
+"incluye": "Desinfección, exfoliante aclarador, punta de diamante, dermaplaning, mascarilla según diagnóstico con arco LED y ondas rusas.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 89.9,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 1
+},
+{
+"categoria": "Faciales",
+"grupo": null,
+"nombre": "Hollywood Peel facial",
+"genero": "ambos",
+"incluye": "Exfoliación, paleta ultrasónica, mascarilla con arco LED, carbón, láser Nd:YAG, mascarilla calmante y protector solar.",
+"realiza": "Lyrosse",
+"precio_sesion": 190.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 1
+},
+{
+"categoria": "Reductores",
+"grupo": null,
+"nombre": "Peptonas",
+"genero": "ambos",
+"incluye": null,
+"realiza": "Wilda",
+"precio_sesion": 120.0,
+"paquetes": [
+{
+"precio": 450,
+"sesiones": 4
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 1
+},
+{
+"categoria": "Productos",
+"grupo": null,
+"nombre": "Exfoliante Yelave",
+"genero": "ambos",
+"incluye": null,
+"realiza": null,
+"precio_sesion": 85.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 1
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Mini zonas",
+"nombre": "Mini zonas: frente, entrecejo, patilla, bozo, mejillas, mentón o dedos",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 45.0,
+"paquetes": [
+{
+"precio": 75,
+"sesiones": 3
+},
+{
+"precio": 145,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 1
+},
+{
+"categoria": "Reductores",
+"grupo": null,
+"nombre": "Sculpt Therapy",
+"genero": "ambos",
+"incluye": "Exfoliación, masaje manual, maderoterapia, radiofrecuencia, bambuterapia o vacumterapia, ondas rusas y drenaje linfático.",
+"realiza": "Wilda",
+"precio_sesion": 99.0,
+"paquetes": [
+{
+"precio": 359.9,
+"sesiones": 4
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 2
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas pequeñas",
+"nombre": "Axilas",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 35.0,
+"paquetes": [
+{
+"precio": 85,
+"sesiones": 3
+},
+{
+"precio": 159.9,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 2
+},
+{
+"categoria": "Productos",
+"grupo": null,
+"nombre": "Desordorante Aloe Vera",
+"genero": "ambos",
+"incluye": null,
+"realiza": "4 unidades. 19-10",
+"precio_sesion": 25.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 2
+},
+{
+"categoria": "Hollywood Peel",
+"grupo": null,
+"nombre": "Entrepierna",
+"genero": "ambos",
+"incluye": "Carbon Peel corporal. Una sesión cada 15 dias",
+"realiza": null,
+"precio_sesion": 85.0,
+"paquetes": [
+{
+"precio": 290,
+"sesiones": 4
+},
+{
+"precio": 390,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 2
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas pequeñas",
+"nombre": "Axilas",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 35.0,
+"paquetes": [
+{
+"precio": 85,
+"sesiones": 3
+},
+{
+"precio": 159.9,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 2
+},
+{
+"categoria": "Faciales",
+"grupo": null,
+"nombre": "Skin Face",
+"genero": "ambos",
+"incluye": null,
+"realiza": "Lyrosse",
+"precio_sesion": 80.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 2
+},
+{
+"categoria": "Glúteos y body",
+"grupo": null,
+"nombre": "Glúteos de Porcelana + Carbon Peel",
+"genero": "ambos",
+"incluye": "Exfoliación, punta de diamante, mascarilla de carbón, láser Nd:YAG, mascarilla hidratante con arco LED y ondas rusas.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 169.9,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 2
+},
+{
+"categoria": "Faciales",
+"grupo": null,
+"nombre": "Skin Face Porcelana",
+"genero": "ambos",
+"incluye": null,
+"realiza": "Lyrosse",
+"precio_sesion": 110.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 3
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas pequeñas",
+"nombre": "Línea alba",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 35.0,
+"paquetes": [
+{
+"precio": 85,
+"sesiones": 3
+},
+{
+"precio": 159.9,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 3
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas pequeñas",
+"nombre": "Línea alba",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 45.0,
+"paquetes": [
+{
+"precio": 120,
+"sesiones": 3
+},
+{
+"precio": 240,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 3
+},
+{
+"categoria": "Glúteos y body",
+"grupo": null,
+"nombre": "Body de Porcelana",
+"genero": "ambos",
+"incluye": "Glúteos de Porcelana más espalda con vapor de ozono y limpieza de puntos negros. Cierra con masaje relajante.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 179.9,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 3
+},
+{
+"categoria": "Reductores",
+"grupo": null,
+"nombre": "Slim Body",
+"genero": "ambos",
+"incluye": "Carboxiterapia, ultracavitación, ondas rusas, radiofrecuencia, lipoláser y vacumterapia.",
+"realiza": "Wilda",
+"precio_sesion": null,
+"paquetes": [
+{
+"precio": 299.9,
+"sesiones": 4
+}
+],
+"extra": "+ 1 sesión de enzimas",
+"consultar": false,
+"orden": 3
+},
+{
+"categoria": "Hollywood Peel",
+"grupo": null,
+"nombre": "Glúteos",
+"genero": "ambos",
+"incluye": "Carbon Peel corporal. Una sesión cada 15 dias",
+"realiza": null,
+"precio_sesion": 110.0,
+"paquetes": [
+{
+"precio": 375,
+"sesiones": 4
+},
+{
+"precio": 500,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 3
+},
+{
+"categoria": "Productos",
+"grupo": null,
+"nombre": "Crema urea 20%",
+"genero": "ambos",
+"incluye": null,
+"realiza": "15 unidades 19/10",
+"precio_sesion": 35.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 3
+},
+{
+"categoria": "Faciales",
+"grupo": null,
+"nombre": "Skin Face Balance",
+"genero": "ambos",
+"incluye": null,
+"realiza": "Lyrosse",
+"precio_sesion": 130.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 4
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas pequeñas",
+"nombre": "Pezones",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 35.0,
+"paquetes": [
+{
+"precio": 85,
+"sesiones": 3
+},
+{
+"precio": 159.9,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 4
+},
+{
+"categoria": "Productos",
+"grupo": null,
+"nombre": "Loción hidratante urea 10%",
+"genero": "ambos",
+"incluye": null,
+"realiza": "13 unidades al 19/10",
+"precio_sesion": 45.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 4
+},
+{
+"categoria": "Glúteos y body",
+"grupo": null,
+"nombre": "Glow Back",
+"genero": "ambos",
+"incluye": "Limpieza profunda de espalda.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 120.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 4
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas pequeñas",
+"nombre": "Nuca",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 35.0,
+"paquetes": [
+{
+"precio": 85,
+"sesiones": 3
+},
+{
+"precio": 159.9,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 4
+},
+{
+"categoria": "Reductores",
+"grupo": null,
+"nombre": "Sculpt Body",
+"genero": "ambos",
+"incluye": "Nuestro paquete más completo.\n8 visitas \n24 sesiones \nCarboxiterapia, ultracavitación, ondas rusas, radiofrecuencia, lipoláser y vacumterapia.\nMaderoterapia /Bambuterapia\nDrenaje linfatico",
+"realiza": "Wilda",
+"precio_sesion": null,
+"paquetes": [
+{
+"precio": 850,
+"sesiones": 8
+}
+],
+"extra": "+ 3 sesiones de enzimas o hidrolipo",
+"consultar": false,
+"orden": 4
+},
+{
+"categoria": "Faciales",
+"grupo": null,
+"nombre": "Skin Face Glow",
+"genero": "ambos",
+"incluye": null,
+"realiza": "Lyrosse",
+"precio_sesion": 140.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 5
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas medias",
+"nombre": "Zona media: media pierna, medio brazo, medio pecho o media espalda",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 110.0,
+"paquetes": [
+{
+"precio": 290,
+"sesiones": 3
+},
+{
+"precio": 540,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 5
+},
+{
+"categoria": "Productos",
+"grupo": null,
+"nombre": "Gel urea (jabón) - 250ml",
+"genero": "ambos",
+"incluye": null,
+"realiza": "12 unidades 19/10",
+"precio_sesion": 25.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 5
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas pequeñas",
+"nombre": "Nuca",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 35.0,
+"paquetes": [
+{
+"precio": 85,
+"sesiones": 3
+},
+{
+"precio": 159.9,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 5
+},
+{
+"categoria": "Reductores",
+"grupo": null,
+"nombre": "Body Reafirm",
+"genero": "ambos",
+"incluye": "Radiofrecuencia, bambú o maderoterapia, DLM",
+"realiza": "Wilda",
+"precio_sesion": null,
+"paquetes": [
+{
+"precio": 359.9,
+"sesiones": 4
+}
+],
+"extra": "+3 sesiones de silicio",
+"consultar": false,
+"orden": 5
+},
+{
+"categoria": "Productos",
+"grupo": null,
+"nombre": "Locion y Crema (pequeñas)",
+"genero": "ambos",
+"incluye": null,
+"realiza": null,
+"precio_sesion": 25.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 6
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas pequeñas",
+"nombre": "Coxis / espalda baja",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 45.0,
+"paquetes": [
+{
+"precio": 120,
+"sesiones": 3
+},
+{
+"precio": 240,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 6
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas completas",
+"nombre": "Pierna completa",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 179.9,
+"paquetes": [
+{
+"precio": 480,
+"sesiones": 3
+},
+{
+"precio": 899,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 6
+},
+{
+"categoria": "Reductores",
+"grupo": null,
+"nombre": "Sesión adicional de enzimas",
+"genero": "ambos",
+"incluye": null,
+"realiza": "Wilda",
+"precio_sesion": 120.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 6
+},
+{
+"categoria": "Faciales",
+"grupo": null,
+"nombre": "Hidralips",
+"genero": "ambos",
+"incluye": null,
+"realiza": "Lyrosse",
+"precio_sesion": 45.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 6
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas completas",
+"nombre": "Brazos, pecho o espalda completos",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 105.0,
+"paquetes": [
+{
+"precio": 275,
+"sesiones": 3
+},
+{
+"precio": 510,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 7
+},
+{
+"categoria": "Productos",
+"grupo": null,
+"nombre": "Niacinamina The ordinary",
+"genero": "ambos",
+"incluye": null,
+"realiza": null,
+"precio_sesion": 75.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 7
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas medias",
+"nombre": "Zona media: media pierna, medio brazo, medio pecho o media espalda",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 95.0,
+"paquetes": [
+{
+"precio": 255,
+"sesiones": 3
+},
+{
+"precio": 480,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 7
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas íntimas",
+"nombre": "Pene",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 65.0,
+"paquetes": [
+{
+"precio": 170,
+"sesiones": 3
+},
+{
+"precio": 320,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 8
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas completas",
+"nombre": "Pierna completa",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 179.9,
+"paquetes": [
+{
+"precio": 299.9,
+"sesiones": 3
+},
+{
+"precio": 899,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 8
+},
+{
+"categoria": "Productos",
+"grupo": null,
+"nombre": "Protector solar (Exel)",
+"genero": "ambos",
+"incluye": null,
+"realiza": "2",
+"precio_sesion": 150.0,
+"paquetes": [],
+"extra": null,
+"consultar": false,
+"orden": 8
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas completas",
+"nombre": "Brazos, pecho o espalda completos",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 120.0,
+"paquetes": [
+{
+"precio": 299.9,
+"sesiones": 3
+},
+{
+"precio": 450,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 9
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas íntimas",
+"nombre": "Testículos",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 55.0,
+"paquetes": [
+{
+"precio": 145,
+"sesiones": 3
+},
+{
+"precio": 275,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 9
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas íntimas",
+"nombre": "Pene + testículos",
+"genero": "hombre",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": null,
+"paquetes": [],
+"extra": null,
+"consultar": true,
+"orden": 10
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas íntimas",
+"nombre": "Bikini",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 45.0,
+"paquetes": [
+{
+"precio": 120,
+"sesiones": 3
+},
+{
+"precio": 225,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 10
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas íntimas",
+"nombre": "Bikini brasileño",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 55.0,
+"paquetes": [
+{
+"precio": 145,
+"sesiones": 3
+},
+{
+"precio": 275,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 11
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas íntimas",
+"nombre": "Entrepierna, periné, perianal o interglútea",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 35.0,
+"paquetes": [
+{
+"precio": 85,
+"sesiones": 3
+},
+{
+"precio": 159.9,
+"sesiones": 6
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 12
+},
+{
+"categoria": "Depilación láser",
+"grupo": "Zonas íntimas",
+"nombre": "Glúteos",
+"genero": "mujer",
+"incluye": "Láser diodo. Una sesión al mes.",
+"realiza": "Kiara / Adriana",
+"precio_sesion": 55.0,
+"paquetes": [
+{
+"precio": 129.9,
+"sesiones": 3
+}
+],
+"extra": null,
+"consultar": false,
+"orden": 13
+}
+],
+"promociones": [
+{
+"nombre": "Láser axilas, 3 sesiones + la 4ta gratis",
+"precio": 85.0,
+"nota": "Solo en la compra del primer paquete",
+"inicio": "2026-11-01",
+"fin": "2026-11-30",
+"orden": 1
+},
+{
+"nombre": "Láser bikini + axilas, 3 sesiones",
+"precio": 199.9,
+"nota": null,
+"inicio": "2026-11-01",
+"fin": "2026-11-30",
+"orden": 2
+},
+{
+"nombre": "Láser media pierna, 3 sesiones",
+"precio": 255.0,
+"nota": null,
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 3
+},
+{
+"nombre": "Láser mini zonas, 3 sesiones de una mini zona",
+"precio": 55.0,
+"nota": null,
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 4
+},
+{
+"nombre": "Láser axilas + media pierna, 3 sesiones",
+"precio": 299.9,
+"nota": null,
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 5
+},
+{
+"nombre": "Láser media pierna + glúteos, 3 sesiones",
+"precio": 329.9,
+"nota": null,
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 6
+},
+{
+"nombre": "Láser axilas + media pierna + bikini, 3 sesiones",
+"precio": 389.9,
+"nota": null,
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 7
+},
+{
+"nombre": "Slim Body, 4 sesiones + 1 sesión de enzimas de regalo",
+"precio": 299.9,
+"nota": "Abdomen, cintura y espalda",
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 8
+},
+{
+"nombre": "Body Reafirm, 4 sesiones + 1 sesión de silicio de regalo",
+"precio": 359.9,
+"nota": "Maderoterapia, bambuterapia y radiofrecuencia. Abdomen, cintura y espalda",
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 9
+},
+{
+"nombre": "Sculpt Therapy, 4 sesiones",
+"precio": 359.9,
+"nota": "Glúteos, entrepierna, parte posterior de la pierna y revolveras. De regalo: masoterapia, bambú reductor y carboxi",
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 10
+},
+{
+"nombre": "Skin Face Porcelana, limpieza facial profunda",
+"precio": 110.0,
+"nota": null,
+"inicio": "2026-11-03",
+"fin": "2026-11-30",
+"orden": 11
+}
+]
 }

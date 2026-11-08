@@ -3,6 +3,32 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+/* Versión publicada de la página: si el teléfono guardó una versión vieja, se recarga sola con la nueva (máx. 1 vez por minuto, nunca con el formulario abierto) */
+window.WEB_VERSION = '20261107-200039';
+(function(){
+  if(/[?&]editar=1/.test(location.search) || !window.fetch) return;
+  function revisar(){
+    fetch('version.json?t=' + Date.now(), { cache: 'no-store' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if(!d || !d.v || d.v === window.WEB_VERSION) return;
+        var abierto = ['modalReserva', 'legalModal'].some(function(id){ var m = document.getElementById(id); return m && m.style.display === 'flex'; });
+        if(abierto) return;
+        var k = 'web_recarga', antes = 0;
+        try{ antes = +sessionStorage.getItem(k) || 0; }catch(e){}
+        if(Date.now() - antes < 60000) return;
+        try{ sessionStorage.setItem(k, String(Date.now())); }catch(e){}
+        try{ var u = new URL(location.href); u.searchParams.set('v', d.v); location.replace(u.toString()); }
+        catch(e){ location.reload(); }
+      })
+      .catch(function(){});
+  }
+  revisar();
+  setInterval(function(){ if(!document.hidden) revisar(); }, 120000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) revisar(); });
+})();
+</script>
 <title>Depilación Láser y Estética en San Isidro, Lima | elle studio</title>
 <meta name="description" content="Estudio de belleza en San Isidro, Lima: depilación láser desde S/25, Glúteos de Porcelana, limpieza facial y tratamientos corporales. Reserva tu cita en línea y te confirmamos por WhatsApp."/>
 <link rel="canonical" href="https://ellestudiolr-dot.github.io/Ellestudio-web/"/>
@@ -1052,12 +1078,12 @@
 <!-- VENTANA DE TEXTOS LEGALES -->
 <div id="legalModal" onclick="if(event.target===this) cerrarLegal()"><div class="caja"><button class="cerrar" onclick="cerrarLegal()" aria-label="Cerrar">×</button><h3 id="legalTitulo"></h3><p id="legalTexto"></p></div></div>
 
-<script src="js/precios.js?v=5"></script>
-<script src="js/catalogo.js?v=8"></script>
+<script src="js/precios.js?v=6"></script>
+<script src="js/catalogo.js?v=9"></script>
 <script src="js/pagina.js?v=7"></script>
 <script src="js/historias.js?v=5"></script>
 <script src="js/estudio.js?v=2"></script>
-<script src="js/contenido.js?v=9"></script>
+<script src="js/contenido.js?v=10"></script>
 <script>
 // MODO EDITOR: cuando la pagina se abre dentro del editor (?editar=1) se desactivan
 // el asistente y los popups para poder editar sin estorbos.
@@ -1065,7 +1091,7 @@ window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
 </script>
 <script src="js/whatsapp.js?v=8"></script>
 <script src="js/reserva.js?v=8"></script>
-<script src="js/instagram.js?v=5"></script>
+<script src="js/instagram.js?v=6"></script>
 <script src="js/chatbot.js?v=7"></script>
 <script src="js/navidad.js?v=3"></script>
 <script src="js/editor_vivo.js?v=10"></script>

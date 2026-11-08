@@ -159,6 +159,8 @@
     }
   }
 
+  // Si la base de datos no responde: muestra la copia data/catalogo-respaldo.json y sigue intentando hasta conectarse
+  var vivo = false, intentosC = 0, reintentoC = null;
   function cargar(){
     var c = (typeof CONFIG !== 'undefined') ? CONFIG : null;
     if(!c || !c.SUPABASE_URL || !c.SUPABASE_ANON) return;
@@ -166,9 +168,19 @@
       headers: { 'apikey': c.SUPABASE_ANON, 'Authorization': 'Bearer ' + c.SUPABASE_ANON }, cache: 'no-store'
     })
       .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(filas){ if(Array.isArray(filas)) pintar(filas); })
+      .then(function(filas){ if(!Array.isArray(filas)) throw new Error('sin datos'); vivo = true; pintar(filas); })
+      .catch(function(){
+        if(!cache.length) cargarRespaldoCat();
+        if(!vivo){ clearTimeout(reintentoC); reintentoC = setTimeout(cargar, Math.min(30000, 2000 * Math.pow(2, intentosC++))); }
+      });
+  }
+  function cargarRespaldoCat(){
+    fetch('data/catalogo-respaldo.json?v=' + encodeURIComponent(window.WEB_VERSION || '1'), { cache: 'no-store' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(f){ if(Array.isArray(f) && !vivo && !cache.length) pintar(f); })
       .catch(function(){});
   }
+  window.addEventListener('online', function(){ if(!vivo){ intentosC = 0; cargar(); } });
 
   window.cargarCatalogo = cargar;
   window.verGuiaCatalogo = function(id){ activa = id; pintar(cache); };
@@ -195,7 +207,7 @@
     }).then(function(r){ return r.ok ? r.json() : null; }).then(function(f){
       if(!Array.isArray(f)) return;
       var nueva = JSON.stringify(f);
-      if(firma && nueva !== firma) cargar();
+      if(!vivo || (firma && nueva !== firma)) cargar();
       firma = nueva;
     }).catch(function(){});
   }

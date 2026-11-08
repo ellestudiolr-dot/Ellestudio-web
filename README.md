@@ -57,3 +57,11 @@ Si se agregan clases nuevas de Tailwind en `index.html` o `js/`, volver a genera
     npx tailwindcss -c tailwind.config.js -i tailwind.input.css -o css/tailwind.css --minify
 
 y subir `?v=` del enlace a `css/tailwind.css` en `index.html`.
+
+## Publicar (para que los teléfonos tomen la versión nueva al instante) · desde el 7-nov-2026
+Antes de cada commit:
+
+    python3 tools/respaldos.py   # copia de textos, catálogo y precios por si la base de datos no responde
+    python3 tools/version.py     # nueva versión: los teléfonos con la página vieja guardada se recargan solos
+
+Lo que se cambia desde el CRM (textos, fotos, catálogo, precios, Navidad) no necesita publicar: la página lo lee de la base de datos y se actualiza sola.

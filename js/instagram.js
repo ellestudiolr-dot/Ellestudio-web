@@ -89,6 +89,7 @@
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(filas){
         if(!Array.isArray(filas) || !filas.length){ cargarBehold(); return; }
+        vivoIG = true;
         completar(filas.map(function(f){
           return { permalink: f.permalink, imagen: f.imagen, tipo: f.es_video ? 'video' : 'foto', caption: f.caption || '' };
         }));
@@ -103,7 +104,7 @@
   }
 
   // Se actualiza sola: si cambian las publicaciones (cada hora llegan las nuevas de Instagram), se vuelve a pintar
-  var firmaIG = '';
+  var firmaIG = '', vivoIG = false;
   function revisarIG(){
     var c = (typeof CONFIG !== 'undefined') ? CONFIG : null;
     if(!c || !c.SUPABASE_URL || !c.SUPABASE_ANON || document.hidden) return;
@@ -112,11 +113,13 @@
     }).then(function(r){ return r.ok ? r.json() : null; }).then(function(f){
       if(!Array.isArray(f)) return;
       var nueva = f.map(function(x){ return x.shortcode; }).join(',');
-      if(firmaIG && nueva !== firmaIG) window.cargarInstagram();
+      if(!vivoIG || (firmaIG && nueva !== firmaIG)) window.cargarInstagram();
       firmaIG = nueva;
     }).catch(function(){});
   }
   setInterval(revisarIG, 180000);
+  setInterval(function(){ if(!vivoIG) revisarIG(); }, 10000);
+  window.addEventListener('online', revisarIG);
   document.addEventListener('visibilitychange', function(){ if(!document.hidden) revisarIG(); });
   setTimeout(revisarIG, 6000);
 

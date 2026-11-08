@@ -149,9 +149,10 @@
   });
 
   // ---- carga: Supabase y, si falla, la copia local ----
+  var vivoP = false, firmaP = '';
   function fetchJson(url, headers){ return fetch(url, { headers: headers || {}, cache: 'no-store' }).then(function(r){ return r.ok ? r.json() : null; }); }
   function cargarLocal(){
-    return fetchJson('data/precios.json?v=1').then(function(d){ SERV = (d && d.servicios) || []; PROMO = (d && d.promociones) || []; });
+    return fetchJson('data/precios.json?v=' + encodeURIComponent(window.WEB_VERSION || '2')).then(function(d){ SERV = (d && d.servicios) || []; PROMO = (d && d.promociones) || []; });
   }
   function cargar(){
     var c = (typeof CONFIG !== 'undefined') ? CONFIG : null;
@@ -164,6 +165,7 @@
       ]).then(function(r){
         if(!Array.isArray(r[0]) || !r[0].length) throw new Error('sin datos');
         SERV = r[0]; PROMO = Array.isArray(r[1]) ? r[1] : [];
+        vivoP = true; firmaP = JSON.stringify(r);
       }).catch(cargarLocal);
     } else {
       p = cargarLocal();
@@ -174,7 +176,6 @@
     });
   }
   // Se actualiza sola: si en el CRM cambian precios o promociones, se vuelve a pintar sin recargar la página
-  var firmaP = '';
   function revisarPrecios(){
     var c = (typeof CONFIG !== 'undefined') ? CONFIG : null;
     if(!c || !c.SUPABASE_URL || !c.SUPABASE_ANON || window._MODO_EDITOR || document.hidden) return;
@@ -185,11 +186,13 @@
     ]).then(function(r){
       if(!Array.isArray(r[0]) || !r[0].length) return;
       var nueva = JSON.stringify(r);
-      if(firmaP && nueva !== firmaP){ SERV = r[0]; PROMO = Array.isArray(r[1]) ? r[1] : []; render(); }
+      if(!vivoP || nueva !== firmaP){ SERV = r[0]; PROMO = Array.isArray(r[1]) ? r[1] : []; vivoP = true; render(); }
       firmaP = nueva;
     }).catch(function(){});
   }
   setInterval(revisarPrecios, 45000);
+  setInterval(function(){ if(!vivoP) revisarPrecios(); }, 8000);   // si arrancó con la copia, pasa a lo real apenas haya conexión
+  window.addEventListener('online', revisarPrecios);
   document.addEventListener('visibilitychange', function(){ if(!document.hidden) revisarPrecios(); });
   setTimeout(revisarPrecios, 5000);
 

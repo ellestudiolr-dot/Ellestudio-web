@@ -165,18 +165,47 @@
   }
   function marcar(filas){ filas.forEach(function(f){ if(f && f.actualizado && f.actualizado > ultimo) ultimo = f.actualizado; }); }
 
+  // Carga: si la base de datos no responde (señal débil, red que la bloquea…), usa la copia data/contenido-respaldo.json
+  // y sigue intentando sola hasta conectarse; en cuanto conecta, pone lo último guardado en el CRM.
+  var cargado = false, conRespaldo = false, intentos = 0, reintento = null;
+  function reintentar(){
+    if(cargado) return;
+    clearTimeout(reintento);
+    reintento = setTimeout(cargar, Math.min(30000, 2000 * Math.pow(2, intentos++)));
+  }
   function cargar(){
-    var c = conf(); if(!c) return;
+    var c = conf(); if(!c || cargado) return;
     pedir(c, 'select=clave,valor,actualizado')
       .then(function(filas){
-        if(!Array.isArray(filas)) return;
+        if(!Array.isArray(filas)) throw new Error('sin datos');
         var mapa = {};
         filas.forEach(function(f){ if(f && f.clave) mapa[f.clave] = f.valor; });
         marcar(filas);
+        cargado = true;
+        if(!conRespaldo){ aplicar(mapa); return; }
+        // ya se veía la copia: se reemplaza por lo real, clave por clave
+        Object.keys(mapa).forEach(function(k){ aplicarUno(k, mapa[k]); });
+        document.dispatchEvent(new CustomEvent('web-contenido-cambio', { detail: { claves: Object.keys(mapa) } }));
+      })
+      .catch(function(){
+        if(!conRespaldo) cargarRespaldo();
+        reintentar();
+      });
+  }
+  function cargarRespaldo(){
+    conRespaldo = true;
+    fetch('data/contenido-respaldo.json?v=' + encodeURIComponent(window.WEB_VERSION || '1'), { cache: 'no-store' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(m){
+        if(cargado) return;
+        var mapa = {};
+        // las fotos subidas viven en la misma base de datos: si no responde, se quedan las del código
+        Object.keys(m || {}).forEach(function(k){ var v = m[k]; if(typeof v === 'string' && /supabase\.co\//.test(v)) return; mapa[k] = v; });
         aplicar(mapa);
       })
-      .catch(function(){});
+      .catch(function(){ if(!cargado) aplicar({}); });
   }
+  window.addEventListener('online', function(){ if(!cargado){ intentos = 0; cargar(); } });
 
   // Solo lo que cambió desde la última vez (consulta pequeña). En el editor del CRM no hace falta: el editor ya lo manda.
   var revisando = false;
@@ -196,8 +225,8 @@
       .then(function(){ revisando = false; });
   }
   setInterval(revisar, 12000);
-  document.addEventListener('visibilitychange', function(){ if(!document.hidden) revisar(); });
-  window.addEventListener('focus', revisar);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden){ if(cargado) revisar(); else { intentos = 0; cargar(); } } });
+  window.addEventListener('focus', function(){ if(cargado) revisar(); });
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', cargar); else cargar();
 })();

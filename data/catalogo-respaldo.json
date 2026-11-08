@@ -1,0 +1,873 @@
+[
+{
+"id": "9222d4d5-1cfb-4e92-949b-126e886aa41e",
+"orden": 1,
+"activo": true,
+"tipo": "intro",
+"numero": null,
+"ceja": "Empieza aquí",
+"titulo": "¿Qué quieres mejorar?",
+"frase": null,
+"texto": "Cada piel es distinta. Encuentra tu tratamiento y, si tienes dudas, te evaluamos en cabina.",
+"pasos": [
+{
+"n": "Glúteos de Porcelana",
+"t": "Textura y firmeza"
+},
+{
+"n": "Glúteos de Porcelana + Peeling",
+"t": "Renovar y aclarar"
+},
+{
+"n": "Microneedles o Hollywood Peel",
+"t": "Manchitas"
+},
+{
+"n": "Tratamiento para la foliculitis",
+"t": "Granitos en los glúteos"
+}
+],
+"precio_sesion": null,
+"paquetes": [],
+"regalo": null,
+"duracion": null,
+"frecuencia": null,
+"nota": null,
+"foto": null,
+"actualizado": "2026-11-07T01:35:43.995412+00:00",
+"guia": "gluteos",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "50085135-3755-41e5-8ab7-8af197fa5354",
+"orden": 2,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "01",
+"ceja": "El clásico",
+"titulo": "Glúteos de Porcelana",
+"frase": "Lisos, parejos y firmes.",
+"texto": null,
+"pasos": [
+{
+"n": "Jabón o espuma",
+"t": "Limpieza"
+},
+{
+"n": "",
+"t": "Exfoliante aclarador"
+},
+{
+"n": "",
+"t": "Punta de diamante"
+},
+{
+"n": "",
+"t": "Dermaplaning"
+},
+{
+"n": "Según tu piel, con luz LED",
+"t": "Mascarilla"
+},
+{
+"n": "Tonifican: efecto gym",
+"t": "Ondas rusas"
+}
+],
+"precio_sesion": 89.9,
+"paquetes": [],
+"regalo": null,
+"duracion": "1 h 30",
+"frecuencia": "Cada 15 a 21 días o 1 vez al mes",
+"nota": null,
+"foto": "img/precios/gluteos.jpg",
+"actualizado": "2026-11-07T01:35:44.077038+00:00",
+"guia": "gluteos",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "4c399f31-19f8-4a91-842e-848e9d9ce5ba",
+"orden": 3,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "02",
+"ceja": "Renueva y aclara",
+"titulo": "Glúteos de Porcelana + Peeling",
+"frase": null,
+"texto": "Todo el ritual de Porcelana, con un peeling que renueva la piel y aclara el tono.",
+"pasos": [
+{
+"n": "",
+"t": "Limpieza"
+},
+{
+"n": "",
+"t": "Exfoliante aclarador"
+},
+{
+"n": "",
+"t": "Punta de diamante"
+},
+{
+"n": "",
+"t": "Dermaplaning"
+},
+{
+"n": "Lo que la hace distinta",
+"t": "Peeling + neutralizante"
+},
+{
+"n": "De regalo",
+"t": "Ondas rusas"
+}
+],
+"precio_sesion": 120,
+"paquetes": [],
+"regalo": "Ondas rusas: tonifican, efecto gym sin ir al gym.",
+"duracion": "1 h 30",
+"frecuencia": "Cada 15 a 21 días o 1 vez al mes",
+"nota": null,
+"foto": "img/precios/body-porcelana.jpg",
+"actualizado": "2026-11-07T01:35:44.161327+00:00",
+"guia": "gluteos",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "3e49b6e6-4e10-4d0a-9774-053bea2de653",
+"orden": 4,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "03",
+"ceja": "Manchitas",
+"titulo": "Glúteos de Porcelana + Microneedles",
+"frase": "Microneedles con activo despigmentante, para las manchitas que dejan los granitos, la depilación o el roce.",
+"texto": null,
+"pasos": [
+{
+"n": "",
+"t": "Limpieza"
+},
+{
+"n": "",
+"t": "Exfoliante aclarador"
+},
+{
+"n": "",
+"t": "Punta de diamante"
+},
+{
+"n": "",
+"t": "Microneedles + activo despigmentante"
+},
+{
+"n": "",
+"t": "Mascarilla aclarante"
+},
+{
+"n": "Tonifican",
+"t": "Ondas rusas"
+}
+],
+"precio_sesion": 120,
+"paquetes": [
+{
+"precio": 375,
+"sesiones": 4
+}
+],
+"regalo": null,
+"duracion": "1 h 30",
+"frecuencia": "Cada 15 a 21 días o 1 vez al mes",
+"nota": null,
+"foto": "img/precios/peptonas.jpg",
+"actualizado": "2026-11-07T01:35:44.249063+00:00",
+"guia": "gluteos",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "c1e966b1-be62-4930-9e14-5456e383c764",
+"orden": 5,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "04",
+"ceja": "Carbón + láser Nd:YAG",
+"titulo": "Hollywood Peel",
+"frase": "El secreto de las alfombras rojas, ahora en Elle.",
+"texto": "La mascarilla de carbón se pega a los poros y el láser Nd:YAG la desintegra: limpia, exfolia y aclara las manchas sesión a sesión. Desde la primera, tu piel se siente más suave y luminosa.",
+"pasos": [
+{
+"n": "Directo a la mancha",
+"t": "Carbón"
+},
+{
+"n": "Desintegra y aclara",
+"t": "Láser Nd:YAG"
+}
+],
+"precio_sesion": 110,
+"paquetes": [
+{
+"precio": 375,
+"sesiones": 4
+},
+{
+"precio": 500,
+"sesiones": 6
+}
+],
+"regalo": null,
+"duracion": "1 h",
+"frecuencia": "Cada 15 días",
+"nota": "Se recomiendan de 4 a 6 sesiones.",
+"foto": "img/precios/peel-face.jpg",
+"actualizado": "2026-11-07T01:35:44.348007+00:00",
+"guia": "gluteos",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "ac335981-28f7-495e-8ea8-59f3c51ba3a0",
+"orden": 6,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "04",
+"ceja": "Carbón + láser Nd:YAG",
+"titulo": "Glúteos de Porcelana + Hollywood Peel",
+"frase": null,
+"texto": "Limpieza de Porcelana completa + láser Nd:YAG.",
+"pasos": [],
+"precio_sesion": 169.9,
+"paquetes": [],
+"regalo": "Ondas rusas de regalo.",
+"duracion": "1 h 30",
+"frecuencia": "Cada 15 días",
+"nota": "No se realiza en embarazo.",
+"foto": "img/precios/gluteos-carbon.jpg",
+"actualizado": "2026-11-07T01:35:44.436905+00:00",
+"guia": "gluteos",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "51a2e0b6-0718-4a9b-b37f-67ad8cc55409",
+"orden": 7,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "05",
+"ceja": "Foliculitis",
+"titulo": "Tratamiento para la foliculitis",
+"frase": "¿Granitos en los glúteos?",
+"texto": "Muchas veces es foliculitis: el vello se encarna e inflama el folículo. Salen granitos y, después, manchitas. Trabajamos el folículo desde la raíz para que deje de inflamarse: menos granitos y menos manchitas.",
+"pasos": [],
+"precio_sesion": 55,
+"paquetes": [
+{
+"precio": 129.9,
+"sesiones": 3
+}
+],
+"regalo": null,
+"duracion": null,
+"frecuencia": null,
+"nota": "No se realiza en embarazo ni con la piel muy bronceada.",
+"foto": null,
+"actualizado": "2026-11-07T01:35:44.571585+00:00",
+"guia": "gluteos",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "c031034d-cd8c-4633-b1dd-39a63d8c31dd",
+"orden": 8,
+"activo": true,
+"tipo": "consejos",
+"numero": null,
+"ceja": "Es constancia, no magia",
+"titulo": "Cuida tu resultado",
+"frase": "La mitad se hace en cabina. La otra mitad, en casa.",
+"texto": null,
+"pasos": [
+{
+"n": "si",
+"t": "Hidrata todos los días."
+},
+{
+"n": "si",
+"t": "Usa la crema que te indiquemos."
+},
+{
+"n": "si",
+"t": "Ropa de algodón y suelta."
+},
+{
+"n": "si",
+"t": "Respeta la fecha de tu siguiente sesión."
+},
+{
+"n": "no",
+"t": "Rascar ni reventar granitos."
+},
+{
+"n": "no",
+"t": "Frotar fuerte con esponja."
+},
+{
+"n": "no",
+"t": "Depilar con cuchilla."
+},
+{
+"n": "no",
+"t": "Limón, bicarbonato o recetas caseras."
+}
+],
+"precio_sesion": null,
+"paquetes": [],
+"regalo": null,
+"duracion": null,
+"frecuencia": null,
+"nota": "¿Granitos y manchitas a la vez? Combina el tratamiento para la foliculitis con uno para las manchitas. Te armamos tu plan.",
+"foto": null,
+"actualizado": "2026-11-07T01:35:44.645088+00:00",
+"guia": "gluteos",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "6e31c8a2-710e-4040-a301-4a75ccd021ef",
+"orden": 101,
+"activo": true,
+"tipo": "intro",
+"numero": null,
+"ceja": "Empieza aquí",
+"titulo": "¿Qué quieres lograr?",
+"frase": null,
+"texto": "De más suave a más intenso.",
+"pasos": [
+{
+"n": "Sculpt Therapy",
+"t": "Moldear glúteos y piernas"
+},
+{
+"n": "Body Reafirm",
+"t": "Reafirmar sin agujas"
+},
+{
+"n": "Slim Body",
+"t": "Reducir medidas"
+},
+{
+"n": "Sculpt Body",
+"t": "Grasa localizada"
+},
+{
+"n": "Glúteos de Porcelana 360",
+"t": "Potenciar tus glúteos"
+},
+{
+"n": "Brazos",
+"t": "Brazos firmes"
+},
+{
+"n": "Postoperatorio",
+"t": "Tras una cirugía estética"
+}
+],
+"precio_sesion": null,
+"paquetes": [],
+"regalo": null,
+"duracion": null,
+"frecuencia": null,
+"nota": null,
+"foto": "img/catalogo/l-indice.jpg",
+"actualizado": "2026-11-07T19:35:39.896429+00:00",
+"guia": "corporal",
+"inyectables": null,
+"beneficios": null,
+"zonas": null,
+"incluye": null,
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "6c9036bd-81e1-46ea-8a6e-25f18f6e306c",
+"orden": 102,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "01",
+"ceja": "Moldea glúteos y piernas",
+"titulo": "Sculpt Therapy",
+"frase": "Moldea y tonifica glúteos y piernas, sin inyectarte.",
+"texto": null,
+"pasos": [],
+"precio_sesion": 99,
+"paquetes": [
+{
+"precio": 359.9,
+"etiqueta": "4 sesiones",
+"sesiones": 4
+},
+{
+"nota": "1 sesión + 1 de peptonas (inyectable)",
+"precio": 179,
+"etiqueta": "Nuevo · + Peptonas",
+"sesiones": 1
+}
+],
+"regalo": null,
+"duracion": "1 h a 1 h 30",
+"frecuencia": null,
+"nota": null,
+"foto": null,
+"actualizado": "2026-11-07T19:35:39.988889+00:00",
+"guia": "corporal",
+"inyectables": false,
+"beneficios": null,
+"zonas": [
+"Glúteos",
+"Entrepierna",
+"Parte posterior de la pierna",
+"Revolveras"
+],
+"incluye": [
+{
+"n": "Moldea y activa la circulación.",
+"t": "Maderoterapia"
+},
+{
+"n": "Según tu adiposidad o la elasticidad de tu piel.",
+"t": "Aparatología"
+},
+{
+"n": "Tonifican el músculo.",
+"t": "Tensamax + ondas rusas"
+},
+{
+"n": "Desinflama y cierra la sesión.",
+"t": "Drenaje linfático"
+}
+],
+"galeria": [
+{
+"h": 424,
+"w": 572,
+"src": "img/catalogo/l-sculpt-therapy-1.jpg"
+},
+{
+"h": 424,
+"w": 574,
+"src": "img/catalogo/l-sculpt-therapy-2.jpg"
+},
+{
+"h": 424,
+"w": 565,
+"src": "img/catalogo/l-sculpt-therapy-3.jpg"
+}
+],
+"foto_nota": null
+},
+{
+"id": "96fa532f-a38c-488c-9b1f-4f689ed64bb5",
+"orden": 103,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "02",
+"ceja": "Reafirma sin agujas",
+"titulo": "Body Reafirm",
+"frase": "Reduce medidas, tonifica y reafirma tu piel. Sin inyectarte.",
+"texto": null,
+"pasos": [],
+"precio_sesion": null,
+"paquetes": [
+{
+"precio": 359.9,
+"etiqueta": "4 sesiones",
+"sesiones": 4
+}
+],
+"regalo": "De regalo (opcional): silicio orgánico",
+"duracion": "1 h a 1 h 30",
+"frecuencia": "2 o 3 veces por semana",
+"nota": "Y cerramos con drenaje linfático.",
+"foto": null,
+"actualizado": "2026-11-07T19:35:40.068087+00:00",
+"guia": "corporal",
+"inyectables": false,
+"beneficios": [
+"Reduce medidas",
+"Tonifica",
+"Reafirma la piel",
+"Mejora la elasticidad"
+],
+"zonas": null,
+"incluye": [
+{
+"n": "Tonifica el músculo.",
+"t": "Tensamax"
+},
+{
+"n": "Estimula el colágeno.",
+"t": "Radiofrecuencia"
+},
+{
+"n": "Reduce la grasa localizada.",
+"t": "Ultracavitador"
+},
+{
+"n": "Moldea y activa la circulación.",
+"t": "Maderoterapia"
+}
+],
+"galeria": [
+{
+"h": 359,
+"w": 568,
+"src": "img/catalogo/l-body-reafirm-1.jpg"
+},
+{
+"h": 359,
+"w": 568,
+"src": "img/catalogo/l-body-reafirm-2.jpg"
+},
+{
+"h": 359,
+"w": 572,
+"src": "img/catalogo/l-body-reafirm-3.jpg"
+}
+],
+"foto_nota": null
+},
+{
+"id": "0f39148f-d580-4460-b6f3-90d084ff1445",
+"orden": 104,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "03",
+"ceja": "Reduce medidas",
+"titulo": "Slim Body",
+"frase": "Define tu cuerpo y realza tu figura.",
+"texto": null,
+"pasos": [],
+"precio_sesion": null,
+"paquetes": [
+{
+"nota": "+ 1 de enzimas de regalo",
+"antes": 359.9,
+"precio": 299.9,
+"etiqueta": "Promoción · 4 sesiones",
+"sesiones": 4
+}
+],
+"regalo": "Súmale enzimas con tu paquete: S/ 95 (antes S/ 120) · ultracavitación de regalo",
+"duracion": "1 hora",
+"frecuencia": "2 o 3 por semana",
+"nota": "Y siempre cerramos con drenaje linfático manual (DLM): desinflama.",
+"foto": "img/catalogo/l-slim-body.jpg",
+"actualizado": "2026-11-07T19:35:40.140658+00:00",
+"guia": "corporal",
+"inyectables": true,
+"beneficios": [
+"Reduce volumen",
+"Mejora la textura",
+"Activa la circulación",
+"Quema de grasa"
+],
+"zonas": null,
+"incluye": [
+{
+"n": "Según tu adiposidad o la elasticidad de tu piel.",
+"t": "Aparatología"
+},
+{
+"n": "Moldean el contorno.",
+"t": "Madero y bambuterapia"
+}
+],
+"galeria": null,
+"foto_nota": null
+},
+{
+"id": "a95b3f29-5cdd-4e02-884a-f971d4092506",
+"orden": 105,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "04",
+"ceja": "Grasa localizada",
+"titulo": "Sculpt Body",
+"frase": "Para la grasa localizada más resistente.",
+"texto": "Nuestro tratamiento más potente.",
+"pasos": [],
+"precio_sesion": null,
+"paquetes": [
+{
+"nota": "En 2 partes de S/ 425",
+"precio": 850,
+"etiqueta": "Paquete · 6 + 3 sesiones",
+"sesiones": "6 + 3"
+}
+],
+"regalo": null,
+"duracion": "1 h 30 por sesión",
+"frecuencia": null,
+"nota": null,
+"foto": null,
+"actualizado": "2026-11-07T19:35:40.225044+00:00",
+"guia": "corporal",
+"inyectables": true,
+"beneficios": [
+"Reduce grasa localizada",
+"Reduce medidas",
+"Tonifica",
+"Mejora la circulación"
+],
+"zonas": null,
+"incluye": [
+{
+"n": "Actúa sobre la grasa localizada.",
+"t": "Ultracavitador"
+},
+{
+"n": "Tonifica el músculo.",
+"t": "Tensamax"
+},
+{
+"n": "Mejora la circulación y el drenaje.",
+"t": "Ultrasonido"
+},
+{
+"n": "3 sesiones intensivas (inyectable).",
+"t": "Hidrolipoclasia"
+}
+],
+"galeria": [
+{
+"h": 846,
+"w": 760,
+"etq": "Antes",
+"src": "img/catalogo/l-sculpt-body-antes.jpg"
+},
+{
+"h": 855,
+"w": 760,
+"etq": "Después",
+"src": "img/catalogo/l-sculpt-body-despues.jpg"
+}
+],
+"foto_nota": "Imagen referencial. Los resultados varían en cada persona."
+},
+{
+"id": "d7007fc0-e67f-4a49-aea1-8ed1d1d7edcf",
+"orden": 106,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "05",
+"ceja": "Potencia tus glúteos",
+"titulo": "Glúteos de Porcelana 360",
+"frase": null,
+"texto": null,
+"pasos": [],
+"precio_sesion": 120,
+"paquetes": [
+{
+"precio": 450,
+"etiqueta": "4 sesiones",
+"sesiones": 4
+}
+],
+"regalo": null,
+"duracion": "1 hora por sesión",
+"frecuencia": "1 o 2 veces por semana",
+"nota": "No se aplica con biopolímeros ni implantes en glúteos.",
+"foto": null,
+"actualizado": "2026-11-07T19:35:40.310626+00:00",
+"guia": "corporal",
+"inyectables": true,
+"beneficios": [
+"Nutre el músculo",
+"Potencia tu entreno",
+"Glúteo más firme",
+"Mejor contorno"
+],
+"zonas": null,
+"incluye": [
+{
+"n": "La materia prima de tu músculo.",
+"t": "Péptidos y aminoácidos"
+},
+{
+"n": "Por nuestra especialista.",
+"t": "Aplicación en glúteos"
+},
+{
+"n": "Entrena fuerza: sentadillas, hip thrust.",
+"t": "Tu parte"
+},
+{
+"n": "1 o 2 veces por semana.",
+"t": "Frecuencia"
+}
+],
+"galeria": [
+{
+"h": 351,
+"w": 646,
+"src": "img/catalogo/l-gluteos-360-1.jpg"
+},
+{
+"h": 244,
+"w": 646,
+"src": "img/catalogo/l-gluteos-360-2.jpg"
+}
+],
+"foto_nota": null
+},
+{
+"id": "8573af39-c79f-4f39-a804-3764a554370e",
+"orden": 107,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "06",
+"ceja": "Brazos firmes",
+"titulo": "Brazos",
+"frase": "Reduce la grasa localizada de tus brazos.",
+"texto": null,
+"pasos": [],
+"precio_sesion": 120,
+"paquetes": [
+{
+"nota": "S/ 95 cada sesión",
+"precio": 285,
+"etiqueta": "3 sesiones",
+"sesiones": 3
+}
+],
+"regalo": null,
+"duracion": "1 hora",
+"frecuencia": "1 por semana",
+"nota": null,
+"foto": null,
+"actualizado": "2026-11-07T19:35:40.394681+00:00",
+"guia": "corporal",
+"inyectables": true,
+"beneficios": [
+"Reduce grasa localizada",
+"Reduce medidas",
+"Tonifica",
+"Brazos más firmes"
+],
+"zonas": null,
+"incluye": [
+{
+"n": "3 sesiones, 1 por semana (inyectable).",
+"t": "Enzimas"
+},
+{
+"n": "De regalo en cada sesión.",
+"t": "Ultracavitador o Tensamax"
+}
+],
+"galeria": [
+{
+"h": 464,
+"w": 892,
+"src": "img/catalogo/l-brazos-antes.jpg"
+},
+{
+"h": 464,
+"w": 889,
+"src": "img/catalogo/l-brazos-despues.jpg"
+}
+],
+"foto_nota": "Imagen referencial. Los resultados varían en cada persona."
+},
+{
+"id": "946322a9-7c0b-4654-ab63-a0515cf17b93",
+"orden": 108,
+"activo": true,
+"tipo": "tratamiento",
+"numero": "07",
+"ceja": "Tras tu cirugía estética",
+"titulo": "Postoperatorio",
+"frase": "Te acompañamos en tu recuperación.",
+"texto": null,
+"pasos": [],
+"precio_sesion": null,
+"paquetes": [
+{
+"precio": 1000,
+"etiqueta": "8 sesiones",
+"sesiones": 8
+}
+],
+"regalo": null,
+"duracion": "1 h 30 por sesión",
+"frecuencia": "Diarias o interdiarias",
+"nota": null,
+"foto": "img/catalogo/l-postoperatorio.jpg",
+"actualizado": "2026-11-07T19:35:40.491109+00:00",
+"guia": "corporal",
+"inyectables": false,
+"beneficios": [
+"Desinflama",
+"Previene la fibrosis",
+"Elimina líquidos",
+"Recuperación más cómoda"
+],
+"zonas": null,
+"incluye": [
+{
+"n": "Desinflama y favorece la eliminación de líquidos.",
+"t": "Drenaje linfático"
+},
+{
+"n": "Ayuda a prevenir la fibrosis.",
+"t": "Ultrasonido"
+},
+{
+"n": "Con el alta de tu cirujano.",
+"t": "Desde el día 3"
+},
+{
+"n": "Cuidados en cabina según tu evolución.",
+"t": "Seguimiento"
+}
+],
+"galeria": null,
+"foto_nota": null
+}
+]
