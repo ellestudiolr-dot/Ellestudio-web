@@ -102,4 +102,22 @@
     window.cargarInstagram();
   }
 
+  // Se actualiza sola: si cambian las publicaciones (cada hora llegan las nuevas de Instagram), se vuelve a pintar
+  var firmaIG = '';
+  function revisarIG(){
+    var c = (typeof CONFIG !== 'undefined') ? CONFIG : null;
+    if(!c || !c.SUPABASE_URL || !c.SUPABASE_ANON || document.hidden) return;
+    fetch(c.SUPABASE_URL + '/rest/v1/web_instagram?select=shortcode,imagen&order=publicado.desc.nullslast,orden.asc&limit=' + CUANTOS, {
+      headers: { 'apikey': c.SUPABASE_ANON, 'Authorization': 'Bearer ' + c.SUPABASE_ANON }, cache: 'no-store'
+    }).then(function(r){ return r.ok ? r.json() : null; }).then(function(f){
+      if(!Array.isArray(f)) return;
+      var nueva = f.map(function(x){ return x.shortcode; }).join(',');
+      if(firmaIG && nueva !== firmaIG) window.cargarInstagram();
+      firmaIG = nueva;
+    }).catch(function(){});
+  }
+  setInterval(revisarIG, 180000);
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) revisarIG(); });
+  setTimeout(revisarIG, 6000);
+
 })();

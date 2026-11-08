@@ -167,6 +167,7 @@
       reubicar();
     }
     if(m.tipo === 'recargar-catalogo' && typeof window.cargarCatalogo === 'function'){ window.cargarCatalogo(); }
+    if(m.tipo === 'recargar-instagram' && typeof window.cargarInstagram === 'function'){ window.cargarInstagram(); }
     if(m.tipo === 'recargar-textos'){ location.reload(); }
     if(m.tipo === 'ir' && m.vista && typeof window.verVista === 'function'){ window.verVista(m.vista); reubicar(); }
     if(m.tipo === 'quitar'){ marcar(null); fotoActiva = null; arrastre = null; mostrarAyudaFoto(false); }

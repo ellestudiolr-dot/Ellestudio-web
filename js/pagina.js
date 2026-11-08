@@ -50,16 +50,36 @@
   };
   window.menuSvc = function(){};
 
-  // Menú móvil (hamburguesa)
-  window.menuMovil = function(){
-    var p = document.getElementById('menuMovilPanel');
-    if(p) p.style.display = (p.style.display === 'none' || !p.style.display) ? 'block' : 'none';
-  };
-  window._navMovil = function(v){
-    var p = document.getElementById('menuMovilPanel');
-    if(p) p.style.display = 'none';
-    return _nav(v);
-  };
+  // Menú móvil (hamburguesa): se abre con el botón y se cierra al tocar fuera, con Escape, al bajar la página o eligiendo una opción
+  var ICONO_MENU = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8BC7E" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  var ICONO_X = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D8BC7E" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
+  var velo = null, yAbierto = 0;
+  function menuAbierto(){ var p = document.getElementById('menuMovilPanel'); return !!(p && p.style.display === 'block'); }
+  function ponerMenu(abrir){
+    var p = document.getElementById('menuMovilPanel'), b = document.querySelector('.ap-burger');
+    if(!p) return;
+    p.style.display = abrir ? 'block' : 'none';
+    if(b){ b.innerHTML = abrir ? ICONO_X : ICONO_MENU; b.setAttribute('aria-label', abrir ? 'Cerrar menú' : 'Menú'); b.setAttribute('aria-expanded', abrir ? 'true' : 'false'); }
+    if(!velo){
+      velo = document.createElement('div'); velo.className = 'ap-menu-velo';
+      velo.addEventListener('click', function(){ ponerMenu(false); });
+      document.body.appendChild(velo);
+    }
+    velo.classList.toggle('on', abrir);
+    if(abrir) yAbierto = window.scrollY;
+  }
+  window.cerrarMenuMovil = function(){ if(menuAbierto()) ponerMenu(false); };
+  window.menuMovil = function(){ ponerMenu(!menuAbierto()); };
+  window._navMovil = function(v){ ponerMenu(false); return _nav(v); };
+  document.addEventListener('click', function(e){
+    if(!menuAbierto()) return;
+    var t = e.target;
+    if(t.closest && (t.closest('#menuMovilPanel') || t.closest('.ap-burger'))) return;
+    ponerMenu(false);
+  }, true);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') window.cerrarMenuMovil(); });
+  window.addEventListener('scroll', function(){ if(menuAbierto() && Math.abs(window.scrollY - yAbierto) > 60) ponerMenu(false); }, { passive: true });
+  window.addEventListener('resize', function(){ if(window.innerWidth >= 860) window.cerrarMenuMovil(); });
 
   // Textos legales (pie): se leen de web_contenido (legal_*) y se editan desde el CRM
   var LEGAL_TITULOS = { privacidad:'Política de privacidad', terminos:'Términos y condiciones', accesibilidad:'Accesibilidad', reclamaciones:'Libro de reclamaciones' };

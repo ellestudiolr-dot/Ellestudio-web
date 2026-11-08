@@ -568,6 +568,11 @@
         .ct-foto-nota{ font-size:12px; opacity:.65; margin:6px 0 0; }
         /* Estudio: velo más claro para que se vea la foto; el texto conserva un halo suave para leerse */
         #estudio h2, #estudio h3, #estudio p, #estudio li{ text-shadow:0 0 14px rgba(248,250,241,.95), 0 0 2px rgba(248,250,241,.9); }
+        /* Menú del celular: velo detrás que lo cierra al tocar fuera */
+        .ap-menu-velo{ position:fixed; inset:0; z-index:49; background:rgba(25,28,23,.38); opacity:0; pointer-events:none; transition:opacity .2s ease; }
+        .ap-menu-velo.on{ opacity:1; pointer-events:auto; }
+        .ap-menu-movil a{ padding:18px 24px !important; }
+        @media (min-width:860px){ .ap-menu-velo{ display:none; } }
         /* Formulario: salida directa a WhatsApp para hablar con una persona */
         .ayuda-wa{ text-align:center; font-size:14px; color:#6a6555; margin:10px 0 0; line-height:1.5; }
         .ayuda-wa a{ color:var(--tinta); font-weight:600; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
@@ -1087,7 +1092,7 @@
 
 <script src="js/precios.js?v=5"></script>
 <script src="js/catalogo.js?v=8"></script>
-<script src="js/pagina.js?v=5"></script>
+<script src="js/pagina.js?v=6"></script>
 <script src="js/historias.js?v=5"></script>
 <script src="js/estudio.js?v=2"></script>
 <script src="js/contenido.js?v=8"></script>
@@ -1098,9 +1103,9 @@ window._MODO_EDITOR = /[?&]editar=1/.test(location.search);
 </script>
 <script src="js/whatsapp.js?v=8"></script>
 <script src="js/reserva.js?v=8"></script>
-<script src="js/instagram.js?v=4"></script>
+<script src="js/instagram.js?v=5"></script>
 <script src="js/chatbot.js?v=7"></script>
 <script src="js/navidad.js?v=3"></script>
-<script src="js/editor_vivo.js?v=8"></script>
+<script src="js/editor_vivo.js?v=9"></script>
 </body>
 </html>
