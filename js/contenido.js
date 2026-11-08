@@ -24,10 +24,33 @@
     var k = el && el.getAttribute && el.getAttribute('data-edit-img');
     if(k && !window._WEB_ORIGINALES[k]) window._WEB_ORIGINALES[k] = el.outerHTML;
   }
+  // Íconos dentro de un texto editable (flecha, logo de Instagram, ícono de ubicación…): no se tocan al cambiar el texto
+  function esIcono(n){
+    if(n.nodeType !== 1) return false;
+    var tag = n.tagName.toLowerCase(), cl = String(n.className && n.className.baseVal !== undefined ? n.className.baseVal : n.className || '');
+    return tag === 'svg' || tag === 'i' || /material-symbols|material-icons/.test(cl) || n.getAttribute('aria-hidden') === 'true';
+  }
+  // El texto que se edita, sin el nombre de los íconos (p. ej. «location_on»)
+  window.apTextoDe = function(el){
+    if(!el) return '';
+    var c = el.cloneNode(true);
+    c.querySelectorAll('svg, i, .material-symbols-outlined, .material-icons, [aria-hidden="true"]').forEach(function(x){ x.remove(); });
+    return c.textContent.replace(/\s+/g, ' ').trim();
+  };
+  function ponerTexto(el, valor){
+    var iconos = [].some.call(el.children, esIcono);
+    if(!iconos){ el.textContent = valor; return; }
+    var nodos = [];
+    el.childNodes.forEach(function(n){ if(n.nodeType === 3 && n.nodeValue.trim()) nodos.push(n); });
+    if(!nodos.length){ el.appendChild(document.createTextNode(' ' + valor)); return; }
+    var principal = nodos.reduce(function(a, b){ return b.nodeValue.trim().length > a.nodeValue.trim().length ? b : a; });
+    principal.nodeValue = (/^\s/.test(principal.nodeValue) ? ' ' : '') + valor + (/\s$/.test(principal.nodeValue) ? ' ' : '');
+    nodos.forEach(function(n){ if(n !== principal) n.nodeValue = ' '; });
+  }
   function guardarTextoOriginal(el){
     var k = el && el.getAttribute && el.getAttribute('data-edit');
     if(!k || ORIG_TXT[k]) return;
-    ORIG_TXT[k] = { txt: el.textContent, hasta: el.getAttribute('data-hasta'), pre: el.getAttribute('data-pre'), suf: el.getAttribute('data-suf') };
+    ORIG_TXT[k] = { txt: window.apTextoDe(el), hasta: el.getAttribute('data-hasta'), pre: el.getAttribute('data-pre'), suf: el.getAttribute('data-suf') };
   }
 
   // Ubica la foto: object-position (hacia dónde mira) + zoom (acercar / alejar), sin deformarla
@@ -101,7 +124,7 @@
       var m = String(valor).match(/^(\D*)([\d.,\s]+)(\D*)$/);
       if(m){ var n = parseInt(m[2].replace(/[^\d]/g, ''), 10); if(!isNaN(n)){ el.setAttribute('data-hasta', String(n)); el.setAttribute('data-pre', m[1]); el.setAttribute('data-suf', m[3]); } }
     }
-    el.textContent = valor;
+    ponerTexto(el, valor);
     if(el.classList.contains('rv-words') && typeof window.apPartirPalabras === 'function') window.apPartirPalabras(el);
   };
 

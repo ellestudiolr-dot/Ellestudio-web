@@ -47,3 +47,13 @@ En `js/reserva.js`: `CONFIG.WHATSAPP` (ej. `51987654321`) y `CONFIG.INSTAGRAM` (
 
 ## Deploy
 GitHub Pages. Cada push a `main` publica solo.
+
+## Diseño (Tailwind) · desde el 7-nov-2026
+La página ya NO descarga Tailwind al abrirse (en algunos Android fallaba y la página se veía descuadrada).
+Las clases están en `css/tailwind.css`, generado con la misma configuración (`tailwind.config.js`).
+Si se agregan clases nuevas de Tailwind en `index.html` o `js/`, volver a generarlo:
+
+    npm i -D tailwindcss@3.4.17 @tailwindcss/forms@0.5.10 @tailwindcss/container-queries@0.1.1
+    npx tailwindcss -c tailwind.config.js -i tailwind.input.css -o css/tailwind.css --minify
+
+y subir `?v=` del enlace a `css/tailwind.css` en `index.html`.

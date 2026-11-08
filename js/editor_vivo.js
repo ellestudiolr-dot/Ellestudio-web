@@ -73,7 +73,7 @@
       fotoActiva = null; mostrarAyudaFoto(false);
       e.preventDefault(); e.stopPropagation();
       marcar(el);
-      enviar({ tipo: 'texto', clave: el.getAttribute('data-edit'), valor: el.textContent.replace(/\s+/g, ' ').trim() });
+      enviar({ tipo: 'texto', clave: el.getAttribute('data-edit'), valor: window.apTextoDe ? window.apTextoDe(el) : el.textContent.replace(/\s+/g, ' ').trim() });
       return;
     }
     var bloque = t.closest && t.closest('.ct-bloque[data-cat-id]');
