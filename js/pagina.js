@@ -7,9 +7,9 @@
 (function(){
   document.documentElement.classList.add('js');
 
-  var VISTAS = ['inicio', 'tratamientos', 'precios', 'estudio', 'ubicacion'];
+  var VISTAS = ['inicio', 'tratamientos', 'catalogo', 'estudio', 'ubicacion'];
   // Nombres viejos o anclas internas → vista que las contiene
-  var ALIAS = { servicios:'tratamientos', catalogo:'precios', ofertas:'inicio', 'como-funciona':'inicio', como:'inicio', faq:'inicio', instagram:'inicio', reservar:'inicio', reserva:'inicio' };
+  var ALIAS = { servicios:'tratamientos', precios:'catalogo', lista:'catalogo', ofertas:'inicio', 'como-funciona':'inicio', como:'inicio', faq:'inicio', instagram:'inicio', reservar:'inicio', reserva:'inicio' };
 
   function vistaDe(v){ v = ALIAS[v] || v; return VISTAS.indexOf(v) >= 0 ? v : 'inicio'; }
 
@@ -129,10 +129,10 @@
   window.addEventListener('scroll', alScroll, { passive: true });
 
   // Títulos de las secciones de siempre también entran palabra por palabra
-  document.querySelectorAll('#precios h2, #estudio h2, #instagram h2, #faq h2, #ubicacion h2').forEach(function(el){
+  document.querySelectorAll('#catalogo h2, #estudio h2, #instagram h2, #faq h2, #ubicacion h2').forEach(function(el){
     el.classList.add('rv', 'rv-words');
   });
-  document.querySelectorAll('#precios h3, #estudio h3, #precios .cupon, #faq details, #ubicacion .grid > div, #instagram #historias, #instagram #reelsIG').forEach(function(el){
+  document.querySelectorAll('#catalogo h3, #estudio h3, #catalogo .cupon, #faq details, #ubicacion .grid > div, #instagram #historias, #instagram #reelsIG').forEach(function(el){
     el.classList.add('rv');
   });
 
@@ -187,7 +187,7 @@
     } else { reloj = setInterval(siguientePaso, 2200); }
   }
 
-  // Al cargar (y si cambia el #hash, por ejemplo con el botón atrás): respetar #precios, #estudio, #reservar, #instagram…
+  // Al cargar (y si cambia el #hash, por ejemplo con el botón atrás): respetar #catalogo, #estudio, #reservar, #instagram…
   function porHash(){
     var h = (location.hash || '').replace('#', '');
     if(h === 'reservar' || h === 'reserva'){ verVista('inicio'); setTimeout(abrirReserva, 400); }

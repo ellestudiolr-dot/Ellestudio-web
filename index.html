@@ -417,9 +417,9 @@
         .text-gold-gradient{ background:none !important; -webkit-text-fill-color:var(--tinta) !important; color:var(--tinta) !important; }
         .font-label-upper.rounded-full{ text-transform:none !important; letter-spacing:0 !important; font-size:14px !important; font-weight:600 !important; transition:transform .25s ease; }
         .font-label-upper.rounded-full:hover{ transform:scale(1.02); }
-        #precios button[style*="linear-gradient"]{ background:var(--tinta) !important; color:#fff !important; }
-        #precios button[style*="border:1.2px solid"]{ color:var(--tinta) !important; border-color:rgba(25,28,23,.22) !important; }
-        #precios div[style*="#1c1f18"]{ background:var(--tinta) !important; }
+        #catalogo button[style*="linear-gradient"]{ background:var(--tinta) !important; color:#fff !important; }
+        #catalogo button[style*="border:1.2px solid"]{ color:var(--tinta) !important; border-color:rgba(25,28,23,.22) !important; }
+        #catalogo div[style*="#1c1f18"]{ background:var(--tinta) !important; }
         .cupon{ border:1px solid rgba(25,28,23,.1) !important; background:#fff !important; border-radius:24px !important; }
         .cupon::before, .cupon::after{ display:none !important; }
         .cupon .hero-elle{ font-family:var(--f-apple) !important; font-style:normal !important; font-weight:600 !important; letter-spacing:-0.03em !important; background:none !important; -webkit-text-fill-color:var(--tinta) !important; color:var(--tinta) !important; animation:none !important; filter:none !important; }
@@ -430,7 +430,7 @@
         .red-circulo{ border-color:rgba(25,28,23,.3) !important; color:#fff !important; }
 
         /* Las secciones de siempre quedan debajo de la barra fija al navegar */
-        #inicio,#ofertas,#tratamientos,#como-funciona,#precios,#estudio,#instagram,#faq,#ubicacion{ scroll-margin-top:64px; }
+        #inicio,#ofertas,#tratamientos,#como-funciona,#catalogo,#estudio,#instagram,#faq,#ubicacion{ scroll-margin-top:64px; }
 
         /* ===== Catálogo «Glúteos de Porcelana» (la guía de Lyrosse) ===== */
         .ct{ --ct-crema:#f4f2e6; --ct-rosa:#f3e4dc; --ct-oscuro:#2c342b; --ct-salvia:#bbc3ab; --ct-oro:#b8955a; --ct-tinta:#2b2b26; --ct-muted:#6a6555; margin:0 0 90px; display:flex; flex-direction:column; gap:22px; }
@@ -597,7 +597,7 @@
     <div class="ap-links">
       <a data-edit="nav_inicio" href="#inicio" onclick="return _nav('inicio')" data-nav="inicio">Inicio</a>
       <a data-edit="nav_tratamientos" href="#tratamientos" onclick="return _nav('tratamientos')" data-nav="tratamientos">Tratamientos</a>
-      <a data-edit="nav_catalogo" href="#precios" onclick="return _nav('precios')" data-nav="precios">Catálogo</a>
+      <a data-edit="nav_catalogo" href="#catalogo" onclick="return _nav('catalogo')" data-nav="catalogo">Catálogo</a>
       <a data-edit="nav_estudio" href="#estudio" onclick="return _nav('estudio')" data-nav="estudio">Estudio</a>
       <a data-edit="nav_ubicacion" href="#ubicacion" onclick="return _nav('ubicacion')" data-nav="ubicacion">Ubicación</a>
     </div>
@@ -611,7 +611,7 @@
   <div id="menuMovilPanel" class="ap-menu-movil" style="display:none;">
     <a data-edit="nav_inicio" onclick="return _navMovil('inicio')" href="#inicio">Inicio</a>
     <a data-edit="nav_tratamientos" onclick="return _navMovil('tratamientos')" href="#tratamientos">Tratamientos</a>
-    <a data-edit="nav_catalogo" onclick="return _navMovil('precios')" href="#precios">Catálogo</a>
+    <a data-edit="nav_catalogo" onclick="return _navMovil('catalogo')" href="#catalogo">Catálogo</a>
     <a data-edit="nav_estudio" onclick="return _navMovil('estudio')" href="#estudio">Estudio</a>
     <a data-edit="nav_ubicacion" onclick="return _navMovil('ubicacion')" href="#ubicacion">Ubicación</a>
   </div>
@@ -629,7 +629,7 @@
     <h1 class="ap-hero-titulo rv rv-words" data-edit="hero_titulo">La piel que deseas, el cuidado que mereces.</h1>
     <div class="ap-botones rv">
       <button data-edit="hero_boton1" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
-      <a data-edit="hero_boton2" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
+      <a data-edit="hero_boton2" class="ap-btn ap-btn-fantasma" href="#catalogo" onclick="return _nav('catalogo')">Ver catálogo</a>
     </div>
   </div>
   <div data-edit="hero_desliza" class="ap-pista" aria-hidden="true">Desliza<i></i></div>
@@ -704,7 +704,7 @@
       <p class="ap-parrafo rv" data-edit="trat_texto">Toca cada uno para ver sus precios por zona.</p>
     </div>
     <div class="ap-grid3">
-      <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-laser">
+      <a class="ap-modulo rv" href="#catalogo" onclick="return _nav('catalogo')" id="svc-laser">
         <video data-video muted loop playsinline preload="metadata" data-edit-img="mod1_media" poster="img/v/laser-axilas.jpg" aria-hidden="true"><source src="video/laser.mp4" type="video/mp4"/></video>
         <div class="ap-modulo-velo"></div>
         <div class="ap-modulo-txt">
@@ -713,7 +713,7 @@
           <p data-edit="mod1_texto">Suave y rápida, para ella y para él. Desde S/ 25 por zona.</p>
         </div>
       </a>
-      <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-gluteos">
+      <a class="ap-modulo rv" href="#catalogo" onclick="return _nav('catalogo')" id="svc-gluteos">
         <video data-video muted loop playsinline preload="metadata" data-edit-img="mod2_media" poster="img/v/gluteos.jpg" aria-hidden="true"><source src="video/gluteos.mp4" type="video/mp4"/></video>
         <div class="ap-modulo-velo"></div>
         <div class="ap-modulo-txt">
@@ -722,7 +722,7 @@
           <p data-edit="mod2_texto">Levantamiento, firmeza y textura renovada. Desde S/ 89.90.</p>
         </div>
       </a>
-      <a class="ap-modulo rv" href="#precios" onclick="return _nav('precios')" id="svc-facial">
+      <a class="ap-modulo rv" href="#catalogo" onclick="return _nav('catalogo')" id="svc-facial">
         <video data-video muted loop playsinline preload="metadata" data-edit-img="mod3_media" poster="img/v/skin-face.jpg" aria-hidden="true"><source src="video/facial.mp4" type="video/mp4"/></video>
         <div class="ap-modulo-velo"></div>
         <div class="ap-modulo-txt">
@@ -743,7 +743,7 @@
     <p class="ap-parrafo ap-claro rv" data-edit="red_texto">Radiofrecuencia, lipoláser, maderoterapia y bambú. Elegimos contigo el protocolo según tu objetivo. Desde S/ 50.</p>
     <div class="ap-botones rv">
       <button data-edit="corporal_boton1" class="ap-btn ap-btn-oscuro" onclick="abrirReserva()">Reservar cita</button>
-      <a data-edit="corporal_boton2" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
+      <a data-edit="corporal_boton2" class="ap-btn ap-btn-fantasma" href="#catalogo" onclick="return _nav('catalogo')">Ver catálogo</a>
     </div>
   </div>
   <div class="ap-split-video">
@@ -761,7 +761,7 @@
     <p class="ap-parrafo ap-claro rv" data-edit="peel_texto">Máscara de carbón y láser. Piel más limpia, pareja y luminosa, sin reposo: sales y sigues con tu día.</p>
     <div class="ap-botones rv">
       <button data-edit="peel_boton1" class="ap-btn ap-btn-blanco" onclick="pedirWa('Hollywood Peel')">Lo quiero</button>
-      <a data-edit="peel_boton2" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
+      <a data-edit="peel_boton2" class="ap-btn ap-btn-fantasma" href="#catalogo" onclick="return _nav('catalogo')">Ver catálogo</a>
     </div>
   </div>
 </section>
@@ -831,7 +831,7 @@
 
 
 <!-- PRECIOS: en vivo desde la base (los mismos del CRM) con las fotos del proceso -->
-<section class="vista ap-precios" id="precios" data-vista="precios">
+<section class="vista ap-precios" id="catalogo" data-vista="catalogo">
   <div class="ap-cont">
     <div id="catalogoApp"></div>
     <div class="ap-cab-centro" id="listaPrecios">
@@ -935,7 +935,7 @@
   <p class="ap-parrafo ap-claro rv" data-edit="cta_texto">Déjanos tu nombre y el tratamiento que te interesa; te abrimos WhatsApp con el mensaje listo.</p>
   <div class="ap-botones rv" style="justify-content:center;">
     <button data-edit="cta_boton1" class="ap-btn ap-btn-blanco" onclick="abrirReserva()">Reservar cita</button>
-    <a data-edit="cta_boton2" id="waFooterCta" class="ap-btn ap-btn-fantasma" href="#precios" onclick="return _nav('precios')">Ver catálogo</a>
+    <a data-edit="cta_boton2" id="waFooterCta" class="ap-btn ap-btn-fantasma" href="#catalogo" onclick="return _nav('catalogo')">Ver catálogo</a>
   </div>
 </section>
 
@@ -1054,7 +1054,7 @@
 
 <script src="js/precios.js?v=5"></script>
 <script src="js/catalogo.js?v=8"></script>
-<script src="js/pagina.js?v=6"></script>
+<script src="js/pagina.js?v=7"></script>
 <script src="js/historias.js?v=5"></script>
 <script src="js/estudio.js?v=2"></script>
 <script src="js/contenido.js?v=9"></script>
